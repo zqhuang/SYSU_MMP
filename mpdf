@@ -1,0 +1,10 @@
+#! /bin/bash
+filename=`basename ${1}`
+if [[ ${filename} != *.tex ]]
+then
+    filename=${filename}tex
+fi
+cd tex
+pdflatex ${filename} 
+mv ${filename/\.tex/\.pdf} ../
+cd ..
