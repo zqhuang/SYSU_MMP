@@ -1,0 +1,174 @@
+\usepackage{CJKutf8}
+\usepackage{beamerthemesplit}
+\usetheme{Malmoe}
+\useoutertheme[footline=authortitle]{miniframes}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{eufrak}
+\usepackage{color}
+\usepackage{slashed}
+\usepackage{simplewick}
+\usepackage{tikz}
+\usepackage{tcolorbox}
+\graphicspath{{../figures/}}
+%%figures
+\def\lfig#1#2{\includegraphics[width=#1 in]{#2}}
+\def\addfig#1#2{\begin{center}\includegraphics[width=#1 in]{#2}\end{center}}
+\def\wulian{\includegraphics[width=0.18in]{emoji_wulian.jpg}}
+\def\bigwulian{\includegraphics[width=0.35in]{emoji_wulian.jpg}}
+\def\bye{\includegraphics[width=0.18in]{emoji_bye.jpg}}
+\def\bigbye{\includegraphics[width=0.35in]{emoji_bye.jpg}}
+\def\huaixiao{\includegraphics[width=0.18in]{emoji_huaixiao.jpg}}
+\def\bighuaixiao{\includegraphics[width=0.35in]{emoji_huaixiao.jpg}}
+\def\jianxiao{\includegraphics[width=0.18in]{emoji_jianxiao.jpg}}
+\def\bigjianxiao{\includegraphics[width=0.35in]{emoji_jianxiao.jpg}}
+%% colors
+\def\blacktext#1{{\color{black}#1}}
+\def\bluetext#1{{\color{blue}#1}}
+\def\redtext#1{{\color{red}#1}}
+\def\darkbluetext#1{{\color[rgb]{0,0.2,0.6}#1}}
+\def\skybluetext#1{{\color[rgb]{0.2,0.7,1.}#1}}
+\def\cyantext#1{{\color[rgb]{0.,0.5,0.5}#1}}
+\def\greentext#1{{\color[rgb]{0,0.7,0.1}#1}}
+\def\darkgray{\color[rgb]{0.2,0.2,0.2}}
+\def\lightgray{\color[rgb]{0.6,0.6,0.6}}
+\def\gray{\color[rgb]{0.4,0.4,0.4}}
+\def\blue{\color{blue}}
+\def\red{\color{red}}
+\def\green{\color{green}}
+\def\darkgreen{\color[rgb]{0,0.4,0.1}}
+\def\darkblue{\color[rgb]{0,0.2,0.6}}
+\def\skyblue{\color[rgb]{0.2,0.7,1.}}
+%%control
+\def\be{\begin{equation}}
+\def\ee{\nonumber\end{equation}}
+\def\bea{\begin{eqnarray}}
+\def\eea{\nonumber\end{eqnarray}}
+\def\bch{\begin{CJK}{UTF8}{gbsn}}
+\def\ech{\end{CJK}}
+\def\bitem{\begin{itemize}}
+\def\eitem{\end{itemize}}
+\def\bcenter{\begin{center}}
+\def\ecenter{\end{center}}
+\def\bex{\begin{minipage}{0.2\textwidth}\includegraphics[width=0.6in]{jugelizi.png}\end{minipage}\begin{minipage}{0.76\textwidth}}
+\def\eex{\end{minipage}}
+\def\chtitle#1{\frametitle{\bch#1\ech}}
+\def\bmat#1{\left(\begin{array}{#1}}
+\def\emat{\end{array}\right)}
+\def\bcase#1{\left\{\begin{array}{#1}}
+\def\ecase{\end{array}\right.}
+\def\bmini#1{\begin{minipage}{#1\textwidth}}
+\def\emini{\end{minipage}}
+\def\tbox#1{\begin{tcolorbox}#1\end{tcolorbox}}
+\def\pfrac#1#2#3{\left(\frac{\partial #1}{\partial #2}\right)_{#3}}
+%%symbols
+\def\bropt{\,(\ \ \ )}
+\def\sone{$\star$}
+\def\stwo{$\star\star$}
+\def\sthree{$\star\star\star$}
+\def\sfour{$\star\star\star\star$}
+\def\sfive{$\star\star\star\star\star$}
+\def\rint{{\int_\leftrightarrow}}
+\def\roint{{\oint_\leftrightarrow}}
+\def\stdHf{{\textit{\r H}_f}}
+\def\deltaH{{\Delta \textit{\r H}}}
+\def\ii{{\dot{\imath}}}
+\def\skipline{{\vskip0.1in}}
+\def\skiplines{{\vskip0.2in}}
+\def\lagr{{\mathcal{L}}}
+\def\hamil{{\mathcal{H}}}
+\def\vecv{{\mathbf{v}}}
+\def\vecx{{\mathbf{x}}}
+\def\vecy{{\mathbf{y}}}
+\def\veck{{\mathbf{k}}}
+\def\vecp{{\mathbf{p}}}
+\def\vecn{{\mathbf{n}}}
+\def\vecA{{\mathbf{A}}}
+\def\vecP{{\mathbf{P}}}
+\def\vecsigma{{\mathbf{\sigma}}}
+\def\hatJn{{\hat{J_\vecn}}}
+\def\hatJx{{\hat{J_x}}}
+\def\hatJy{{\hat{J_y}}}
+\def\hatJz{{\hat{J_z}}}
+\def\hatj#1{\hat{J_{#1}}}
+\def\hatphi{{\hat{\phi}}}
+\def\hatq{{\hat{q}}}
+\def\hatpi{{\hat{\pi}}}
+\def\vel{\upsilon}
+\def\Dint{{\mathcal{D}}}
+\def\adag{{\hat{a}^\dagger}}
+\def\bdag{{\hat{b}^\dagger}}
+\def\cdag{{\hat{c}^\dagger}}
+\def\ddag{{\hat{d}^\dagger}}
+\def\hata{{\hat{a}}}
+\def\hatb{{\hat{b}}}
+\def\hatc{{\hat{c}}}
+\def\hatd{{\hat{d}}}
+\def\hatN{{\hat{N}}}
+\def\hatH{{\hat{H}}}
+\def\hatp{{\hat{p}}}
+\def\Fup{{F^{\mu\nu}}}
+\def\Fdown{{F_{\mu\nu}}}
+\def\newl{\nonumber \\}
+\def\vece{\mathrm{e}}
+\def\calM{{\mathcal{M}}}
+\def\calT{{\mathcal{T}}}
+\def\calR{{\mathcal{R}}}
+\def\barpsi{\bar{\psi}}
+\def\baru{\bar{u}}
+\def\barv{\bar{\upsilon}}
+\def\qeq{\stackrel{?}{=}}
+\def\torder#1{\mathcal{T}\left(#1\right)}
+\def\rorder#1{\mathcal{R}\left(#1\right)}
+\def\contr#1#2{\contraction{}{#1}{}{#2}#1#2}
+\def\trof#1{\mathrm{Tr}\left(#1\right)}
+\def\trace{\mathrm{Tr}}
+\def\comm#1{\ \ \ \left(\mathrm{used}\ #1\right)}
+\def\tcomm#1{\ \ \ (\text{#1})}
+\def\slp{\slashed{p}}
+\def\slk{\slashed{k}}
+\def\calp{{\mathfrak{p}}}
+\def\veccalp{\mathbf{\mathfrak{p}}}
+\def\Tthree{T_{\tiny \textcircled{3}}}
+\def\pthree{p_{\tiny \textcircled{3}}}
+\def\dbar{{\,\mathchar'26\mkern-12mu d}}
+\def\erf{\mathrm{erf}}
+\def\const{\mathrm{constant}}
+\def\pheat{\pfrac p{\ln T}V}
+\def\vheat{\pfrac V{\ln T}p}
+%%units
+\def\fdeg{{^\circ \mathrm{F}}}
+\def\cdeg{^\circ \mathrm{C}}
+\def\atm{\,\mathrm{atm}}
+\def\angstrom{\,\text{\AA}}
+\def\SIL{\,\mathrm{L}}
+\def\SIkm{\,\mathrm{km}}
+\def\SIyr{\,\mathrm{yr}}
+\def\SIGyr{\,\mathrm{Gyr}}
+\def\SIV{\,\mathrm{V}}
+\def\SImV{\,\mathrm{mV}}
+\def\SIeV{\,\mathrm{eV}}
+\def\SIkeV{\,\mathrm{keV}}
+\def\SIMeV{\,\mathrm{MeV}}
+\def\SIGeV{\,\mathrm{GeV}}
+\def\SIcal{\,\mathrm{cal}}
+\def\SIkcal{\,\mathrm{kcal}}
+\def\SImol{\,\mathrm{mol}}
+\def\SIN{\,\mathrm{N}}
+\def\SIHz{\,\mathrm{Hz}}
+\def\SIm{\,\mathrm{m}}
+\def\SIcm{\,\mathrm{cm}}
+\def\SIfm{\,\mathrm{fm}}
+\def\SImm{\,\mathrm{mm}}
+\def\SInm{\,\mathrm{nm}}
+\def\SImum{\,\mathrm{\mu m}}
+\def\SIJ{\,\mathrm{J}}
+\def\SIW{\,\mathrm{W}}
+\def\SIkJ{\,\mathrm{kJ}}
+\def\SIs{\,\mathrm{s}}
+\def\SIkg{\,\mathrm{kg}}
+\def\SIg{\,\mathrm{g}}
+\def\SIK{\,\mathrm{K}}
+\def\SImmHg{\,\mathrm{mmHg}}
+\def\SIPa{\,\mathrm{Pa}}
