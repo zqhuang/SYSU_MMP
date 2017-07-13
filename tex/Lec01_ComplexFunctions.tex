@@ -5,275 +5,23 @@
   \author{}
   \date{}
 \begin{document}
-\tpage{1}{复数的基本性质}
+\tpage{1}{复变函数的微积分入门}
 
 
 \begin{frame}
 \chtitle{本讲内容}
 \bch
 \bitem
-\item{微积分知识回顾}
 \item{复数的基本性质}
+\item{实函数微积分知识回顾}
+\item{复变函数的微积分入门}
 \eitem
 \ech
 \end{frame}
 
-\section{Calculus}
-
-\begin{frame}
-\chtitle{预备知识：导数的概念和图像}
-\bch
-\tbox{
-  $$f'(x) \equiv \lim_{\Delta x \rightarrow 0} \frac{f(x+\Delta x) - f(x)}{\Delta x} $$}
-\addfig{2.1}{derv.png}
-
-等式右边的极限可以形象地写成$\frac{df}{dx}$，在脑海中的图像就是$f$的微小变化量除以$x$的微小变化量。
-
-\ech
-\end{frame}
-
-\begin{frame}
-\chtitle{预备知识：积分的概念和图像}
-\bch
-\tbox{
-  $$ \int_a^b f(x) dx = F(b) - F(a) $$
-}
-(原函数$F(x)$满足$F'(x) = f(x)$)
-
-\addfig{2.5}{integral.jpg}
-\ech
-\end{frame}
-
-\begin{frame}
-\chtitle{预备知识：不定积分}
-\bch
-原函数并不唯一，可以相差一个常数，写成不定积分：
-
-\tbox{
-  $$ \int f(x) dx = F(x) + c $$
-}
-这是假数学书的写法，左边的$x$和右边的$x$完全是不同的意思。
-
-我推荐的写法是：
- \tbox{ $$ F(x) = \int_a^x f(t) dt$$}
-即原函数可以看成为$f$从某个固定端点$a$开始到$x$的定积分。等式两边的$x$是一个意思。
-
-下面我们用直观的几何图像来解释为什么可以这样写。
-
-\ech
-\end{frame}
-
-
-\begin{frame}
-\chtitle{几何图像}
-\bch
-考虑定义式$$ F(x) = \int_a^x f(t) dt$$
-即$F(x)$为图中所示的青色区域面积。
-
-\bmini{0.45}
-考虑$x$变化小量$dx$，则$F$的变化量为图中红色区域面积，近似地有：
-$$d F = f(x) dx$$
-所以$F$确实满足原函数的定义：
-$$F'(x) = \frac{dF}{dx} = f(x)$$
-
-\emini
-\bmini{0.5}
-\addfig{2.2}{integral_derv.jpg}
-\emini
-
-\ech
-\end{frame}
-
-\begin{frame}
-  \chtitle{检验一下学习成果}
-  \bch
-  \addfig{1}{think.jpg}
-  
-  设$f(x,t)$为二元函数，定义：
-  $$ F(x) = \int_{a(x)}^{b(x)} f(x, t) dt $$
-  用画图的方法直接说明下式成立：
-  $$ F'(x) =b'(x)\,f\left(b(x)\right)- a'(x)\,f\left(a(x)\right) + \int_{a(x)}^{b(x)} \partial_x f(x, t)\, dt $$
-
-  \ech
-\end{frame}
-
-\begin{frame}
-  \chtitle{带参量的积分}
-  \bch
-  前面两个例子的共同点是，在对$t$的定积分里包含了参量$x$，从而结果依赖于$x$，可以把结果看成$x$的一个函数。
-  $$ F({\color{red} x}) = \int_a^{{\color{red} x}} f(t) dt$$
-  $$ F({\red x}) = \int_{a({\red x})}^{b({\red x})} f({\red x}, t) dt $$  
-  \skiplines
-  
-  这种用带参量的积分定义新函数的方法在本课非常重要，很快我们会学习如何把它推广到复数的积分的情况。
-
-  
-  \ech
-\end{frame}
-
-\begin{frame}
-  \chtitle{$\Gamma$函数}
-  \bch
-  不难证明$n$为非负整数时
-  $$\int_0^\infty t^n e^{-t}dt = n!$$
-  利用带参量的积分定义新函数的方法，我们很容易地可以把“阶乘”这个本来只适用于非负整数的函数推广到非负实数的情况。定义：
-  \tbox{
-  $$\Gamma\left(x\right) \equiv \int_0^\infty t^{x-1}e^{-t} dt $$}
-  这就是著名的$\Gamma$函数。我们学习了复变函数之后，还会把它的定义域扩张到几乎整个复数域。
-  \ech
-\end{frame}
-
-
-\begin{frame}
-  \chtitle{$\Gamma$函数的基本性质I}
-  \bch
-  根据
-  \tbox{
-  $$\Gamma\left(x\right) \equiv \int_0^\infty t^{x-1}e^{-t} dt $$}
-  证明：
-  \tbox{$$\Gamma\left(x+1\right) = x\,\Gamma\left(x\right)$$}
-由此易得 $\Gamma(n+1) = n!\ (n = 0,1,2,\ldots).$
-\ech
-\end{frame}
-
-\begin{frame}
-  \chtitle{$\Gamma$函数的基本性质II}
-  \bch
-  \addfig{1}{think2.jpg}
-  对$0<x<1$，证明：
-  \tbox{$$\Gamma\left(x\right)\Gamma\left(1-x\right) =  \frac{\pi}{\sin{(\pi x)}}$$}
-
-  由此可以推出高斯积分公式（瞬间勾起对麦克斯韦分布的美好回忆\wulian)
-  $$\Gamma(\frac{1}{2}) = \sqrt{\pi}\, ,$$
-  
-  \ech
-\end{frame}
-
-
-\begin{frame}
-\chtitle{预备知识：二阶导数}
-\bch
-二阶导数定义为导数的导数，即“斜率的变化率”。
-
-若$f''(x)>0$，则斜率持续增大，$f(x)$为凹函数。
-
-若$f''(x)<0$，则斜率持续减少，$f(x)$为凸函数。
-
-\addfig{3}{convex_concave.png}
-
-\ech
-\end{frame}
-
-\begin{frame}
-\chtitle{预备知识：高阶导数}
-\bch
-一般地，可定义$n$阶导数为$n-1$阶导数的导数。即
-
-\tbox{
-$$f^{(n)}(x) = \lim_{dx\rightarrow 0}\frac{f^{(n-1)}(x+dx) - f^{(n-1)}(x)}{dx}$$
-}
-
-\ech
-\end{frame}
-
-\begin{frame}
-\chtitle{预备知识：用导数近似求值}
-\bch
-
-假设$f$在$x_0$处的各阶导数均已知，在$x_0$附近的$x$处的函数值可以近似写成
-$$f(x) \approx f(x_0) + f'(x_0) (x-x_0)$$
-为了改善这个估算的精度，我们可以先估算一阶导数：
-$$f'(x) \approx f'(x_0) + f''(x_0)(x-x_0)$$
-再对上式从$x_0$到$x$积分得到二阶近似：
-$$f(x) \approx f(x_0) + f'(x_0)(x-x_0) + \frac{1}{2}f''(x_0)(x-x_0)^2$$
-\ech
-\end{frame}
-
-\begin{frame}
-\chtitle{预备知识：用导数近似求值（续）}
-\bch
-还不够精确？那好，把$f'$看成新的函数，并对$f'$使用上面得到的二阶近似公式：
-$$ f'(x) \approx f'(x_0) + f''(x_0)(x-x_0) + \frac{1}{2}f'''(x_0)(x-x_0)^2$$
-然后从$x_0$到$x$积分得到
-$$f(x) \approx f(x_0) + f'(x_0)(x-x_0) + \frac{1}{2}f''(x_0)(x-x_0)^2 + \frac{1}{6}f'''(x_0) (x-x_0)^3$$
-\ech
-\end{frame}
-
-
-\begin{frame}
-\chtitle{预备知识：泰勒级数展开}
-\bch
-把上述过程进行无限多次，得到：
-\tbox{
-  $$ f(x)  = \sum_{n=0}^\infty \frac{f^{(n)}(x_0)}{n!} (x-x_0)^n $$
-}
-特别地如取$x_0=0$，
-\tbox{
-  $$ f(x)  = \sum_{n=0}^\infty \frac{f^{(n)}(0)}{n!} x^n $$
-}
-
-\skipline
-
-什么？收敛性怎么判断？再见\bye
-\ech
-\end{frame}
-
-
-\begin{frame}
-\chtitle{用无穷级数定义函数}
-\bch
-反过来，对给定的无穷数列$c_0, c_1, c_2, \ldots$，可以定义
-$$ f(x) = \sum_{n=0}^\infty c_n x^n $$
-这个定义新的函数的方法也非常重要，很容易把上式中的所有数推广到复数的情形。
-\ech
-\end{frame}
-
-
-\begin{frame}
-\chtitle{贝塞尔函数 (Bessel Functions)}
-\bch
-$n$阶贝塞尔函数定义为
-\tbox
-{$$J_n(x) \equiv \sum_{k=0}^\infty \frac{(-1)^k}{k!(k+n)!} \left(\frac{x}{2}\right)^{2k+n},\ (n\ge 0)$$ }
-\addfig{2.5}{bessel_functions.png}
-\ech
-\end{frame}
-
-
-\begin{frame}
-\chtitle{贝塞尔函数的积分表达式}
-\bch
-由定义式
-\tbox
-{$$J_n(x) \equiv \sum_{k=0}^\infty \frac{(-1)^k}{k!(k+n)!} \left(\frac{x}{2}\right)^{2k+n},\ (n\ge 0)$$ }
-证明
-\tbox
-{$$J_n(x) = \frac{1}{\pi} \int_0^\pi\cos\left(nt - x \sin t\right)dt$$}
-\ech
-\end{frame}
-
-
-
-\begin{frame}
-\chtitle{附录：基本的微积分公式}
-\bch
-\tbox{$$d \left(x^n\right) = n x^{n-1} dx;\ d\left(\ln x\right) = \frac{dx}{x}$$}
-\tbox{$$d\left(e^x\right) = e^x dx;\ d(\sin x) = \cos x\, dx;\ d(\cos x) = -\sin x\, dx$$}
-\tbox{$$d(xy) = xdy + ydx$$}
-\tbox{$$d\left[f\left(g(x)\right)\right] = f'\left(g(x)\right) g'(x) dx$$}
-\ech
-\end{frame}
-
-
-
 \section{Complex Functions}
 
 
-\begin{frame}
-  \bch
-  {\Large 下面进入对复变函数的讨论}
-\ech
-\end{frame}
 
 \begin{frame}
 \chtitle{虚数单位$\ii$ (imaginary unit)}
@@ -355,7 +103,7 @@ $$z_1=r_1(\cos\theta_1+\ii \sin\theta_1),\ z_2= r_2(\cos\theta_2+\ii \sin\theta_
 则
 $$z_1z_2 = (r_1r_2)\left[\cos(\theta_1+\theta_2) + \ii \sin(\theta_1+\theta_2)\right]$$
 
-这很容易用三角函数公式进行验证，但背后是否有什么更深刻的原因呢？
+这很容易用三角函数加法公式进行验证，但背后是否有什么更深刻的原因呢？
 
 \ech
 \end{frame}
@@ -366,6 +114,8 @@ $$z_1z_2 = (r_1r_2)\left[\cos(\theta_1+\theta_2) + \ii \sin(\theta_1+\theta_2)\r
   \bch
   用级数定义新函数的方法，定义复数的指数函数为：
   $$ e^z\equiv \sum_{n=0}^\infty \frac{1}{n!}z^n$$
+
+  {\scriptsize 注：该级数的收敛性是显然的。}  
   \ech
 \end{frame}
 
@@ -375,7 +125,7 @@ $$z_1z_2 = (r_1r_2)\left[\cos(\theta_1+\theta_2) + \ii \sin(\theta_1+\theta_2)\r
 若$\theta$为实数，有
 \tbox{$$ e^{\ii \theta} = \cos\theta + \ii \sin\theta $$}
 
-\addfig{1}{think3.jpg}
+\addfig{1}{euler_formula.png}
 
 哪位dalao自告奋勇来证明一下！
 
@@ -424,6 +174,285 @@ $$z^n-1 = \prod_{k=0}^{n-1}\left(z-e^{\frac{2\pi k \ii}{n}}\right)$$
 两边的$z^{n-1}$项，可以得到
 $$\sum_{k=0}^{n-1} e^{\frac{2\pi k \ii}{n}} = 0\, .$$
 从复数的矢量意义来看，上式是显然的。
+\ech
+\end{frame}
+
+
+\section{Calculus}
+
+\begin{frame}
+\chtitle{导数的概念和图像}
+\bch
+\tbox{
+  $$f'(x) \equiv \lim_{\Delta x \rightarrow 0} \frac{f(x+\Delta x) - f(x)}{\Delta x} $$}
+\addfig{2.1}{derv.png}
+
+等式右边的极限可以形象地写成$\frac{df}{dx}$，在脑海中的图像就是$f$的微小变化量除以$x$的微小变化量。
+
+\ech
+\end{frame}
+
+\begin{frame}
+  \chtitle{微分的乘法法则}
+  \bch
+  \tbox{
+    $$d(xy) = xdy + ydx$$}
+  \addfig{2.5}{dxy.png}
+
+  忽略掉二阶小量$dxdy$
+  \ech
+\end{frame}
+
+\begin{frame}
+\chtitle{积分的概念和图像}
+\bch
+\tbox{
+  $$ \int_a^b f(x) dx = F(b) - F(a) $$
+}
+(原函数$F(x)$满足$F'(x) = f(x)$)
+
+\addfig{2.5}{integral.jpg}
+\ech
+\end{frame}
+
+\begin{frame}
+\chtitle{不定积分}
+\bch
+原函数并不唯一，可以相差一个常数，写成不定积分：
+
+\tbox{
+  $$ \int f(x) dx = F(x) + c $$
+}
+这是假数学书的写法，左边的$x$和右边的$x$完全是不同的意思。
+
+我推荐的写法是：
+ \tbox{ $$ F(x) = \int_a^x f(t) dt$$}
+即原函数可以看成为$f$从某个固定端点$a$开始到$x$的定积分。等式两边的$x$是一个意思。
+
+下面我们用直观的几何图像来解释为什么可以这样写。
+
+\ech
+\end{frame}
+
+
+\begin{frame}
+\chtitle{几何图像}
+\bch
+考虑定义式$$ F(x) = \int_a^x f(t) dt$$
+即$F(x)$为图中所示的青色区域面积。
+
+\bmini{0.45}
+考虑$x$变化小量$dx$，则$F$的变化量为图中红色区域面积，近似地有：
+$$d F = f(x) dx$$
+所以$F$确实满足原函数的定义：
+$$F'(x) = \frac{dF}{dx} = f(x)$$
+
+\emini
+\bmini{0.5}
+\addfig{2.2}{integral_derv.jpg}
+\emini
+
+\ech
+\end{frame}
+
+\begin{frame}
+  \chtitle{检验一下学习成果}
+  \bch
+  \addfig{1}{think.jpg}
+  
+  设$f(x,t)$为二元函数，定义：
+  $$ F(x) = \int_{a(x)}^{b(x)} f(x, t) dt $$
+  用画图的方法直接说明下式成立：
+  $$ F'(x) =b'(x)\,f\left(b(x)\right)- a'(x)\,f\left(a(x)\right) + \int_{a(x)}^{b(x)} \partial_x f(x, t)\, dt $$
+
+  \ech
+\end{frame}
+
+\begin{frame}
+  \chtitle{带参量的积分}
+  \bch
+  前面两个例子的共同点是，在对$t$的定积分里包含了参量$x$，从而结果依赖于$x$，可以把结果看成$x$的一个函数。
+  $$ F({\color{red} x}) = \int_a^{{\color{red} x}} f(t) dt$$
+  $$ F({\red x}) = \int_{a({\red x})}^{b({\red x})} f({\red x}, t) dt $$  
+  \skiplines
+  
+  这种用带参量的积分定义新函数的方法在本课非常重要，很快我们会学习如何把它推广到复数的积分的情况。
+
+  
+  \ech
+\end{frame}
+
+\begin{frame}
+  \chtitle{$\Gamma$函数}
+  \bch
+  不难证明$n$为非负整数时
+  $$\int_0^\infty t^n e^{-t}dt = n!$$
+  利用带参量的积分定义新函数的方法，我们很容易地可以把“阶乘”这个本来只适用于非负整数的函数推广到非负实数的情况。定义：
+  \tbox{
+  $$\Gamma\left(x\right) \equiv \int_0^\infty t^{x-1}e^{-t} dt $$}
+  这就是著名的$\Gamma$函数。我们学习了复变函数之后，还会把它的定义域扩张到几乎整个复数域。
+  \ech
+\end{frame}
+
+
+\begin{frame}
+  \chtitle{$\Gamma$函数的递推公式}
+  \bch
+  根据定义
+  $$\Gamma\left(x\right) \equiv \int_0^\infty t^{x-1}e^{-t} dt $$
+  证明：
+  \tbox{$$\Gamma\left(x+1\right) = x\,\Gamma\left(x\right)$$}
+  由此易得
+  \tbox{$$\Gamma(n+1) = n!\ (n = 0,1,2,\ldots).$$}
+
+\ech
+\end{frame}
+
+\begin{frame}
+  \chtitle{$\Gamma\left(\frac{1}{2}\right)=\sqrt{\pi}$}
+  \bch
+  \addfig{1}{think2.jpg}
+  利用在热学课上学习过的高斯积分公式证明
+  \tbox{
+  $$\Gamma\left(\frac{1}{2}\right) = \sqrt{\pi}\, ,$$ }
+  \ech
+\end{frame}
+
+
+\begin{frame}
+\chtitle{二阶导数}
+\bch
+二阶导数定义为导数的导数，即“斜率的变化率”。
+
+若$f''(x)>0$，则斜率持续增大，$f(x)$为凹函数。
+
+若$f''(x)<0$，则斜率持续减少，$f(x)$为凸函数。
+
+\addfig{3}{convex_concave.png}
+
+\ech
+\end{frame}
+
+\begin{frame}
+\chtitle{高阶导数}
+\bch
+一般地，可定义$n$阶导数为$n-1$阶导数的导数。即
+
+\tbox{
+$$f^{(n)}(x) = \lim_{dx\rightarrow 0}\frac{f^{(n-1)}(x+dx) - f^{(n-1)}(x)}{dx}$$
+}
+
+\ech
+\end{frame}
+
+\begin{frame}
+\chtitle{用导数近似求值}
+\bch
+
+假设$f$在$x_0$处的各阶导数均已知，在$x_0$附近的$x$处的函数值可以近似写成
+\begin{equation}
+  f(x) \approx f(x_0) + f'(x_0) (x-x_0)\, . \label{eq:f1}
+\end{equation}
+为了改善这个估算的精度，我们可以先估算一阶导数：
+\begin{equation}
+  f'(x) \approx f'(x_0) + f''(x_0)(x-x_0) \,, \label{eq:fp1}
+\end{equation}
+{\scriptsize 注意\eqref{eq:fp1}可以通过把\eqref{eq:f1}中的$f$替换为$f'$得到}
+
+对\eqref{eq:fp1}式从$x_0$到$x$积分得到二阶近似：
+\begin{equation}
+  f(x) \approx f(x_0) + f'(x_0)(x-x_0) + \frac{1}{2}f''(x_0)(x-x_0)^2\,.\label{eq:f2}
+\end{equation}
+\ech
+\end{frame}
+
+\begin{frame}
+\chtitle{用导数近似求值（续）}
+\bch
+还不够精确？那好，故技重施，把\eqref{eq:f2}中的$f$替换为$f'$，得到$f'$的更精确近似：
+$$ f'(x) \approx f'(x_0) + f''(x_0)(x-x_0) + \frac{1}{2}f'''(x_0)(x-x_0)^2$$
+然后从$x_0$到$x$积分得到
+$$f(x) \approx f(x_0) + f'(x_0)(x-x_0) + \frac{1}{2}f''(x_0)(x-x_0)^2 + \frac{1}{6}f'''(x_0) (x-x_0)^3$$
+\ech
+\end{frame}
+
+
+\begin{frame}
+\chtitle{泰勒级数展开}
+\bch
+把上述过程进行无限多次，得到：
+\tbox{
+  $$ f(x)  = \sum_{n=0}^\infty \frac{f^{(n)}(x_0)}{n!} (x-x_0)^n $$
+}
+特别地如取$x_0=0$，
+\tbox{
+  $$ f(x)  = \sum_{n=0}^\infty \frac{f^{(n)}(0)}{n!} x^n $$
+}
+
+\skipline
+
+课程时间所限，我们暂不讨论收敛域的问题，等遇到具体例子再分析。
+\ech
+\end{frame}
+
+
+\begin{frame}
+\chtitle{用无穷级数定义函数}
+\bch
+反过来，对给定的无穷数列$c_0, c_1, c_2, \ldots$，可以定义
+$$ f(x) = \sum_{n=0}^\infty c_n x^n $$
+这个定义新的函数的方法也非常重要，很容易把上式中的所有数推广到复数的情形。
+\ech
+\end{frame}
+
+
+\begin{frame}
+\chtitle{贝塞尔函数 (Bessel Functions)}
+\bch
+$n$阶贝塞尔函数定义为
+\tbox
+{$$J_n(x) \equiv \sum_{k=0}^\infty \frac{(-1)^k}{k!(k+n)!} \left(\frac{x}{2}\right)^{2k+n},\ (n\ge 0)$$ }
+\addfig{2.5}{bessel_functions.png}
+\ech
+\end{frame}
+
+
+\begin{frame}
+\chtitle{贝塞尔函数的积分表达式}
+\bch
+由定义式
+\tbox
+{$$J_n(x) \equiv \sum_{k=0}^\infty \frac{(-1)^k}{k!(k+n)!} \left(\frac{x}{2}\right)^{2k+n},\ (n\ge 0)$$ }
+证明
+\tbox
+{$$J_n(x) = \frac{1}{\pi} \int_0^\pi\cos\left(nt - x \sin t\right)dt$$}
+\ech
+\end{frame}
+
+
+
+\begin{frame}
+\chtitle{附录1：基本的微积分公式}
+\bch
+\tbox{$$d \left(x^n\right) = n x^{n-1} dx;\ d\left(\ln x\right) = \frac{dx}{x}$$}
+\tbox{$$d\left(e^x\right) = e^x dx;\ d(\sin x) = \cos x\, dx;\ d(\cos x) = -\sin x\, dx$$}
+\tbox{$$d(xy) = xdy + ydx$$}
+\tbox{$$d\left[f\left(g(x)\right)\right] = f'\left(g(x)\right) g'(x) dx$$}
+\ech
+\end{frame}
+
+\begin{frame}
+\chtitle{附录2：常见的级数}
+\bch
+{\small
+\bitem
+\item{$$ e^x = \sum_{n=0}^{\infty} \frac{1}{n!} x^n = 1 + x + \frac{x^2}{2} +\frac{x^3}{6} + \ldots $$}
+\item{$$ \cos x = \sum_{n=0}^{\infty} \frac{(-1)^n}{(2n)!} x^{2n} = 1 - \frac{x^2}{2} + \frac{x^4}{24} - \ldots $$}
+\item{$$ \sin x = \sum_{n=0}^\infty \frac{(-1)^n}{(2n+1)!} x^{2n+1} = x - \frac{x^3}{6} + \frac{x^5}{120} - \ldots $$}
+\item{$$\ln (1+x) = \sum_{n=0}^\infty \frac{(-1)^n}{n+1} x^{n+1}= x - \frac{x^2}{2} + \frac{x^3}{3} - \ldots$$}
+\item{$$(1+x)^\alpha = 1+\alpha x + \frac{\alpha(\alpha-1)}{2!} x^2 + \frac{\alpha(\alpha-1)(\alpha-2)}{3!}x^3 + \ldots $$}
+  \eitem
+  }
 \ech
 \end{frame}
 
