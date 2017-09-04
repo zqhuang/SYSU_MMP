@@ -442,8 +442,20 @@ $$\int_C f(z) dz \equiv \lim_{dz\rightarrow 0}\sum_{z\in C} f(z) dz.$$
   \ech
 \end{frame}
 
+
 \begin{frame}
-  \chtitle{泰勒级数： 一级近似}
+  \chtitle{dalao泰勒}
+  \bch
+  \bcenter
+  \lfig{1.5}{Talor.jpg}
+
+  Brook Taylor (1685-1731)
+  \ecenter
+  \ech
+\end{frame}
+
+\begin{frame}
+  \chtitle{泰勒展开： 一级近似}
   \bch
   假设函数$f$在$z_0$无限次可导且各阶导数已知，我们想求$f$在$z_0$附近的一点$z$处的函数值。
 
@@ -553,6 +565,16 @@ $$    f'(\zeta) \approx f'(z_0) + f''(z_0)(\zeta-z_0) + \frac{f^{(3)}(z_0)}{2} (
   \ech
 \end{frame}
 
+\begin{frame}
+  \chtitle{dalao柯西}
+  \bch
+  \bcenter
+  \lfig{1.2}{Cauchy.jpg}
+
+  Augustin-Louis Cauchy
+  \ecenter
+  \ech
+\end{frame}
 
 \begin{frame}
   \chtitle{证明第三步：柯西积分公式} 
@@ -593,7 +615,7 @@ $$    f'(\zeta) \approx f'(z_0) + f''(z_0)(\zeta-z_0) + \frac{f^{(3)}(z_0)}{2} (
 \begin{frame}
   \chtitle{证明第五步：泰勒级数展开在圆内收敛} 
   \bch
- 对圆内任意一点$z$，设$|z-z_0|=s<r$，取介于$s$和$r$之间的正数$q$ ($s<q<r$)，以$q$为半径作一个圆$C_q$: $|z-z_0|=q$，则$f(z)$在$C_q$内部解析，边界上连续。于是
+ 对圆内任意一点$z$，设$|z-z_0|=s<r$，取介于$s$和$r$之间的正数$q$ ($s<q<r$)，以$q$为半径取圆区域$C_q$: $|z-z_0|<q$，则$f(z)$在$C_q$内解析，边界上连续。于是
   $$ a_n = \frac{f^{(n)}(z_0)}{n!} = \frac{1}{2\pi \ii}\oint_{\partial C_q} \frac{f(z)}{(z-z_0)^{n+1}}dz $$
   设$|f(z)|$在圆周$\partial C_q$上的上界为$A$ (有限闭集上的连续实函数一定有上限，请思考为什么)，则
   $$ |a_n| \le \frac{1}{2\pi} \int_0^{2\pi} \frac{A}{q^{n+1}} qd\theta = \frac{A}{q^n} $$
@@ -608,7 +630,7 @@ $$    f'(\zeta) \approx f'(z_0) + f''(z_0)(\zeta-z_0) + \frac{f^{(3)}(z_0)}{2} (
   \chtitle{思考题}
   \bch
   \addfig{1}{think2.jpg}
-  一个无穷点集$S$的{\bf 聚点}是这样的点：在聚点的任意小邻域内都有$S$里的无数个点。
+  一个无穷点集$S$的{\bf 聚点}是这样的点：在它的任意小邻域内都有$S$里的无数个点。试证明
   \bitem
 \item[1]{\bf 在有限大小的闭区域内的无穷点集必然有聚点。}
 \item[2]{\bf 有限大小的闭区域上的连续实函数必然有上下限。}
