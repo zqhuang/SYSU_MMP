@@ -64,6 +64,9 @@
 \def\tbox#1{\begin{tcolorbox}#1\end{tcolorbox}}
 \def\pfrac#1#2#3{\left(\frac{\partial #1}{\partial #2}\right)_{#3}}
 %%symbols
+\def\reof#1{\,\mathrm{Re}{\left(#1\right)\,}}
+\def\imof#1{\,\mathrm{Im}{\left(#1\right)\,}}
+\def\Arg#1{\,\mathrm{Arg}\,#1\,}
 \def\bropt{\,(\ \ \ )}
 \def\sone{$\star$}
 \def\stwo{$\star\star$}
@@ -173,3 +176,5 @@
 \def\SIK{\,\mathrm{K}}
 \def\SImmHg{\,\mathrm{mmHg}}
 \def\SIPa{\,\mathrm{Pa}}
+%page
+\def\secpage#1#2{\begin{frame}\bch\bcenter{\bf \Huge #1} \skipline \tbox{#2}\ecenter\ech\end{frame}}
