@@ -1,0 +1,95 @@
+\documentclass[CJK]{beamer}
+\input{macros.tex}
+\input{titlepage.tex}
+\title{Lesson }
+  \author{}
+  \date{}
+\begin{document}
+\tpage{2}{Risidue Theorem}
+
+
+\begin{frame}
+\chtitle{本讲内容}
+\bch
+\bitem
+\item{洛朗展开}
+\item{留数定理}
+\item{解析延拓}
+\eitem
+\ech
+\end{frame}
+
+%\begin{frame}
+%  \chtitle{据说你们学过积分， 下面的积分你们会几个？}
+%  \bch
+%  \bitem
+%\item{$$\int_{-\infty}^{\infty}e^{-x^2}dx$$}
+%\item{$$\int_{0}^{\pi/2}\ln{\left(\sin x\right)}dx$$}
+%\item{$$\int_{0}^{\infty}\frac{\sin x}{x} dx$$}
+%\item{$$\int_{0}^{\infty}\frac{\sin x}{e^x-1} dx$$}
+%\item{$$\int_{0}^{\infty}\frac{x}{e^x+1} dx$$}    
+%  \eitem
+%  \ech
+%\end{frame}
+
+\section{Laurant Series}
+
+
+\begin{frame}
+  \chtitle{回顾: 我们把第五步证明改头换面一下}
+  \bch
+  {\small   
+  $f(z)$在开区域$|z-z_0|<r$内解析，对$|z-z_0|=s<r$，可取$s<q<r$并以$q$为半径作圆区域$C_q$：$|z-z_0| < q$。根据柯西积分公式：
+  \bea
+  f(z) &=& \oint_{\partial C_q}\frac{f(\zeta)}{\zeta - z} d\zeta \newl
+  &=& \oint_{\partial  C_q}\frac{f(\zeta)}{(\zeta - z_0) - (z-z_0)} d\zeta \newl
+  &=& \oint_{\partial C_q}\frac{1}{\zeta-z_0}\frac{f(\zeta)}{1 - \frac{z-z_0}{\zeta-z_0}} d\zeta \newl
+  &=& \oint_{\partial C_q}\frac{1}{\zeta-z_0}f(\zeta)\sum_{n=0}^\infty\left(\frac{z-z_0}{\zeta-z_0}\right)^n d\zeta \newl
+  &=& \sum_{n=0}^\infty a_n(z-z_0)^n  
+  \eea
+  其中$a_n = \oint_{\partial  C_q}\frac{f(\zeta)}{(\zeta-z_0)^{n+1}}$
+  }
+  \ech
+\end{frame}
+
+
+\begin{frame}
+  \chtitle{在一个环里解析的函数: 洛朗展开}
+  \bch
+  {\small
+  设$f(z)$在开区域$r<|z-z_0|<R$内解析，则对$r<|z-z_0|=s<R$，可取$r<p<s<q<R$，并取开区域$T$ : $p<|z-z_0|<q$。则$f$在$T$内解析，边界上连续。根据柯西积分公式：
+$$  f(z) = \oint_{\partial T} \frac{f(\zeta)}{\zeta - z} d\zeta$$
+  $T$的边界由大小两个圆$C_p, C_q$组成，模仿前面的技巧可以证明{\blue
+  $$f(z) = \sum_{n=-\infty}^\infty a_n (z-z_0)^n$$
+  其中$a_n = \oint_{\partial  C_q}\frac{f(\zeta)}{(\zeta-z_0)^{n+1}}.$ 这个展开式称为洛朗展开。}
+
+  
+  注意指标的求和范围从$-\infty$到$\infty$。其中负整数指标来自于小圆上的积分的贡献。
+  }
+  \ech
+\end{frame}
+
+
+\section{Residue Theorem}
+
+\begin{frame}
+  \chtitle{留数定理}
+  \bch
+
+  \ech
+\end{frame}
+
+\section{Analytic Continuation}
+
+\begin{frame}
+  \chtitle{解析延拓}
+  \bch
+
+  \ech
+\end{frame}
+
+\section{Homework}
+
+
+
+\end{document}
