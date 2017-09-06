@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+  <head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />    
+<script  type="text/javascript">
+  var clicktime = 1;
+  var namelist= ["黄若云","梁婕","曾宇芊","陈欣彤","陈鹏","陈振宇","黄宇杨","黄震洋","曹斯量","曹旭阳","陈彬彬","陈牧原","桂智刚","韩张政","洪文生","洪巽阳","杜宝诚","段宇佑","古镇豪","黄浩源","黄俊康","黄顺权","方圆清","符芳源","顾浩东","郭孔靖","黄毅男","纪起亮","蒋昀东","劳祺峰","田孟维","伍思怡","胡碧莹","顾淦","胡依森","江涛","陈淮勋","李东奇","李荣浩","林梓铠","李世玉","李威彪","李汶钊","刘腾","李龙毅","李奕尧","梁恒兆","梁崴","刘成","刘默含","龙丹","任崇志","陆志杰","罗铭","莫俭锋","聂瑞良","彭俊睿","彭天智","祁伟忠","苏保文","王帅","艾散·坎吉","田喜水","刘东仪","张娜","唐钦","汪天睿","王鸿波","王林晖","王小马","文永鑫","翁宇轩","张震宇","谢永勤","叶文龙","叶志远","尹杨","张辉铭","张利军","张旭涛","张振维","张子琛","郑会裕","朱明城","郑江锦","郑史泓","周梓键","朱融","朱涛","白济民"];
+ 
+
+function wsum(or=0, ow=0, on=0, sr=0, sw=0, sn=0){
+  var base = [30, 30, 30];
+  var obj_right = [5, 5, 0];
+  var obj_wrong = [-2, -2, 5];
+  var obj_none = [0, 0, 5];
+  var subj_right = [8, 8, 0];
+  var subj_wrong = [-2, 4, -1];
+  var subj_none = [-10, -10, -10];
+  var s = [];
+  for(i=0;i<3;i++){s.push( Math.max(base[i] + obj_right[i] * or + obj_wrong[i]*ow + obj_none[i]*on, 0)); }
+  return s;
+}
+  function scores(name){
+  switch(name){
+  case("韩张政"):
+    return wsum(or = 0, ow = 0, on = 1, sr= 0, sw = 0, sn = 0);  
+  case("陈振宇"):
+    return wsum(or = 0, ow = 0, on = 2, sr= 0, sw = 0, sn = 0);    
+  case("白济民"):
+    return wsum(or = 3, ow = 0, on = 0, sr= 0, sw = 0, sn = 0);      
+  default:
+    return wsum(0,0,0,0,0,0);
+   }
+   return base;
+  }
+  
+  var totalnum = namelist.length;
+
+  function getRandomInt (min, max) {
+  num = Math.floor(Math.random() * (max - min + 1)) + min;
+  s = scores(namelist[num]);
+  if(s[0]+s[1]+s[2] < 300*Math.random())
+     return num;
+  else{
+     num = getRandomInt(min, max);
+     return num;}}
+
+  function select_one(){
+  if(clicktime==1){
+  document.getElementById("start").innerHTML = "结束";
+  document.getElementById("demo").innerHTML = '<marquee id="affiche" align="middle" behavior="scroll" direction="left" width="320" scrollamount="180" scrolldelay="5">'+namelist.join(" ")+'</marquee>';  
+  clicktime = 0;}
+  else{
+  document.getElementById("start").innerHTML = "开始";
+  thisname = namelist[getRandomInt(0,totalnum-1)];
+  document.getElementById("demo").innerHTML = thisname + '<img src="../figures/emoji_wulian.jpg" height=35 />';
+  s  = scores(thisname)
+  document.getElementById("briefintro").innerHTML = '<table><tr><td>战斗力:</td><td class="graybar"><div class="redbar" style="width:' + s[0] + 'px;" />'+s[0]+'</td></tr><tr><td> 生命值: </td><td class="graybar"><div class="redbar" style="width:' + s[1] + 'px;" />'+s[1]+'</td></tr><tr><td> 魔法值:</td><td class="graybar"><div class="redbar" style="width:' + s[2] + 'px;" />'+s[2]+'</td></tr></table>' ;
+  clicktime = 1;
+  }}
+  
+</script>
+<style>
+  .redbar
+  {
+  background-color:red;
+  height:40px;
+  }
+  .graybar
+  {
+  background-color:gray;
+  width:100px;
+  }
+  #demo
+  {
+  color: black;
+  font-size: 40px;
+  }
+
+  #briefintro
+  {
+  color: black;
+  font-size: 30px;
+  }
+  
+  button
+  { color: white;
+  background-color:slategray;
+  border:5px;
+  font-size: 40px;
+  }
+
+  
+</style>
+</head>
+  <body>
+    <font size+=2>
+    <center>
+  <h2>MMP随机点名 (drawn from <script  type="text/javascript">
+    document.write(totalnum);
+</script> members) </h2>
+  <button type="button" id="start" size=20 onclick='select_one();'>开始</button>
+<p id="demo">谁将会是幸运儿！</p>
+<p id="briefintro">神秘人物</p>
+    </center>
+    </font>
+</body>
+</html>
+
+
