@@ -37,6 +37,10 @@
   \bch
   柯西定理：{\bf \blue 解析函数沿解析区域边界上的积分为零。}
   （当然，要求函数在边界上连续）。
+  
+  \addfig{1.5}{simplecontour.png}
+
+  $$\oint_C f(z) dz  = 0 $$
   \ech
 \end{frame}
 
@@ -45,8 +49,10 @@
   \chtitle{上讲内容摘要}
   \bch
   柯西积分公式：{\bf \blue 解析函数在解析区域内任意一点的任意阶导数都可以用边界上的积分表示出来。}
-  $$\frac{f^{(n)}(z_0)}{n!} =  \frac{1}{2\pi \ii}\oint_{\partial T} \frac{f(z)}{(z-z_0)^{n+1}}dz$$
-  $\partial T$可以是包含$z_0$的任意解析区域的边界（当然，要求函数在边界上连续）。
+  \addfig{1.5}{simplecontourwithz0.png}
+  
+  $$\frac{f^{(n)}(z_0)}{n!} =  \frac{1}{2\pi \ii}\oint_C \frac{f(z)}{(z-z_0)^{n+1}}dz$$
+  $C$可以是包含$z_0$的任意解析区域的边界（当然，要求函数在边界上连续）。
   \ech
 \end{frame}
 
@@ -54,11 +60,11 @@
   \chtitle{上讲内容摘要}
   \bch
   {\bf \blue 在一个圆内解析的函数可以看成在圆心展开的泰勒级数。}
-
-  $$f(z) = \sum_{n=0}^{\infty} a_n (z-z_0)^n.$$
+  设$f(z)$在圆$|z-z_0|<R$ (这里允许$R=\infty$)内解析，则
+  $$f(z) = \sum_{n=0}^{\infty} a_n (z-z_0)^n, |z-z_0|<R.$$
   其中
   $$a_n = \frac{f^{(n)}(z_0)}{n!} =  \frac{1}{2\pi \ii}\oint_C \frac{f(z)}{(z-z_0)^{n+1}}dz$$
-  积分路径$C$可以取逆时针方向围绕$z_0$一周的简单围道。
+  积分路径$C$可以取解析区域内逆时针方向围绕$z_0$一周的简单围道。
   \ech
 \end{frame}
 
@@ -70,19 +76,21 @@
   
   柯西积分公式
     $$\frac{f^{(n)}(z_0)}{n!} =  \frac{1}{2\pi \ii}\oint_{\partial T} \frac{f(z)}{(z-z_0)^{n+1}}dz$$
-  等式右边是沿边界的积分，按柯西定理结果恒为零？是不是哪里出bug了？
+  等式右边是沿边界的积分，按柯西定理结果恒为零？感觉哪里不对了…
   \ech
 \end{frame}
+
 
 
 \begin{frame}
   \chtitle{思考题}
   \bch
+
+  一个比较直观的说法就是，{\blue 解析函数就是能用加减乘除表示出来的函数}。而诸如$|z|$, $\Arg z$之类的函数因为无法用$z$的加减乘除表示出来，所以不是解析函数。（这是快速寻求第一感的方法，不能作为证明。）
   \addfig{1}{think2.jpg}
 
-  一个比较直观的说法就是，解析函数就是能用加减乘除表示出来的函数。而诸如$|z|$, $\Arg z$之类的函数因为无法用$z$的加减乘除表示出来，所以不是解析函数。（这是快速寻求第一感的方法，不能作为证明。）
 
-  那么问题来了，为什么在圆内解析的函数泰勒展开（即用加减乘除表示出来）之后，只包含$z-z_0$的非负次幂项，而不包含$(z-z_0)^{-1}, (z-z_0)^{-2},\ldots$等负次幂项？
+  那么问题来了，为什么在圆内解析的函数用加减乘除表示出来(即泰勒展开)之后，只包含$z-z_0$的非负次幂项，而不包含$(z-z_0)^{-1}, (z-z_0)^{-2},\ldots$等负次幂项？
   \ech
 \end{frame}
 
@@ -92,10 +100,10 @@
   \bch
 
   {\blue
-  设$f(z)$在环区域$r<|z-z_0|<R$内解析，则
+  设$f(z)$在环区域$r<|z-z_0|<R$ (这里允许$r=0$和$R=\infty$)内解析，则
   $$f(z) = \sum_{n=-\infty}^\infty a_n (z-z_0)^n,$$
   其中
-  $$a_n = \oint_C\frac{f(\zeta)}{(\zeta-z_0)^{n+1}}d\zeta,$$
+  $$a_n = \frac{1}{2\pi\ii}\oint_C\frac{f(\zeta)}{(\zeta-z_0)^{n+1}}d\zeta,$$
   积分路径$C$可以是环内任意的一条逆时针绕$z_0$一周的分段光滑曲线。}
 
   这个展开式称为洛朗展开。注意和泰勒展开不同，指标的求和范围从$-\infty$到$\infty$。而且$a_n$不再和$f$在$z_0$处的$n$阶导数相关（\bye $z_0$根本就不在函数的定义域内)。
@@ -122,21 +130,17 @@
 \end{frame}
 
 \begin{frame}
-  \chtitle{求洛朗展开的技巧(一): 熟练掌握下列基本的级数}
+  \chtitle{求洛朗展开的例子}
   \bch
-  $$e^z = \sum_{n=0}^\infty \frac{z^n}{n!};\ \sin z = \sum_{n=0}^\infty \frac{(-1)^nz^{2n+1}}{(2n+1)!};\ \cos z = \sum_{n=0}^\infty \frac{(-1)^nz^{2n}}{(2n)!},$$
-  $$\ln(1+z) = \sum_{n=1}^\infty (-1)^{n-1}\frac{z^n}{n},\ |z|<1$$
-  $$(1+z)^\alpha = \sum_{n=0}^\infty \newt{\alpha}{n} z^n,\ |z|<1$$
-  其中
-  $$\newt{\alpha}{n}  = \frac{\alpha(\alpha-1)(\alpha-2)\ldots (\alpha-n+1)}{n!} $$
-  （对$n=0$则规定 $\newt{\alpha}{0} = 1$.)
-  \ech
-\end{frame}
+  $f(z) = \frac{1}{z(1+z)}$在环区域$0<|z|<1$内解析，洛朗展开为：
+  
+  \bea
+  \frac{1}{z(1+z)} &=& \frac{1}{z}\,\cdot\, \frac{1}{1+z} \newl
+  &=&\frac{1}{z}\left(1-z+z^2-z^3+\ldots\right) \newl
+  &=& \frac{1}{z} - 1 + z - z^2 + \ldots
+  \eea
 
-\begin{frame}
-  \chtitle{求洛朗展开的技巧(二)}
-  \bch
-  如果要以$z_0$为中心进行洛朗展开，为了不看花眼，可以先做替换$t=z-z_0$.
+  级数展开的很多技巧我们之后会进行专门训练，先不展开讨论。
   \ech
 \end{frame}
 
