@@ -21,12 +21,16 @@ function wsum(or=0, ow=0, on=0, sr=0, sw=0, sn=0){
 }
   function scores(name){
   switch(name){
+  case("谢永勤"):
+    return wsum(or = 0, ow = 0, on = 0, sr= 0, sw = 1, sn = 0);      
+  case("郑江锦"):
+    return wsum(or = 0, ow = 0, on = 0, sr= 0, sw = 1, sn = 0);    
   case("韩张政"):
     return wsum(or = 0, ow = 0, on = 1, sr= 0, sw = 0, sn = 0);  
   case("陈振宇"):
     return wsum(or = 0, ow = 0, on = 2, sr= 0, sw = 0, sn = 0);    
   case("白济民"):
-    return wsum(or = 3, ow = 0, on = 0, sr= 0, sw = 0, sn = 0);      
+    return wsum(or = 4, ow = 0, on = 0, sr= 0, sw = 0, sn = 0);      
   default:
     return wsum(0,0,0,0,0,0);
    }
