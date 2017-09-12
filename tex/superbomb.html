@@ -16,7 +16,7 @@ function wsum(or=0, ow=0, on=0, sr=0, sw=0, sn=0){
   var subj_wrong = [-2, 4, -1];
   var subj_none = [-10, -10, -10];
   var s = [];
-  for(i=0;i<3;i++){s.push( Math.max(base[i] + obj_right[i] * or + obj_wrong[i]*ow + obj_none[i]*on, 0)); }
+  for(i=0;i<3;i++){s.push( Math.min(Math.max(base[i] + obj_right[i] * or + obj_wrong[i]*ow + obj_none[i]*on + subj_right[i] * sr + subj_wrong[i] * sw + subj_none[i]*sn, 0),100) ); }
   return s;
 }
   function scores(name){
@@ -26,11 +26,15 @@ function wsum(or=0, ow=0, on=0, sr=0, sw=0, sn=0){
   case("陈振宇"):
     return wsum(or = 2, ow = 0, on = 2, sr= 0, sw = 0, sn = 0);    
   case("韩张政"):
+    return wsum(or = 0, ow = 0, on = 2, sr= 0, sw = 0, sn = 0);  
+  case("梁崴"):
     return wsum(or = 0, ow = 0, on = 1, sr= 0, sw = 0, sn = 0);  
   case("洪巽阳"):
     return wsum(or = 2, ow = 0, on = 0, sr= 0, sw = 0, sn = 0);      	
+  case("彭天智"):
+    return wsum(or = 0, ow = 0, on = 0, sr= 1, sw = 0, sn = 0);  
   case("谢永勤"):
-    return wsum(or = 0, ow = 0, on = 0, sr= 0, sw = 1, sn = 0);      
+    return wsum(or = 0, ow = 0, on = 0, sr= 1, sw = 1, sn = 0);
   case("郑江锦"):
     return wsum(or = 0, ow = 0, on = 0, sr= 0, sw = 1, sn = 0);    
   default:
