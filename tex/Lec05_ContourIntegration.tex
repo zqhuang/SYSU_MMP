@@ -27,7 +27,7 @@
 
 
 \section{Did we ever learn integration?}
-\secpage{据说我们学过积分？}{\addfig{1}{blackq.jpg}}
+\secpage{据说我们学过积分？}{不信谣，不传谣\bye}
 
 
 \begin{frame}
@@ -52,7 +52,129 @@
 \begin{frame}
   \chtitle{积分水平检验——Level 3}
   \bch
-  \addfig{1}{drive.jpg}
+  \addfig{1}{think2.jpg}
+
+  计算积分$$ \int_{-\infty}^\infty e^{-x^2}\cos x \, dx .$$
+  \ech
+\end{frame}
+
+\begin{frame}
+  \chtitle{积分水平检验——Level 4}
+  \bch
+  \addfig{1}{think2.jpg}
+
+  计算积分$$ \int_0^{2\pi} \cos^{2n}x\, dx,\ \ \ n \in Z^+. $$
+  \ech
+\end{frame}
+
+\begin{frame}
+  \chtitle{积分水平检验——Level 5}
+  \bch
+  \addfig{1}{think2.jpg}
+  计算积分$$\int_0^\infty \frac{x\sin{(ax)}}{1+x^2+x^4}\,dx, \ \ \ \ a>0, \beta>0.$$
+  \ech
+\end{frame}
+
+\begin{frame}
+  \chtitle{积分水平检验——Level 6}
+  \bch
+  \addfig{1}{think2.jpg}
+  计算积分$$ \int_0^{\infty} \frac{\cos{x} - e^{-x}}{x}\, dx.$$
+  \ech
+\end{frame}
+
+
+
+
+\begin{frame}
+  \chtitle{积分水平检验——Level 7}
+  \bch
+  \addfig{1}{think2.jpg}
+
+  计算积分$$\int_{-\infty}^\infty \frac{e^{ax}}{1+e^x} dx, \ \ 0<a<1.$$
+  \ech
+\end{frame}
+
+\begin{frame}
+  \chtitle{积分水平检验——Level 8}
+  \bch
+  \addfig{1}{think2.jpg}
+  计算积分$$ \int_0^{\frac{\pi}{2}}\ln\left(\sin x\right)\, dx.$$
+  \ech
+\end{frame}
+
+
+\begin{frame}
+  \chtitle{积分水平检验——Level 9}
+  \bch
+  \addfig{1}{think3.jpg}
+  计算积分$$ \int_0^{\infty} \frac{x^{1/4}(1-x)^{3/4}}{(1+x)^3}\, dx.$$
+  \ech
+\end{frame}
+
+
+\begin{frame}
+  \chtitle{积分水平检验——Level 10}
+  \bch
+  \addfig{1.5}{think4.jpg}
+  计算积分$$ \int_0^{\infty}\frac{x^{p-\frac{1}{2}}}{(x+a)^p(x+b)^p}\, dx,\ \ \ p>\frac{1}{2}, a>0, b>0.$$
+  \ech
+\end{frame}
+
+\section{Contour Integration}
+
+\secpage{用留数定理计算定积分}{构造围道跟下围棋一样：三分凭感觉，七分凭计算。}
+
+
+\begin{frame}
+  \chtitle{Level 2 解法一（三角函数有理分式标准暴力积分法）}
+  \bch
+  {\small 
+  $$ \int_0^{2\pi}\frac{1}{2+\cos x} \, dx. $$
+    回忆下高数课学过的(?)的知识：{\blue 凡是三角函数有理分式，{\bf 原则上}都能用变量替换$t = \tan\frac{x}{2}$求出原函数。}
+
+    请先验算：
+    $$ dx = \frac{2dt}{1+t^2}, $$
+    $$ \cos x = \frac{1-t^2}{1+t^2} $$
+    $$ \sin x = \frac{2t}{1+t^2} $$    
+    $$ \tan x = \frac{2t}{1-t^2} $$
+
+  }
+  \ech
+\end{frame}
+
+\begin{frame}
+  \chtitle{Level 2 解法一（三角函数有理分式标准暴力积分法）}
+  \bch
+  {\small  
+  剩下的就是毫无技巧地推土：
+    \bea
+    \int \frac{1}{2+\cos x} dx &=& \int \frac{1}{2 + \frac{1-t^2}{1+t^2}} \frac{2dt}{1+t^2} \newl
+    &=& \int \frac{2}{3 + t^2 } dt \newl
+    &=& \frac{2}{\sqrt{3}} \arctan\frac{t}{\sqrt{3}} + c \newl
+    &=& \frac{2}{\sqrt{3}} \arctan\frac{\tan\frac{x}{2}}{\sqrt{3}} + c    
+    \eea
+  }
+  不必为原函数在$x=\pi$不连续而惊慌，利用一下对称性就可以圆满解决：
+  $$ \int_0^{2\pi}\frac{1}{2+\cos x} \, dx = 2\int_0^{\pi}\frac{1}{2+\cos x} =\left. \frac{4}{\sqrt{3}} \arctan\frac{\tan\frac{x}{2}}{\sqrt{3}}\right\vert_0^{\pi}  = \frac{2\pi}{\sqrt{3}} .$$
+  \ech
+\end{frame}
+
+
+\begin{frame}
+  \chtitle{Level 2 解法二 （围道积分法）}
+  \bch
+  \addfig{1}{contour01.png}
+  $$ \int_0^{2\pi}\frac{1}{2+\cos x} \, dx = 2\int_0^{\pi}\frac{1}{2+\cos x} =\left. \frac{4}{\sqrt{3}} \arctan\frac{\tan\frac{x}{2}}{\sqrt{3}}\right\vert_0^{\pi}  = \frac{2\pi}{\sqrt{3}} .$$
+  \ech
+\end{frame}
+
+
+
+\begin{frame}
+  \chtitle{积分水平检验——Level 3}
+  \bch
+  \addfig{1}{think2.jpg}
 
   计算积分$$ \int_{-\infty}^\infty e^{-x^2-x} \, dx .$$
   \ech
@@ -121,11 +243,6 @@
   \ech
 \end{frame}
 
-\section{Contour Integration}
-
-\secpage{用留数定理计算定积分}{谁能告诉我围道到底是怎么构造出来的？}
-
-
 
 
 
@@ -135,9 +252,9 @@
   \chtitle{课后作业}
   \bch
   \bitem
-\item[13]{}
-\item[14]{}
-\item[15]{}
+\item[13]{计算积分$$\int_0^{2\pi}\frac{1}{1+\sin^2x} \, dx.$$}
+\item[14]{计算积分$$\int_0^\infty \frac{x^2}{1+x^4} \,dx.$$}
+\item[15]{计算积分$$\int_0^\infty \frac{\cos x}{\cosh x} \,dx,$$ 其中双曲余弦函数$\cosh$定义为  $$\cosh x \equiv \frac{e^x+e^{-x}}{2}. $$}
   \eitem
   \ech
 \end{frame}

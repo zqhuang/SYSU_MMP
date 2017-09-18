@@ -227,7 +227,7 @@
           在这种情况下如果要把$f$在$z_0$的去心邻域内进行Laurent展开，则只需令$g(z) = (z-z_0)^mf(z)$ (去极点)并把解析函数$g(z)$进行Taylor展开。注意$g$的Taylor展开的$m-1$次幂系数就是$f$的Laurent展开的$-1$次系数，即$f$在$z_0$的留数。
 
             这就是在任何一本MMP教材里都会重点介绍的{\blue $m$阶极点求留数公式:
-            $$\res{f}{z_0} = \frac{1}{(m-1)!}\frac{d^{m-1}}{dz^{m-1}} \left[(z-z_0)^mf(z)\right] \, .$$
+            $$\res{f}{z_0} = \left.\frac{1}{(m-1)!}\frac{d^{m-1}}{dz^{m-1}} \left[(z-z_0)^mf(z)\right] \right\vert_{z=z_0}\, .$$
         }
           \ech
 \end{frame}
@@ -327,8 +327,8 @@
   在$|z|<1$范围内, 我们可以规定$z=0$时$\frac{z-1}{z-2}$幅角为零，这样
   \bea
   \ln\frac{z-1}{z-2}&=& \ln(1-z) - \ln(1-\frac{z}{2}) - \ln 2 \newl
-  &=& \sum_{n=1}^\infty \frac{z^n}{n} - \sum_{n=1}^\infty \frac{z^n}{2^nn} - \ln 2 \newl
-    &=& \sum_{n=1}^\infty \frac{1-2^{-n}}{n}z^n - \ln 2   
+  &=& -\sum_{n=1}^\infty \frac{z^n}{n} + \sum_{n=1}^\infty \frac{z^n}{2^nn} - \ln 2 \newl
+    &=& \sum_{n=1}^\infty \frac{2^{-n}-1}{n}z^n - \ln 2   
   \eea
   \ech
 \end{frame}
@@ -339,8 +339,8 @@
   在$|z|>2$范围内, 我们可以规定$z=+\infty$时$\frac{z-1}{z-2}$幅角为零，这样
   \bea
   \ln\frac{z-1}{z-2}&=& \ln(1-\frac{1}{z}) - \ln(1-\frac{2}{z}) \newl
-  &=& \sum_{n=1}^\infty \frac{1}{nz^n} - \sum_{n=1}^\infty \frac{2^n}{z^nn}\newl
-  &=& \sum_{n=1}^\infty \frac{1-2^n}{n}\frac{1}{z^n} 
+  &=& -\sum_{n=1}^\infty \frac{1}{nz^n} + \sum_{n=1}^\infty \frac{2^n}{z^nn}\newl
+  &=& \sum_{n=1}^\infty \frac{2^n-1}{n}\frac{1}{z^n} 
   \eea
   \ech
 \end{frame}
