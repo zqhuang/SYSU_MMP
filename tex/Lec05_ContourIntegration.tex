@@ -83,7 +83,7 @@
     \eea
   }
   不必为原函数在$x=\pi$不连续而惊慌，利用一下三角函数周期性把积分换到$(-\pi, \pi)$:
-  $$ \int_0^{2\pi}\frac{1}{2+\cos x} \, dx = \int_{-\pi}^{\pi}\frac{1}{2+\cos x} =\left. \frac{2}{\sqrt{3}} \arctan\frac{\tan\frac{x}{2}}{\sqrt{3}}\right\vert_{-\pi}^{\pi}  = \frac{2\pi}{\sqrt{3}} .$$
+  $$ \int_0^{2\pi}\frac{dx}{2+\cos x}  = \int_{-\pi}^{\pi}\frac{dx}{2+\cos x} =\left. \frac{2}{\sqrt{3}} \arctan\frac{\tan\frac{x}{2}}{\sqrt{3}}\right\vert_{-\pi}^{\pi}  = \frac{2\pi}{\sqrt{3}} .$$
   \ech
 \end{frame}
 
@@ -257,7 +257,7 @@
   \addfig{1.5}{contour03.png}
   \emini
   \bmini{0.54}
-  对$\frac{e^{\ii z}}{z}$在如图围道上积分，易估算出当$R\rightarrow \infty$时在$C_R$上积分趋向于零。$\delta\rightarrow 0^+$时在$C_\delta$上积分为$\frac{\pi}{2}\ii$。因此得到
+  对$\frac{e^{\ii z}}{z}$在如图围道上积分，易估算出当$R\rightarrow \infty$时在$C_R$上积分趋向于零。$\delta\rightarrow 0^+$时在$C_\delta$上积分为$-\frac{\pi}{2}\ii$。因此得到
   \emini
   
   $$\int_0^\infty \frac{e^{\ii x}}{x} dx - \int_0^\infty \frac{e^{- x}}{\ii x} d(\ii x)  = \frac{\pi}{2}\ii$$
