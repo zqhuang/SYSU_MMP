@@ -1,0 +1,158 @@
+\documentclass[CJK]{beamer}
+\input{macros.tex}
+\input{titlepage.tex}
+  \date{}
+\begin{document}
+\tpage{6}{$\delta$ Function and Fourier Transform}
+
+
+\begin{frame}
+\chtitle{本讲内容}
+\bch
+\bitem
+\item{狄拉克$\delta$函数}
+\item{傅立叶变换}
+\eitem
+\ech
+\end{frame}
+
+\section{Dirac $\delta$ function}
+\secpage{又高又瘦的$\delta$函数}{$$\int_{-\infty}^{\infty} \delta(x-x_0)f(x) \,dx = f(x_0)$$}
+
+\begin{frame}
+  \chtitle{物理里的理想化模型}
+  \bch
+  物理里有很多“无穷大$\times$无穷小 = 有限“的模型：
+  \bitem
+\item{瞬时冲量： 力无限大，作用时间无穷短，但两者的乘积（冲量）是有限的。}
+\item{质点：质量密度无穷大，体积无穷小，但两者的乘积（总质量）是有限的。}
+\item{点电荷：电荷密度无穷大，体积无穷小，但两者的乘积（总电荷）是有限的。}
+  \eitem
+
+  \skiplines
+  
+  在数学上这些表述都是不合法的，需要搞很多事情才能把这些模型说清楚。 不喜欢搞事情的物理学家们于是发明了$\delta$函数。
+  \ech
+\end{frame}
+
+\begin{frame}
+  \chtitle{Dirac $\delta$ function}
+  \bch
+  \bmini{0.4}
+  \lfig{1.5}{DiracDelta.png}
+  \emini
+  \bmini{0.55}
+  Dirac $\delta$ function 不是传统意义上的函数。它可以通过下面的{\blue 单位脉冲函数取脉冲时间为零的极限}得到：
+  $$\delta_D(x) = \left\{\begin{array}{ll} \frac{1}{\epsilon}, & \text{ if } -\frac{\epsilon}{2}<x<\frac{\epsilon}{2} \\  0, & \text{ else}\end{array}\right. $$
+  其中$\epsilon\rightarrow 0^+$。  
+  \emini
+
+  在本课程中，我们{\blue 简称Dirac $\delta$ function为$\delta$函数，并简写为$\delta(x)$}。
+  \ech
+\end{frame}
+
+
+\begin{frame}
+  \chtitle{$\delta$函数的另一种逼近方式}
+  \bch
+  有时候需要计算$\delta$函数的导数甚至高阶导数，这时可以考虑用高斯函数逼近方式：
+
+  $$\delta(x) = \frac{1}{\sqrt{2\pi}\epsilon}e^{-\frac{x^2}{2\epsilon^2}},$$
+  其中$\epsilon\rightarrow 0^+$。
+
+  \skiplines
+  
+
+  {\scriptsize 注：这一般只是为了帮助理解$\delta$函数的导数的图像，并非为了计算。如果要用具体的逼近方式来进行计算，$\delta$函数的便捷性就大打折扣了。}
+  \ech
+\end{frame}
+
+
+\begin{frame}
+  \chtitle{$\delta$函数的抽象定义}
+  \bch
+  借助上述两种逼近方式的辅助，我们归纳出$\delta$函数的下述抽象定义：
+  {\blue
+    \be
+    \delta(0) = \left\{
+    \begin{array}{ll}
+      0, & \text{ if } x\ne 0; \\
+      +\infty, & \text{ if } x = 0;
+    \end{array}\right.
+    \ee
+    \bea
+    \delta(-x) &=& \delta(x); \newl
+    \int_{-\infty}^\infty \delta(x)\,dx &=& 1. 
+    \eea
+  }
+  \ech
+\end{frame}
+
+\begin{frame}
+  \chtitle{$\delta$函数最重要的性质}
+  \bch
+  从被使用频率上来讲，下式至关重要：
+  \tbox{
+    $$\int_{-\infty}^\infty \delta(x-x_0) f(x)\, dx = f(x_0).$$}
+  \ech
+\end{frame}
+
+
+\begin{frame}
+  \chtitle{$\delta$函数的高级性质}
+  \bch
+  通过分部积分的方法可以得到：{\blue
+  $$\int_{-\infty}^\infty \left[\frac{d^n}{dx^n}\delta(x-x_0)\right] f(x)\, dx = (-1)^n f^{(n)}(x_0)$$}
+
+  \skipline
+  
+  用变量替换的方法可以得到：{\blue
+    $$ \delta\left(\alpha(x)\right)  = \sum_{\rm roots}  \frac{\delta(x-x_i)}{|\alpha'(x_i)|}$$}
+  求和对所有$\alpha(x)$的根$x_1$, $x_2$, \ldots 进行（如果$\alpha$没有根，则积分结果为零；若$\alpha$有重根，则上式等号左右两边均发散）。
+
+ {\scriptsize 另一种等价的写法是：
+  $$\int_{-\infty}^\infty \delta\left(\alpha(x)\right) f(x) \,dx = \sum_{\rm roots} \frac{f(x_i)}{|\alpha'(x_i)|}.$$}
+  
+  \ech
+\end{frame}
+
+
+
+\begin{frame}
+  \chtitle{思考题}
+  \bch
+  \addfig{0.8}{think.jpg}
+
+
+  \ech
+\end{frame}
+
+
+\section{Fourier Transform}
+\secpage{傅立叶变换}{平直空间}
+
+\begin{frame}
+  \chtitle{傅立叶变换}
+  \bch
+    \skipline
+
+  最后，还有我们马上要讲到的$\delta$函数的傅立叶变换表达式：{\blue
+    $$\int_{-\infty}^{\infty} e^{ikx}\,dx = \delta(k) $$}
+  
+  \ech
+\end{frame}
+
+\section{Homework}
+
+\begin{frame}
+  \chtitle{课后作业}
+  \bch
+  \bitem
+\item[16]{}
+\item[17]{}
+\item[18]{}
+  \eitem
+  \ech
+\end{frame}
+
+\end{document}
