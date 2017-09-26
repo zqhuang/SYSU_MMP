@@ -1,0 +1,448 @@
+\documentclass[CJK]{beamer}
+\input{macros.tex}
+\input{titlepage.tex}
+  \date{}
+\begin{document}
+\tpage{7}{More about Fourier Transform}
+
+
+
+
+\begin{frame}
+  \chtitle{本讲内容}
+\bch
+\bitem
+\item{高维空间的$\delta$函数和傅立叶变换}
+\item{共轭关系}
+\item{梯度算符和拉普拉斯算符}
+\item{卷积定理}    
+\eitem
+\ech
+\end{frame}
+
+
+
+
+\section{$n$-D Fourier transform}
+
+\secpage{高维空间的$\delta$函数和傅立叶变换}{就是每个维度来一下}
+
+\begin{frame}
+  \chtitle{$n$维内积空间}
+  \bch
+  $n$维内积空间的点可以记作$\vecx = (x_1, x_2, \ldots, x_n)$，多元函数$f(x_1, x_2, \ldots, x_n)$可以简单写成$f(\vecx)$。
+
+  \skipline
+  
+  两个矢量$\vecx, \vecy$的内积为
+ {\blue $$ \vecx\cdot\vecy = x_1y_1+x_2y_2+\ldots + x_n y_n .$$}
+
+  \skipline
+
+  函数$f(\vecx)$在全空间的积分可以简单写作
+ {\blue $$\int f(\vecx)\, d^n\vecx $$}
+  用你们熟悉的语言写出来就是
+  $$\int_{-\infty}^\infty d x_1 \int_{-\infty}^\infty dx_2 \ldots \int_{-\infty}^\infty d x_n\, f(x_1, x_2, \ldots, x_n). $$
+
+  \ech
+  \end{frame}
+
+\begin{frame}
+  \chtitle{$n$维空间的$\delta$函数}
+  \bch
+  $n$维$\delta$函数标记为{\blue $\delta^{(n)}(\vecx)$}，既可以理解为
+      {\blue
+        $$\delta^{(n)}(\vecx) = \delta(x_1)\delta(x_2)\ldots\delta(x_n), $$
+      }
+      也可以直接抽象地理解为{\blue 在原点附近体积为$\epsilon \rightarrow 0^+$的邻域内，函数值为$\frac{1}{\epsilon}\rightarrow \infty $，而在其余位置函数值均为零的函数。}
+
+      \skiplines
+      
+\bex
+三维空间某点$\vecx‘$处的点电荷的电荷密度可以写成
+$$\rho(\vecx) = Q\, \delta^{(3)}(\vecx - \vecx')$$
+\eex
+  \ech
+\end{frame}
+
+\begin{frame}
+  \chtitle{$n$维空间的$\delta$函数的性质}
+  \bch
+  和一维空间类似，
+  \tbox{
+   $$ \int \delta^{(n)}(\vecx - \vecx_0) f(\vecx)\, d^n\vecx = f(\vecx_0)$$
+   }
+  \ech
+\end{frame}
+
+
+\begin{frame}
+  \chtitle{$n$维空间的傅立叶变换}
+  \bch
+  $n$维内积空间的函数$f(\vecx)$的傅立叶变换就是对每个维度都进行傅立叶变换：
+  $$ F(\veck) = \frac{1}{(2\pi)^{n/2}}\int f(\vecx) e^{-\ii \veck \cdot \vecx} d^3\vecx $$
+
+  {\scriptsize (如果对上式感到困惑，请自行写出2维空间和3维空间的“你们熟悉的表达式”)}
+
+  显然，其逆变换为
+  $$ f(\vecx) = \frac{1}{(2\pi)^{n/2}}\int F(\veck) e^{\ii \veck \cdot \vecx} d^n\veck. $$
+  
+  \ech
+\end{frame}
+
+\begin{frame}
+  \chtitle{非常重要的积分式}
+  \bch
+  反复应用一维空间的傅立叶变换的性质，很容易得到
+  \tbox{\blue $$\frac{1}{(2\pi)^n}\int e^{\ii \veck\cdot\vecx} d^n\vecx = \delta^{(n)}(\veck).$$}
+  
+  \ech
+\end{frame}
+
+
+\begin{frame}
+  \chtitle{思考题}
+  \bch
+  \addfig{1}{think3.jpg}
+  
+  试证明：  高维空间傅立叶变换保持内积不变的结论也依然成立，设$\tilde{f}, \tilde{g}$分别为$f,g$的傅立叶变换，则
+{\blue  $$\int  f^*(\vecx)g(\vecx)\,d^n\vecx = \int \tilde{f}^*(\veck) \tilde{g}(\veck)\, d^n\veck . $$}
+
+  \ech
+\end{frame}
+
+
+
+
+\section{Conjugate Relation}
+\secpage{共轭关系}{源像互换取共轭}
+
+
+\begin{frame}
+  \chtitle{先精简一下符号}
+  \bch
+  我们用
+  $$f \ftf F $$
+  表示$f(\vecx)$的傅立叶变换为$F(\veck)$。
+  \ech
+\end{frame}
+
+
+\begin{frame}
+  \chtitle{共轭关系}
+  \bch
+  设$f \ftf F $。  对逆变换  
+  $$ f(\vecx) = \frac{1}{(2\pi)^{n/2}}\int F(\veck) e^{\ii \veck \cdot \vecx} d^n\veck. $$
+  两边取共轭得到
+  $$ f^*(\vecx) = \frac{1}{(2\pi)^{n/2}}\int F^*(\veck) e^{-\ii \veck \cdot \vecx} d^n\veck. $$
+  上式等价于$ F^*\ftf f^*$，这说明
+  \tbox{ 傅立叶变换的源和像，可以取共轭并对换位置}。
+  \ech
+\end{frame}
+
+
+\begin{frame}
+  \chtitle{实的偶函数}
+  \bch
+  显然，实的偶函数(满足$f(-\vecx) = f(\vecx)$的实函数)的傅立叶变换仍然是实的偶函数。
+
+  {\scriptsize（可以通过对傅立叶变换式两边取共轭并对积分变量作$\vecx \rightarrow -\vecx$的替换得到）。}
+
+  \skipline
+
+  在这种情况下，无所谓哪个是源，哪个是像，可以使用下述符号：
+  $$ f \ftfb F $$
+  \ech
+\end{frame}
+
+\begin{frame}
+  \chtitle{思考题}
+  \bch
+  \addfig{1}{think3.jpg}
+  
+  求$f(x) = \frac{\sin x}{x}$的傅立叶变换。
+  \ech
+\end{frame}
+
+\section{Gradient Operator}
+\secpage{梯度算符和拉普拉斯算符}{引而不发才是高境界}
+
+\begin{frame}
+  \chtitle{算符}
+  \bch
+      {\blue 算符是把一种对象映射到另一种对象的操作}。
+
+
+      \bcenter
+      \lfig{1}{blackq.jpg}
+      
+      感觉等于什么都没说.jpg
+      \ecenter
+      \ech
+\end{frame}
+
+
+\begin{frame}
+  \chtitle{梯度算符}
+  \bch
+  \bex
+  $n$维空间梯度算符$\nabla$把$n$维空间的函数$f(\vecx)$映射为该函数的梯度(矢量）
+    $$ \nabla f \equiv (\partial_1 f, \partial_2 f,\ldots, \partial_n f) .$$
+    
+    (为了简单起见，我们把第$i$个方向的偏导算符$\frac{\partial}{\partial_{x_i}}$简写为了$\partial_i$。)
+  \eex
+
+  \ech
+\end{frame}
+
+
+\begin{frame}
+  \chtitle{广义矢量}
+  \bch
+  $n$维空间的矢量$\vecx = (x_1, x_2, \ldots, x_n)$, 可以看成$n$个基的线性组合：
+
+  $$\vecx = x_1\vece_1 + x_2\vece_2 + \ldots + x_n\vece_n. $$
+
+  对广义矢量，{\blue 基的线性组合可以不仅仅用数字作为系数，还能用任何对象。}
+  例如，在二维内积空间，
+
+  \skipline
+  
+  (苹果，橘子) = 苹果$\times \vece_1$ + 橘子$\times\vece_2$.
+
+  \skipline
+  
+  (震小羊，桂小荣) = 震小羊$\times \vece_1$ + 桂小荣$\times\vece_2$.  
+  
+  \ech
+\end{frame}
+
+
+\begin{frame}
+  \chtitle{思考题}
+  \bch
+  \addfig{1}{think3.jpg}
+  
+  计算矢量$(3,2)$和(苹果，橘子) 的内积。
+  \ech
+\end{frame}
+
+\begin{frame}
+  \chtitle{梯度算符}
+  \bch
+  梯度算符$\nabla$又可以看成一个广义矢量，它的每个分量是偏导算符：
+  $$\nabla \equiv (\partial_1, \partial_2,\ldots, \partial_n). $$
+
+  这就是数学中省略作用对象的“引而不发”的写法。如果在两边补充写个$f$，则又回到熟悉的小学生可以理解的形式：
+  $$\nabla f \equiv (\partial_1f, \partial_2f,\ldots, \partial_nf). $$
+  \ech
+\end{frame}
+
+\begin{frame}
+  \chtitle{散度}
+  \bch
+  梯度算符$\nabla$和普通矢量$\mathbf{E} = (E_1, E_2, \ldots, E_n)$的内积为
+  $$\nabla\cdot \mathbf{E} \equiv \partial_1 E_1 + \partial_2 E_2 + \ldots + \partial_n E_n $$
+  这通常称为$\mathbf{E}$的{\blue 散度}。
+  \skipline
+  
+  (在三维空间的情形可以勾起你们对电磁学的美好回忆\bye)
+  \ech
+\end{frame}
+
+\begin{frame}
+  \chtitle{拉普拉斯算符}
+  \bch
+  梯度算符作用到一个普通函数$f(\vecx)$上，就得到一个矢量函数$\nabla f = (\partial_1 f, \partial_2 f, \ldots, \partial_n f)$。然后$\nabla$和$\nabla f$的内积就是
+  
+  $$ \nabla \cdot \nabla f \equiv \partial_1^2 f + \partial_2^2 f + \ldots + \partial_n^2 f.$$
+  上式左边的$\nabla\cdot \nabla$称为{\blue 拉普拉斯算符}，通常简写为{\blue $\nabla^2$}，重写一遍就是：\tbox{
+    $$ \nabla^2 f \equiv \partial_1^2 f + \partial_2^2 f + \ldots + \partial_n^2 f.$$}
+  
+  {
+    \small
+  在静电磁学里，电场强度$\mathbf{E}$是电势$\varphi$的梯度: $\mathbf{E} = \nabla \varphi$。高斯定律（电场的散度正比于电荷密度）就可以写成
+  $$ \nabla^2 \varphi = \frac{\rho}{\epsilon_0} $$}
+  
+  \ech
+\end{frame}
+
+
+\begin{frame}
+  \chtitle{$\nabla \rightarrow \ii \veck$}
+  \bch
+  设$f \ftf F $，对逆变换式
+  $$ f(\vecx) = \frac{1}{(2\pi)^{n/2}}\int F(\veck) e^{\ii \veck \cdot \vecx} d^n\veck. $$
+  两边作用$\partial_j$
+  $$ \partial_j f(\vecx) =  \frac{1}{(2\pi)^{n/2}}\int (\ii k_j F(\veck)) e^{\ii \veck \cdot \vecx} d^n\veck. $$
+  当$j$取遍$1,2,\ldots, n$，上式可以写成矢量形式：
+{\blue  $$ \nabla f(\vecx) \ftf \ii \veck F(\veck) $$}
+  它的具体含义就是: $\partial_jf(\vecx)$的傅立叶变换为$ \ii k_j F(\veck)$ （$j=1,2,\ldots, n$)。
+  \ech
+\end{frame}
+
+
+\begin{frame}
+  \chtitle{思考题}
+  \bch
+  \addfig{1}{think3.jpg}
+  设$f(\vecx) \ftf F(\veck) $，  试证明{\blue
+    $$\nabla^2f(\vecx) \ftf -k^2F(\veck)$$}
+
+  其中$k \equiv |\veck|$。
+  \ech
+\end{frame}
+
+
+\begin{frame}
+  \chtitle{第一个数理方程的例子}
+  \bch
+  用高斯定律来计算在原点的点电荷$Q$造成的电势$\varphi$
+  $$\nabla^2 \varphi(\vecx) = \frac{Q}{\epsilon_0} \,\delta^{(3)}(\vecx)$$
+  
+  对这个方程两边进行傅立叶变换，
+  $$ -k^2\tilde{\varphi}(\veck) = \frac{1}{(2\pi)^{3/2}} \frac{Q}{\epsilon_0} ,$$
+  即
+  $$\tilde{\varphi}(\veck) = - \frac{1}{(2\pi)^{3/2}\epsilon_0} \frac{Q}{k^2}.$$
+  再进行逆变换
+ $$\varphi(\vecx) =-\frac{Q}{(2\pi)^3\epsilon_0} \int \frac{e^{\ii \veck\cdot\vecx}}{k^2}d^3\veck$$
+  \ech
+\end{frame}
+
+\begin{frame}
+  \chtitle{第一个数理方程的例子}
+  \bch
+  取$\vecx$方向为北极方向建立球坐标$(k, \theta,\phi)$，记$r=|\vecx|$
+  \bea
+  \int \frac{e^{\ii \veck\cdot\vecx}}{k^2}d^3\veck &=& \int_0^\infty k^2 dk \int_{-1}^1 d(\cos\theta)\int_0^{2\pi} \frac{e^{\ii kr cos\theta}}{k^2} d\phi \newl
+  &=& 2\pi \int_0^\infty dk \int_{-1}^1 d(\cos\theta) e^{\ii kr cos\theta} \newl
+  &=& 2\pi  \int_0^\infty dk  \frac{2\sin(kr)}{kr} \newl
+  &=& \frac{2\pi^2}{r}
+  \eea
+  由此我们求出
+  $$\varphi(\vecx) = - \frac{Q}{4\pi \epsilon_0r}$$
+  \ech
+\end{frame}
+
+\begin{frame}
+  \chtitle{思考题}
+  \bch
+  \addfig{0.5}{think.jpg}
+  
+  电势可以随便取零点，为什么解出来的电势不带积分常数？
+  \ech
+\end{frame}
+
+\section{Convolution}
+\secpage{卷积定理}{在同一个频道上的两个…}
+
+\begin{frame}
+  \chtitle{时间序列的频谱分析}
+  \bch
+  让我们再次回到一维的情况： 假设{\blue $f(t)$是依赖于时间的信号，其傅立叶变换$\tilde{f}(k)$代表了以$k$为频率的信号}。
+
+  如果要研究两个信号$f(t)$和$g(t)$是否显著地包含相同频率的信号，则有两种方法。一种是直接计算 $\tilde{f}^*(k) \tilde{g}(k)$并找出使乘积(的模)比较大的$k$，另一种是计算延时乘积
+  $$C(\Delta t) = \frac{1}{\sqrt{2\pi}}\int_{-\infty}^{\infty} f^*(t) g(t+\Delta t ) dt $$
+  的傅立叶变换$\tilde{C}(k)$，找出使$\tilde{C}(k)$(的模)比较大的$k$。
+
+  {\scriptsize (如果$f$和$g$显著具有相同频率$k$的信号，则当$\Delta t$为$\frac{2\pi}{k}$的整数倍时$C(\Delta t)$的信号比较强，也就是说$\tilde{C}(k)$包含有较强的频率为$k$的信号。)}
+
+  这两种方法之间有什么内在联系呢？
+
+  \ech
+\end{frame}
+
+
+\begin{frame}
+  \chtitle{卷积定理的延时表述}
+  \bch
+  设$f$和$g$的延时关联函数定义为：
+  $$C(t) =\frac{1}{\sqrt{2\pi}} \int_{-\infty}^\infty f^*(t')g(t'+t)\, dt',$$
+  则$C, f, g$的傅立叶变换$\tilde{C}, \tilde{f},\tilde{g}$满足：
+  $$\tilde{C}(k) = \tilde{f}^*(k) \tilde{g}(k)$$
+  \ech
+\end{frame}
+
+\begin{frame}
+  \chtitle{卷积定理的延时表述的证明}
+  \bch
+  \bea
+  \tilde{f}^*(k)\tilde{g}(k) &=& \frac{1}{2\pi}\int_{-\infty}^\infty e^{\ii k u} f^*(u) du  \int_{-\infty}^\infty e^{-\ii k\upsilon} g(\upsilon) d\upsilon  \newl
+  &=& \frac{1}{2\pi}\int_{-\infty}^\infty e^{\ii k (u-\upsilon)} f^*(u) du  \int_{-\infty}^\infty  g(\upsilon) d\upsilon
+  \eea
+  做变量替换$t = \upsilon - u$, $t' =u$得到
+  \bea
+  \tilde{f}^*(k)\tilde{g}(k) &=& \frac{1}{2\pi}\int_{-\infty}^\infty e^{-\ii k t} dt  \int_{-\infty}^\infty  f^*(t')  g(t'+t) dt' \newl
+  &=& \frac{1}{\sqrt{2\pi}}\int_{-\infty}^\infty e^{-\ii k t}  C(t) dt \newl
+  &=& \tilde{C}(k)
+  \eea
+
+  \ech
+\end{frame}
+
+
+
+\begin{frame}
+  \chtitle{卷积定理的对称表述}
+  \bch
+  上述表述虽然有很强的物理背景，但并不容易记忆，一般书中介绍的是下面的对称形式：
+
+  \skipline
+  
+  两个函数的卷积定义为
+  \tbox{$$ (f*g)(t) \equiv \frac{1}{\sqrt{2\pi}}\int_{-\infty}^\infty f(t')g(t-t') dt'  $$}
+
+  显然，卷积满足交换律： {\blue $f*g = g*f$}。更重要的是卷积定理: 设$f,g$的傅立叶变换依次为$\tilde{f},\tilde{g}$，则$f*g$的傅立叶变换为$\tilde{f}\tilde{g}$，即
+  \tbox{卷积的傅立叶变换等于傅立叶变换的乘积}
+  
+  {\scriptsize  注：在有些文献中的傅立叶变换定义不带$\frac{1}{\sqrt{2\pi}}$因子，则卷积的定义中也不含$\frac{1}{\sqrt{2\pi}}$因子。}
+  
+  
+  \ech
+\end{frame}
+
+
+\begin{frame}
+  \chtitle{卷积定理的对称表述的证明}
+  \bch
+  令$h(t) = f^*(-t)$，则
+  $$ \tilde{h}^*(k) =\frac{1}{\sqrt{2\pi}} \int_{-\infty}^{\infty} f(-t)e^{\ii kt}dt$$
+  做积分变量的替换$t'=-t$，得到
+  $$\tilde{h}^*(k)= \frac{1}{\sqrt{2\pi}} \int_{-\infty}^{\infty} f(t')e^{-\ii kt'}dt' = \tilde{f}(k)$$ 
+  $h$和$g$的延时关联函数为
+  $$C(t) = \frac{1}{\sqrt{2\pi}}\int_{-\infty}^\infty h^*(u)g(t+u) dt' = \frac{1}{\sqrt{2\pi}} \int_{-\infty}^\infty f(-u)g(t+u) dt' $$
+  做变量替换$t' = -u$，得到
+  $$C(t) =\frac{1}{\sqrt{2\pi}} \int_{-\infty}^\infty f(t')g(t-t') dt' = (f*g)(t) $$  
+
+  最后，利用卷积定理的延时表述即得结论。
+  \ech
+\end{frame}
+
+\section{Homework}
+
+\begin{frame}
+  \chtitle{课后作业}
+  \bch
+  {\small
+  \bitem
+\item[19]{三维空间的top-hat函数在单位球内取值为$1$，否则为零：
+  \be
+  f(\vecx) = \left\{\begin{array}{ll} 1, & \text{ if } |\vecx|<1; \\
+  0, & \text{ else.} \end{array}\right. 
+  \ee
+  求$f(\vecx)$的傅立叶变换$F(\veck)$。
+}
+
+\item[20]{设$\phi(\vecx)$是三维空间中的场，其傅立叶变换为$\tilde{\phi}(\veck)$，试证明$$\int |\nabla\phi(\vecx)|^2 d^3\vecx = \int k^2|\tilde{\phi}(\veck)|^2\, d^3\veck, $$
+其中$k =|\veck|$。}
+
+\item[21]{设$f(x) = \frac{ e^{-x^2/2} \sin x}{x}$的傅立叶变换为$F(k)$，试计算
+  $$ \sum_{n=-\infty}^\infty F(n) $$
+的值。}  
+  \eitem
+
+  }
+  \ech
+\end{frame}
+
+\end{document}

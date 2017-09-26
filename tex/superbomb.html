@@ -21,20 +21,26 @@ function wsum(or=0, ow=0, on=0, sr=0, sw=0, sn=0){
 }
   function scores(name){
   switch(name){
+  case("艾散·坎吉"):
+    return wsum(or = 0, ow = 0, on = 0, sr= 0, sw = 0, sn = 1);  
   case("白济民"):
     return wsum(or = 5, ow = 0, on = 0, sr= 0, sw = 0, sn = 0);
   case("曹旭阳"):
     return wsum(or = 0, ow = 0, on = 0, sr= 1, sw = 0, sn = 0);  
   case("陈淮勋"):
-    return wsum(or = 0, ow = 0, on = 0, sr= 1, sw = 0, sn = 1);      
+    return wsum(or = 0, ow = 0, on = 0, sr= 1, sw = 0, sn = 1);
+  case("陈彬彬"):
+    return wsum(or = 0, ow = 0, on = 0, sr= 0, sw = 0, sn = 1);      
   case("陈振宇"):
     return wsum(or = 2, ow = 0, on = 2, sr= 0, sw = 0, sn = 1);    
   case("韩张政"):
     return wsum(or = 0, ow = 0, on = 2, sr= 0, sw = 0, sn = 0);
+  case("梁恒兆"):
+    return wsum(or = 0, ow = 0, on = 0, sr= 0, sw = 0, sn = 1);
   case("李汶钊"):
     return wsum(or = 0, ow = 0, on = 0, sr= 0, sw = 1, sn = 0);
   case("龙丹"):
-    return wsum(or = 0, ow = 0, on = 0, sr= 1, sw = 0, sn = 0);  
+    return wsum(or = 0, ow = 0, on = 0, sr= 2, sw = 0, sn = 0);  
   case("梁崴"):
     return wsum(or = 0, ow = 0, on = 1, sr= 0, sw = 0, sn = 0);  
   case("洪巽阳"):
@@ -47,14 +53,16 @@ function wsum(or=0, ow=0, on=0, sr=0, sw=0, sn=0){
     return wsum(or = 1, ow = 0, on = 0, sr= 0, sw = 0, sn = 0);  
   case("谢永勤"):
     return wsum(or = 0, ow = 0, on = 0, sr= 1, sw = 1, sn = 0);
+  case("文永鑫"):
+    return wsum(or = 0, ow = 0, on = 0, sr= 1, sw = 0, sn = 0);  
   case("尹杨"):
     return wsum(or = 0, ow = 0, on = 0, sr= 0, sw = 1, sn = 0);
   case("曾宇芊"):
     return wsum(or = 1, ow = 0, on = 0, sr= 0, sw = 0, sn = 0);  
   case("张旭涛"):
-    return wsum(or = 0, ow = 0, on = 0, sr= 1, sw = 0, sn = 0);  
+    return wsum(or = 0, ow = 0, on = 0, sr= 1, sw = 0, sn = 1);  
   case("郑江锦"):
-    return wsum(or = 0, ow = 0, on = 0, sr= 0, sw = 1, sn = 0);    
+    return wsum(or = 0, ow = 0, on = 0, sr= 1, sw = 1, sn = 0);    
   default:
     return wsum(0,0,0,0,0,0);
    }
@@ -64,9 +72,12 @@ function wsum(or=0, ow=0, on=0, sr=0, sw=0, sn=0){
   var totalnum = namelist.length;
 
   function getRandomInt (min, max) {
-  num = Math.floor(Math.random() * (max - min + 1)) + min;
+  var thedate = new Date();
+  var loop = thedate % 43;
+  for(i=0;i<loop; i++)
+    num = Math.floor(Math.random() * (max - min + 1)) + min;
   s = scores(namelist[num]);
-  if(s[0]+s[1]+s[2] < 300*Math.random())
+  if(s[0]+s[1]+s[2] < 92*Math.random())
      return num;
   else{
      num = getRandomInt(min, max);
