@@ -80,7 +80,7 @@ $$\rho(\vecx) = Q\, \delta^{(3)}(\vecx - \vecx')$$
   \chtitle{$n$维空间的傅立叶变换}
   \bch
   $n$维内积空间的函数$f(\vecx)$的傅立叶变换就是对每个维度都进行傅立叶变换：
-  $$ F(\veck) = \frac{1}{(2\pi)^{n/2}}\int f(\vecx) e^{-\ii \veck \cdot \vecx} d^3\vecx $$
+  $$ F(\veck) = \frac{1}{(2\pi)^{n/2}}\int f(\vecx) e^{-\ii \veck \cdot \vecx} d^n\vecx $$
 
   {\scriptsize (如果对上式感到困惑，请自行写出2维空间和3维空间的“你们熟悉的表达式”)}
 
@@ -261,8 +261,8 @@ $$\rho(\vecx) = Q\, \delta^{(3)}(\vecx - \vecx')$$
   
   {
     \small
-  在静电磁学里，电场强度$\mathbf{E}$是电势$\varphi$的梯度: $\mathbf{E} = \nabla \varphi$。高斯定律（电场的散度正比于电荷密度）就可以写成
-  $$ \nabla^2 \varphi = \frac{\rho}{\epsilon_0} $$}
+  在静电磁学里，电场强度$\mathbf{E}$正比于电势$\varphi$的梯度: $\mathbf{E} = -\nabla \varphi$。高斯定律（电场的散度正比于电荷密度）就可以写成
+  $$ \nabla^2 \varphi = -\frac{\rho}{\epsilon_0} $$}
   
   \ech
 \end{frame}
@@ -298,14 +298,14 @@ $$\rho(\vecx) = Q\, \delta^{(3)}(\vecx - \vecx')$$
   \chtitle{第一个数理方程的例子}
   \bch
   用高斯定律来计算在原点的点电荷$Q$造成的电势$\varphi$
-  $$\nabla^2 \varphi(\vecx) = \frac{Q}{\epsilon_0} \,\delta^{(3)}(\vecx)$$
+  $$\nabla^2 \varphi(\vecx) = -\frac{Q}{\epsilon_0} \,\delta^{(3)}(\vecx)$$
   
   对这个方程两边进行傅立叶变换，
-  $$ -k^2\tilde{\varphi}(\veck) = \frac{1}{(2\pi)^{3/2}} \frac{Q}{\epsilon_0} ,$$
+  $$ -k^2\tilde{\varphi}(\veck) = -\frac{1}{(2\pi)^{3/2}} \frac{Q}{\epsilon_0} ,$$
   即
-  $$\tilde{\varphi}(\veck) = - \frac{1}{(2\pi)^{3/2}\epsilon_0} \frac{Q}{k^2}.$$
+  $$\tilde{\varphi}(\veck) = \frac{1}{(2\pi)^{3/2}\epsilon_0} \frac{Q}{k^2}.$$
   再进行逆变换
- $$\varphi(\vecx) =-\frac{Q}{(2\pi)^3\epsilon_0} \int \frac{e^{\ii \veck\cdot\vecx}}{k^2}d^3\veck$$
+ $$\varphi(\vecx) =\frac{Q}{(2\pi)^3\epsilon_0} \int \frac{e^{\ii \veck\cdot\vecx}}{k^2}d^3\veck$$
   \ech
 \end{frame}
 
@@ -320,7 +320,7 @@ $$\rho(\vecx) = Q\, \delta^{(3)}(\vecx - \vecx')$$
   &=& \frac{2\pi^2}{r}
   \eea
   由此我们求出
-  $$\varphi(\vecx) = - \frac{Q}{4\pi \epsilon_0r}$$
+  $$\varphi(\vecx) = \frac{Q}{4\pi \epsilon_0r}$$
   \ech
 \end{frame}
 
@@ -345,7 +345,7 @@ $$\rho(\vecx) = Q\, \delta^{(3)}(\vecx - \vecx')$$
   $$C(\Delta t) = \frac{1}{\sqrt{2\pi}}\int_{-\infty}^{\infty} f^*(t) g(t+\Delta t ) dt $$
   的傅立叶变换$\tilde{C}(k)$，找出使$\tilde{C}(k)$(的模)比较大的$k$。
 
-  {\scriptsize (如果$f$和$g$显著具有相同频率$k$的信号，则当$\Delta t$为$\frac{2\pi}{k}$的整数倍时$C(\Delta t)$的信号比较强，也就是说$\tilde{C}(k)$包含有较强的频率为$k$的信号。)}
+  {\scriptsize (如果$f$和$g$显著具有相同频率$k$的信号，则当$\Delta t$为调制相位加上$\frac{2\pi}{k}$的整数倍时$C(\Delta t)$的信号比较强，也就是说$\tilde{C}(k)$包含有较强的频率为$k$的信号。)}
 
   这两种方法之间有什么内在联系呢？
 
