@@ -1,0 +1,421 @@
+\documentclass[CJK]{beamer}
+\input{macros.tex}
+\input{titlepage.tex}
+  \date{}
+\begin{document}
+\tpage{8}{Laplace Transform}
+
+\begin{frame}
+  \chtitle{思考题}
+  \bch
+  \addfig{3.5}{heaviside.png}
+
+  \be
+  h(t) = \branchll 0, & \text{ if } t<0; \\\frac{1}{2}, & \text{ if } t=0  \\ 1, & \text{ if } t> 0.  \branchrr
+  \ee
+  如图的函数称为单位跃阶函数(Heaviside step function)，它的导函数是什么？
+  \ech
+\end{frame}
+
+
+\begin{frame}
+  \chtitle{一个经典的电路问题}
+  \bch
+  如图，电阻$R$和电容$C$并联，再依次和电感$L$以及电动势为$\mathcal{E}$的直流电源串联，在$t=0$时刻合上开关$K$，求在$t>0$时刻电路中的电流$I(t)$。
+  
+  \addfig{3}{electric_problem.png}
+  \ech
+\end{frame}
+
+
+\begin{frame}
+  \chtitle{一种思路}
+  \bch
+  \bmini{0.5}
+  \lfig{2.}{electric_problem.png}
+  \emini
+  \bmini{0.45}
+  设电容上积累的电荷为$Q$，则由并联部分电压关系得到
+  $$ I_1 =  \frac{Q}{CR},\ I_2 = \frac{dQ}{dt}$$
+  \emini
+  
+  总电压方程为：
+  
+  $$L\frac{d}{dt}\left(\frac{Q}{CR}+\frac{dQ}{dt}\right) + \frac{Q}{C} = \mathcal{E}$$
+  即
+  $$Q''+ \frac{1}{CR} Q' +  \frac{1}{CL}Q = \frac{\mathcal{E}}{L} $$
+  我们要求这个二阶常微分方程在$Q(0) = 0, Q'(0) = 0 $的初始条件下的解。
+  \ech
+\end{frame}
+
+
+
+\begin{frame}
+  \chtitle{拉普拉斯变换的物理背景}
+  \bch
+  在$t=0$时刻给定初始条件，$t>0$时刻满足线性常微分（或积分）方程（组）的问题，一般都可以用拉普拉斯变换求解。
+
+
+  \bcenter
+  Pierre-Simon Laplace
+  
+ \hspace{0.8in} \lfig{2.8}{Laplace.jpg}
+
+  \ecenter
+  
+  \ech
+\end{frame}
+
+
+
+\section{Laplace Transform}
+\secpage{拉普拉斯变换}{$$f'(t) \ltf pF(p) - f(0) $$}
+
+
+\begin{frame}
+\chtitle{拉普拉斯变换}
+\bch
+函数$f(t)$的拉普拉斯变换$F(p)$定义为
+\tbox{$$ F(p) = \inthalf f(t) e^{-pt} dt\,. $$}
+
+  或简单写成
+  {\blue  $$ f \ltf F\,. $$}
+
+  注意和傅立叶变换一样，拉普拉斯变换是一个线性变换（和的拉普拉斯的变换等于拉普拉斯变换的和）。
+
+
+\ech
+\end{frame}
+
+
+\begin{frame}
+  \chtitle{积分要从$0^-$开始}
+  \bch
+  我们有时需要明确拉普拉斯变换的积分范围是$[0^-,\infty)$：
+    {\blue $$F(p) = \int_{0^-}^\infty f(t) e^{-pt} dt\,.$$}
+    这在物理上很容易理解，只有积分范围覆盖$t=0$时刻，我们才能把拉普拉斯变换和$t=0$时刻的初始条件联系起来。
+
+
+    \skiplines
+    
+  在不致引起混淆但情况下，我们仍采用之前偷懒的写法。
+
+  \ech
+\end{frame}
+
+\begin{frame}
+  \chtitle{练练手}
+  \bch
+  \addfig{1}{drive.jpg}
+  
+  用定义验证：
+  \bitem
+\item{\blue $1 \ltf \frac{1}{p} $}
+\item{\blue $h(t) \ltf \frac{1}{p} $}  
+  \eitem
+  思考：既然拉普拉斯变换不讨论$t<0$时的源的信息，这两个式子有区别吗？
+  \ech
+\end{frame}
+
+\begin{frame}
+\chtitle{导函数的拉普拉斯变换}
+\bch
+设$f \ltf F$，则导函数$f'(t)$的拉普拉斯变换为
+$$ \inthalf f'(t) e^{-pt} dt =\left.f(t)e^{-pt}\right\vert_0^\infty + p \inthalf f(t)e^{-pt} dt = pF(p) - f(0). $$
+对$f'(t)$应用上述结论，得到二阶导函数的拉普拉斯变换为
+$$ p(pF(p) - f(0)) - f'(0) = p^2F(p) - pf(0) - f'(0).$$
+反复使用这个办法，可以推出任意阶导函数的拉普拉斯变换:
+
+\tbox{$$ f^{(n)}(t) \ltf p^n F(p) - \sum_{k=0}^{n-1}p^{n-1-k}f^{(k)}(0). $$}
+{\blue 上式中的$0$都要理解为$0^-$。}
+\ech
+\end{frame}
+
+\begin{frame}
+  \chtitle{$\delta$函数的拉普拉斯变换}
+  \bch
+  对
+  \bitem
+\item{\blue $1 \ltf \frac{1}{p} $}
+\item{\blue $h(t) \ltf \frac{1}{p} $}  
+  \eitem
+  分别计算导函数的拉普拉斯变换，分别得到
+  \bitem
+\item{\blue $0 \ltf 0 $}
+\item{\blue $\delta(t) \ltf 1 $}  
+  \eitem
+  (请直接用拉普拉斯变换的定义验证$\delta(t)\ltf 1$是正确的。)
+
+  \ech
+\end{frame}
+
+
+
+\begin{frame}
+\chtitle{幂函数因子}
+\bch
+设有拉普拉斯变换
+$$ F(p) = \inthalf f(t) e^{-pt} dt, $$
+两边对$p$求导得到
+$$ F'(p) = \inthalf (-tf(t)) e^{-pt} dt, $$
+反复利用上式即得
+\tbox{$$t^nf(t) \ltf \left(-\frac{d}{dp}\right)^n F(p).$$}
+\ech
+\end{frame}
+
+
+\begin{frame}
+  \chtitle{幂函数的拉普拉斯变换}
+  \bch
+  利用 $1 \ltf \frac{1}{p} $，左边乘上$t^n$，右边作用$\left(-\frac{d}{dp}\right)^n$，得到
+   $$ t^n \ltf \frac{n!}{p^{n+1}},\ \ n=0,1,2,\ldots $$
+  实际上，直接用拉普拉斯变换以及$\Gamma$函数的定义，可以得到更一般的结论：
+  {\blue  $$ t^{\alpha-1} \ltf \frac{\Gamma(\alpha)}{p^{\alpha}},\ \ \ \ \mathrm{Re}(\alpha) >  0.$$}
+  
+  \ech
+\end{frame}
+
+\begin{frame}
+\chtitle{缩放}
+\bch
+设$f(t)$的拉普拉斯变换为$F(p)$，则导函数$f(at)$的拉普拉斯变换为
+$$\inthalf f(at) e^{-pt} dt =  \inthalf f(u) e^{-\frac{p}{a}u} d\left(\frac{u}{a}\right) = \frac{1}{a}F\left(\frac{p}{a}\right)\,,$$
+即
+\tbox{$$f(at) \ltf \frac{1}{a}\,F\left(\frac{p}{a}\right)\,.$$}
+\ech
+\end{frame}
+
+\begin{frame}
+\chtitle{指数函数因子}
+\bch
+设$f(t)$的拉普拉斯变换为$F(p)$，则导函数$e^{at}f(t)$的拉普拉斯变换为
+$$\inthalf e^{at}f(t) e^{-pt} dt  = \inthalf f(t) e^{-(p-a)t} dt  = F(p-a)\,,$$
+即
+\tbox{$$e^{at}f(t) \ltf F(p-a)\,. $$}
+\ech
+\end{frame}
+
+\begin{frame}
+  \chtitle{指数函数的拉普拉斯变换}
+  \bch
+  利用 $1 \ltf \frac{1}{p} $以及乘指数函数因子的规则，得到
+
+  {\blue  $$ e^{at} \ltf \frac{1}{p-a},\ \ \ \ \mathrm{Re}(p-a)>0.$$}
+  \ech
+\end{frame}
+
+
+\begin{frame}
+  \chtitle{三角函数的拉普拉斯变换}
+  \bch
+  有了指数函数，三角函数就简单了：{\blue
+  $$ \cos{(\omega t)} = \frac{e^{\ii \omega t}+e^{-\ii \omega t}}{2}  \ltf \frac{1}{2}\left(\frac{1}{p-i\omega} +  \frac{1}{p+i\omega}\right) = \frac{p}{p^2+\omega^2} $$
+
+  $$ \sin{(\omega t)} = \frac{e^{\ii \omega t}-e^{-\ii \omega t}}{2\ii}  \ltf \frac{1}{2\ii}\left(\frac{1}{p-\ii\omega} - \frac{1}{p+\ii\omega}\right) = \frac{\omega}{p^2+\omega^2} $$}
+  \ech
+\end{frame}
+
+
+\begin{frame}
+\chtitle{源的积分}
+\bch
+源的积分比较简单：
+
+\skiplines
+
+设$f\ltf F$，令$g(t) = \int_0^tf(u)du$，并设$g\ltf G$。
+
+因$g'(t)=f(t)$，且$g(0)=0$，根据导函数的拉普拉斯变换规则：
+$$F(p) = pG(p) - 0 = pG(p)$$
+即
+\tbox{$$\int_0^t f(u)du  \ltf \frac{F(p)}{p} $$}
+
+\ech
+\end{frame}
+
+
+\begin{frame}
+\chtitle{像的积分}
+\bch
+像的积分则稍显复杂。
+
+\skipline
+
+设$f\ltf F$，令$g(t) = \frac{f(t)}{t}$，并设$g\ltf G$。
+
+根据幂函数因子的拉普拉斯变换规则：
+$$ F(p) = -G'(p). $$
+{\bf 一般情况下}，$G(\infty) = 0$。积分得到
+\tbox{$$  \frac{f(t)}{t} = \int_p^\infty F(\upsilon)d\upsilon $$}
+
+{\small 思考：你能设计一个不一般的情况让$G(\infty)=0$不成立吗？}
+
+
+\ech
+\end{frame}
+
+
+\begin{frame}
+\chtitle{平移}
+\bch
+设$f(t)$的拉普拉斯变换为$F(p)$，则$f(t-a)h(t-a)$的拉普拉斯变换为
+
+$$\int_a^\infty f(t-a) e^{-pt} dt = e^{-ap} \inthalf f(u)e^{-pu}du = e^{-ap}F(p) $$
+即
+\tbox{$$f(t-a)h(t-a) \ltf e^{-ap} F(p)$$}
+\ech
+\end{frame}
+
+
+\begin{frame}
+\chtitle{卷积}
+\bch
+对拉普拉斯变换， $f$和$g$的卷积$f*g$定义为
+$$ (f*g)(t) = \int_0^t f(t-\tau)g(\tau)d\tau. $$
+这跟我们学习傅立叶变换时的卷积定义不太一样。但不必担心符号混乱：一般拉普拉斯变换和傅立叶变换不会同时进行。
+
+\ech
+\end{frame}
+
+
+\begin{frame}
+\chtitle{拉普拉斯变换的卷积定理}
+\bch
+拉普拉斯变换的卷积定理和傅立叶变换的卷积定理在形式上完全相同。
+
+    \tbox{\blue
+      如果$f\ltf F$, $g\ltf G$，则$ f*g \ltf FG .$
+      }
+\ech
+\end{frame}
+
+\begin{frame}
+\chtitle{卷积定理的证明}
+\bch
+\be
+(f*g) \ltf \int_0^\infty e^{-pt}dt \int_0^t f(t-\tau)g(\tau)d\tau.
+\ee
+做变量替换$u = t-\tau , \upsilon = \tau$，注意$0<\tau<t$的条件转化为$u>0, \upsilon>0$。转换矩阵的行列式为$1$，所以$dtd\tau$直接改为$dud\upsilon$：
+
+\be
+(f*g) \ltf \int_0^\infty \int_0^\infty  e^{-p(u+\upsilon)}f(u)g(\upsilon)dud\upsilon = F(p) G(p)
+\ee
+
+\ech
+
+\end{frame}
+
+
+\begin{frame}
+  \chtitle{思考题}
+  \bch
+
+    \addfig{1}{drive.jpg}
+
+    试利用卷积定理以及$h(t) \ltf \frac{1}{p}$，证明积分的拉普拉斯变换性质：
+    $$ \int_0^t f(u) du \ltf \frac{F(p)}{p} \, . $$
+  \ech
+\end{frame}
+
+\begin{frame}
+  \chtitle{拉普拉斯变换的反演}
+  \bch
+
+{\Large 拉普拉斯变换是否像傅立叶变换一样存在反演公式呢？}
+  \ech
+\end{frame}
+
+\begin{frame}
+  \chtitle{梅林反演公式(了解这样的公式存在即可)}
+  \bch
+      {\blue 若$f(t) \ltf F(p)$，则$F(p) = \frac{1}{2\pi \ii} \int_{\beta-\ii\infty}^{\beta+\ii \infty}F(p)e^{pt}dp$}。
+      
+      其中$\beta$是足够大的正数。
+
+      \skipline
+      
+      我们计算拉普拉斯变换的反演一般{\bf 不用}这个公式。
+
+      \skipline
+      
+      \bcenter
+      \lfig{1}{kaisen.jpg}
+      
+      我就喜欢这样看起来很厉害又不会用到的公式
+      \ecenter
+  \ech
+\end{frame}
+
+\begin{frame}
+  \chtitle{总结}
+  \bch
+  \bcenter
+  学了这么多公式，真是太开心了
+
+  \lfig{1}{kaisen.jpg}
+
+  除了都记不住，没别的毛病
+  \ecenter
+  \ech
+\end{frame}
+
+
+\begin{frame}
+  \chtitle{精简版}
+  \bch
+  \tbox{
+  \bea
+ t^{\alpha-1} && \ltf \frac{\Gamma(\alpha)}{p^\alpha}, \ \ \ \mathrm{Re}(\alpha)>0; \newl
+ e^{\alpha t} && \ltf \frac{1}{p-\alpha}; \newl
+ f'(t) && \ltf pF(p) - f(0); \newl
+ f''(t) && \ltf p^2F(p) - pf(0) - f'(0);  \newl
+ \int_0^t f(\tau) d\tau && \ltf  \frac{F(p)}{p} .
+ \eea}
+  
+  \ech
+\end{frame}
+
+
+\begin{frame}
+  \chtitle{回到电路题}
+  \bch
+  $$Q''+ \frac{1}{CR} Q' +  \frac{1}{CL}Q = \frac{\mathcal{E}}{L} $$  
+  对上式进行拉普拉斯变换，设$Q(t) \ltf \tilde{Q}(p)$:
+  $$ \left[p^2 \tilde{Q} - pQ(0) - Q'(0)\right] + \frac{1}{CR} \left[p\tilde{Q} - Q(0)\right] + \frac{1}{CL} \tilde{Q} = \frac{\mathcal{E}}{L p } $$
+  利用$Q(0) = Q'(0) = 0$，得到
+  $$  \tilde{Q} = \frac{\mathcal{E}}{Lp\left(p^2+\frac{p}{CR} + \frac{1}{CL}\right)} $$
+  \ech
+\end{frame}
+
+\begin{frame}
+  \chtitle{回到电路题}
+  \bch
+  如果注意导$Q(t) = \int_0^t I_2(\tau) d\tau$，记$I_2$的拉普拉斯变换为$\tilde{I}_2$。利用$Q(0) = 0$以及导函数的拉普拉斯变换法则，有
+  
+  $$  \tilde{I}_2 = \frac{\mathcal{E}}{L\left(p^2+\frac{p}{CR} + \frac{1}{CL}\right)} $$
+
+  做因式分解 $p^2 + \frac{1}{CR} p + \frac{1}{CL} = (p-\alpha)(p-\beta)$ （即求出一元二次多项式的两个根$\alpha,\beta$)。
+    如果$L = 4CR^2$，则$\alpha = \beta = -\frac{1}{2CR}$，结果为 $$ I_2 = \frac{\mathcal{E}}{L}t e^{\alpha t} .$$
+    如果$L \ne 4CR^2$，则
+    $$\tilde{I}_2 = \frac{\mathcal{E}}{L(\alpha-\beta)} \left(\frac{1}{p-\alpha}-\frac{1}{p-\beta}\right) $$
+  即$I_2 = \frac{\mathcal{E}}{L(\alpha-\beta)}\left(e^{\alpha t}- e^{\beta t}\right).$
+  \ech
+\end{frame}
+
+
+
+\section{Homework}
+
+\begin{frame}
+\chtitle{课后作业}
+\bch
+\bitem
+\item[22]{求$f(t) = \int_0^t \frac{\sin x}{x}dx$的拉普拉斯变换。}
+\item[23]{求$F(p) = \frac{1}{p^2-2p+2}$的拉普拉斯逆变换。}
+\item[24]{如图电动势为$\mathcal{E}$的直流稳压电源和电感$L$以及电阻$R$串联，在$t=0$时刻合上开关$K$，求之后电路中的电流$I(t)$。
+\addfig{2}{electric_problem2.png}}
+  \eitem
+\ech
+\end{frame}
+
+\end{document}
