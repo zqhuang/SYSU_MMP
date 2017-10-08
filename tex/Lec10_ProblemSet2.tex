@@ -1,0 +1,170 @@
+\documentclass[CJK]{beamer}
+\input{macros.tex}
+\input{titlepage.tex}
+  \date{}
+\begin{document}
+\tpage{10}{Problem Set II}
+
+\newcounter{chap}
+\newcounter{problem}[chap]
+\def\proid{{Problem \thechap.\theproblem}\ }
+
+\begin{frame}
+  \chtitle{本讲内容}
+  \bch
+  \bitem
+\item{一元$n$次多项式的根和系数的关系}
+\item{无穷远点是个伪概念}  
+  \eitem
+  \ech
+\end{frame}
+
+\setcounter{chap}{2}
+\setcounter{problem}{0}
+
+\stepcounter{problem}
+
+\begin{frame}
+  \chtitle{\proid (\sthree)}
+  \bch
+  证明：一元$n$次复系数多项式 ($n\in Z^+$)
+  $$P(z) = z^n + c_{n-1}z^{n-1}+ c_{n-2}z^{n-2}+\ldots + c_1 z + c_0 $$
+  一定可以分解为一次多项式的乘积：
+  $$P(z) = (z-z_1)(z-z_2)\ldots(z-z_n).$$
+  \ech
+\end{frame}
+
+\begin{frame}
+  \chtitle{\proid 解答}
+  \bch
+  证明：用归纳法。命题对$n=1$显然。对$n>1$，假设命题对$n-1$成立。
+
+  在作业题中我们已经用最大模原理证明了$P(z)$至少有一个复数根，不妨设为$z_1$，用$z-z_1$去除$P(z)$，一定可以得到如下结果：
+  $$P(z) = (z-z_1) Q(z) + c$$
+  其中 $Q(z)$为$n-1$次多项式，$c$为常数。两边令$z=z_1$并利用$z_1$是$P(z)$的根这一事实，就得到$c=0$。也就是说
+  $$P(z) = (z-z_1)Q(z).$$
+  再利用归纳假设，$Q(z)$可以分解为一次多项式的乘积。证毕。
+
+  
+  \ech
+\end{frame}
+
+\begin{frame}
+\chtitle{初中知识回顾：多项式的根和系数关系}
+\bch
+设多项式$P(z) = z^n + c_{n-1}z^{n-1}+ c_{n-2}z^{n-2}+\ldots + c_1 z + c_0$的所有根为
+$z_1, z_2, \ldots, z_n$，则
+$$(z-z_1)(z-z_2)\ldots(z-z_n) = z^n + c_{n-1}z^{n-1}+ c_{n-2}z^{n-2}+\ldots + c_1 z + c_0$$
+比较两边的同次项系数，可以得到
+\bea
+z_1+z_2+\ldots + z_n &=& -c_{n-1} \newl
+\sum_{1\le i<j\le n} z_i z_j &=& c_{n-2} \newl
+\sum_{1\le i<j<k\le n} z_i z_jz_k &=& -c_{n-3} \newl
+\ldots && \newl
+z_1z_2\ldots z_n\left(\frac{1}{z_1}+\frac{1}{z_2}+\ldots+\frac{1}{z_n}\right) &=& (-1)^{n-1} c_1 \newl
+z_1z_2\ldots z_n &=& (-1)^n c_0
+\eea
+\ech
+\end{frame}
+
+\stepcounter{problem}
+\begin{frame}
+\chtitle{\proid (\stwo)}
+\bch
+方程$z^5+z^4+5z^3+1=0$的所有复数根的平方和等于多少？
+\ech
+\end{frame}
+
+\begin{frame}
+\chtitle{\proid 解答}
+\bch
+设五个根为$z_1, z_2, \ldots, z_5$，根据根和系数的关系
+\begin{eqnarray}
+\sum_{i=1}^5 z_i &=& -1,  \label{eq:1-1-1} \\
+\sum_{1\le i<j\le 5} z_iz_j &=& 5. \label{eq:1-1-2}
+\end{eqnarray}
+\eqref{eq:1-1-1} $- 2\times $ \eqref{eq:1-1-2} 得到
+$$\sum_i z_i^2 = -9. $$
+\ech
+\end{frame}
+
+\stepcounter{problem}
+\begin{frame}
+\chtitle{\proid (\sthree)}
+\bch
+证明对任意正整数$n$，
+$$\sin\frac{\pi}{n} \sin\frac{2\pi}{n}\ldots \sin\frac{(n-1)\pi}{n} = \frac{n}{2^{n-1}} \, . $$
+\ech
+\end{frame}
+
+\begin{frame}
+\chtitle{\proid  解答}
+\bch
+考虑$\frac{1-(1-z)^n}{z} = 0$的$n-1$个根$ z_k = 1- e^{\frac{2k \pi \ii}{n}} $ ($k=1,\ldots, n-1$)，利用$|z_k| = 2\sin\frac{k\pi}{n}$，以及根与系数关系
+$$|z_1z_2\ldots z_{n-1}| = n\,. $$
+立刻可以得到结论。
+\ech
+\end{frame}
+
+
+
+\begin{frame}
+\chtitle{无穷远点是个伪概念\bigbye}
+\bch
+在很多复变函数的教材中有无穷远点和无穷远点处的留数的概念。
+
+\skiplines
+
+我们并不想这样自寻烦恼：有两种很简单的方法可以得到一样的计算结果。
+\bitem
+\item[(1)]{画一个半径$\rightarrow \infty$的大圆，考虑大圆和已有围道之间的区域。}
+\item[(2)]{换元$u=\frac{1}{z}$。}
+\eitem
+\ech
+\end{frame}
+
+\stepcounter{problem}
+\begin{frame}
+\chtitle{\proid (\stwo)}
+\bch
+\addfig{2}{problem1-3.png}
+在如图的围道上计算积分
+$$\oint_{|z|=2}\,\frac{z^{60}}{(z-3)\left(z^{32}-1\right)^2} dz\,. $$
+\ech
+\end{frame}
+
+\begin{frame}
+\chtitle{\proid 解法一}
+\bch
+\addfig{1.9}{problem1-3-s.png}
+
+令区域$T: 3<|z|<R$。所考虑的函数在$T$内只有一个孤立奇点：$z=3$。根据留数定理：
+$$\left(\oint_{C_R} - \oint_C\right) f(z) dz = 2\pi\ii\res{f}{3} $$
+\ech
+\end{frame}
+
+\begin{frame}
+\chtitle{\proid 解法一(续)}
+\bch
+\addfig{1.8}{problem1-3-s.png}
+容易看出当$R\rightarrow \infty$时，在$C_R$上有$|f(z)|\sim \frac{1}{R^5}$，沿$C_R$积分后最多$\sim \frac{1}{R^4} \rightarrow 0$。因此得到
+$$ \oint_C f(z) dz  = -2\pi\ii \res{f}{3} = -2\pi\ii\frac{3^{60}}{(3^{32}-1)^2} $$
+\ech
+\end{frame}
+
+
+\begin{frame}
+\chtitle{\proid 解法二}
+\bch
+令$u = \frac{1}{z}$，则
+$$\oint_{|z|=2} \frac{z^{60}}{(z-3)\left(z^{32}-1\right)^2} dz = \int_{|u|=\frac{1}{2}} \frac{u^3}{(1-3u)\left(1-u^{32}\right)^2} du $$
+{\scriptsize 注意映射$u=1/z$使逆时针方向的围道变为顺时针方向，换回到（默认的）逆时针方向后又多了个负号。}
+
+在围道内仅有$u=1/3$一个孤立奇点，容易用留数定理算出
+$$ \int_{|u|=\frac{1}{2}} \frac{u^3}{(1-3u)\left(1-u^{32}\right)^2} du = -\frac{2\pi\ii}{3} \frac{1}{3^3\left(1-\frac{1}{3^{32}}\right)^2} = -2\pi\ii \frac{3^{60}}{\left(3^{32}-1\right)^2} $$
+
+\ech
+\end{frame}
+
+
+\end{document}
