@@ -10,11 +10,14 @@
 \def\proid{{Problem \thechap.\theproblem}\ }
 
 \begin{frame}
-  \chtitle{本讲内容}
+  \chtitle{本讲内容: 复变函数知识回顾}
   \bch
   \bitem
+\item{复数的几何意义}
+\item{柯西-黎曼条件}
 \item{一元$n$次多项式的根和系数的关系}
-\item{无穷远点是个伪概念}  
+\item{柯西积分公式用于估算}
+\item{无穷远点是个伪概念}
   \eitem
   \ech
 \end{frame}
@@ -23,7 +26,94 @@
 \setcounter{problem}{0}
 
 \stepcounter{problem}
+\begin{frame}
+  \chtitle{\proid (\sone)}
+  \bch
+  区域$|z-3|+|z+3|\le 10 $的面积是多大？
+  \ech
+\end{frame}
 
+
+\begin{frame}
+  \chtitle{\proid 解答}
+  \bch
+  我们在小学曾学过：到两点之间距离之和为常数的点的集合为椭圆。所以$|z-3|+|z+3|=10$描述的是半焦距$c=3$，半长轴$a=5$的椭圆。$|z-3|+|z+3|\le 10 $对应的是该椭圆包围的区域，面积为
+  $$ S = \pi a b = \pi a \sqrt{a^2-c^2} = 20\pi .$$
+  \ech
+\end{frame}
+
+
+\stepcounter{problem}
+\begin{frame}
+  \chtitle{\proid (\stwo)}
+  \bch
+  设$z$为任意一个复数，则$f(z) = |z-1|^6+(|z|+1)^6$的最小可能的值是多少？
+  \ech
+\end{frame}
+
+
+\begin{frame}
+  \chtitle{\proid 解答}
+  \bch
+  $f(0) = 2$是最小值，证明如下：
+  \bea
+  f(z) &=& |1 - 6z+\ldots + z^6| + (|z|+1)^6 \newl
+  &\ge & 1- 6|z| - \ldots - |z|^6 + 1 + 6 |z| + \ldots + |z|^6 \newl
+  &=& 2
+  \eea
+  
+  \ech
+\end{frame}
+
+
+\stepcounter{problem}
+\begin{frame}
+  \chtitle{\proid (\stwo)}
+  \bch
+  $z_1,z_2,z_3,z_4$是两两不同的四个复数，且$\frac{(z_1-z_2)(z_3-z_4)}{(z_2-z_3)(z_4-z_1)}$为实数。试证明：$z_1,z_2,z_3,z_4$在复平面上对应的四个点共线或共圆。
+  \ech
+\end{frame}
+
+\begin{frame}
+  \chtitle{\proid 解答}
+  \bch
+  $\frac{z_1-z_2}{z_3-z_2}$的幅角和$\frac{z_3-z_4}{z_1-z_4}$的幅角（在允许相差$2\pi$整数倍的意义下）或相等或互补，所以$z_1,z_2,z_3,z_4$共圆或共线。
+  \ech
+\end{frame}
+
+
+\stepcounter{problem}
+\begin{frame}
+  \chtitle{\proid (\sthree)}
+  \bch
+  设解析函数$f(z)$可以拆分成实虚部$u$和$\upsilon$，即
+  $$f(x+\ii y) = u(x, y) + \ii \upsilon(x, y), \ \ x,y,u,\upsilon\in \Re $$
+  \bitem
+\item{证明柯西-黎曼条件：
+  $$\frac{\partial u}{\partial x} = \frac{\partial \upsilon}{\partial y}; \frac{\partial u}{\partial y} = -\frac{\partial \upsilon}{\partial x}.$$ }
+\item{证明$u$和$\upsilon$都是调和函数$$\nabla^2 u = \nabla^2 \upsilon = 0,$$
+其中算符$\nabla^2 \equiv \partial_x^2+\partial_y^2$。}
+  \eitem
+  \ech
+\end{frame}
+
+\begin{frame}
+  \chtitle{\proid (\sthree)}
+  \bch
+  证明，设$f'(z) = a+\ii b$，则
+  $$ df = du+\ii d\upsilon = (a+\ii b) (dx + \ii dy).$$
+  分离实虚部得到两个全微分表达式：
+  $$ du = a dx - b dy;\ \  d\upsilon = bdx + ady. $$
+  显然
+  $$ \frac{\partial u}{\partial x} = a = \frac{\partial \upsilon}{\partial y}; \frac{\partial u}{\partial y} = -b =  -\frac{\partial \upsilon}{\partial x}. $$
+  再根据两个全微分条件:
+  $$\frac{\partial a}{\partial y} = - \frac{\partial b}{\partial x};\ \
+  \frac{\partial b}{\partial y} = \frac{\partial a}{\partial x}.$$
+  即可得到$u$,$\upsilon$为调和函数的结论。
+  \ech
+\end{frame}
+
+\stepcounter{problem}
 \begin{frame}
   \chtitle{\proid (\sthree)}
   \bch
@@ -108,6 +198,31 @@ $$|z_1z_2\ldots z_{n-1}| = n\,. $$
 
 
 
+\stepcounter{problem}
+\begin{frame}
+\chtitle{\proid (\stwo)}
+\bch
+设$f(z)$在单位圆$|z|\le 1$内部解析，边界上连续；而且已知当$|z|=1$时，$|f(z)-z|\le 1$。试证明：
+$$\left\vert\frac{1}{n!}f^{(n)}\left(\frac{1}{2}\right)\right\vert \le 2^{n+2}.$$
+\ech
+\end{frame}
+
+
+
+\begin{frame}
+\chtitle{\proid 解答}
+\bch
+\bea
+\left\vert\frac{1}{n!}f^{(n)}\left(\frac{1}{2}\right) \right\vert &=& \left\vert\frac{1}{2\pi \ii}\oint_{|z|=1}\frac{f(z)}{\left(z-\frac{1}{2}\right)^{n+1}} dz \right\vert \newl
+&\le & \frac{1}{2\pi} \oint_{|z|=1} \frac{|f(z)-z|+|z|}{\left\vert z-\frac{1}{2}\right\vert^{n+1}} |dz| \newl
+&\le & \frac{1}{2\pi} \oint_{|z|=1} \frac{2}{\left(\frac{1}{2}\right)^{n+1}} |dz| \newl
+&=& 2^{n+2}
+\eea
+\ech
+\end{frame}
+
+
+
 \begin{frame}
 \chtitle{无穷远点是个伪概念\bigbye}
 \bch
@@ -115,7 +230,7 @@ $$|z_1z_2\ldots z_{n-1}| = n\,. $$
 
 \skiplines
 
-我们并不想这样自寻烦恼：有两种很简单的方法可以得到一样的计算结果。
+我们并不想这样自寻烦恼：有两种很简单的方法可以解决问题：
 \bitem
 \item[(1)]{画一个半径$\rightarrow \infty$的大圆，考虑大圆和已有围道之间的区域。}
 \item[(2)]{换元$u=\frac{1}{z}$。}
@@ -166,5 +281,47 @@ $$ \int_{|u|=\frac{1}{2}} \frac{u^3}{(1-3u)\left(1-u^{32}\right)^2} du = -\frac{
 \ech
 \end{frame}
 
+
+\stepcounter{problem}
+
+\begin{frame}
+\chtitle{\proid (\stwo)}
+\bch
+\addfig{2}{problem1-3.png}
+在如图的围道上计算积分
+$$\oint_{|z|=2}\,\frac{z^3e^{\frac{1}{z}}}{1+z} dz .$$
+\ech
+\end{frame}
+
+\begin{frame}
+\chtitle{\proid 解法一}
+\bch
+{\small
+$f(z) = \frac{z^3e^{\frac{1}{z}}}{1+z}$在围道内部有两个孤立奇点：$z=0$和$z=-1$。
+\be
+\res{f}{-1} = - e^{-1}
+\ee
+在$z=0$邻域则可以直接进行Laurent展开：
+$$f(z) = (z^3-z^4+z^5-\ldots)\left(1+\frac{1}{z}+\frac{1}{2! z^2}+ \ldots\right)$$
+\bea
+\res{f}{0} &=& \frac{1}{4!} - \frac{1}{5!} + \frac{1}{6!} - \ldots \newl
+&=& e^{-1} - \left(1-\frac{1}{1!}+\frac{1}{2!} - \frac{1}{3!}\right) \newl
+&=&  e^{-1} - \frac{1}{3}.
+\eea
+所以所求积分为
+$$2\pi \ii\left(e^{-1}-\frac{1}{3}-e^{-1}\right) = -\frac{2\pi \ii}{3}.$$
+}
+\ech
+\end{frame}
+
+\begin{frame}
+\chtitle{\proid 解法二}
+\bch
+令$u=\frac{1}{z}$，则所求积分为
+$$\oint_{|u|=\frac{1}{2}} \frac{e^u}{u^4(u+1)} du ,$$
+在围道内仅有一孤立奇点$u = 0$，故所求积分为
+$$2\pi\ii \frac{1}{3!}\left.\left(\frac{d^3}{du^3} \frac{e^u}{1+u}\right)\right\vert_{u=0} = -\frac{2\pi\ii}{3}.$$
+\ech
+\end{frame}
 
 \end{document}
