@@ -159,7 +159,7 @@ z_1z_2\ldots z_n &=& (-1)^n c_0
 
 \stepcounter{problem}
 \begin{frame}
-\chtitle{\proid (\stwo)}
+\chtitle{\proid (\sone)}
 \bch
 方程$z^5+z^4+5z^3+1=0$的所有复数根的平方和等于多少？
 \ech
@@ -320,7 +320,11 @@ $$2\pi \ii\left(e^{-1}-\frac{1}{3}-e^{-1}\right) = -\frac{2\pi \ii}{3}.$$
 令$u=\frac{1}{z}$，则所求积分为
 $$\oint_{|u|=\frac{1}{2}} \frac{e^u}{u^4(u+1)} du ,$$
 在围道内仅有一孤立奇点$u = 0$，故所求积分为
-$$2\pi\ii \frac{1}{3!}\left.\left(\frac{d^3}{du^3} \frac{e^u}{1+u}\right)\right\vert_{u=0} = -\frac{2\pi\ii}{3}.$$
+\bea
+&& 2\pi\ii \frac{1}{3!}\left.\left(\frac{d^3}{du^3} \frac{e^u}{1+u}\right)\right\vert_{u=0} \newl
+&=& \frac{\pi\ii}{3}\frac{e^u}{1+u}\left(1-\frac{3}{1+u}+\frac{6}{(1+u)^2}-\frac{6}{(1+u)^3}\right)_{u=0} \newl
+&=& -\frac{2\pi\ii}{3}.
+\eea
 \ech
 \end{frame}
 
