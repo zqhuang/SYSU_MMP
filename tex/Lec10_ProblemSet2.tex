@@ -10,14 +10,11 @@
 \def\proid{{Problem \thechap.\theproblem}\ }
 
 \begin{frame}
-  \chtitle{本讲内容: 复变函数知识回顾}
+  \chtitle{本讲内容: 复变积分实战技巧}
   \bch
   \bitem
-\item{复数的几何意义}
-\item{柯西-黎曼条件}
-\item{一元$n$次多项式的根和系数的关系}
-\item{柯西积分公式用于估算}
-\item{无穷远点是个伪概念}
+\item{复变积分的思考次序}
+\item{复变积分不等式的证明}
   \eitem
   \ech
 \end{frame}
@@ -25,156 +22,98 @@
 \setcounter{chap}{2}
 \setcounter{problem}{0}
 
-\stepcounter{problem}
 \begin{frame}
-  \chtitle{\proid (\sone)}
-  \bch
-  区域$|z-3|+|z+3|\le 10 $的面积是多大？
-  \ech
-\end{frame}
-
-
-\begin{frame}
-  \chtitle{\proid 解答}
-  \bch
-  我们在小学曾学过：到两点之间距离之和为常数的点的集合为椭圆。所以$|z-3|+|z+3|=10$描述的是半焦距$c=3$，半长轴$a=5$的椭圆。$|z-3|+|z+3|\le 10 $对应的是该椭圆包围的区域，面积为
-  $$ S = \pi a b = \pi a \sqrt{a^2-c^2} = 20\pi .$$
-  \ech
-\end{frame}
-
-
-\stepcounter{problem}
-\begin{frame}
-  \chtitle{\proid (\stwo)}
-  \bch
-  设$z$为任意一个复数，则$f(z) = |z-1|^6+(|z|+1)^6$的最小可能的值是多少？
-  \ech
-\end{frame}
-
-
-\begin{frame}
-  \chtitle{\proid 解答}
-  \bch
-  $f(0) = 2$是最小值，证明如下：
-  \bea
-  f(z) &=& |1 - 6z+\ldots + z^6| + (|z|+1)^6 \newl
-  &\ge & 1- 6|z| - \ldots - |z|^6 + 1 + 6 |z| + \ldots + |z|^6 \newl
-  &=& 2
-  \eea
-  
-  \ech
-\end{frame}
-
-
-\stepcounter{problem}
-\begin{frame}
-  \chtitle{\proid (\stwo)}
-  \bch
-  $z_1,z_2,z_3,z_4$是两两不同的四个复数，且$\frac{(z_1-z_2)(z_3-z_4)}{(z_2-z_3)(z_4-z_1)}$为实数。试证明：$z_1,z_2,z_3,z_4$在复平面上对应的四个点共线或共圆。
-  \ech
-\end{frame}
-
-\begin{frame}
-  \chtitle{\proid 解答}
-  \bch
-  $\frac{z_1-z_2}{z_3-z_2}$的幅角和$\frac{z_3-z_4}{z_1-z_4}$的幅角（在允许相差$2\pi$整数倍的意义下）或相等或互补，所以$z_1,z_2,z_3,z_4$共圆或共线。
-  \ech
-\end{frame}
-
-
-\stepcounter{problem}
-\begin{frame}
-  \chtitle{\proid (\sthree)}
-  \bch
-  设解析函数$f(z)$可以拆分成实虚部$u$和$\upsilon$，即
-  $$f(x+\ii y) = u(x, y) + \ii \upsilon(x, y), \ \ x,y,u,\upsilon\in \Re $$
-  \bitem
-\item{证明柯西-黎曼条件：
-  $$\frac{\partial u}{\partial x} = \frac{\partial \upsilon}{\partial y}; \frac{\partial u}{\partial y} = -\frac{\partial \upsilon}{\partial x}.$$ }
-\item{证明$u$和$\upsilon$都是调和函数$$\nabla^2 u = \nabla^2 \upsilon = 0,$$
-其中算符$\nabla^2 \equiv \partial_x^2+\partial_y^2$。}
-  \eitem
-  \ech
-\end{frame}
-
-\begin{frame}
-  \chtitle{\proid (\sthree)}
-  \bch
-  证明，设$f'(z) = a+\ii b$，则
-  $$ df = du+\ii d\upsilon = (a+\ii b) (dx + \ii dy).$$
-  分离实虚部得到两个全微分表达式：
-  $$ du = a dx - b dy;\ \  d\upsilon = bdx + ady. $$
-  显然
-  $$ \frac{\partial u}{\partial x} = a = \frac{\partial \upsilon}{\partial y}; \frac{\partial u}{\partial y} = -b =  -\frac{\partial \upsilon}{\partial x}. $$
-  再根据两个全微分条件:
-  $$\frac{\partial a}{\partial y} = - \frac{\partial b}{\partial x};\ \
-  \frac{\partial b}{\partial y} = \frac{\partial a}{\partial x}.$$
-  即可得到$u$,$\upsilon$为调和函数的结论。
-  \ech
-\end{frame}
-
-\stepcounter{problem}
-\begin{frame}
-  \chtitle{\proid (\sthree)}
-  \bch
-  证明：一元$n$次复系数多项式 ($n\in Z^+$)
-  $$P(z) = z^n + c_{n-1}z^{n-1}+ c_{n-2}z^{n-2}+\ldots + c_1 z + c_0 $$
-  一定可以分解为一次多项式的乘积：
-  $$P(z) = (z-z_1)(z-z_2)\ldots(z-z_n).$$
-  \ech
-\end{frame}
-
-\begin{frame}
-  \chtitle{\proid 解答}
-  \bch
-  证明：用归纳法。命题对$n=1$显然。对$n>1$，假设命题对$n-1$成立。
-
-  在作业题中我们已经用最大模原理证明了$P(z)$至少有一个复数根，不妨设为$z_1$，用$z-z_1$去除$P(z)$，一定可以得到如下结果：
-  $$P(z) = (z-z_1) Q(z) + c$$
-  其中 $Q(z)$为$n-1$次多项式，$c$为常数。两边令$z=z_1$并利用$z_1$是$P(z)$的根这一事实，就得到$c=0$。也就是说
-  $$P(z) = (z-z_1)Q(z).$$
-  再利用归纳假设，$Q(z)$可以分解为一次多项式的乘积。证毕。
-
-  
-  \ech
-\end{frame}
-
-\begin{frame}
-\chtitle{初中知识回顾：多项式的根和系数关系}
+\chtitle{复变积分的思考次序}
 \bch
-设多项式$P(z) = z^n + c_{n-1}z^{n-1}+ c_{n-2}z^{n-2}+\ldots + c_1 z + c_0$的所有根为
-$z_1, z_2, \ldots, z_n$，则
-$$(z-z_1)(z-z_2)\ldots(z-z_n) = z^n + c_{n-1}z^{n-1}+ c_{n-2}z^{n-2}+\ldots + c_1 z + c_0$$
-比较两边的同次项系数，可以得到
-\bea
-z_1+z_2+\ldots + z_n &=& -c_{n-1} \newl
-\sum_{1\le i<j\le n} z_i z_j &=& c_{n-2} \newl
-\sum_{1\le i<j<k\le n} z_i z_jz_k &=& -c_{n-3} \newl
-\ldots && \newl
-z_1z_2\ldots z_n\left(\frac{1}{z_1}+\frac{1}{z_2}+\ldots+\frac{1}{z_n}\right) &=& (-1)^{n-1} c_1 \newl
-z_1z_2\ldots z_n &=& (-1)^n c_0
-\eea
-\ech
+复变积分的思考次序
+\bitem
+\item{是否可以一眼看出原函数}
+\item{是否可以直接用留数定理}
+\item{是否可以构造围道或变量替换间接地用留数定理}
+\item{最后一招：写成实积分硬算}
+\eitem
+  \ech
 \end{frame}
+
 
 \stepcounter{problem}
 \begin{frame}
 \chtitle{\proid (\sone)}
 \bch
-方程$z^5+z^4+5z^3+1=0$的所有复数根的平方和等于多少？
+\addfig{1.5}{problem2-1.png}
+
+如图，计算从$1$到$-1$的一条形状为抛物线的曲线$C$计算积分
+$$\int_C \frac{dz}{\sqrt{z}},$$
+约定$z=1$时幅角为零且幅角连续变化。
+
+\ech
+\end{frame}
+
+
+
+\begin{frame}
+\chtitle{\proid 解答}
+\bch
+\addfig{1.5}{problem2-1.png}
+
+一眼可以看出原函数，但注意要弄清积分起点和终点的幅角。
+
+\be
+\int_C \frac{dz}{\sqrt{z}} = 2 \sqrt{z}|_{1}^{e^{\ii\pi}} = 2(e^{\ii\pi/2} - 1) = 2(\ii -1)
+\ee
+
+\ech
+\end{frame}
+
+\stepcounter{problem}
+
+\begin{frame}
+\chtitle{\proid (\stwo)}
+\bch
+\addfig{1.5}{problem2-1.png}
+
+沿如图的抛物线形状路径$C$计算积分
+$$\oint_C \frac{dz}{1+z^2}. $$
+\ech
+\end{frame}
+
+
+\begin{frame}
+\chtitle{\proid 解答}
+\bch
+根据
+$$\frac{1}{1+z^2} = \frac{1}{2\ii}\left(\frac{1}{z-\ii} - \frac{1}{z+\ii}\right)$$
+一眼可以看出原函数为$$F(z) = \frac{1}{2\ii} \ln \frac{z-\ii}{z+\ii}$$ (注意不要凭借高数的经验把$\frac{1}{1+z^2}$的原函数写成$\arctan z$这样随幅角变化规律不明显的形式)。
+
+从起点到终点$\frac{z-\ii}{z+\ii}$的模不变，幅角增大了$\pi$（这点可能需要仔细画个图分析下才能明白)，所以$\ln \frac{z-\ii}{z+\ii}$的变化为$\ii \pi$。积分结果为
+  $$\frac{1}{2\ii} \ii \pi = \frac{\pi}{2}. $$
+
+
+
+\ech
+\end{frame}
+
+
+\stepcounter{problem}
+
+\begin{frame}
+\chtitle{\proid (\stwo)}
+\bch
+计算沿逆时针方向的围道积分：
+$$\oint_{|z|=4}\frac{\sin z}{(z-\pi)^4}dz$$
 \ech
 \end{frame}
 
 \begin{frame}
 \chtitle{\proid 解答}
 \bch
-设五个根为$z_1, z_2, \ldots, z_5$，根据根和系数的关系
-\begin{eqnarray}
-\sum_{i=1}^5 z_i &=& -1,  \label{eq:1-1-1} \\
-\sum_{1\le i<j\le 5} z_iz_j &=& 5. \label{eq:1-1-2}
-\end{eqnarray}
-\eqref{eq:1-1-1} $- 2\times $ \eqref{eq:1-1-2} 得到
-$$\sum_i z_i^2 = -9. $$
+一眼看不出原函数。
+
+围道内只有$z=\pi$一个孤立奇点，可以直接使用留数定理。虽然这是个三阶极点，但是把它当作四阶极点，用去极点法来求留数更方便：
+$$\res{f}{\pi} = \left.\frac{1}{3!}\left[\frac{d^3}{dz^3} \sin z\right] \right\vert_{z=\pi} = \left.\frac{1}{3!}\left[-\cos z\right] \right\vert_{z=\pi} = \frac{1}{6} $$
+于是所求积分
+$$\oint_{|z|=4}f(z) dz = 2\pi\ii \res{f}{\pi} = \frac{\pi \ii}{3}$$
+
 \ech
 \end{frame}
 
@@ -182,55 +121,54 @@ $$\sum_i z_i^2 = -9. $$
 \begin{frame}
 \chtitle{\proid (\sthree)}
 \bch
-证明对任意正整数$n$，
-$$\sin\frac{\pi}{n} \sin\frac{2\pi}{n}\ldots \sin\frac{(n-1)\pi}{n} = \frac{n}{2^{n-1}} \, . $$
+\addfig{1.5}{problem2-1.png}
+
+沿如图的抛物线形状路径$C$计算积分
+$$\oint_C (1-z^2)^{-\frac{3}{4}} dz. $$
+约定$1-z^2$的幅角在路径的中间（即$z=1.5\ii$)时为零，且幅角连续变化。
 \ech
 \end{frame}
-
-\begin{frame}
-\chtitle{\proid  解答}
-\bch
-考虑$\frac{1-(1-z)^n}{z} = 0$的$n-1$个根$ z_k = 1- e^{\frac{2k \pi \ii}{n}} $ ($k=1,\ldots, n-1$)，利用$|z_k| = 2\sin\frac{k\pi}{n}$，以及根与系数关系
-$$|z_1z_2\ldots z_{n-1}| = n\,. $$
-立刻可以得到结论。
-\ech
-\end{frame}
-
-
-
-\stepcounter{problem}
-\begin{frame}
-\chtitle{\proid (\stwo)}
-\bch
-设$f(z)$在单位圆$|z|\le 1$内部解析，边界上连续；而且已知当$|z|=1$时，$|f(z)-z|\le 1$。试证明：
-$$\left\vert\frac{1}{n!}f^{(n)}\left(\frac{1}{2}\right)\right\vert \le 2^{n+2}.$$
-\ech
-\end{frame}
-
 
 
 \begin{frame}
 \chtitle{\proid 解答}
 \bch
-\bea
-\left\vert\frac{1}{n!}f^{(n)}\left(\frac{1}{2}\right) \right\vert &=& \left\vert\frac{1}{2\pi \ii}\oint_{|z|=1}\frac{f(z)}{\left(z-\frac{1}{2}\right)^{n+1}} dz \right\vert \newl
-&\le & \frac{1}{2\pi} \oint_{|z|=1} \frac{|f(z)-z|+|z|}{\left\vert z-\frac{1}{2}\right\vert^{n+1}} |dz| \newl
-&\le & \frac{1}{2\pi} \oint_{|z|=1} \frac{2}{\left(\frac{1}{2}\right)^{n+1}} |dz| \newl
-&=& 2^{n+2}
-\eea
+
+看不出原函数。也不能直接用留数定理。
+
+\addfig{1.8}{problem2-2.png}
+
+如图，可以通过构造围道间接使用留数定理。
+
+请自行用“绕一圈”的方法判断：可取适当单值分枝使这个围道内被积函数处处解析。另，请验证左右两段小圆弧上的积分（当小圆弧半径趋向于零时）趋向于零。
+
+
+\ech
+\end{frame}
+
+\begin{frame}
+\chtitle{\proid 解答}
+\bch
+于是
+$$\oint_C (1-z^2)^{-\frac{3}{4}} dz + \int_{-1}^1(1-x^2)^{-\frac{3}{4}} dx = 0.$$
+{\small (请验证$1-x^2$的幅角按照题中所给约定确实为零。)}
+
+令$x=2u-1$
+$$\int_{-1}^1(1-x^2)^{-\frac{3}{4}} dx= \frac{1}{\sqrt{2}}\int_0^1u^{-\frac{3}{4}}(1-u)^{-\frac{3}{4}} du = \frac{1}{\sqrt{2\pi}} \left[\sfgamma{\frac{1}{4}}\right]^2 $$
+所以
+$$\oint_C (1-z^2)^{-\frac{3}{4}} dz = -\frac{1}{\sqrt{2\pi}} \left[\sfgamma{\frac{1}{4}}\right]^2$$
 \ech
 \end{frame}
 
 
-
 \begin{frame}
-\chtitle{无穷远点是个伪概念\bigbye}
+\chtitle{无穷远点是个伪概念}
 \bch
-在很多复变函数的教材中有无穷远点和无穷远点处的留数的概念。
+在很多复变函数的教材中有无穷远点和无穷远点处的留数的概念：这些都是为了多折腾几个公式让你背\bye。
 
 \skiplines
 
-我们并不想这样自寻烦恼：有两种很简单的方法可以解决问题：
+实际上并不需要把无穷远点当作一个点，用构造围道和变量替换间接使用留数定理的方法完全可以解决。典型的技巧有：
 \bitem
 \item[(1)]{画一个半径$\rightarrow \infty$的大圆，考虑大圆和已有围道之间的区域。}
 \item[(2)]{换元$u=\frac{1}{z}$。}
@@ -253,7 +191,7 @@ $$\oint_{|z|=2}\,\frac{z^{60}}{(z-3)\left(z^{32}-1\right)^2} dz\,. $$
 \bch
 \addfig{1.9}{problem1-3-s.png}
 
-令区域$T: 3<|z|<R$。所考虑的函数在$T$内只有一个孤立奇点：$z=3$。根据留数定理：
+令区域$T: 2<|z|<R$。所考虑的函数在$T$内只有一个孤立奇点：$z=3$。根据留数定理：
 $$\left(\oint_{C_R} - \oint_C\right) f(z) dz = 2\pi\ii\res{f}{3} $$
 \ech
 \end{frame}
@@ -327,5 +265,63 @@ $$\oint_{|u|=\frac{1}{2}} \frac{e^u}{u^4(u+1)} du ,$$
 \eea
 \ech
 \end{frame}
+
+
+\stepcounter{problem}
+\begin{frame}
+\chtitle{\proid (\sthree)}
+\bch
+\addfig{1.5}{problem2-1.png}
+
+在如图的抛物线路径上计算积分
+$$\int_C \left(z^*dz - zdz^*\right) $$
+其中$z^*$表示$z$的共轭复数。
+\ech
+\end{frame}
+
+\begin{frame}
+\chtitle{\proid 解答}
+\bch
+{\small 依赖于$z^*$的函数一般都不是解析函数，原函数还是留数定理都希望不大。无奈只能写成实积分。先尝试极坐标，令$z = re^{\ii\theta}$:
+\bea
+\int_C \left(z^*dz - zdz^*\right) &=& \int_C re^{-\ii\theta}(dr + \ii rd\theta)e^{\ii\theta} - re^{\ii\theta} (dr - \ii r d\theta)e^{-\ii\theta} \newl
+&=& 2\ii r^2d\theta 
+\eea
+而$\frac{1}{2}r^2d\theta$恰巧是图中扫过的面积元。
+
+\addfig{1.5}{problem2-3.png}
+
+因此原积分等于抛物线下的面积乘以$4\ii$，即结果为$8\ii$。}
+\ech
+\end{frame}
+
+
+\secpage{复变积分不等式的证明}{$$\left\vert\int f(z) dz \right\vert\le \int |f(z)| |dz| $$}
+
+\stepcounter{problem}
+\begin{frame}
+\chtitle{\proid (\stwo)}
+\bch
+设$f(z)$在单位圆$|z|\le 1$内部解析，边界上连续；而且已知当$|z|=1$时，$|f(z)-z|\le 1$。试证明：
+$$\left\vert f^{(n)}\left(\frac{1}{2}\right)\right\vert \le  2^{n+2} n!.$$
+\ech
+\end{frame}
+
+
+
+\begin{frame}
+\chtitle{\proid 解答}
+\bch
+\bea
+\left\vert f^{(n)}\left(\frac{1}{2}\right) \right\vert &=& \left\vert\frac{n!}{2\pi \ii}\oint_{|z|=1}\frac{f(z)}{\left(z-\frac{1}{2}\right)^{n+1}} dz \right\vert \newl
+&\le & \frac{n!}{2\pi} \oint_{|z|=1} \frac{|f(z)|}{\left\vert z-\frac{1}{2}\right\vert^{n+1}} |dz| \newl
+&\le & \frac{n!}{2\pi} \oint_{|z|=1} \frac{|f(z)-z|+|z|}{\left\vert z-\frac{1}{2}\right\vert^{n+1}} |dz| \newl
+&\le & \frac{n!}{2\pi} \oint_{|z|=1} \frac{2}{\left(\frac{1}{2}\right)^{n+1}} |dz| \newl
+&=& 2^{n+2} n! 
+\eea
+\ech
+\end{frame}
+
+
 
 \end{document}
