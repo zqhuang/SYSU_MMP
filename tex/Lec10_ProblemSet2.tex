@@ -73,7 +73,7 @@ $$\int_C \frac{dz}{\sqrt{z}},$$
 \addfig{1.5}{problem2-1.png}
 
 沿如图的抛物线形状路径$C$计算积分
-$$\oint_C \frac{dz}{1+z^2}. $$
+$$\int_C \frac{dz}{1+z^2}. $$
 \ech
 \end{frame}
 
@@ -124,7 +124,7 @@ $$\oint_{|z|=4}f(z) dz = 2\pi\ii \res{f}{\pi} = \frac{\pi \ii}{3}$$
 \addfig{1.5}{problem2-1.png}
 
 沿如图的抛物线形状路径$C$计算积分
-$$\oint_C (1-z^2)^{-\frac{3}{4}} dz. $$
+$$\int_C (1-z^2)^{-\frac{3}{4}} dz. $$
 约定$1-z^2$的幅角在路径的中间（即$z=1.5\ii$)时为零，且幅角连续变化。
 \ech
 \end{frame}
@@ -150,13 +150,13 @@ $$\oint_C (1-z^2)^{-\frac{3}{4}} dz. $$
 \chtitle{\proid 解答}
 \bch
 于是
-$$\oint_C (1-z^2)^{-\frac{3}{4}} dz + \int_{-1}^1(1-x^2)^{-\frac{3}{4}} dx = 0.$$
+$$\int_C (1-z^2)^{-\frac{3}{4}} dz + \int_{-1}^1(1-x^2)^{-\frac{3}{4}} dx = 0.$$
 {\small (请验证$1-x^2$的幅角按照题中所给约定确实为零。)}
 
 令$x=2u-1$
 $$\int_{-1}^1(1-x^2)^{-\frac{3}{4}} dx= \frac{1}{\sqrt{2}}\int_0^1u^{-\frac{3}{4}}(1-u)^{-\frac{3}{4}} du = \frac{1}{\sqrt{2\pi}} \left[\sfgamma{\frac{1}{4}}\right]^2 $$
 所以
-$$\oint_C (1-z^2)^{-\frac{3}{4}} dz = -\frac{1}{\sqrt{2\pi}} \left[\sfgamma{\frac{1}{4}}\right]^2$$
+$$\int_C (1-z^2)^{-\frac{3}{4}} dz = -\frac{1}{\sqrt{2\pi}} \left[\sfgamma{\frac{1}{4}}\right]^2$$
 \ech
 \end{frame}
 
@@ -214,7 +214,7 @@ $$\oint_{|z|=2} \frac{z^{60}}{(z-3)\left(z^{32}-1\right)^2} dz = \int_{|u|=\frac
 {\scriptsize 注意映射$u=1/z$使逆时针方向的围道变为顺时针方向，换回到（默认的）逆时针方向后又多了个负号。}
 
 在围道内仅有$u=1/3$一个孤立奇点，容易用留数定理算出
-$$ \int_{|u|=\frac{1}{2}} \frac{u^3}{(1-3u)\left(1-u^{32}\right)^2} du = -\frac{2\pi\ii}{3} \frac{1}{3^3\left(1-\frac{1}{3^{32}}\right)^2} = -2\pi\ii \frac{3^{60}}{\left(3^{32}-1\right)^2} $$
+$$ \oint_{|u|=\frac{1}{2}} \frac{u^3}{(1-3u)\left(1-u^{32}\right)^2} du = -\frac{2\pi\ii}{3} \frac{1}{3^3\left(1-\frac{1}{3^{32}}\right)^2} = -2\pi\ii \frac{3^{60}}{\left(3^{32}-1\right)^2} $$
 
 \ech
 \end{frame}

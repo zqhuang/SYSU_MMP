@@ -11,6 +11,7 @@
 \graphicspath{{../figures/}}
 %%figures
 \def\lfig#1#2{\includegraphics[width=#1 in]{#2}}
+\def\tfig#1#2{\includegraphics[height=#1 in]{#2}}
 \def\addfig#1#2{\begin{center}\includegraphics[width=#1 in]{#2}\end{center}}
 \def\wulian{\includegraphics[width=0.18in]{emoji_wulian.jpg}}
 \def\bigwulian{\includegraphics[width=0.35in]{emoji_wulian.jpg}}
@@ -38,6 +39,15 @@
 \def\darkblue{\color[rgb]{0,0.2,0.6}}
 \def\skyblue{\color[rgb]{0.2,0.7,1.}}
 %%control
+\def\bral{\left(\begin{array}{l}}
+\def\brar{\end{array}\right)}
+\def\brall{\left(\begin{array}{ll}}
+\def\brarr{\end{array}\right)}
+\def\branchl{\left\{\begin{array}{l}}
+\def\branchr{\end{array}\right.}
+\def\branchll{\left\{\begin{array}{ll}}
+\def\branchrr{\end{array}\right.}
+\def\sfgamma#1{\,\Gamma\left( #1 \right)\,}
 \def\be{\begin{equation}}
 \def\ee{\nonumber\end{equation}}
 \def\bea{\begin{eqnarray}}
@@ -59,11 +69,20 @@
 \def\emini{\end{minipage}}
 \def\tbox#1{\begin{tcolorbox}#1\end{tcolorbox}}
 \def\pfrac#1#2#3{\left(\frac{\partial #1}{\partial #2}\right)_{#3}}
+\def\res#1#2{\,\mathrm{res}\,#1\left(#2\right)\,}
+\def\newt#1#2{\left(\begin{array}{c}#1\\ #2\end{array}\right)}
+\def\reof#1{\,\mathrm{Re}{\left(#1\right)\,}}
+\def\imof#1{\,\mathrm{Im}{\left(#1\right)\,}}
+\def\Arg#1{\,\mathrm{Arg}\,#1\,}
 %%symbols
+\def\tbfill{\underline{\ \hspace{0.8in}\ }}
+\def\intfull{\int_{-\infty}^\infty}
+\def\inthalf{\int_0^\infty}
 \def\bropt{\,(\ \ \ )}
-\def\optlist#1#2#3#4{{({\bf A})\;#1}\ \ \ {({\bf B})\;#2}\ \ \ {({\bf C})\;#3}\ \ \ {({\bf D})\;#4}}
-\def\soptlist#1#2#3{{({\bf A})\;#1}\ \ \ {({\bf B})\;#2}\ \ \ {({\bf C})\;#3}}
-\def\foptlist#1#2#3#4{{({\bf A})\;#1}\ \ \ {({\bf B})\;#2}\ \ \ {({\bf C})\;#3}\\ {({\bf D})\;#4}}
+\def\brans#1{\,(\ {\blue #1}\ )}
+\def\ans#1{\ \ \underline{\blue \ #1 \ }\ \ }
+\def\optlist#1#2#3#4{({\bf A})\,#1\ \ ({\bf B})\,#2\ \ ({\bf C})\,#3\ \ ({\bf D})\,#4}
+\def\foptlist#1#2#3#4{({\bf A})\,#1\ \ ({\bf B})\,#2\ \ ({\bf C})\,#3 \\ ({\bf D})\,#4}
 \def\sone{$\star$}
 \def\stwo{$\star\star$}
 \def\sthree{$\star\star\star$}
@@ -119,6 +138,12 @@
 \def\baru{\bar{u}}
 \def\barv{\bar{\upsilon}}
 \def\qeq{\stackrel{?}{=}}
+\def\ftf{\stackrel{\mathcal{FT}}{\Longrightarrow}}
+\def\ftb{\stackrel{\mathcal{FT}}{\Longleftarrow}}
+\def\ftfb{\stackrel{\mathcal{FT}}{\Longleftrightarrow}}
+\def\ltf{\stackrel{\mathcal{LT}}{\Longrightarrow}}
+\def\ltb{\stackrel{\mathcal{LT}}{\Longleftarrow}}
+\def\ltfb{\stackrel{\mathcal{LT}}{\Longleftrightarrow}}
 \def\torder#1{\mathcal{T}\left(#1\right)}
 \def\rorder#1{\mathcal{R}\left(#1\right)}
 \def\contr#1#2{\contraction{}{#1}{}{#2}#1#2}
@@ -143,8 +168,6 @@
 \def\atm{\,\mathrm{atm}}
 \def\angstrom{\,\text{\AA}}
 \def\SIL{\,\mathrm{L}}
-\def\SIAU{\,\mathrm{AU}}
-\def\SIMpc{\,\mathrm{Mpc}}
 \def\SIkm{\,\mathrm{km}}
 \def\SIyr{\,\mathrm{yr}}
 \def\SIGyr{\,\mathrm{Gyr}}
@@ -174,3 +197,5 @@
 \def\SIK{\,\mathrm{K}}
 \def\SImmHg{\,\mathrm{mmHg}}
 \def\SIPa{\,\mathrm{Pa}}
+%page
+\def\secpage#1#2{\begin{frame}\bch\bcenter{\bf \Huge #1} \skipline \tbox{#2}\ecenter\ech\end{frame}}
