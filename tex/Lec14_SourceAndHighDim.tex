@@ -1,0 +1,194 @@
+\documentclass[CJK]{beamer}
+\input{macros.tex}
+\input{titlepage.tex}
+  \date{}
+\begin{document}
+\tpage{13}{Higher Dimension and Source Terms}
+
+\begin{frame}
+\chtitle{本讲内容}
+\bch
+\bitem
+\item{回顾}
+\item{有源的方程}    
+\item{高维情况的分离变量法}
+\eitem
+\ech
+\end{frame}
+
+
+\section{Review}
+\secpage{回顾}{实验报告是把杀猪刀，老身感觉什么都不记得了……}
+
+\begin{frame}
+\chtitle{目前学过的线性齐次偏微分方程解法}
+\bch
+\bitem
+\item[1]{{\blue \bf 分离变量法} 是首选方案。一般的套路：
+  \bitem
+      \item[1]{ 假设分离变量形式的解$\Phi(x)\Psi(t)$并求出$\Phi$和$\Psi$允许的形式。}
+      \item[2]{如果空间边界条件是非齐次的，求（猜）特解把空间边界条件化为齐次； }
+      \item[3]{用齐次空间边界条件确定展开式中的函数如何选取；}
+      \item[4]{用初始条件确定展开系数}
+        \eitem}
+\item[2]{{\blue \bf 积分变换方法} 是分离变量法在无穷长区间上的推广。区别是：积分变换的存在性本身默认了一些无穷远处的性质，无须对展开式中的函数进行选取。(分离变量法第3步可以省略）}
+\item[3]{{\blue \bf 格林函数方法} 也需要把空间边界条件化为齐次。区别是：不用分离变量的乘积形式函数对解进行分解；而用格林函数（初始条件为$\delta(x-x_0)$的解，或者说对$x_0$处的单位脉冲的响应）对解进行分解。}
+\eitem
+\ech
+\end{frame}
+
+
+\begin{frame}
+\chtitle{目前学过的两种方程}
+\bch
+热传导方程
+\tbox{$$\frac{\partial u}{\partial t} - a\nabla^2 u = 0 $$}
+
+波动方程
+\tbox{$$\frac{\partial^2 u}{\partial t^2} - a^2\nabla^2 u = 0 $$}
+
+\ech
+\end{frame}
+
+\section{Source Terms}
+\secpage{有源的方程}{原则上可以暴力解决，实际上……心好累}
+
+
+
+\section{Higher Dimension}
+\secpage{高维情况的分离变量法}{寻找谐函数是关键}
+
+\begin{frame}
+\chtitle{关于分离变量法的一个疑惑}
+\bch
+\addfig{1}{think1.jpg}
+
+分离变量第1步设$\Phi(x)\Psi(t)$……那如果变量超过2个怎么办？
+\ech
+\end{frame}
+
+
+\begin{frame}
+\chtitle{例题1}
+\bch
+边长为$L$的正方形弹性膜，四边都固定，求解膜的小振动问题：
+\bea
+\frac{\partial^2 u}{\partial t^2} - a^2\nabla^2 u &=& 0 , \newl
+\left. u \right\vert_{x = 0} &=& 0 , \newl
+\left. u \right\vert_{x = L} &=& 0 , \newl
+\left. u \right\vert_{y = 0} &=& 0 , \newl
+\left. u \right\vert_{y = L} &=& 0 , \newl
+\left. u \right\vert_{t=0} &=& \phi(x,y) , \newl
+\left. \frac{\partial u}{\partial t} \right\vert_{t=0} &=& \psi(x,y) ,
+\eea
+其中$ \nabla^2 = \frac{\partial^2 }{\partial x^2} + \frac{\partial^2 }{\partial y^2}. $
+\ech
+\end{frame}
+
+
+
+\begin{frame}
+\chtitle{解答}
+\bch
+先寻找分离变量型解，令$u = \Phi(x,y)\Psi(t)$，代入波动方程，得到
+$$ \frac{1}{a^2} \frac{\Psi'' }{\Psi} = \frac{\nabla^2\Phi}{\Phi} $$
+等式左边是$t$的函数，右边是$x,y $的函数，要两边恒等，只能是常数：
+$$ \frac{1}{a^2} \frac{\Psi'' }{\Psi} = \frac{\nabla^2\Phi}{\Phi} = - k^2$$
+{\scriptsize （$\frac{\nabla^2\Phi}{\Phi} = k^2$的情形对常见边界条件用处不大，被无情抛弃。）}
+
+解出分离变量型解：
+$$ u_1 = Q(x, y) e^{\pm iakt}$$
+其中$Q(x,y)$是
+{\blue $$\nabla^2Q = -k^2 Q$$
+的解，称为 谐函数}。
+\ech
+\end{frame}
+
+
+
+\begin{frame}
+\chtitle{谐函数}
+\bch
+在边界为正方形的情况下，取直角坐标系是很漂亮的操作，那么
+$$\nabla^2Q = -k^2 Q$$
+的解是平面波
+$$ Q = e^{\ii \veck \cdot \vecx} $$
+这里我们用矢量写法$\vecx$来表示$(x, y)$，$\veck$来表示$(k_x, k_y)$ (满足$|\veck|=\sqrt{k_x^2+k_y^2} = k$)。
+
+
+和一维的情况类似，对应一组$k_x>0, k_y>0$有四种满足条件的解(因为$k_x, k_y$分别可以取)，可以重新写成正弦和余弦的实数表达形式。
+\ech
+\end{frame}
+
+
+\begin{frame}
+\chtitle{级数展开}
+\bch
+空间边界条件已经是齐次的了，直接把解进行分解：
+\bea u &=& \sum_{m,n=0}^\infty c_{mn} \sin\frac{m\pi x}{L} \sin\frac{n\pi y}{L} \cos{(akt)} \newl
+&& + \sum_{m,n=0}^\infty s_{mn} \sin\frac{m\pi x}{L} \sin\frac{n\pi y}{L} \sin{(akt)}.
+\eea
+利用两个初始条件分别可以求出系数$c_{mn}$和$s_{mn}$。
+\ech
+\end{frame}
+
+
+
+\begin{frame}
+\chtitle{例题2}
+\bch
+有孤立的，半径为$a$的均匀厚度圆形金属片。初态$t=0$时刻金属片中心温度为$T_0$，金属片上距离中心$r$处的温度为
+$$T(r) =T_0\left(1+\frac{r^2}{a^2}\right).$$
+已知金属片质量面密度为$\sigma$，单位质量比热为$c$。求之后圆盘上各点的温度变化。
+
+\skiplines
+
+{（\wulian 这题看着好眼熟）}
+\ech
+\end{frame}
+
+
+
+\begin{frame}
+  \chtitle{分离变量}
+  \bch
+  \ech
+\end{frame}
+
+
+
+\section{Homework}
+
+\begin{frame}
+\chtitle{课后作业 (题号 30-32)}
+\bch
+\bitem
+\item[30]{}
+\eitem
+\ech
+\end{frame}
+
+
+\begin{frame}
+\chtitle{课后作业 (题号 30-32)}
+\bch
+\bitem
+\item[31]{
+}
+\eitem
+\ech
+\end{frame}
+
+
+\begin{frame}
+\chtitle{课后作业 (题号 30-32)}
+\bch
+\bitem
+\item[32]{
+}
+\eitem
+\ech
+\end{frame}
+
+
+\end{document}
