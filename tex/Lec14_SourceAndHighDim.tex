@@ -3,7 +3,7 @@
 \input{titlepage.tex}
   \date{}
 \begin{document}
-\tpage{13}{Higher Dimension and Source Terms}
+\tpage{14}{Source Terms and High Dimensions}
 
 \begin{frame}
 \chtitle{本讲内容}
@@ -43,16 +43,134 @@
 \bch
 热传导方程
 \tbox{$$\frac{\partial u}{\partial t} - a\nabla^2 u = 0 $$}
+具有衰减和趋于稳定的特性。一维情况格林函数为$\frac{1}{\sqrt{4\pi at}}e^{-\frac{(x-x_0)^2}{4at}}$。
+
+\skiplines
 
 波动方程
 \tbox{$$\frac{\partial^2 u}{\partial t^2} - a^2\nabla^2 u = 0 $$}
-
+具有波动特性。一维无边界情况通解为$C(x-at)+D(x+at)$。
 \ech
 \end{frame}
 
 \section{Source Terms}
 \secpage{有源的方程}{原则上可以暴力解决，实际上……心好累}
 
+\begin{frame}
+\chtitle{有源的问题}
+\bch
+有源的例子：
+\bitem
+\item{不良导体棒上处处有热源 （烤串）；
+$$\frac{\partial u}{\partial t} - a\frac{\partial^2 u}{\partial x^2} = f(x,t) $$
+}
+\item{弦作受迫振动（弹琴）
+$$\frac{\partial^2 u}{\partial t^2} - a^2\frac{\partial^2 u}{\partial x^2} = f(x,t) $$ }
+  \eitem
+  其中$f$正比于单位时间单位长度输入的热量或外力。
+  
+\ech
+\end{frame}
+
+
+\begin{frame}
+\chtitle{例题1}
+\bch
+求解$0\le x\le L$上的烤串问题：
+\bea
+\frac{\partial u}{\partial t} - a\frac{\partial^2u}{\partial x^2} &=& \phi(x,t), \newl
+\left. u \right\vert_{x=0} = 0, \newl
+\left. u \right\vert_{x=L} = 0, \newl
+\left. u \right\vert_{t=0} = 0. \newl
+\eea
+\ech
+\end{frame}
+
+\begin{frame}
+\chtitle{自发演化的时间依赖模式被源破坏}
+\bch
+如果没有$\phi(x,t)$的存在，我们将进行分解：
+$$u = \sum_{n = 0}^\infty c_ne^{-\frac{an^2\pi^2t}{L^2} } \sin\frac{n\pi x}{L}. $$
+有$\phi(x,t)$的情况，解的自发衰减性被破坏，那么我们猜想 $e^{-\frac{an^2\pi^2t}{L^2} }$必须被替换掉了：
+$$u = \sum_{n = 0}^\infty T_n(t) \sin\frac{n\pi x}{L}. $$
+其中每个$T_n(t)$都是待定函数。利用初始条件显然有
+$$T_n(0) = 0. $$
+\ech
+\end{frame}
+
+
+\begin{frame}
+\chtitle{源也要进行分解}
+\bch
+为了求出$T_n$，我们把等式右边的$\phi(x,t)$也进行级数展开：
+$$\phi(x,t) = \sum_{n=0}^\infty G_n(t) \sin\frac{n\pi x}{L}. $$
+代入到原方程，得到
+$$ \sum_{n = 0}^\infty\left[ T_n'(t) +\frac{n^2\pi^2a}{L^2}T(t)\right] \sin\frac{n\pi x}{L} = \sum_{n=0}^\infty G_n(t) \sin\frac{n\pi x}{L}.$$
+两边比较系数得到
+$$ T_n'(t) + \frac{n^2\pi^2a}{L^2}T(t) = G_n(t). $$
+再利用初始条件$T_n(0)  = 0$，原则上(\wulian)可以求出$T_n(t)$。
+\ech
+\end{frame}
+
+
+\begin{frame}
+\chtitle{比较非齐次的边界条件和有源的方程}
+\bch
+
+\bitem
+\item{有源的方程的解法有固定的流程，从概念上讲非常简单。但实际操作上求解$T_n(t)$经常会很困难（高难度推土）。}
+\item{无源但空间边界条件是非齐次的情况，求（猜）特解并无固定的流程，不易掌握。但从实际操作上讲，如果有好的数学或物理基础，特别是强大的物理图像和直觉，往往可以出奇制胜，很快求出一个形式很简洁的解。}
+  \eitem
+
+  对于喜欢推土的同学来说，有一个好消息：非齐次边界问题可以转化为有源的问题。
+  
+\ech
+\end{frame}
+
+
+\begin{frame}
+\chtitle{例题2}
+\bch
+来回顾一下上一讲中的非齐次边界问题：
+
+\bea
+\frac{\partial ^2u}{\partial t^2}  -  a^2 \frac{\partial^2u}{\partial x^2} &=& 0, \newl
+\left.u\right\vert_{x=0} &=& 0,\newl
+\left.u\right\vert_{x=L} &=& A\sin (\omega t),\newl
+\left.u\right\vert_{t=0} &=& 0 , \newl
+\left.\frac{\partial u}{\partial t}\right\vert_{t=0} &=&  0.
+\eea
+\ech
+\end{frame}
+
+\begin{frame}
+\chtitle{一个不幸的瞎解}
+\bch
+\addfig{1}{drive.jpg}
+如果你不是老司机，你可能会闭着眼睛瞎猜一个“特解”
+$$\frac{Ax}{L} \sin(\omega t)$$
+然后仔细一看，坏了，它不满足方程！这不是特解，是瞎解！
+\ech
+\end{frame}
+
+\begin{frame}
+\chtitle{强用瞎解}
+\bch
+因为你已经放弃了用经验肝一个特解这条路，就只能硬着头皮用你找的这个瞎解了：
+令
+$$ u(x,t)  = \frac{Ax}{L} \sin(\omega t) + \upsilon(x,t)$$
+代回原方程，得到你最爱的推土问题：
+
+\bea
+\frac{\partial ^2\upsilon}{\partial t^2}  -  a^2 \frac{\partial^2\upsilon}{\partial x^2} &=& \frac{A\omega^2x}{L} \sin(\omega t) , \newl
+\left.\upsilon \right\vert_{x=0} &=& 0,\newl
+\left.\upsilon \right\vert_{x=L} &=& 0,\newl
+\left.\upsilon \right\vert_{t=0} &=& 0 , \newl
+\left.\frac{\partial \upsilon}{\partial t}\right\vert_{t=0} &=&  -\frac{A\omega x}{L}
+\eea
+后面的推土工作略。
+\ech
+\end{frame}
 
 
 \section{Higher Dimension}
@@ -69,7 +187,7 @@
 
 
 \begin{frame}
-\chtitle{例题1}
+\chtitle{例题2}
 \bch
 边长为$L$的正方形弹性膜，四边都固定，求解膜的小振动问题：
 \bea
@@ -116,7 +234,7 @@ $$ Q = e^{\ii \veck \cdot \vecx} $$
 这里我们用矢量写法$\vecx$来表示$(x, y)$，$\veck$来表示$(k_x, k_y)$ (满足$|\veck|=\sqrt{k_x^2+k_y^2} = k$)。
 
 
-和一维的情况类似，对应一组$k_x>0, k_y>0$有四种满足条件的解(因为$k_x, k_y$分别可以取)，可以重新写成正弦和余弦的实数表达形式。
+和一维的情况类似，对应一组$|k_x|, |k_y|$有四种满足条件的解(因为$k_x, k_y$分别可以取正负)，可以重新写成正弦和余弦的实数表达形式。
 \ech
 \end{frame}
 
@@ -124,22 +242,39 @@ $$ Q = e^{\ii \veck \cdot \vecx} $$
 \begin{frame}
 \chtitle{级数展开}
 \bch
-空间边界条件已经是齐次的了，直接把解进行分解：
-\bea u &=& \sum_{m,n=0}^\infty c_{mn} \sin\frac{m\pi x}{L} \sin\frac{n\pi y}{L} \cos{(akt)} \newl
-&& + \sum_{m,n=0}^\infty s_{mn} \sin\frac{m\pi x}{L} \sin\frac{n\pi y}{L} \sin{(akt)}.
+空间边界条件已经是齐次的了，会对$k_x, k_y$产生限制。经过分析容易得到
+\bea u &=& \sum_{m,n=0}^\infty c_{mn} \sin\frac{m\pi x}{L} \sin\frac{n\pi y}{L} \cos{\left(\pi a\frac{\sqrt{m^2+n^2}}{L}t\right)}\newl
+&& + \sum_{m,n=0}^\infty s_{mn} \sin\frac{m\pi x}{L} \sin\frac{n\pi y}{L} \sin{\left(\pi a\frac{\sqrt{m^2+n^2}}{L}t\right)}.
 \eea
 利用两个初始条件分别可以求出系数$c_{mn}$和$s_{mn}$。
 \ech
 \end{frame}
 
+\begin{frame}
+\chtitle{思考}
+\bch
+\addfig{1}{think3.jpg}
+
+可以直接一次性进行分离变量设解为$U(x)V(y)\Psi(t)$吗？
+\ech
+\end{frame}
+
+\begin{frame}
+\chtitle{思考}
+\bch
+\addfig{1}{think3.jpg}
+
+既然解是熟悉的平面波，为什么要引入“谐函数”的概念？
+\ech
+\end{frame}
 
 
 \begin{frame}
-\chtitle{例题2}
+\chtitle{例题}
 \bch
 有孤立的，半径为$a$的均匀厚度圆形金属片。初态$t=0$时刻金属片中心温度为$T_0$，金属片上距离中心$r$处的温度为
 $$T(r) =T_0\left(1+\frac{r^2}{a^2}\right).$$
-已知金属片质量面密度为$\sigma$，单位质量比热为$c$。求之后圆盘上各点的温度变化。
+已知金属片质量为$\rho$，导热系数为$\lambda$，单位质量比热为$c$。求之后圆盘上各点的温度变化。
 
 \skiplines
 
@@ -150,30 +285,33 @@ $$T(r) =T_0\left(1+\frac{r^2}{a^2}\right).$$
 
 
 \begin{frame}
-  \chtitle{分离变量}
-  \bch
-  \ech
+\chtitle{写出方程}
+\bch
+\bea
+\frac{\partial^2T}{\partial t^2}-\nabla^2 T &=& 0, \newl
+\left.\frac{\partial T}{\partial r}\right\vert_{r=a} &=& 0, \newl
+\left.T\right\vert_{t=0} &=& T_0\left(1+\frac{r^2}{a^2}\right).
+\eea
+然后思考，$\nabla^2 T$具体是什么？好像还缺了一个空间边界条件，你知道怎么写吗？
+\ech
 \end{frame}
-
-
 
 \section{Homework}
 
 \begin{frame}
-\chtitle{课后作业 (题号 30-32)}
+\chtitle{课后作业 (题号 30-31)}
 \bch
 \bitem
-\item[30]{}
-\eitem
-\ech
-\end{frame}
-
-
-\begin{frame}
-\chtitle{课后作业 (题号 30-32)}
-\bch
-\bitem
-\item[31]{
+\item[30]{
+ 课上讲了“瞎解法”求解
+\bea
+\frac{\partial ^2u}{\partial t^2}  -  a^2 \frac{\partial^2u}{\partial x^2} &=& 0, \newl
+\left.u\right\vert_{x=0} &=& 0,\newl
+\left.u\right\vert_{x=L} &=& A\sin (\omega t),\newl
+\left.u\right\vert_{t=0} &=& 0 , \newl
+\left.\frac{\partial u}{\partial t}\right\vert_{t=0} &=&  0.
+\eea
+的办法。请把课上没有完成的计算部分补充完整，并把解和上次作业得到的解进行比较。
 }
 \eitem
 \ech
@@ -181,14 +319,15 @@ $$T(r) =T_0\left(1+\frac{r^2}{a^2}\right).$$
 
 
 \begin{frame}
-\chtitle{课后作业 (题号 30-32)}
+\chtitle{课后作业 (题号 30-31)}
 \bch
 \bitem
-\item[32]{
-}
+\item[31]{一张四边固定的水平正方形均匀薄膜，张力系数为（单位长度线元受力）为$\sigma$，质量面密度为$\rho$。记薄膜上的点坐标为$(x,y)$ ($0\le x\le L$, $0\le y \le L$)。初始$t=0$时刻薄膜在横向（垂直薄膜平面方向）有微小的位移$A x y (L-x)(L-y)$，初始速度为零。求解之后薄膜的横向位移$u(x,y, t)$ ($0\le x\le L, 0\le y\le L, t\ge 0$)。}
 \eitem
 \ech
 \end{frame}
+
+
 
 
 \end{document}

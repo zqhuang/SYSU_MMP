@@ -1,0 +1,464 @@
+\documentclass[CJK]{beamer}
+\input{macros.tex}
+\input{titlepage.tex}
+  \date{}
+\begin{document}
+\tpage{15}{Orthogonal Coordinate System}
+
+\begin{frame}
+\chtitle{本讲内容}
+\bch
+\bitem
+\item{回顾}
+\item{正交曲面坐标系}
+\item{贝塞尔函数初步介绍}    
+\eitem
+\ech
+\end{frame}
+
+\section{Review}
+\secpage{回顾}{关键是\sout{求}背出谐函数}
+
+
+\begin{frame}
+\chtitle{关键是\sout{求}背出谐函数}
+\bch
+无论是热传导方程$\frac{\partial u}{\partial t} -a \nabla^2u = 0$还是波动方程
+$\frac{\partial^2u }{\partial t^2} - a^2 \nabla^2 u = 0$，变量分离后都归结为求
+
+$$ \nabla^2 Q = - k ^2 Q $$
+的解（谐函数）的问题。
+
+\ech
+\end{frame}
+
+
+\begin{frame}
+\chtitle{直角坐标系}
+\bch
+对固定$k$，直角坐标系下的谐函数为平面波：
+
+$$Q(\vecx) \propto e^{\ii \veck\cdot \vecx}, $$
+其中$\veck$是长度为$k$的任意矢量（平面波的波矢），$\veck$的方向是平面波传播的方向。
+\ech
+\end{frame}
+
+
+\begin{frame}
+\chtitle{其他情况}
+\bch
+在其他情况下，如何把$\nabla^2$的具体表达式写出是解决问题的第一步。
+
+\skiplines
+
+为此，我们介绍最常用的正交曲面坐标系。
+\ech
+\end{frame}
+
+
+\section{Orthogonal Coordinate System}
+\secpage{正交曲面坐标系}{先作平坦近似，再修正}
+
+
+
+\begin{frame}
+\chtitle{正交曲面坐标系}
+\bch
+如果任意点附近的坐标轴方向总是两两垂直，则称该坐标系为{\blue \bf 正交曲面坐标系}。
+
+\skiplines
+(所谓附近的坐标轴方向，是指仅变化一个坐标分量所得的曲线在这个点的切线方向。)
+
+\skiplines
+\bex
+二维的直角坐标系 $x, y$；
+
+二维的极坐标系 $r, \theta$；
+
+三维的直角坐标系的 $x, y, z$；
+
+三维的柱坐标系 $r, \theta, z$；
+
+三维的球坐标系$ r, \theta, \varphi$。
+\eex
+\ech
+\end{frame}
+
+
+\begin{frame}
+\chtitle{极坐标是正交坐标系的图示}
+\bch
+\addfig{2.2}{polarcoor.png}
+
+变化$r$和变化$\theta$对应的小长度元分别为$dr$和$rd\theta$，且方向垂直。
+\ech
+\end{frame}
+
+
+\begin{frame}
+\chtitle{极坐标弧长公式}
+\bch
+\bmini{0.5}
+根据勾股定理，显然有
+$$ds^2 = dr^2 + (rd\theta)^2  = dr^2 + r^2 d\theta^2$$
+\emini
+\bmini{0.5}
+\lfig{2.2}{lineelement.png}
+\emini
+
+如果曲线以$r(\theta)$的函数形式表示，则得到弧长公式
+$$ ds = \sqrt{dr^2+r^2d\theta^2} = \sqrt{r'^2+r^2 }\,d\theta$$
+
+\ech
+\end{frame}
+
+
+\begin{frame}
+\chtitle{思考题}
+\bch
+
+\addfig{2.5}{cylindricalcoor.png}
+
+写出柱坐标系$(r,\theta, z)$的正交长度元，由此推导柱坐标系弧长公式。
+
+\ech
+\end{frame}
+
+
+\begin{frame}
+\chtitle{思考题}
+\bch
+
+\addfig{3}{sphericalcoor.png}
+
+写出球坐标系$(r,\theta, \phi)$的正交长度元，由此推导球坐标系弧长公式。
+
+\ech
+\end{frame}
+
+
+\begin{frame}
+  \chtitle{梯度 = 单位长度内标量函数的变化}
+  \bch
+  以球面坐标系为例：正交长度元分别为$dr$, $rd\theta$, $r\sin\theta d\phi$。
+
+  \skipline
+
+  设$f$为某个标量函数（如温度，电势等不带方向的量）
+
+  \bitem
+
+\item{沿着$dr$方向（保持$\theta$, $\phi$不变，变化$r$)，$f$的梯度分量为
+    $$\lim_{\delta r\rightarrow 0}\frac{\delta f}{\delta r} = \frac{\partial f}{\partial r}.$$}
+
+\item{沿着$rd\theta$方向（保持$r$, $\phi$不变，变化$\theta$)，$f$的梯度分量为
+  $$\lim_{\delta \theta \rightarrow 0}\frac{\delta f}{r\delta \theta} = \frac{1}{r}\frac{\partial f}{\partial \theta}$$}
+
+\item{沿着$r\sin\theta d\phi$方向（保持$r$, $\theta$不变，变化$\phi$)，$f$的梯度分量为
+  $$\lim_{\delta \phi \rightarrow 0}\frac{\delta f}{r\sin\theta \delta \phi} = \frac{1}{r\sin\theta}\frac{\partial f}{\partial \phi}$$}
+  
+    \eitem
+
+  \ech
+\end{frame}
+
+
+
+\begin{frame}
+  \chtitle{梯度 = 单位长度内标量函数的变化}
+  \bch
+
+  因此，球坐标系下的梯度为
+
+  $$\nabla f = \left(\frac{\partial f}{\partial r}, \frac{1}{r}\frac{\partial f}{\partial \theta}, \frac{1}{r\sin\theta}\frac{\partial f}{\partial \phi} \right).$$
+  \ech
+\end{frame}
+
+
+
+\begin{frame}
+\chtitle{思考题}
+\bch
+
+\addfig{1}{think2.jpg}
+
+写出极坐标系和柱坐标系下的梯度。
+
+\ech
+\end{frame}
+
+
+
+\begin{frame}
+  \chtitle{流$j$的散度是单位体积的$j$净流出率}
+  \bch
+
+仍以球坐标系为例：
+
+  设$j$沿着长度元$dr$，$rd\theta$, $r\sin\theta d\phi$的分量为：
+  $(j_r, j_\theta, j_\phi).$
+
+  那么$j_r(rd\theta)(r\sin\theta d\phi)$代表了$j_r$流过垂直于$dr$方向的面积元的量。它沿$dr$方向的变化率代表了$dr$方向的流出流入不平衡，对净流出率的贡献为：
+  $$\frac{\partial }{\partial r} \left[(rd\theta)(r\sin\theta d\phi)j_r\right]dr$$
+  除以体积元$dr (rd\theta)(r\sin\theta d\phi)$，得到贡献：
+  $$\frac{1}{r^2}\frac{\partial }{\partial r} \left(r^2j_r\right)$$  
+  \ech
+\end{frame}
+
+
+\begin{frame}
+  \chtitle{流$j$的散度是单位体积的$j$净流出率}
+  \bch
+
+  同理，沿$rd \theta$方向的贡献为
+ $$\frac{1}{(dr) (rd\theta) (r\sin\theta d\phi)}\frac{\partial }{\partial \theta} \left[(dr)(r\sin\theta d\phi)j_\theta\right] d\theta  = \frac{1}{r\sin\theta}\frac{\partial  }{\partial \theta} \left( \sin\theta j_\theta\right) $$
+
+  沿$r\sin\theta d\phi$方向的贡献为
+  $$\frac{1}{(dr) (rd\theta) (r\sin\theta d\phi)}\frac{\partial }{\partial \phi} \left[(dr)(rd\theta)j_\phi\right] d\phi = \frac{1}{r\sin\theta}\frac{\partial  }{\partial \phi} j_\phi $$
+  
+  \ech
+\end{frame}
+
+
+
+
+\begin{frame}
+  \chtitle{总结快速写出散度的办法}
+  \bch
+  \bitem
+\item[1]{以三个长度元写出直角坐标系形式的“平坦近似散度”：
+  $$\nabla\cdot \mathbf{j} \approx \frac{\partial}{\partial r} j_r + \frac{1}{r} \frac{\partial}{\partial \theta} j_\theta + \frac{1}{r\sin\theta}\frac{\partial}{\partial \phi} j_\phi $$
+}
+\item[2]{每一项都在微分号内乘以面积修正因子，在外面除掉。例如垂直$dr$方向的面积元为$rd\theta r\sin\theta d\phi$，含$r$的因子(即$r^2$，剩余部分$d\theta\sin\theta d\phi$因为可以直接提到偏微分号外面被除掉，所以不用考虑)是面积修正因子。于是 $\frac{\partial}{\partial r} j_r$被修正为$\frac{1}{r^2}\frac{\partial}{\partial r} (r^2j_r)$。
+}
+  \eitem
+  \ech
+\end{frame}
+
+
+\begin{frame}
+  \chtitle{演算草稿}
+  \bch
+  以球坐标系为例
+
+  \skiplines
+
+  \bmini{0.3}
+  正交长度元:
+  
+  垂直面积元：
+  
+  面积修正因子：
+  \emini
+  \bmini{0.22}
+  $dr$
+  
+  $rd\theta\, r\sin\theta d\phi$
+  
+  $r^2$
+  \emini
+  \bmini{0.22}
+  $rd\theta$
+  
+  $dr\, r\sin\theta d\phi$
+  
+  $\sin\theta$
+  \emini
+  \bmini{0.22}
+  $r\sin\theta d\phi$
+  
+  $dr\, rd\theta$
+  
+  $1$
+  \emini
+
+  \skipline
+  
+  平坦近似散度：
+  $$\nabla\cdot \mathbf{j} \approx \frac{\partial}{\partial r} j_r + \frac{1}{r} \frac{\partial}{\partial \theta} j_\theta + \frac{1}{r\sin\theta}\frac{\partial}{\partial \phi} j_\phi $$
+
+  修正后：
+  $$\nabla\cdot \mathbf{j} =\frac{1}{r^2} \frac{\partial}{\partial r} (r^2j_r) + \frac{1}{r\sin\theta} \frac{\partial}{\partial \theta} (\sin\theta j_\theta) + \frac{1}{r\sin\theta}\frac{\partial}{\partial \phi} j_\phi $$
+  
+  \ech
+\end{frame}
+
+\begin{frame}
+  \chtitle{顺便提下：旋度算符的快速写法}
+  \bch
+  对旋度算符，只要把面积修正换为长度元修正。仍以球坐标系为例
+
+  \skiplines
+
+  \bmini{0.3}
+  正交长度元:
+  \emini
+  \bmini{0.22}
+  $dr$
+  \emini
+  \bmini{0.22}
+  $rd\theta$
+  \emini
+  \bmini{0.22}
+  $r\sin\theta d\phi$
+  \emini
+
+  
+  \skipline
+  
+  平坦近似旋度：
+  $$\nabla\times \mathbf{j} \approx \left( \frac{1}{r}\frac{\partial}{\partial \theta} j_\phi -  \frac{1}{r\sin\theta}\frac{\partial}{\partial \phi} j_\theta ,  \frac{1}{r\sin\theta}\frac{\partial}{\partial \phi} j_r -  \frac{\partial}{\partial r} j_\phi, \frac{\partial}{\partial r} j_\theta-  \frac{1}{r}\frac{\partial}{\partial \theta} j_r\right). $$
+
+  修正后右边为{\small 
+  $$\left( \frac{1}{r\sin\theta}\frac{\partial}{\partial \theta} (\sin\theta j_\phi) -  \frac{1}{r\sin\theta}\frac{\partial}{\partial \phi} j_\theta ,  \frac{1}{r\sin\theta}\frac{\partial}{\partial \phi} j_r - \frac{1}{r} \frac{\partial}{\partial r} (rj_\phi), \frac{1}{r}\frac{\partial}{\partial r} (rj_\theta)-  \frac{1}{r}\frac{\partial}{\partial \theta} j_r\right). $$}
+  
+  \ech
+\end{frame}
+
+
+
+\begin{frame}
+  \chtitle{思考题}
+  \bch
+  \addfig{1}{think3.jpg}
+  
+  写出柱坐标系下的散度和旋度
+  \ech
+\end{frame}
+
+\begin{frame}
+  \chtitle{总结}
+  \bch
+  先平坦近似， 然后
+  \bitem
+\item{梯度不需要修正}
+\item{散度需要面积元修正}
+\item{旋度需要长度元修正}
+  \eitem
+  \ech
+\end{frame}
+
+
+\section{Bessel Functions}
+\secpage{极坐标/柱坐标系里的谐函数}{贝塞尔函数}
+
+
+\begin{frame}
+  \chtitle{柱坐标系的拉普拉斯算符}
+  \bch
+  以柱坐标系$r,\theta, z$为例，长度元为：$dr$, $rd\theta$, $dz$。
+
+  对标量函数$f$，梯度
+  $$\nabla f = \left(\frac{\partial f}{\partial r}, \frac{1}{r}\frac{\partial f}{\partial \theta} , \frac{\partial f}{\partial z}\right)$$
+
+  再对梯度求散度，先作平坦近似：
+  $$\nabla^2 f \approx \frac{\partial}{\partial r} \frac{\partial f}{\partial r} + \frac{1}{r}\frac{\partial }{\partial \theta} \left(\frac{1}{r}\frac{\partial f}{\partial \theta}\right) + \frac{\partial }{\partial z}\left(\frac{\partial f}{\partial z}\right)$$
+  然后面积元修正：
+  \bea
+  \nabla^2 f &=&\frac{1}{r} \frac{\partial}{\partial r} \left(r\frac{\partial f}{\partial r}\right) + \frac{1}{r}\frac{\partial }{\partial \theta} \left(\frac{1}{r}\frac{\partial f}{\partial \theta}\right) + \frac{\partial }{\partial z}\left(\frac{\partial f}{\partial z}\right) \newl
+  &=& \frac{1}{r} \frac{\partial}{\partial r} \left(r\frac{\partial f}{\partial r}\right) + \frac{1}{r^2}\frac{\partial^2 f}{\partial \theta^2}  + \frac{\partial^2f }{\partial z^2}.
+  \eea
+  \ech
+\end{frame}
+
+\begin{frame}
+  \chtitle{极坐标的拉普拉斯算符}
+  \bch
+  极坐标的拉普拉斯算符，只要去掉$z$：
+$$ \nabla^2 f =  \frac{1}{r} \frac{\partial}{\partial r} \left(r\frac{\partial f}{\partial r}\right) + \frac{1}{r^2}\frac{\partial^2 f}{\partial \theta^2}.  $$
+  \ech
+\end{frame}
+
+
+
+\begin{frame}
+  \chtitle{极坐标的谐函数}
+  \bch
+  极坐标系里的谐函数$Q(r,\theta)$满足
+  $$\frac{1}{r} \frac{\partial}{\partial r} \left(r\frac{\partial Q}{\partial r}\right) + \frac{1}{r^2}\frac{\partial^2 Q}{\partial \theta^2} = -k^2 Q $$
+  事实上通过变量替换$ x = kr$（物理上理解：取了个方便的长度单位$1/k$来研究问题，$x$就是无量纲长度)，就可以写成
+  $$x \frac{\partial}{\partial x} \left(x\frac{\partial Q}{\partial x}\right)+x^2Q = - \frac{\partial^2 Q}{\partial \theta^2}  $$    
+    \ech
+\end{frame}
+
+\begin{frame}
+  \chtitle{极坐标的谐函数}
+  \bch
+  我们来求分离变量形式的解$Q = Z(x)f(\theta)$，代入方程得到
+  $$ x\frac{(xZ')' }{Z}+ x^2 = -  \frac{f''}{f} $$
+  上式左边为$x$的函数，右边为$\theta$的函数，因此只能是常数。再考虑到$f$满足周期性边界条件$f(\theta)=f(\theta+2\pi)$，就容易得到$f=e^{\pm \ii m\theta}$ ($m=0,1,2\ldots$)，那么，$Z$满足
+  $$ x\frac{(xZ')' }{Z}+ x^2 = m^2. $$  
+  稍加整理得到著名的{\bf \blue 贝塞尔方程}：
+  $$  Z'' + \frac{1}{x} Z' + (1-\frac{m^2}{x^2}) Z = 0$$
+  \ech
+\end{frame}
+
+
+\begin{frame}
+  \chtitle{贝塞尔方程的解}
+  \bch
+  当$m$为整数时，贝塞尔方程
+  $$  Z'' + \frac{1}{x} Z' + (1-\frac{m^2}{x^2}) Z = 0$$
+  有两个线性独立的解：
+  {\blue 第一类贝塞尔函数$J_m(x)$和第二类贝塞尔函数$Y_m(x)$}。
+
+  \skiplines
+  
+  它们的最重要区别是：
+  \bitem
+\item{ 第一类贝塞尔函数$J_m(x)$在$x=0$取有限值，所以可以描述圆盘内部解。}
+\item{ 第二类贝塞尔函数$Y_m(x)$在$x=0$发散，所以只能描述圆盘外部解。}  
+  \eitem
+  \ech
+\end{frame}
+
+\begin{frame}
+  \chtitle{极坐标下的谐函数}
+  \bch
+  极坐标下的谐函数就是
+  $$ Q = J_m(x)e^{\pm \ii m\theta} $$
+  和
+  $$ Q = Y_m(x)e^{\pm \ii m\theta} $$
+
+  ($m=0,1,2\ldots$)
+  \ech
+\end{frame}
+
+\begin{frame}
+  \chtitle{第一类贝塞尔函数}
+  \bch
+  定义第一类贝塞尔函数最简单的办法是用级数：
+
+  $$J_m(x) \equiv\frac{(-1)^k}{k!(k+m)!} \left(\frac{x}{2}\right)^{2k+m}$$
+  
+  \ech
+\end{frame}
+
+
+\begin{frame}
+  \chtitle{思考题}
+  \bch
+
+  \addfig{1}{think3.jpg}
+  
+  验证按上述级数定义的第一类贝塞尔函数满足贝塞尔方程。
+  \ech
+\end{frame}
+
+
+\section{Homework}
+
+\begin{frame}
+  \chtitle{课后作业(题号32-34)}
+  \bch
+  \bitem
+\item[32]{椭圆坐标$(\mu,\nu)$表示平面直角坐标系里的点$(\cosh \mu \cos\nu, \sinh\mu\sin\nu)$。说明椭圆坐标系是一种正交曲面坐标系，然后写出椭圆坐标系的拉普拉斯算符的表达式。}
+\item[33]{设四维的正交曲面坐标系$(t,x,y,z)$的正交线元长度分别为$dt$, $a(t)dx$, $a(t)dy$, $a(t)dz$，其中$a(t)$为某个已知的函数。写出该坐标系的拉普拉斯算符的表达式。}
+\item[34]{利用第一类贝塞尔函数的级数定义，计算下列函数值至少精确到两位有效数字：
+  $$J_0(0),\ J_0(0.2),\ J_1(0),\ J_1(0.2).$$}
+  \eitem
+  \ech
+\end{frame}
+
+
+\end{document}
