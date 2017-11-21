@@ -47,7 +47,7 @@ $$Q(\vecx) \propto e^{\ii \veck\cdot \vecx}, $$
 \begin{frame}
 \chtitle{其他情况}
 \bch
-在其他情况下，如何把$\nabla^2$的具体表达式写出是解决问题的第一步。
+在其他情况下，如何把$\nabla^2$的具体表达式写出来是解决问题的第一步。
 
 \skiplines
 
@@ -171,6 +171,10 @@ $$ ds = \sqrt{dr^2+r^2d\theta^2} = \sqrt{r'^2+r^2 }\,d\theta$$
   因此，球坐标系下的梯度为
 
   $$\nabla f = \left(\frac{\partial f}{\partial r}, \frac{1}{r}\frac{\partial f}{\partial \theta}, \frac{1}{r\sin\theta}\frac{\partial f}{\partial \phi} \right).$$
+
+  \skiplines
+  
+  (注意这个只是沿着局域的三个正交长度元方向进行分解，不同于线性代数里的用三个固定的基进行分解)
   \ech
 \end{frame}
 
@@ -429,8 +433,12 @@ $$ \nabla^2 f =  \frac{1}{r} \frac{\partial}{\partial r} \left(r\frac{\partial f
   \bch
   定义第一类贝塞尔函数最简单的办法是用级数：
 
-  $$J_m(x) \equiv\frac{(-1)^k}{k!(k+m)!} \left(\frac{x}{2}\right)^{2k+m}$$
-  
+  $$J_m(x) \equiv\sum_{k=0}^\infty\frac{(-1)^k}{k!(k+m)!} \left(\frac{x}{2}\right)^{2k+m}$$
+
+
+  \skiplines
+
+  (由于$\frac{1}{\Gamma(z)}$在$z=0,-1,-2,\dots$时为零，所以上式也可以理解为$k$从$-\infty$到$\infty$求和。)
   \ech
 \end{frame}
 
