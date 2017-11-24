@@ -3,7 +3,7 @@
 \input{titlepage.tex}
   \date{}
 \begin{document}
-\tpage{15}{Bessel Functions of the First Kind I}
+\tpage{16}{Bessel Functions of the First Kind I}
 
 \begin{frame}
 \chtitle{本讲内容}
@@ -35,7 +35,6 @@
   \addfig{3}{Bessel012.png}
   \ech
 \end{frame}
-
 
 \begin{frame}
   \chtitle{$J_m(x)$的定性特点}
@@ -146,7 +145,7 @@
 
     然后考虑边界条件：符合$J_0(kR) = 0$的解为
     $$ k = \frac{\mu_i}{R}, i = 1,2,\ldots $$
-    其中$\mu_i$是贝塞尔函数$J_0(x)$的第$i$的正实数根。
+    其中$\mu_i$是贝塞尔函数$J_0(x)$的第$i$个正实数根。
 
     
 $\mu_1\approx 2.4048$, $\mu_2 \approx 5.5201$, $\mu_3 \approx 8.6537$, $\mu_4 \approx 11.7915$, $\mu_5\approx 14.9309$, \ldots	
@@ -237,18 +236,6 @@ $\mu_1\approx 2.4048$, $\mu_2 \approx 5.5201$, $\mu_3 \approx 8.6537$, $\mu_4 \a
   \ech
 \end{frame}
 
-\begin{frame}
-  \chtitle{证明（续）}
-  \bch
-  \eqref{eq1}减去\eqref{eq2}，得到
-  \begin{eqnarray}
- && \frac{d}{dx}\left[ xJ_m(\mu_jx)\frac{d}{dx} J_m(\mu_i x) - xJ_m(\mu_ix)\frac{d}{dx} J_m(\mu_j x) \right] \newl
-  && + (\mu_i^2-\mu_j^2)xJ_m(\mu_ix)J_m(\mu_jx) = 0. \label{eq3}
-  \end{eqnarray}
-  如果$i\ne j$，两边从$0$到$1$积分，并利用$\mu_i,\mu_j$为$J_m$的零点，即得到
-  $$\int_0^1 xJ_m(\mu_ix)J_m(\mu_jx) = 0. $$
-  \ech
-\end{frame}
 
 \begin{frame}
   \chtitle{证明（续）}
@@ -269,8 +256,8 @@ $\mu_1\approx 2.4048$, $\mu_2 \approx 5.5201$, $\mu_3 \approx 8.6537$, $\mu_4 \a
   \chtitle{回到原题}
   \bch
   既然有了正交关系，在
-    $$\sum_i c_i J_0\left(\mu_i x\right) =  A\left(1-x\right), $$
-  两边乘上$xJ_0(\mu_j)$并从$0$到$1$积分，得到
+    $$\sum_i c_i J_0\left(\mu_i x\right) =  A\left(1-x^2\right), $$
+  两边乘上$xJ_0(\mu_jx)$并从$0$到$1$积分，得到
   $$ \frac{c_j}{2} \left[J_1\left(\mu_j\right)\right]^2 =  A\int_0^1x\left(1-x^2\right)J_0(\mu_jx)dx, $$
   那么，右边的积分能化简吗？
   \ech
@@ -341,7 +328,7 @@ $\mu_1\approx 2.4048$, $\mu_2 \approx 5.5201$, $\mu_3 \approx 8.6537$, $\mu_4 \a
   \bch
   \bitem
 \item[35]{通过逐项求导的办法证明贝塞尔函数的两个递推关系}
-\item[36]{如果$J_m(\mu) = 0$ （$\mu$为正实数)，计算积分
+\item[36]{如果$J_m(\mu) = 0$ （$\mu$为正实数，$m$为非负整数)，计算积分
     $$\int_0^1x\left[J_{m+1}(\mu x)\right]^2 dx. $$
 }
 \item[37]{ 考虑半径为$R$的圆形薄膜的横向小振动问题。在$t=0$时刻的初始速度为$A\left[1-\left(\frac{r}{R}\right)^2\right]$ （其中$A$为常量，$r$为距离圆盘中心的距离，$0\le r\le R$)，初始位移为零。求解之后薄膜的振动。
