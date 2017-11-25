@@ -272,8 +272,8 @@ $$ Q = e^{\ii \veck \cdot \vecx} $$
 \begin{frame}
 \chtitle{例题}
 \bch
-有孤立的，半径为$a$的均匀厚度圆形金属片。初态$t=0$时刻金属片中心温度为$T_0$，金属片上距离中心$r$处的温度为
-$$T(r) =T_0\left(1+\frac{r^2}{a^2}\right).$$
+有孤立的，半径为$R$的均匀厚度圆形金属片。初态$t=0$时刻金属片中心温度为$T_0$，金属片上距离中心$r$处的温度为
+$$T(r) =T_0\left(1+\frac{r^2}{R^2}\right).$$
 已知金属片质量为$\rho$，导热系数为$\lambda$，单位质量比热为$c$。求之后圆盘上各点的温度变化。
 
 \skiplines
@@ -288,9 +288,9 @@ $$T(r) =T_0\left(1+\frac{r^2}{a^2}\right).$$
 \chtitle{写出方程}
 \bch
 \bea
-\frac{\partial^2T}{\partial t^2}-\nabla^2 T &=& 0, \newl
-\left.\frac{\partial T}{\partial r}\right\vert_{r=a} &=& 0, \newl
-\left.T\right\vert_{t=0} &=& T_0\left(1+\frac{r^2}{a^2}\right).
+\frac{\partial^2T}{\partial t^2}-a^2\nabla^2 T &=& 0, \newl
+\left.\frac{\partial T}{\partial r}\right\vert_{r=R} &=& 0, \newl
+\left.T\right\vert_{t=0} &=& T_0\left(1+\frac{r^2}{R^2}\right).
 \eea
 然后思考，$\nabla^2 T$具体是什么？好像还缺了一个空间边界条件，你知道怎么写吗？
 \ech
