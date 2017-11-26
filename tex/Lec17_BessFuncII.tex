@@ -9,7 +9,7 @@
 \chtitle{本讲内容}
 \bch
 \bitem
-\item{圆形薄膜的非对称问题}
+\item{圆形薄膜振动问题的一般初始条件}
 \item{圆盘上的热传导问题}
 \item{无边界的圆对称问题}      
 \eitem
@@ -17,13 +17,13 @@
 \end{frame}
 
 
-\section{Wave Equation with nonzero $m$}
+\section{Wave Equation with general IC}
 
 \begin{frame}
-  \chtitle{圆形薄膜的非对称问题}
+  \chtitle{圆形薄膜振动问题的一般初始条件}
   \bch
-  \addfig{1.2}{drum.jpg}
-  考虑边界固定，半径为$R$的圆形薄膜的横向小振动问题。在$t=0$时刻的初始位移为$ A\left(1-\frac{r}{R}\right)\cos\theta$ （其中$A$为常量，$(r,\theta)$是以圆盘中心为原点建立的极坐标)，初始速度为零。求解之后薄膜的振动。
+  \addfig{1.}{drum.jpg}
+  考虑边界固定，半径为$R$的圆形薄膜的横向小振动问题。在$t=0$时刻的初始位移为$f(r,\theta)$ ，初始速度为$g(r,\theta)$。其中$(r,\theta)$是以圆盘中心为原点建立的极坐标。$f$和$g$都满足边界条件：$f(r,\theta+2\pi) = f(r,\theta)$，$g(r,\theta+2\pi)=g(r,\theta)$，$f(R,\theta) = g(R,\theta) = 0$。求解之后薄膜的振动。
     \ech
 \end{frame}
 
@@ -35,8 +35,8 @@
   \bea
   \frac{\partial^2u}{\partial t^2} - a^2\nabla^2 u = 0 , \newl
   \left.u\right\vert_{r=R} = 0,\newl
-  \left.u\right\vert_{t = 0} = A\left(1-\frac{r}{R}\right)\cos\theta , \newl
-  \left.\frac{\partial u}{\partial t}\right\vert_{t = 0} = 0.
+  \left.u\right\vert_{t = 0} = f(r,\theta) , \newl
+  \left.\frac{\partial u}{\partial t}\right\vert_{t = 0} = g(r,\theta) .
   \eea
   \ech
 \end{frame}
@@ -45,44 +45,67 @@
 \begin{frame}
   \chtitle{分离变量}
   \bch
-  初始条件正比于$\cos\theta$，这对应$m=1$的谐函数。分离变量形式的解为
-    $$J_1(kr)\cos\theta\cos (akt),\  \  J_1(kr)\cos\theta\sin(akt)$$
-    
-
-
-    然后考虑边界条件：符合$J_1(kR) = 0$的解为
-    $$ k = \frac{\mu_i}{R}, i = 1,2,\ldots $$
-    其中$\mu_i$是贝塞尔函数$J_1(x)$的第$i$个正实数根。
-
-$\mu_1\approx 3.8317$, $\mu_2 \approx 7.0156$, $\mu_3 \approx 10.1735$, $\mu_4 \approx 13.3237$, $\mu_5\approx 16.4706$, \ldots    
-  \ech
-\end{frame}
-
-
-\begin{frame}
-  \chtitle{展开}
-  \bch
-  解的展开形式就是
-  $$u = \sum_i c_i J_1\left(\frac{\mu_ir}{R}\right)\cos\theta \cos\left(\frac{\mu_iat}{R}\right) + s_i J_1\left(\frac{\mu_ir}{R}\right) \cos\theta \sin\left(\frac{\mu_iat}{R}\right). $$  
-  利用速度为零的初始条件，扔掉所有$\sin(akt)$项。
-  $$u = \sum_i c_i J_1\left(\frac{\mu_ir}{R}\right) \cos\left(\frac{\mu_iat}{R}\right). $$
-  再利用初始位移，得到
-  $$\sum_i c_i J_1\left(\frac{\mu_ir}{R}\right) =  A\left(1-x\right). $$  
-  \ech
-\end{frame}
-
-
-
-\begin{frame}
-  \chtitle{展开}
-  \bch
-  记$x = \frac{r}{R}$，
-  $$\sum_i c_i J_1\left(\mu_i x\right) =  A\left(1-x\right). $$
-  两边乘以$xJ_1(\mu_j x)$并从$0$到$1$积分，得到
-  $$\frac{c_j}{2}\left[J_2\left(\mu_j\right)\right]^2 = A \int_0^1(1-x)xJ_1(x)dx $$
+  符合边界条件的分离变量形式解为：
+  $$ J_m\left(\frac{\mu_{m,i}r}{R}\right)\cos{(m\theta)} \cos{\left(\frac{\mu_{m,i}at}{R}\right)},\ J_m\left(\frac{\mu_{m,i}r}{R}\right)\cos{(m\theta)} \sin{\left(\frac{\mu_{m,i}at}{R}\right)}, $$
+  其中$m\in Z, \ \mu_{m,i}$是$J_m(x)$的第$i$个正实数根。 当$m>0$时还有
+  $$ J_m\left(\frac{\mu_{m,i}r}{R}\right)\sin{(m\theta)} \cos{\left(\frac{\mu_{m,i}at}{R}\right)},\ J_m\left(\frac{\mu_{m,i}r}{R}\right)\sin{(m\theta)} \sin{\left(\frac{\mu_{m,i}at}{R}\right)}. $$
   
   \ech
 \end{frame}
+
+
+\begin{frame}
+  \chtitle{级数展开}
+  \bch
+  完整的级数形式解为
+  \bea
+  u &=& \sum_{i=1}^\infty \left\{\frac{A_{0,i}}{2} J_0\left(\frac{\mu_{0,i}r}{R}\right) \cos{\left(\frac{\mu_{0,i}at}{R}\right)} + \frac{B_{0,i}}{2} J_0\left(\frac{\mu_{0,i}r}{R}\right) \sin{\left(\frac{\mu_{0,i}at}{R}\right)}\right. \newl
+  && +\sum_{m=1}^\infty \left[ A_{m,i} J_m\left(\frac{\mu_{m,i}r}{R}\right)\cos{(m\theta)} \cos{\left(\frac{\mu_{m,i}at}{R}\right)} \right. \newl
+  && + B_{m,i} J_m\left(\frac{\mu_{m,i}r}{R}\right)\cos{(m\theta)} \sin{\left(\frac{\mu_{m,i}at}{R}\right)} \newl
+    && + C_{m,i} J_m\left(\frac{\mu_{m,i}r}{R}\right)\sin{(m\theta)} \cos{\left(\frac{\mu_{m,i}at}{R}\right)} \newl
+      &&  +\left.\left. D_{m,i} J_m\left(\frac{\mu_{m,i}r}{R}\right)\sin{(m\theta)} \sin{\left(\frac{\mu_{m,i}at}{R}\right)} \right]\right\}
+  \eea
+  (在$A_{0,i}$和$B_{0,i}$里的$\frac{1}{2}$因子是为了和$m\ne 0$的结果看起来更一致。)
+  \ech
+\end{frame}
+
+
+
+\begin{frame}
+  \chtitle{初始位移条件}
+  \bch
+  利用初始位移条件得到
+  {\small
+  \bea
+  f(Rx,\theta)  &=& \sum_{i=1}^\infty \frac{A_{0,i}}{2} J_0\left(\mu_{0,i}x\right)  \newl
+  &+& \sum_{m=1}^\infty\sum_{i=1}^\infty \left[ A_{m,i} J_m\left(\mu_{m,i}x\right)\cos{(m\theta)} + C_{m,i} J_m\left(\mu_{m,i}x\right)\sin{(m\theta)}  \right]
+  \eea }
+  其中$x = \frac{r}{R}$。
+
+  由谐函数的正交性得到
+  $$ A_{m,i} = \frac{2}{\pi\left[J_{m+1}(\mu_{m,i})\right]^2} \int_0^1 xJ_m(\mu_{m,i} x) dx\int_0^{2\pi} \cos{(m\theta)}   f(Rx, \theta) d\theta $$
+  $$C_{m,i} = \frac{2}{\pi\left[J_{m+1}(\mu_{m,i})\right]^2} \int_0^1 xJ_m(\mu_{m,i} x) dx\int_0^{2\pi} \sin{(m\theta)}   f(Rx, \theta) d\theta $$
+  \ech
+\end{frame}
+
+
+\begin{frame}
+  \chtitle{初始速度条件}
+  \bch
+  利用初始速度条件得到
+  {\small
+  \bea
+  g(Rx,\theta)  &=& \sum_{i=1}^\infty \frac{B_{0,i}\mu_{0,i}a}{2R} J_0\left(\mu_{0,i}x\right)  + \sum_{m=1}^\infty\sum_{i=1}^\infty \left[ \frac{B_{m,i}\mu_{m,i}a}{R} J_m\left(\mu_{m,i}x\right)\cos{(m\theta)} \right. \newl
+    && \left. + \frac{D_{m,i}\mu_{m,i}a}{R} J_m\left(\mu_{m,i}x\right)\sin{(m\theta)}  \right]
+  \eea }
+  其中$x = \frac{r}{R}$。
+
+  由谐函数的正交性得到
+  $$ B_{m,i} = \frac{2R}{\pi \mu_{m,i}a\left[J_{m+1}(\mu_{m,i})\right]^2} \int_0^1 xJ_m(\mu_{m,i} x) dx\int_0^{2\pi} \cos{(m\theta)}   g(Rx, \theta) d\theta $$
+  $$D_{m,i} = \frac{2R}{\pi\mu_{m,i}a\left[J_{m+1}(\mu_{m,i})\right]^2} \int_0^1 xJ_m(\mu_{m,i} x) dx\int_0^{2\pi} \sin{(m\theta)}   g(Rx, \theta) d\theta $$
+  \ech
+\end{frame}
+
 
 
 \section{Heat Equation on a Disk}
@@ -103,303 +126,19 @@ $$T(r) =T_0\left(1+\frac{r^2}{R^2}\right).$$
   \chtitle{写出方程}
   \bch
 \bea
-\frac{\partial^2T}{\partial t^2}-a^2\nabla^2 T &=& 0, \newl
+\frac{\partial^2T}{\partial t^2}-a\nabla^2 T &=& 0, \newl
 \left.\frac{\partial T}{\partial r}\right\vert_{r=a} &=& 0, \newl
-\left.T\right\vert_{t=0} &=& T_0\left(1+\frac{r^2}{a^2}\right).
+\left.T\right\vert_{t=0} &=& T_0\left(1+\frac{r^2}{R^2}\right).
 \eea
   \ech
 \end{frame}
 
 
-\begin{frame}
-  \chtitle{$J_m(x)$的定性特点}
-  \bch
-  \tbox{第一个峰，也就是最大值，大致在$x \approx m$处取到}
-  \tbox{第一个峰左边近似以$x^m$增长}
-  \tbox{第一个峰右边是振幅不断衰减的振荡型函数}
- 注： 在$x$比较大时，振幅大致上$\sim \frac{1}{\sqrt{x}}$，周期趋向于$2\pi$。
-  \ech
-\end{frame}
-
-
-\begin{frame}
-  \chtitle{思考题}
-  \bch
-  \addfig{0.5}{think.jpg}
-  请一位同学在黑板上画出$J_{100}(x)$的大致图像.
-  \ech
-\end{frame}
-
-
-
-\begin{frame}
-  \chtitle{怎么计算$J_m(x)$}
-  \bch
-  大多数编程语言(C, Fortran等)和带数学库的脚本语言 （Python, Mathematica等)都内置有贝塞尔函数，直接调用就能计算。
-
-    \skiplines
-    
-  致手算强迫症患者\huaixiao：有一整套的近似公式可以满足你的需求，欢迎来电采购，量大优惠。
-  \ech
-\end{frame}
-
-
-\begin{frame}
-  \chtitle{贝塞尔函数的递推关系}
-  \bch
-  贝塞尔函数大概有几十条性质。养生MMP课里不可能全部介绍，因此，从最重要也最普遍的递推关系出发
-
-  {\blue 贝塞尔函数的第一条递推性质}
-  \tbox{$$\frac{d}{dx}\left[x^mJ_m(x)\right] = x^mJ_{m-1}(x).$$}
-
-  {\blue 贝塞尔函数的第二条递推性质}
-  \tbox{$$\frac{d}{dx}\left[x^{-m}J_m(x)\right] = -x^{-m}J_{m+1}(x).$$}
-
-  （之所以说这是普遍关系，是因为第二类贝塞尔函数$Y_m(x)$也满足完全一样的递推关系。）
-  \ech
-\end{frame}
-
-
-\begin{frame}
-  \chtitle{贝塞尔函数的递推关系的简单应用}
-  \bch
-  \addfig{0.6}{think2.jpg}
-  证明：
-  \bea
-  J_{m-1}(x)-J_{m+1}(x) &=& 2 J_m'(x),\newl
-  J_{m-1}(x)+J_{m+1}(x) &=& \frac{2m}{x} J_m(x).
-  \eea
-  \ech
-\end{frame}
-
-
-
-
-\begin{frame}
-  \bch
-  \addfig{1}{think1.jpg}
-  
-  剩下几十条性质，从哪儿开始入手呢？
-  \ech
-\end{frame}
-
-
-\begin{frame}
-  \chtitle{圆形薄膜的振动问题}
-  \bch
-
-  \addfig{1.2}{drum.jpg}
-  
-  考虑半径为$R$的圆形薄膜的横向小振动问题。在$t=0$时刻的初始位移为$A\left[1-\left(\frac{r}{R}\right)^2\right]$ （其中$A$为常量，$r$为距离圆盘中心的距离，$0\le r\le R$)，初始速度为零。求解之后薄膜的振动。
-  \ech
-\end{frame}
-
-
-\begin{frame}
-  \chtitle{写出方程和边界条件}
-  \bch
-  取极坐标系，设位移为$u(r,\theta,t)$。
-
-  \bea
-  \frac{\partial^2u}{\partial t^2} - a^2\nabla^2 u = 0 , \newl
-  \left.u\right\vert_{r=R} = 0,\newl
-  \left.u\right\vert_{t = 0} = A\left[1-\left(\frac{r}{R}\right)^2\right] , \newl
-  \left.\frac{\partial u}{\partial t}\right\vert_{t = 0} = 0.
-  \eea
-  \ech
-\end{frame}
-
-
-\begin{frame}
-  \chtitle{分离变量}
-  \bch
-  我们知道圆盘内的谐函数为$J_m(kr)e^{\pm \ii m\theta}$。在这个问题里初始条件是旋转对称的（不依赖于$\theta$)，所以解也不依赖于$\theta$。也就是说，只需要考虑$m=0$的情形，分离变量形式的解为
-    $$J_0(kr)\cos (akt),\  \  J_0(kr)\sin(akt)$$
-    
-
-
-    然后考虑边界条件：符合$J_0(kR) = 0$的解为
-    $$ k = \frac{\mu_i}{R}, i = 1,2,\ldots $$
-    其中$\mu_i$是贝塞尔函数$J_0(x)$的第$i$个正实数根。
-
-    
-$\mu_1\approx 2.4048$, $\mu_2 \approx 5.5201$, $\mu_3 \approx 8.6537$, $\mu_4 \approx 11.7915$, $\mu_5\approx 14.9309$, \ldots	
-
-    
-  \ech
-\end{frame}
-
-
-
-
-\begin{frame}
-  \chtitle{展开}
-  \bch
-  解的展开形式就是
-  $$u = \sum_i c_i J_0\left(\frac{\mu_ir}{R}\right) \cos\left(\frac{\mu_iat}{R}\right) + s_i J_0\left(\frac{\mu_ir}{R}\right) \sin\left(\frac{\mu_iat}{R}\right). $$  
-  利用速度为零的初始条件，立刻可以扔掉所有$\sin(akt)$项。
-  $$u = \sum_i c_i J_0\left(\frac{\mu_ir}{R}\right) \cos\left(\frac{\mu_iat}{R}\right). $$
-  再利用初始位移，得到
-  $$\sum_i c_i J_0\left(\frac{\mu_ir}{R}\right) =  A\left[1-\left(\frac{r}{R}\right)^2\right]. $$  
-  \ech
-\end{frame}
-
-
-\begin{frame}
-  \chtitle{展开}
-  \bch
-  为了看得更清楚一点，我们把$\frac{r}{R}$记作$x$ ($0\le x\le 1$):
-  $$\sum_i c_i J_0\left(\mu_i x\right) =  A\left(1-x^2\right), $$
-
-  那么问题来了，怎么求系数$c_i$？
-  \ech
-\end{frame}
-
-\begin{frame}
-  \chtitle{求系数的套路}
-  \bch
-  记得我们以前的套路是两边同乘上谐函数（正弦或余弦），然后在所求问题的物理范围内积分。利用谐函数的积分正交性就可以求出系数。
-
-  \skiplines
-
-  这个套路还能用吗？我们来研究一下贝塞尔函数的正交性——
-  \ech
-\end{frame}
-
-
-\begin{frame}
-  \chtitle{贝塞尔函数的正交定理}
-  \bch
-  设$\mu_i$, $\mu_j$是$J_m(x)$第$i$个和第$j$个正实数根，则
-  \tbox{
-    $$\int_0^1 \,x\,J_m(\mu_ix)J_m(\mu_j x) \,dx = \delta_{ij} \frac{\left[J_{m+1}(\mu_i)\right]^2}{2} .$$}
-  也就是说，只要定义内积时乘上权重$x$（这个权重来自于极坐标系的散度的”面积修正因子“），那么$J_m(\mu_ix)$ ($i=1,2,\ldots$)就是在$[0,1]$内的正交函数组了。
-  \ech
-\end{frame}
-
-
-\begin{frame}
-  \chtitle{证明}
-  \bch
-  回忆$J_m(\mu_ix)$满足的贝塞尔方程：
-
-  \be
-    \frac{1}{x}\frac{d}{dx}\left[x\frac{d}{dx} J_m(\mu_i x)\right] + \left(\mu_i^2-\frac{m^2}{x^2}\right)J_m(\mu_ix) = 0.
-   \ee
-  两边同乘以$xJ_m(\mu_j x)$，得到
-   \begin{equation}
-     J_m(\mu_jx)\frac{d}{dx}\left[x\frac{d}{dx} J_m(\mu_i x)\right] + \left(\mu_i^2-\frac{m^2}{x^2}\right)xJ_m(\mu_ix)J_m(\mu_jx) = 0. \label{eq1}
-   \end{equation}
-   交换$i$和$j$，得到
-   \begin{equation}
-     J_m(\mu_ix)\frac{d}{dx}\left[x\frac{d}{dx} J_m(\mu_j x)\right] + \left(\mu_j^2-\frac{m^2}{x^2}\right)xJ_m(\mu_ix)J_m(\mu_jx) = 0. \label{eq2}
-   \end{equation}
-  \ech
-\end{frame}
-
-
-\begin{frame}
-  \chtitle{证明（续）}
-  \bch
-  \eqref{eq1}减去\eqref{eq2}，得到
-  \bea
- && \frac{d}{dx}\left[ xJ_m(\mu_jx)\frac{d}{dx} J_m(\mu_i x) - xJ_m(\mu_ix)\frac{d}{dx} J_m(\mu_j x) \right] \newl
-  && + (\mu_i^2-\mu_j^2)xJ_m(\mu_ix)J_m(\mu_jx) = 0.
-  \eea
-  如果$i\ne j$，两边从$0$到$1$积分即得到
-  $$\int_0^1 xJ_m(\mu_ix)J_m(\mu_jx) = 0. $$
-  \ech
-\end{frame}
-
-
-\begin{frame}
-  \chtitle{证明（续）}
-  \bch
-  事实上，在推导\eqref{eq3}时，$\mu_i$，$\mu_j$可以为任何正数，所以我们还可以取$\mu_i$为$J_m$的零点，而$\mu_j = \mu_i +\epsilon$。
-    同样从$0$到$1$积分，得到
-    $$ \mu_iJ_m(\mu_i+\epsilon) J_m'(\mu_i)  -2\mu_i\epsilon\int_0^1xJ_m(\mu_ix)J_m[(\mu_i+\epsilon)x]dx = 0 $$
-    两边除以$\epsilon$并令 $\epsilon\rightarrow 0^+$
-    $$ \int_0^1x\left[J_m(\mu_ix)\right]^2dx = \frac{[J_m'(\mu_i)]^2}{2} $$
-    最后，在递推关系
-    $$\frac{d}{dx}\left[x^{-m}J_m(x)\right] = -x^{-m} J_{m+1}(x)]$$
-  两边取$x = \mu_i$，即得到 $J_m'(\mu_i) = -J_{m+1}(\mu_i)$。于是命题在$i=j$时也得到了证明。
-    
-  \ech
-\end{frame}
-
-\begin{frame}
-  \chtitle{回到原题}
-  \bch
-  既然有了正交关系，在
-    $$\sum_i c_i J_0\left(\mu_i x\right) =  A\left(1-x^2\right), $$
-  两边乘上$xJ_0(\mu_jx)$并从$0$到$1$积分，得到
-  $$ \frac{c_j}{2} \left[J_1\left(\mu_j\right)\right]^2 =  A\int_0^1x\left(1-x^2\right)J_0(\mu_jx)dx, $$
-  那么，右边的积分能化简吗？
-  \ech
-\end{frame}
-
-
-\begin{frame}
-  \chtitle{回到原题}
-  \bch
-  考虑积分
-  $$I =   \int_0^1x\left(1-x^2\right)J_0(\mu_jx)dx. $$
-  利用
-  $$ \mu_jxJ_0(\mu_j x) = \frac{d}{dx} \left[xJ_1(\mu_jx)\right]. $$
-  分部积分，即得到
-  $$I = \left.\frac{1-x^2}{\mu_j} xJ_1(\mu_jx) \right\vert_0^1 + \frac{2}{\mu_j} \int_0^1 x^2J_1(\mu_jx) dx. $$
-  再利用
-  $$\mu_jx^2J_1(\mu_j x) = \frac{d}{dx}\left[x^2J_2(\mu_j x)\right] $$
-  得到
-  $$I  =  \frac{2}{\mu_j} \int_0^1 x^2J_1(\mu_jx) dx = \frac{2}{\mu_j^2}J_2(\mu_j). $$
-  
-  \ech
-\end{frame}
-
-
-\begin{frame}
-  \chtitle{求出系数}
-  \bch
-  最后，利用
-  $$J_0(x)+J_2(x) = \frac{2}{x}J_1(x)$$
-  得到
-  $$J_2(\mu_j) = \frac{2}{\mu_j}J_1(\mu_j).$$
-  综合前面所有结果，得到
-  $$ \frac{c_j}{2} \left[J_1\left(\mu_j\right)\right]^2 =  A\frac{4}{\mu_j^3}J_1(\mu_j). $$
-  也就是
-  $$ c_j = \frac{8A}{\mu_j^3J_1(\mu_j)} $$
-  \ech
-\end{frame}
-
-
-\begin{frame}
-  \chtitle{最终解}
-  \bch
-  薄膜的振动解为
-  $$ u = \sum_{j=0}^\infty \frac{8A}{\mu_j^3J_1(\mu_j)}J_0\left( \frac{\mu_jr}{R}\right)\cos\frac{\mu_jat}{R}. $$
-
-  \skiplines
-
-  （思考：会不会发生分母中的$J_1(\mu_i)=0$的情况？)
-  \ech
-\end{frame}
-
-
-\begin{frame}
-  \bch
-  \bcenter
-  \lfig{1}{blackq.jpg}
-
-  刚才发生了什么.jpg
-  \ecenter
-  \ech
-\end{frame}
-
 
 \section{Homework}
 
 \begin{frame}
-  \chtitle{课后作业(题号35-37)}
+  \chtitle{课后作业(题号38-40)}
   \bch
   \bitem
 \item[35]{通过逐项求导的办法证明贝塞尔函数的两个递推关系}
