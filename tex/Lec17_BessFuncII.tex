@@ -67,9 +67,23 @@ $\mu_1\approx 3.8317$, $\mu_2 \approx 7.0156$, $\mu_3 \approx 10.1735$, $\mu_4 \
   利用速度为零的初始条件，扔掉所有$\sin(akt)$项。
   $$u = \sum_i c_i J_1\left(\frac{\mu_ir}{R}\right) \cos\left(\frac{\mu_iat}{R}\right). $$
   再利用初始位移，得到
-  $$\sum_i c_i J_1\left(\frac{\mu_ir}{R}\right) =  A\left(1-\frac{r}{R}\right). $$  
+  $$\sum_i c_i J_1\left(\frac{\mu_ir}{R}\right) =  A\left(1-x\right). $$  
   \ech
 \end{frame}
+
+
+
+\begin{frame}
+  \chtitle{展开}
+  \bch
+  记$x = \frac{r}{R}$，
+  $$\sum_i c_i J_1\left(\mu_i x\right) =  A\left(1-x\right). $$
+  两边乘以$xJ_1(\mu_j x)$并从$0$到$1$积分，得到
+  $$\frac{c_j}{2}\left[J_2\left(\mu_j\right)\right]^2 = A \int_0^1(1-x)xJ_1(x)dx $$
+  
+  \ech
+\end{frame}
+
 
 \section{Heat Equation on a Disk}
 
