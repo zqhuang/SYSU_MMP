@@ -9,20 +9,22 @@
 \chtitle{本讲内容}
 \bch
 \bitem
-\item{圆形薄膜振动问题的一般初始条件}
-\item{圆盘上的热传导问题}
-\item{无限大圆盘上的数理方程}      
+\item{回顾：圆形薄膜振动问题}
+\item{推广：圆盘上的热传导问题}  
+\item{ $J_m(x)$的积分表示}
+\item{$J_m(x)$在无穷远处的渐进展开}
+\item{无限大板上的热传导问题}      
 \eitem
 \ech
 \end{frame}
 
 
-\section{Wave Equation with general IC}
+\section{Review}
 
-\secpage{圆形薄膜振动问题的一般初始条件}{步骤很简单，但你一定会把积分积错的…}
+\secpage{圆形薄膜振动问题的回顾}{ 记$J_m(x)$第$i$个正实数根为$\mu_i$，则$$\int_0^1 \,x\,J_m(\mu_ix)J_m(\mu_j x) \,dx = \delta_{ij} \frac{\left[J_{m+1}(\mu_i)\right]^2}{2} .$$}
 
 \begin{frame}
-  \chtitle{圆形薄膜振动问题的一般初始条件}
+  \chtitle{例题1:圆形薄膜振动问题的一般初始条件}
   \bch
   \addfig{1.}{drum.jpg}
   考虑边界固定，半径为$R$的圆形薄膜的横向小振动问题。在$t=0$时刻的初始位移为$f(r,\theta)$ ，初始速度为$g(r,\theta)$。其中$(r,\theta)$是以圆盘中心为原点建立的极坐标。$f$和$g$都满足边界条件：$f(r,\theta+2\pi) = f(r,\theta)$，$g(r,\theta+2\pi)=g(r,\theta)$，$f(R,\theta) = g(R,\theta) = 0$。求解之后薄膜的振动。
@@ -109,18 +111,18 @@
 \end{frame}
 
 
-
 \section{Heat Equation on a Disk}
 
-\secpage{圆盘上的热传导问题}{绝热边界条件：需要多考虑个常数项}
+\secpage{圆盘上的热传导问题}{记$J_m'(x)$的第$i$个正实数根为$\lambda_i$，则
+    $$\int_0^1 x\, J_m(\lambda_i x)J_m(\lambda_j x) dx = \delta_{ij}\frac{\left(1-\frac{m^2}{\lambda_i^2}\right)\left[J_m(\lambda_i)\right]^2}{2} $$}
 
 \begin{frame}
-  \chtitle{}
+  \chtitle{例题2:圆盘上的热传导问题}
   \bch
 
-  有孤立的，半径为$R$的均匀厚度圆形金属片。初态$t=0$时刻金属片中心温度为$T_0$，金属片上距离中心$r$处的温度为
+  有孤立的，半径为$R$的均匀圆形金属薄片。初态$t=0$时刻金属片上距离中心$r$处的温度为
 $$T(r) =T_0\left(1+\frac{r^2}{R^2}\right).$$
-已知金属片质量密度为$\rho$，导热系数为$\lambda$，单位质量比热为$c$。求之后圆盘上各点的温度。
+已知金属片质量密度为$\rho$，导热系数为$\lambda$，单位质量比热为$c$。求$t\ge 0$时圆盘上各点的温度。
 
   \ech
 \end{frame}
@@ -313,7 +315,7 @@ $$  \int_0^1 xJ_m(\lambda_ix)J_m(\lambda_jx) dx = \int_0^1xJ_0(\lambda_j x) dx
   若$j>0$，利用$ \lambda_jxJ_0(\lambda_jx) = \frac{d}{dx} \left[x J_1(\lambda_jx)\right]$进行分部积分：
   \bea
   \int_0^1(1+x^2)xJ_0(\lambda_jx)dx &=& \left.\frac{1+x^2}{\lambda_j}xJ_1(\lambda_jx)\right\vert_0^1 -\frac{2}{\lambda_j} \int_0^1x^2J_1(\lambda_jx) dx\newl
-  &=& -\frac{2}{\lambda_j} \int_0^12x^2J_1(\lambda_jx) dx \newl
+  &=& -\frac{2}{\lambda_j} \int_0^1x^2J_1(\lambda_jx) dx \newl
   &=& \left.-\frac{2}{\lambda_j^2} x^2J_2(\lambda_jx)\right\vert_0^1\newl
   &=& -\frac{2}{\lambda_j^2}J_2(\lambda_j) \newl
   &=& \frac{2}{\lambda_j^2}J_0(\lambda_j)
@@ -331,16 +333,100 @@ $$  \int_0^1 xJ_m(\lambda_ix)J_m(\lambda_jx) dx = \int_0^1xJ_0(\lambda_j x) dx
   $$c_j = \frac{4T_0}{\lambda_j^2 J_0(\lambda_j)}$$
   即
   $$T = \frac{3}{2}T_0 + 4T_0\sum_{j=1}^\infty \frac{J_0\left(\frac{\lambda_j r}{R}\right)e^{-\frac{a\lambda_j^2t}{R^2}}}{\lambda_j^2 J_0(\lambda_j)}$$
+
+  \skipline
+
+ 有趣的是，令$r=R$，$t=0$，可以得到：
+  $$\sum_{i=1}^\infty \frac{1}{\lambda_i^2} = \frac{1}{8}$$
   
   \ech
 \end{frame}
 
-\section{Infinite Disk}
 
-\secpage{无限大圆盘上的数理方程}{通常是因为初条件有对称性而选择极坐标}
+\section{Integral form}
+\secpage{贝塞尔函数的积分表示}{$$J_m(x) = \frac{1}{2\pi}\int_{-\pi}^{\pi} e^{\ii (x\sin\theta - m \theta) } d\theta$$}
 
 \begin{frame}
-  \chtitle{无限大圆盘上的热传导问题}
+  \chtitle{贝塞尔函数的积分表示}
+  \bch
+  除了递推公式，整数阶贝塞尔函数最为常用的性质是它的积分表示：
+  \tbox{
+    $$J_m(x) = \frac{1}{2\pi}\int_{-\pi}^{\pi} e^{\ii (x\sin\theta - m \theta) } d\theta$$}
+  被积函数的周期为$2\pi$，上面的积分区间可以取任何一个完整周期。
+  \ech
+\end{frame}
+
+
+\begin{frame}
+  \chtitle{证明}
+  \bch
+  把$f(x)=\frac{1}{2\pi}\int_{-\pi}^{\pi} e^{\ii (x\sin\theta - m \theta) } d\theta$进行泰勒展开，其$n$次系数为
+  $$c_n = \frac{1}{2\pi n!}\int_{-\pi}^{\pi} (\ii\sin\theta)^n e^{-\ii m \theta } d\theta$$
+  转化为单位圆上的围道积分：
+  \bea
+  c_n &=& \frac{1}{2\pi n!\ii}\oint (z-\frac{1}{z})^n \frac{1}{z^{m+1}} dz \newl
+  &=&  \frac{1}{2\pi  \ii}\oint\sum_{k=0}^n \frac{1}{k!(n-k)!} (-1)^kz^{n-2k-m-1} dz
+  \eea
+  根据留数定理，仅有的非零项为$c_{2k+m} = \frac{(-1)^k}{k!(m+k)!}$，和$J_m$的级数定义相同。证毕。
+  \ech
+\end{frame}
+
+
+\begin{frame}
+  \chtitle{贝塞尔函数的积分表示}
+  \bch
+  把积分式右边用欧拉公式展开，发现虚部为奇函数，积分为零；而实部为偶函数。所以
+  \tbox{
+  $$J_m(x) = \frac{1}{\pi}\int_{0}^{\pi} \cos{ (x\sin\theta - m \theta) } d\theta$$}
+  \ech
+\end{frame}
+
+\section{Asymptotic Behavior}
+\secpage{无穷远处的渐近行为}{当$x\gg m^2$时，$$J_m(x)\approx \sqrt{\frac{2}{\pi x}}\cos\left(x-\frac{m\pi}{2}-\frac{\pi}{4}\right) $$}
+
+\begin{frame}
+  \chtitle{无穷远处的渐近行为}
+  \bch
+    $$J_m(x) = \frac{1}{\pi}\int_{0}^{\pi} \cos{ (x\sin\theta - m \theta) } d\theta$$
+  当$x$很大时，$\cos(x\sin\theta - m\theta)$快速振荡，对积分无贡献。唯一的例外是$\theta=\frac{\pi}{2}$附近，$\sin\theta$变化停滞，积分贡献并不消失。令$\theta = \frac{\pi}{2}+\epsilon$，把$\sin\theta$作二阶近似展开：
+  \bea
+  J_m(x) &\approx & \frac{1}{\pi}\int_{-\infty}^{\infty} \cos{\left[x(1-\frac{1}{2}\epsilon^2) - \frac{m}{2}\pi\right]} d\epsilon \newl
+  &\approx & \frac{1}{\pi}\mathrm{Re}\left[e^{-\ii\phi}\int_{-\infty}^{\infty}e^{\frac{ \ii x}{2}\epsilon^2} d\epsilon\right]  \newl
+  &\approx & \frac{2}{\pi}\mathrm{Re}\left[e^{-\ii\phi}\int_0^{\infty}e^{\frac{ \ii x}{2}\epsilon^2} d\epsilon\right]  \newl  
+  \eea
+  其中$\phi = x-\frac{m}{2}\pi$
+  \ech
+\end{frame}
+
+
+\begin{frame}
+  \chtitle{无穷远处的渐近行为（续）}
+  \bch
+  \bmini{0.41}
+  \addfig{1.5}{contour04.png}
+  \emini
+  \bmini{0.53}
+  在如图的围道上积分$$\oint e^{\frac{\ii x}{2}\epsilon^2}d\epsilon$$
+  容易得到
+  \emini
+  \be
+  \int_0^{\infty}e^{\frac{ \ii x}{2}\epsilon^2} d\epsilon = e^{\frac{\pi\ii}{4}}\int_0^\infty e^{-\frac{x}{2}\epsilon^2}d\epsilon= e^{\frac{\pi\ii}{4}}\sqrt{\frac{\pi}{2x}}
+  \ee
+  最后得到
+  \tbox{
+    $$J_m(x)\approx \sqrt{\frac{2}{\pi x}}\cos\left(x-\frac{m\pi}{2}-\frac{\pi}{4}\right) $$}
+
+  
+  \ech
+\end{frame}
+
+
+\section{Infinite Disk}
+
+\secpage{无限大板上的热传导问题}{    $$ \int_0^\infty J_m(k_1r)J_m(k_2r) r dr = \frac{\delta(k_1-k_2)}{k_1}. $$}
+
+\begin{frame}
+  \chtitle{例题3: 无限大板上的热传导问题}
   \bch
   一块很大（可以视为无限大）的均匀薄板的温度为$T_0$，在$t=0$时刻在中心点注入热量$Q$，求之后板上的温度变化。设板的单位质量比热为$c$，质量密度为$\rho$，厚度为$h$，导热系数为$\lambda$。
   \ech
@@ -350,14 +436,81 @@ $$  \int_0^1 xJ_m(\lambda_ix)J_m(\lambda_jx) dx = \int_0^1xJ_0(\lambda_j x) dx
 \begin{frame}
   \chtitle{写出方程}
   \bch
-  假设一开始的热量被注入到面积为$\epsion$的小区域内，则该区域内的温度为$T_0+\frac{Q}{\rho c \epsilon h} = T_0+\frac{Q}{\rho c h }\delta(\vecx) $。令$u = T - T_0$，写出方程和边界条件：
+  假设一开始的热量被注入到面积为$\epsilon$的小区域内，则该区域内的温度为$T_0+\frac{Q}{\rho c \epsilon h} $。令$u(r,\theta) = \frac{\rho c h }{Q}(T - T_0)$，写出方程和边界条件：
 
   \bea
-  \frac{\partial u}{\partial t}
+  \frac{\partial u}{\partial t} - a\nabla^2 u &=& 0,\newl
+  \left. u\right\vert_{r=\infty} &=& 0 ,\newl
+  \left. u \right\vert_{t=0} &=& \delta(\vecx).
   \eea
-  
+  其中$a = \frac{\lambda}{\rho c}$。
+
+  \skipline
+  我们认出这是一个典型的求解格林函数问题。
   \ech
 \end{frame}
+
+\begin{frame}
+  \chtitle{直角坐标的解}
+  \bch
+  先看直角坐标系下能否求解。把$u$按谐函数分解：
+  $$u(\vecx, t) =\frac{1}{2\pi} \int d^2\veck\, c(\veck)e^{\ii \veck\cdot\vecx}e^{-ak^2t},  $$
+  注意这里的$\veck = (k_x, k_y)$； $\vecx = (x, y)$； $\veck\cdot\vecx = k_xx+k_yy$； $k = |\veck|=\sqrt{k_x^2+k_y^2}$； $\int d^2\veck$是全平面积分$\int_{-\infty}^\infty dk_x \int_{-\infty}^\infty dk_y $的简写。
+
+  令$t=0$，
+  $$\delta(\vecx) = \frac{1}{2\pi} \int d^2\veck\, c(\veck)e^{\ii \veck\cdot\vecx},  $$
+  这说明$c(\veck)$是$\delta(\vecx)$的二维傅立叶变换。
+  \ech
+\end{frame}
+
+
+\begin{frame}
+  \chtitle{直角坐标的解（续）}
+  \bch
+  $$ c(\veck) = \frac{1}{2\pi}\int d^2\vecx\, \delta(\vecx)e^{-\ii \veck\cdot\vecx } = \frac{1}{2\pi} $$
+  即解为
+  $$u(\vecx, t) =\frac{1}{4\pi^2} \int d^2\veck\, e^{\ii \veck\cdot\vecx}e^{-ak^2t} = \frac{1}{4\pi at}e^{-\frac{x^2+y^2}{4at}},  $$
+
+  （很容易认出来这其实是两个一维格林函数的乘积。）
+  \ech
+\end{frame}
+
+
+\begin{frame}
+  \chtitle{极坐标的解}
+  \bch
+  在极坐标里，我们一开始就可以看出问题具有旋转对称性，写出
+  $$  u(r, t) = \int_0^\infty f(k) J_0(kr)e^{-ak^2t} k dk $$
+  取$t=0$，得到
+  $$  \delta(\vecx) = \int_0^\infty f(k) J_0(kr) k dk $$  
+  为了求出$f(k)$，我们来研究第一类贝塞尔函数在无穷区间上的正交关系。
+  \ech
+\end{frame}
+
+
+\begin{frame}
+  \chtitle{第一类贝塞尔函数在无穷区间上的正交关系}
+  \bch
+  \tbox{
+    $$ \int_0^\infty J_m(k_1r)J_m(k_2r) r dr = \frac{\delta(k_1-k_2)}{k_1}. $$
+  }
+  证明留为作业。
+  \ech
+\end{frame}
+
+
+\begin{frame}
+  \chtitle{极坐标系求解（续）}
+  \bch
+  $$  \delta(\vecx) = \int_0^\infty f(k) J_0(kr) dk $$
+  对任意给定的$k'$，两边乘以$rJ_0(k'r)$并对$r$从$0$到$\infty$积分，得到
+  $$ \frac{1}{2\pi} = \int_0^\infty f(k)\frac{\delta(k-k')}{k} k dk =f(k')$$
+  所以解为
+  $$  u(r, t) = \frac{1}{2\pi} \int_0^\infty J_0(kr)e^{-ak^2t} k dk $$  
+  \ech
+\end{frame}
+
+
 
 \section{Homework}
 
@@ -365,9 +518,15 @@ $$  \int_0^1 xJ_m(\lambda_ix)J_m(\lambda_jx) dx = \int_0^1xJ_0(\lambda_j x) dx
   \chtitle{课后作业(题号38-40)}
   \bch
   \bitem
-\item[35]{}
-\item[36]{}
-\item[37]{}
+\item[38]{  有孤立的，半径为$R$的均匀圆形金属薄片，以中心为原点建立极坐标$(r,\theta)$。初态$t=0$时刻，金属片上的温度为$f(r,\theta)$。已知金属片质量密度为$\rho$，导热系数为$\lambda$，单位质量比热为$c$。求$t\ge 0$时刻金属片上各点的温度。}
+\item[39]{利用$J_m$在有限区间上的正交定理和$J_m$的渐近表达式证明
+  $$ \int_0^\infty J_m(k_1r)J_m(k_2r) r dr = \frac{\delta(k_1-k_2)}{k_1}. $$ }
+\item[40]{  
+  我们在两种不同的坐标系中求解例题3，分别得到
+  $$\frac{1}{4\pi at}e^{-\frac{r^2}{4at}}$$
+  和
+  $$ \frac{1}{2\pi} \int_0^\infty J_0(kr)e^{-ak^2t} k dk.$$
+  试直接证明这两个解恒等。}
   \eitem
   \ech
 \end{frame}
