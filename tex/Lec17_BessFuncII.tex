@@ -11,13 +11,15 @@
 \bitem
 \item{圆形薄膜振动问题的一般初始条件}
 \item{圆盘上的热传导问题}
-\item{无边界的圆对称问题}      
+\item{无限大圆盘上的数理方程}      
 \eitem
 \ech
 \end{frame}
 
 
 \section{Wave Equation with general IC}
+
+\secpage{圆形薄膜振动问题的一般初始条件}{步骤很简单，但你一定会把积分积错的…}
 
 \begin{frame}
   \chtitle{圆形薄膜振动问题的一般初始条件}
@@ -110,6 +112,8 @@
 
 \section{Heat Equation on a Disk}
 
+\secpage{圆盘上的热传导问题}{绝热边界条件：需要多考虑个常数项}
+
 \begin{frame}
   \chtitle{}
   \bch
@@ -126,7 +130,7 @@ $$T(r) =T_0\left(1+\frac{r^2}{R^2}\right).$$
   \chtitle{写出方程}
   \bch
 \bea
-\frac{\partial^2T}{\partial t^2}-a\nabla^2 T &=& 0, \newl
+\frac{\partial T}{\partial t}-a\nabla^2 T &=& 0, \newl
 \left.\frac{\partial T}{\partial r}\right\vert_{r=R} &=& 0, \newl
 \left.T\right\vert_{t=0} &=& T_0\left(1+\frac{r^2}{R^2}\right).
 \eea
@@ -150,7 +154,7 @@ $$T(r) =T_0\left(1+\frac{r^2}{R^2}\right).$$
     \skipline
     
     于是，按谐函数展开
-    $$ T = \sum_{i} c_iJ_0\left(\frac{\lambda_ir}{R}\right)e^{-\frac{a\lambda_i^2t}{R^2}} .$$
+    $$ T = \sum_{i=0}^\infty c_iJ_0\left(\frac{\lambda_ir}{R}\right)e^{-\frac{a\lambda_i^2t}{R^2}} .$$
   \ech
 \end{frame}
 
@@ -161,7 +165,7 @@ $$T(r) =T_0\left(1+\frac{r^2}{R^2}\right).$$
   \chtitle{按谐函数展开}
   \bch
   从初始条件可以得到，
-  $$ \sum_i c_iJ_0\left(\lambda_i x\right) = T_0\left(1+x^2\right), $$
+  $$ \sum_{i=0}^\infty c_iJ_0\left(\lambda_i x\right) = T_0\left(1+x^2\right), $$
   其中$x = \frac{r}{R}.$
 
   \skiplines
@@ -177,7 +181,7 @@ $$T(r) =T_0\left(1+\frac{r^2}{R^2}\right).$$
   设$\lambda_i$为$J_m'(x)$的第$i$个正实数根，则
   \tbox{
     $$\int_0^1 x\, J_m(\lambda_i x)J_m(\lambda_j x) dx = \delta_{ij}\frac{\left(1-\frac{m^2}{\lambda_i^2}\right)\left[J_m(\lambda_i)\right]^2}{2} $$}
-  一个例外情况是当$m = 0$时，允许取$\lambda_1= 0$，这时需要约定等式右边$\frac{m^2}{\lambda_1^2} = 0$。
+  当$m = 0$时，允许取$\lambda_0= 0$这个特殊情形，这时需要约定等式右边$\frac{m^2}{\lambda_0^2} = 0$。
   \ech
 \end{frame}
 
@@ -284,7 +288,7 @@ $$  \int_0^1 xJ_m(\lambda_ix)J_m(\lambda_jx) dx = \int_0^1xJ_0(\lambda_j x) dx
   
   之前得到的结论
   $$ \int_0^1x\left[J_m(\lambda_ix)\right]^2dx = -\frac{J_m(\lambda_i)J_m''(\lambda_i)}{2} $$
-  对$m=0$, $\lambda_i=0$的特殊情形成立吗？
+  对$m=0$, $\lambda_0=0$的特殊情形成立吗？
   
   \ech
 \end{frame}
@@ -296,17 +300,17 @@ $$  \int_0^1 xJ_m(\lambda_ix)J_m(\lambda_jx) dx = \int_0^1xJ_0(\lambda_j x) dx
   $$ \sum_i c_iJ_0\left(\lambda_i x\right) = T_0\left(1+x^2\right), $$
   两边同乘以$xJ_0(\lambda_j x)$并从$0$到$1$积分，得到
   $$ \frac{c_j\left[J_0(\lambda_j)\right]^2}{2} = T_0 \int_0^1(1+x^2)xJ_0(\lambda_jx)dx $$
-  如果$\lambda_j =0$，则
+  对$j=0$ （即$\lambda_j =0$）的特殊情况，
   $$\int_0^1(1+x^2)xJ_0(\lambda_j x) = \int_0^1x(1+x^2)dx  =\frac{3}{4}$$
   即
-  $$c_1 = \frac{3}{2}T_0$$
+  $$c_0 = \frac{3}{2}T_0$$
   \ech
 \end{frame}
 
 \begin{frame}
   \chtitle{回到原问题}
   \bch
-  若$\lambda_j>0$，利用$ \lambda_jxJ_0(\lambda_jx) = \frac{d}{dx} \left[x J_1(\lambda_jx)\right]$进行分部积分：
+  若$j>0$，利用$ \lambda_jxJ_0(\lambda_jx) = \frac{d}{dx} \left[x J_1(\lambda_jx)\right]$进行分部积分：
   \bea
   \int_0^1(1+x^2)xJ_0(\lambda_jx)dx &=& \left.\frac{1+x^2}{\lambda_j}xJ_1(\lambda_jx)\right\vert_0^1 -\frac{2}{\lambda_j} \int_0^1x^2J_1(\lambda_jx) dx\newl
   &=& -\frac{2}{\lambda_j} \int_0^12x^2J_1(\lambda_jx) dx \newl
@@ -321,17 +325,39 @@ $$  \int_0^1 xJ_m(\lambda_ix)J_m(\lambda_jx) dx = \int_0^1xJ_0(\lambda_j x) dx
 
 
 \begin{frame}
-  \chtitle{回到原问题}
+  \chtitle{最终的解}
   \bch
   得到
   $$c_j = \frac{4T_0}{\lambda_j^2 J_0(\lambda_j)}$$
   即
-  $$T = \frac{3}{2}T_0 + \sum_{j=1}^\infty$$
+  $$T = \frac{3}{2}T_0 + 4T_0\sum_{j=1}^\infty \frac{J_0\left(\frac{\lambda_j r}{R}\right)e^{-\frac{a\lambda_j^2t}{R^2}}}{\lambda_j^2 J_0(\lambda_j)}$$
   
   \ech
 \end{frame}
 
+\section{Infinite Disk}
 
+\secpage{无限大圆盘上的数理方程}{通常是因为初条件有对称性而选择极坐标}
+
+\begin{frame}
+  \chtitle{无限大圆盘上的热传导问题}
+  \bch
+  一块很大（可以视为无限大）的均匀薄板的温度为$T_0$，在$t=0$时刻在中心点注入热量$Q$，求之后板上的温度变化。设板的单位质量比热为$c$，质量密度为$\rho$，厚度为$h$，导热系数为$\lambda$。
+  \ech
+\end{frame}
+
+
+\begin{frame}
+  \chtitle{写出方程}
+  \bch
+  假设一开始的热量被注入到面积为$\epsion$的小区域内，则该区域内的温度为$T_0+\frac{Q}{\rho c \epsilon h} = T_0+\frac{Q}{\rho c h }\delta(\vecx) $。令$u = T - T_0$，写出方程和边界条件：
+
+  \bea
+  \frac{\partial u}{\partial t}
+  \eea
+  
+  \ech
+\end{frame}
 
 \section{Homework}
 
@@ -339,12 +365,9 @@ $$  \int_0^1 xJ_m(\lambda_ix)J_m(\lambda_jx) dx = \int_0^1xJ_0(\lambda_j x) dx
   \chtitle{课后作业(题号38-40)}
   \bch
   \bitem
-\item[35]{通过逐项求导的办法证明贝塞尔函数的两个递推关系}
-\item[36]{如果$J_m(\mu) = 0$ （$\mu$为正实数，$m$为非负整数)，计算积分
-    $$\int_0^1x\left[J_{m+1}(\mu x)\right]^2 dx. $$
-}
-\item[37]{ 考虑半径为$R$的圆形薄膜的横向小振动问题。在$t=0$时刻的初始速度为$A\left[1-\left(\frac{r}{R}\right)^2\right]$ （其中$A$为常量，$r$为距离圆盘中心的距离，$0\le r\le R$)，初始位移为零。求解之后薄膜的振动。
- }
+\item[35]{}
+\item[36]{}
+\item[37]{}
   \eitem
   \ech
 \end{frame}
