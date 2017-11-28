@@ -235,7 +235,7 @@ $$T(r) =T_0\left(1+\frac{r^2}{R^2}\right).$$
   && + (\lambda_i^2-\lambda_j^2)xJ_m(\lambda_ix)J_m(\lambda_jx) = 0. \label{eq3}
   \end{eqnarray}
   如果$i\ne j$，两边从$0$到$1$积分即得到
-  $$\int_0^1 xJ_m(\lambda_ix)J_m(\lambda_jx) = 0. $$
+  $$\int_0^1 xJ_m(\lambda_ix)J_m(\lambda_jx) dx= 0. $$
   \ech
 \end{frame}
 
@@ -358,16 +358,16 @@ $$  \int_0^1 xJ_m(\lambda_ix)J_m(\lambda_jx) dx = \int_0^1xJ_0(\lambda_j x) dx
 
 
 \begin{frame}
-  \chtitle{证明}
+  \chtitle{证明 (心累请跳过)}
   \bch
   把$f(x)=\frac{1}{2\pi}\int_{-\pi}^{\pi} e^{\ii (x\sin\theta - m \theta) } d\theta$进行泰勒展开，其$n$次系数为
   $$c_n = \frac{1}{2\pi n!}\int_{-\pi}^{\pi} (\ii\sin\theta)^n e^{-\ii m \theta } d\theta$$
   转化为单位圆上的围道积分：
   \bea
-  c_n &=& \frac{1}{2\pi n!\ii}\oint (z-\frac{1}{z})^n \frac{1}{z^{m+1}} dz \newl
-  &=&  \frac{1}{2\pi  \ii}\oint\sum_{k=0}^n \frac{1}{k!(n-k)!} (-1)^kz^{n-2k-m-1} dz
+  c_n &=& \frac{1}{2\pi 2^nn!}\oint (z-\frac{1}{z})^n \frac{1}{z^m} \frac{dz}{\ii z} \newl
+  &=&  \frac{1}{2\pi \ii}\oint\sum_{k=0}^n \frac{1}{2^nk!(n-k)!} (-1)^kz^{n-2k-m-1} dz
   \eea
-  根据留数定理，仅有的非零项为$c_{2k+m} = \frac{(-1)^k}{k!(m+k)!}$，和$J_m$的级数定义相同。证毕。
+  根据留数定理，仅有的非零项为$c_{2k+m} = \frac{(-1)^k}{k!(m+k)!2^{2k+m}}$，和$J_m$的级数定义相同。证毕。
   \ech
 \end{frame}
 
@@ -391,8 +391,8 @@ $$  \int_0^1 xJ_m(\lambda_ix)J_m(\lambda_jx) dx = \int_0^1xJ_0(\lambda_j x) dx
   当$x$很大时，$\cos(x\sin\theta - m\theta)$快速振荡，对积分无贡献。唯一的例外是$\theta=\frac{\pi}{2}$附近，$\sin\theta$变化停滞，积分贡献并不消失。令$\theta = \frac{\pi}{2}+\epsilon$，把$\sin\theta$作二阶近似展开：
   \bea
   J_m(x) &\approx & \frac{1}{\pi}\int_{-\infty}^{\infty} \cos{\left[x(1-\frac{1}{2}\epsilon^2) - \frac{m}{2}\pi\right]} d\epsilon \newl
-  &\approx & \frac{1}{\pi}\mathrm{Re}\left[e^{-\ii\phi}\int_{-\infty}^{\infty}e^{\frac{ \ii x}{2}\epsilon^2} d\epsilon\right]  \newl
-  &\approx & \frac{2}{\pi}\mathrm{Re}\left[e^{-\ii\phi}\int_0^{\infty}e^{\frac{ \ii x}{2}\epsilon^2} d\epsilon\right]  \newl  
+  &= & \frac{1}{\pi}\mathrm{Re}\left[e^{-\ii\phi}\int_{-\infty}^{\infty}e^{\frac{ \ii x}{2}\epsilon^2} d\epsilon\right]  \newl
+  &= & \frac{2}{\pi}\mathrm{Re}\left[e^{-\ii\phi}\int_0^{\infty}e^{\frac{ \ii x}{2}\epsilon^2} d\epsilon\right]  \newl  
   \eea
   其中$\phi = x-\frac{m}{2}\pi$
   \ech
