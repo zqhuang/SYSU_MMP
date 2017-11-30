@@ -430,7 +430,7 @@ $$ \left. T \right\vert_{t\rightarrow \infty}= T_0  -\frac{jR_2}{\lambda }\ln\fr
 $$  T = T_0  -\frac{jR_2}{\lambda }\ln\frac{r}{R_1} + u(r,t). $$
 则$u$满足
 \bea
-\frac{\partial u}{\partial t} - a \frac{\partial^2 u}{\partial x^2} &=& 0 ,\newl
+\frac{\partial u}{\partial t} - a \nabla^2 u &=& 0 ,\newl
 \left. u\right\vert_{r=R_1} &=& 0, \newl
 \left.\frac{\partial u}{\partial r} \right\vert_{r=R_2} &=& 0, \newl
 \left. u\right\vert_{t=0} &=& \frac{jR_2}{\lambda}\ln\frac{r}{R_1} .
@@ -446,7 +446,7 @@ $$  T = T_0  -\frac{jR_2}{\lambda }\ln\frac{r}{R_1} + u(r,t). $$
 把解按满足边界条件的谐函数展开：
 $$ u(r, t) = \sum_{i=1}^\infty c_i\left[Y_0(k_iR_1) J_0(k_ir) - J_0(k_iR_1) Y_0(k_ir)\right]e^{-ak_i^2t} .$$
 其中$k_i$是满足
-$$ Y_0(k_iR_1) J_0‘(k_iR_2) - J_0(k_iR_1) Y_0’(k_iR_2) = 0 $$
+$$ Y_0(k_iR_1) J_0'(k_iR_2) - J_0(k_iR_1) Y_0’(k_iR_2) = 0 $$
 的第$i$个解。
 
 \skiplines
