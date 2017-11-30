@@ -1,0 +1,506 @@
+\documentclass[CJK]{beamer}
+\input{macros.tex}
+\input{titlepage.tex}
+  \date{}
+\begin{document}
+\tpage{18}{Bessel Functions of the Second Kind}
+
+\begin{frame}
+\chtitle{本讲内容}
+\bch
+\bitem
+\item{谐函数的一般正交定理}
+\item{任意阶第一类贝塞尔函数}
+\item{第二类贝塞尔函数}
+\item{环形区域数理方程}
+\eitem
+\ech
+\end{frame}
+
+\begin{frame}
+  \chtitle{据说上次课又翻车了……}
+  \bch
+  \addfig{4}{budebufan.jpg}
+  \ech
+\end{frame}
+
+\begin{frame}
+\chtitle{分离变量法的套路}
+\bch
+\addfig{1}{taolu.jpg}
+
+\bitem
+\item{通过减去一个特解（或瞎解）把边界条件齐次化}
+\item{把解展开成谐函数$Q_k(\vecx)$（和时间依赖因子的乘积）的线性组合：热传导方程的时间依赖因子是$e^{-ak^2t}$，波动方程的时间依赖因子是$e^{\pm iakt}$。}
+\item{如果是有限区间，用边界条件来选择$k$的允许取值。}
+\item{用初始条件和谐函数的正交性求出展开系数。}
+\eitem
+\ech
+\end{frame}
+
+
+
+\begin{frame}
+\chtitle{ 疑问}
+\bch
+
+\bcenter
+    {\large 那个……万一谐函数不正交怎么办？}
+
+    \skiplines
+    
+
+\lfig{1.5}{askedtoomuch.jpg}
+\ecenter
+
+\ech
+\end{frame}
+
+
+\section{Orthogonality}
+\secpage{谐函数的一般正交定理}{并不懂为什么，反正感觉该正交时就会正交的…}
+
+\begin{frame}
+\chtitle{什么齐次边界条件是在套路内的？}
+\bch
+把在某个$n$维空间的区域$\Omega$内对应本征值为$-k^2$，即满足
+$$ \nabla^2 Q = - k^2 Q $$
+的谐函数记作$Q_k(\vecx)$ (约定$k\ge 0$)。
+
+\skipline
+
+在区域的边界面$\partial \Omega$上，如果{谐函数和它沿边界面法向的分量(记作$(\nabla Q)_{\perp}$)的某个固定的非平凡线性组合处处为零}，则称该区域内的谐函数满足{\blue 一般零边界条件}。
+
+\skiplines
+
+{\small （边界面的法向即垂直边界面的方向。一般零边界条件就是指：$\lambda_1 Q + \lambda_2 (\nabla Q)_{\perp} = 0$，其中权重$\lambda_1$, $\lambda_2$不同时为零。注意边界面上不同的点的权重允许不同，但是同一点的权重对所有谐函数必须相同。）}
+
+
+\ech
+\end{frame}
+
+
+\begin{frame}
+\chtitle{谐函数的一般正交定理}
+\bch
+
+{\blue 设$Q_{k_1}(\vecx)$和$Q_{k_2}(\vecx)$是满足一般零边界条件的谐函数，且$k_1 \ne k_2$。则在区域$\Omega$内$Q_{k_1}(\vecx)$和$Q_{k_2}(\vecx)$正交：
+$$\int_\Omega Q_{k_1}(\vecx) Q_{k_2}(\vecx) d^n\vecx = 0. $$}
+\ech
+\end{frame}
+
+
+\begin{frame}
+\chtitle{证明}
+\bch
+\bea
+&& (k_1^2-k_2^2)\int_\Omega Q_{k_1}(\vecx) Q_{k_2}(\vecx) d^n\vecx \newl
+&=& \int_\Omega \left[Q_{k_1}(\vecx)\nabla^2 Q_{k_2}(\vecx)  -  Q_{k_2}(\vecx) \nabla^2Q_{k_1}(\vecx)\right]d^n\vecx \newl
+&=& \int_{\Omega} \nabla\cdot\left[Q_{k_1}(\vecx)\nabla Q_{k_2}(\vecx)-Q_{k_2}(\vecx)\nabla Q_{k_1}(\vecx)\right] d^n\vecx \newl
+&=& \int_{\partial \Omega} \left[Q_{k_1}(\vecx)\nabla Q_{k_2}(\vecx)-Q_{k_2}(\vecx)\nabla Q_{k_1}(\vecx)\right]_{\perp} dS
+\eea
+最后一步利用了高斯定理（散度的体积分等于边界面上的法向分量的面积分）。
+
+\ech
+\end{frame}
+
+\begin{frame}
+\chtitle{证明(续)}
+\bch
+我们得到
+\be
+ \int_\Omega Q_{k_1} Q_{k_2} d^n\vecx 
+= \frac{1}{(k_1^2-k_2^2)}\int_{\partial \Omega} \left[Q_{k_1}\nabla Q_{k_2}-Q_{k_2}\nabla Q_{k_1}\right]_{\perp} dS
+\ee
+
+现在分两种情况讨论：
+\bitem
+\item[1]{ 如果$Q_{k_1}$和$Q_{k_2}$满足的都是边界上$Q=0$的零边界条件，则贡献显然为零。}
+\item[2]{ 如果$Q_{k_1}$和$Q_{k_2}$满足的是$\lambda Q + (\nabla Q)_{\perp} = 0$，则根据
+$$ Q_{k_1}\nabla Q_{k_2}-Q_{k_2}\nabla Q_{k_1} = Q_{k_1}(\lambda Q_{k_2}+\nabla Q_{k_2})-Q_{k_2}(\lambda Q_{k_1} + \nabla Q_{k_1}) $$
+  贡献还是零。
+}
+  \eitem
+\ech
+\end{frame}
+
+\begin{frame}
+\chtitle{求归一化因子的办法}
+\bch
+$k_1=k_2$的情况下求归一化因子的方法：
+
+取$Q_{k_1}$严格满足一般零边界条件，取$k_2= k_1+\epsilon$并令$\epsilon\rightarrow 0$取极限得到。
+
+
+\ech
+\end{frame}
+
+
+\begin{frame}
+\chtitle{例题1}
+\bch
+\addfig{1}{drive.jpg}
+
+设$m$为非负整数，$\lambda$为实数。满足$\lambda J_m(x)+ xJ_m'(x) = 0$的所有正实数解为$\mu_1, \mu_2, \ldots$，试推导函数序列$J_m(\mu_i x)$ ($i=1,2,\ldots $)的正交定理。
+\ech
+\end{frame}
+
+
+
+\begin{frame}
+\chtitle{解答}
+\bch
+取单位圆为研究区域并建立极坐标。则$J_m(\mu_ir)\cos{(m\theta)}$为区域内的本征值为$-\mu_i^2$的谐函数，且满足一般零边界条件$\left.\lambda J_m(\mu_ir)+\frac{d}{dr}J_m(\mu_ir)\right\vert_{r=1} = 0$。根据一般正交定理，$J_m(\mu_i r)\cos{(m\theta)}$ ($i=1,2,\ldots $)在单位圆内构成一组正交函数:
+$$\int_0^1 rdr   \int_0^{2\pi}d\theta \,  J_m(\mu_i r)\cos{(m\theta)} J_m(\mu_j r)\cos{(m\theta)} \propto \delta_{ij}. $$
+因为$\theta$的积分可以独立积掉，所以正交性可以写成：
+
+$$\int_0^1 J_m(\mu_i r) J_m(\mu_j r) \,rdr = \delta_{ij}C_i.$$
+
+ 难点在于求归一化因子$C_i$。
+\ech
+\end{frame}
+
+
+\begin{frame}
+\chtitle{归一化因子}
+\bch
+由单位圆区域内的高斯定理导出
+{\small
+\bea
+&&\int_0^1 rdr   \int_0^{2\pi}d\theta \,  J_m(\mu_i r) J_m(k r)\cos^2{(m\theta)} \newl
+&=& \frac{1}{\mu_i^2-k^2}\int_0^{2\pi}d\theta\, \left[J_m(\mu_i) kJ_m'(k) - J_m(k)\mu_i J_m'(\mu_i)\right]\cos^2{(m\theta)}.
+\eea}
+把$\theta$的积分约去后即：
+{\small
+  \bea
+ && \int_0^1 rdr  \,  J_m(\mu_i r) J_m(k r) \newl
+  &=& \frac{1}{\mu_i^2-k^2}  \left[J_m(\mu_i) kJ_m'(k) - J_m(k)\mu_i J_m'(\mu_i)\right] \newl
+  &=& \frac{1}{\mu_i^2-k^2}  \left\{J_m(\mu_i)\left[\lambda J_m(k)+kJ_m'(k)\right] - J_m(k)\left[\lambda J_m(\mu_i)+\mu_i J_m'(\mu_i)\right]\right\} \newl
+  &=& \frac{1}{\mu_i^2-k^2} J_m(\mu_i)\left[\lambda J_m(k)+kJ_m'(k)\right] 
+  \eea
+}
+\ech
+\end{frame}
+
+
+\begin{frame}
+\chtitle{归一化因子}
+\bch
+让$k = \mu_i+\epsilon$，并取$\epsilon\rightarrow 0$的极限：
+$$\int_0^1  \left[J_m(\mu_i r)\right]^2rdr = -\frac{1}{2\mu_i}J_m(\mu_i)\left[(1+\lambda)J_m'(\mu_i)+\mu_iJ_m''(\mu_i)\right]$$
+再利用$J_m'(\mu_i) = -\frac{\lambda}{\mu_i} J_m(\mu_i)$，以及
+$$J_m''(\mu_i)+\frac{1}{\mu_i}J_m'(\mu_i) + (1-\frac{m^2}{\mu_i^2})J_m(\mu_i) = 0$$
+可以把上述结果综合写为：
+$$\int_0^1J_m(\mu_i r)J_m(\mu_j r)rdr  = \delta_{ij}\frac{\left(1+\frac{\lambda^2-m^2}{\mu_i^2}\right)\left[J_m(\mu_i)\right]^2}{2}.$$
+
+\ech
+\end{frame}
+
+
+\begin{frame}
+\chtitle{思考题}
+\bch
+
+\addfig{1}{think3.jpg}
+
+你能从例题的结论导出之前学习过的两个$J_m$的正交定理吗？
+\ech
+\end{frame}
+
+\begin{frame}
+\bch
+
+{\large 从此正交性，归一化这些都成为了枯燥的推土工作。}
+
+\bcenter
+\lfig{1}{kaisen.jpg}
+
+我就喜欢推土！
+
+\ecenter
+\ech
+\end{frame}
+
+
+\section{Bessel Functions of Fractional Order}
+\secpage{任意阶第一类贝塞尔函数}{非整数阶$J_{-\nu}$和$J_\nu$线性独立，整数阶满足$J_{-m}(x) = (-1)^m J_m(x)$}
+
+\begin{frame}
+\chtitle{任意阶贝塞尔函数}
+\bch
+直接把$m$推广到任意实数$\nu$，
+\tbox
+    {$$J_\nu(x) = \sum_{k=0}^\infty \frac{(-1)^k}{k!(k+\nu)!} \left(\frac{x}{2}\right)^{2k+\nu}.$$}
+    定义对所有$x>0$有效。当$\nu \ge 0$，还可以取$x \rightarrow 0$的极限。
+
+
+    
+    \skiplines
+    \bitem
+  \item{当$\nu$不是整数时，$(k+\nu)!$要理解为$\Gamma(k+\nu+1)$。}
+  \item{$\frac{1}{\Gamma(z)}$的零点为$0,-1,-2,\ldots$，或者说负整数的阶乘是无穷大。所以上面的级数也可以写成$k$从$-\infty$到$\infty$求和}
+  \item{如果你乐意，还可以把定义解析延拓到$-\pi<\arg x<\pi$。}
+    \eitem
+\ech
+\end{frame}
+
+
+\begin{frame}
+\chtitle{贝塞尔函数的性质}
+\bch
+递推公式对所有$\nu$成立：{\blue
+  $$ \frac{d}{dx}\left[x^\nu J_\nu(x)\right] = x^\nu J_{\nu -1}(x);\ \frac{d}{dx}\left[x^{-\nu} J_\nu(x)\right] = -x^{-\nu} J_{\nu +1}(x);  $$
+
+$$ J_{\nu-1}(x)-J_{\nu+1}(x) =2J_\nu'(x) ;\  J_{\nu-1}(x)+J_{\nu+1}(x) = \frac{2\nu}{x}J_\nu(x).$$}
+
+
+
+渐近公式对所有$\nu$都成立：{\blue $x\gg \nu^2$时
+$$ J_\nu(x)\approx \sqrt{\frac{2}{\pi x}}\cos{\left(x - \frac{\nu \pi}{2} - \frac{\pi}{4}\right)} $$}
+
+另外，{\blue 三个正交定理对$\nu \ge 0 $都成立}。
+
+\ech
+\end{frame}
+
+
+
+\begin{frame}
+\chtitle{整数阶$J_{-m}(x)$和$J_m(x)$的线性关系}
+\bch
+设$m\ge 0$为整数，利用负整数的阶乘为$\infty$，有
+\bea
+J_{-m}(x) &=& \sum_{k=0}^\infty \frac{(-1)^k}{k!(k-m)!} \left(\frac{x}{2}\right)^{2k-m} \newl
+&=&  \sum_{k=m}^\infty  \frac{(-1)^k}{k!(k-m)!} \left(\frac{x}{2}\right)^{2k-m} \newl
+&=&  \sum_{n=0}^\infty  \frac{(-1)^{n+m}}{(n+m)!n!} \left(\frac{x}{2}\right)^{2(n+m)-m} \newl
+&=&  (-1)^mJ_m(x)
+\eea
+\ech
+\end{frame}
+
+\begin{frame}
+\chtitle{非整数阶$J_\nu$和$J_{-\nu}$线性独立}
+\bch
+当$x\rightarrow \infty$时
+$$J_\nu(x) \approx \sqrt{\frac{2}{\pi x}}\cos{\left(x-\frac{\nu \pi}{2}-\frac{\pi}{4}\right)}.$$
+$$J_{-\nu}(x) \approx \sqrt{\frac{2}{\pi x}}\cos{\left(x+\frac{\nu \pi}{2}-\frac{\pi}{4}\right)}.$$
+两者的相位差$\nu\pi$，$\nu$不是整数时，无法通过线性叠加完全消失。
+
+\skiplines
+
+这个结论也能从$x\rightarrow 0^+$时的渐近行为得到，请自行研究。
+\ech
+\end{frame}
+
+
+\section{Bessel Functions of the 2$^{\rm nd}$ Kind}
+\secpage{第二类贝塞尔函数}{和第一类贝塞尔函数渐近正交，大多数性质相同，除了在$x\rightarrow 0^+$时发散}
+
+\begin{frame}
+\chtitle{贝塞尔方程的线性独立解}
+\bch
+设$\nu >0$为非整数，贝塞尔方程
+$$f''+\frac{1}{x}f' + \left(1-\frac{\nu^2}{x^2}\right)f = 0$$
+有两个线性独立的解：$J_\nu(x)$和$J_{-\nu}(x)$。
+
+\skiplines
+
+这无法推广到$\nu$为整数的情形。我们来思考其背后的原因。
+\ech
+\end{frame}
+
+\begin{frame}
+\chtitle{$J_\nu$和$J_{-\nu}$之间的“独立性”随着$\nu$逼近整数而趋向于消失}
+\bch
+如果考虑一下$J_\nu$和$J_{-\nu}$的渐近展开：
+$$J_\nu(x) \approx \sqrt{\frac{2}{\pi x}}\cos{\left(x-\frac{\nu \pi}{2}-\frac{\pi}{4}\right)}.$$
+$$J_{-\nu}(x) \approx \sqrt{\frac{2}{\pi x}}\cos{\left(x+\frac{\nu \pi}{2}-\frac{\pi}{4}\right)}.$$
+当$\nu$趋向于一个整数，两者的“独立性”趋向于消失。
+
+\skipline
+
+因为$J_\nu$和$J_{-\nu}$之间的独立性依赖于$\nu$，取它们作为两个独立解并不合适。最合理的方法是取$J_\nu$和另一个渐近行为为
+$$ \sim \sqrt{\frac{2}{\pi x}}\sin{\left(x-\frac{\nu \pi}{2}-\frac{\pi}{4}\right)}$$
+的解。这样两个解就类似于余弦和正弦一样“正交”了。
+\ech
+\end{frame}
+
+\begin{frame}
+\chtitle{第二类贝塞尔函数}
+\bch
+利用
+{\small
+$$ \cos{\left(x+\frac{\nu \pi}{2}-\frac{\pi}{4}\right)} = \cos{\left(x-\frac{\nu \pi}{2}-\frac{\pi}{4}\right)}\cos{(\nu\pi)} -  \sin{\left(x-\frac{\nu \pi}{2}-\frac{\pi}{4}\right)}\sin{(\nu\pi)} $$}
+只要定义
+$$Y_\nu(x) = \frac{J_\nu(x)\cos{(\nu\pi)} - J_{-\nu}(x)}{\sin{(\nu\pi)}},$$
+则$Y_\nu(x)$满足我们期待的渐近公式：
+\tbox{
+$$ Y_\nu(x) \approx \sqrt{\frac{2}{\pi x}}\sin{\left(x-\frac{\nu \pi}{2}-\frac{\pi}{4}\right)},\ \ \ x\gg \nu^2$$}
+
+\ech
+\end{frame}
+
+\begin{frame}
+\chtitle{整数阶$Y_m(x)$}
+\bch
+为了对整数阶也适用，我们把定义修改为极限\tbox{
+  $$Y_\nu(x) := \lim_{\alpha \rightarrow \nu } \frac{J_\alpha(x)\cos{(\alpha\pi)} - J_{-\alpha}(x)}{\sin{(\alpha\pi)}}$$}
+
+\skiplines
+
+因为$Y_\nu$和$J_\nu$渐近正交，不可能线性相关。所以
+{\blue
+对任意$\nu $，$J_\nu$和$Y_\nu$都是贝塞尔方程的两个线性独立解。}
+\ech
+\end{frame}
+
+
+\begin{frame}
+\chtitle{$Y_0, Y_1, Y_2$}
+\bch
+\addfig{3}{Y012.png}
+\ech
+\end{frame}
+
+
+\begin{frame}
+\chtitle{$Y_\nu$的定性图像}
+\bch
+对$\nu\ge 0$， $Y_\nu$和$J_\nu$都是振幅以$\sim \frac{1}{\sqrt{x}}$方式衰减，周期近似为$2\pi$的振荡函数。区别是$x\rightarrow 0^+$时的行为。
+
+如果$\nu>0$，当$x\rightarrow 0^+$时
+$$J_\nu(x)\approx \frac{1}{\nu !}\left(\frac{x}{2}\right)^\nu,\ \ Y_\nu(x) \approx -\frac{\Gamma(\nu)}{\pi}\left(\frac{x}{2}\right)^{-\nu}. $$
+
+\skiplines
+
+如果$\nu = 0$，当$x\rightarrow 0^+$时
+$$J_0(x)\approx 1 , \ \ Y_0(x) \approx \frac{2}{\pi}\ln x $$
+
+证明非常简单，留为作业\bye
+
+{\blue 因为$Y_\nu(kr)$在$r\rightarrow 0$时发散，当且仅当考虑的区域为去心的环形区域时才需要考虑谐函数: $Y_m(kr)e^{\pm \ii m\theta}$.}
+\ech
+\end{frame}
+
+\begin{frame}
+\chtitle{$Y_\nu$的递推关系}
+\bch
+$Y_\nu$和$J_\nu$一样满足递推关系：
+{\blue
+  $$ \frac{d}{dx}\left[x^\nu Y_\nu(x)\right] = x^\nu Y_{\nu -1}(x);\ \frac{d}{dx}\left[x^{-\nu} Y_\nu(x)\right] = -x^{-\nu} Y_{\nu +1}(x);  $$
+
+  $$ Y_{\nu-1}(x)-Y_{\nu+1}(x) =2Y_\nu'(x) ;\  Y_{\nu-1}(x)+Y_{\nu+1}(x) = \frac{2\nu}{x}Y_\nu(x).$$}
+
+证明非常简单，留为作业\bye
+\ech
+\end{frame}
+
+\section{sample problem}
+\secpage{环形区域上的数理方程}{当圆心被挖掉时，$Y_m(kr)e^{\pm \ii m\theta}$ 也是合法解}
+
+\begin{frame}
+\chtitle{例题2}
+\bch
+\bmini{0.45}
+\lfig{1.8}{ring_problem.png}
+\emini
+\bmini{0.5}
+如图，一根外半径为$R_1$，内半径为$R_2$的无限长的均匀材质空心圆柱。外表面和温度为$T_0$的热库接触，保持温度为$T_0$。在$t=0$时刻空心圆柱处于热平衡，温度为$T_0$。在$t>0$时，从内表面处处都注入热流$j$。已知材质的导热系数为$\lambda$，质量密度为$\rho$，单位质量比热为$c$。计算该空心圆柱各处的温度。
+\emini
+\ech
+\end{frame}
+
+
+\begin{frame}
+\chtitle{例题2解答思路}
+\bch
+当达到温度梯度不再变化的稳恒状态时，因为外表面温度已经固定，所有位置的温度将保持恒定。那么流入的热流将不再积累，直接穿过空心圆柱流出外表面。这时，距离中心轴为$r$处的热流为
+$$  \frac{j(2\pi R_2)}{2\pi r} ,$$
+即
+$$ \frac{\partial T}{\partial r} = -\frac{jR_2}{\lambda r}. $$
+解出稳恒解：
+$$ \left. T \right\vert_{t\rightarrow \infty}= T_0  -\frac{jR_2}{\lambda }\ln\frac{r}{R_1}. $$
+\ech
+\end{frame}
+
+\begin{frame}
+\chtitle{例题2解答思路（续）}
+\bch
+设严格解为
+$$  T = T_0  -\frac{jR_2}{\lambda }\ln\frac{r}{R_1} + u(r,t). $$
+则$u$满足
+\bea
+\frac{\partial u}{\partial t} - a \frac{\partial^2 u}{\partial x^2} &=& 0 ,\newl
+\left. u\right\vert_{r=R_1} &=& 0, \newl
+\left.\frac{\partial u}{\partial r} \right\vert_{r=R_2} &=& 0, \newl
+\left. u\right\vert_{t=0} &=& \frac{jR_2}{\lambda}\ln\frac{r}{R_1} .
+\eea
+其中$a =\frac{\lambda}{\rho c}$.
+\ech
+\end{frame}
+
+
+\begin{frame}
+\chtitle{例题2解答思路（续）}
+\bch
+把解按满足边界条件的谐函数展开：
+$$ u(r, t) = \sum_{i=1}^\infty c_i\left[Y_0(k_iR_1) J_0(k_ir) - J_0(k_iR_1) Y_0(k_ir)\right]e^{-ak_i^2t} .$$
+其中$k_i$是满足
+$$ Y_0(k_iR_1) J_0‘(k_iR_2) - J_0(k_iR_1) Y_0’(k_iR_2) = 0 $$
+的第$i$个解。
+
+\skiplines
+
+剩下的用正交关系求系数的推土工作留为作业。
+\ech
+\end{frame}
+
+
+
+
+\section{Homework}
+
+\begin{frame}
+\chtitle{课后作业(题号41-43)}
+\bch
+\bitem
+\item[41]{对$0<\nu<1$，当$x\rightarrow 0^+$时，取$J_\nu$和$J_{-\nu}$的级数展开的最低次近似，证明：
+  $$Y_\nu(x) \approx -\frac{\Gamma(-\nu)\cos{\nu\pi}}{\pi}\left(\frac{x}{2}\right)^\nu - \frac{\Gamma(\nu)}{\pi}\left(\frac{x}{2}\right)^{-\nu}. $$
+  在上式中对$x$求导，然后令$\nu\rightarrow 0$求极限，再对$x$积分，导出
+  $$ Y_0(x)\approx \frac{2}{\pi}\ln x + c,$$
+  其中$c$为常数，当$x\rightarrow 0^+$时可以忽略它的贡献。
+
+  \skiplines
+      {\small \darkgreen 提示：要用到$\Gamma$函数的递推关系和互余宗量关系
+        $\sfgamma{z}\sfgamma{1-z}=\frac{\pi}{\sin{(\pi z)}}$（推导见第5讲）。
+}}
+  \eitem
+\ech
+\end{frame}
+
+
+
+\begin{frame}
+\chtitle{课后作业(题号41-43)}
+\bch
+\bitem
+\item[42]{在上一题中，我们无耻地交换了求极限和求导/积分的次序。请保持这种无耻，用$Y_\nu$的极限定义证明它的两个递推关系：
+  $$ \frac{d}{dx}\left[x^\nu Y_\nu(x)\right] = x^\nu Y_{\nu -1}(x);$$
+  $$ \frac{d}{dx}\left[x^{-\nu} Y_\nu(x)\right] = -x^{-\nu} Y_{\nu +1}(x).  $$
+}
+  \eitem
+\ech
+\end{frame}
+
+
+
+\begin{frame}
+\chtitle{课后作业(题号41-43)}
+\bch
+\bitem
+\item[43]{把例题2的推土部分推完，写出系数$c_i$的积分表达式，并使出洪荒之力进行化简。}
+  \eitem
+\ech
+\end{frame}
+
+\end{document}
