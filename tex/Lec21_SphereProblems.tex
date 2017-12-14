@@ -3,7 +3,7 @@
 \input{titlepage.tex}
   \date{}
 \begin{document}
-\tpage{21}{具有球对称性的物理问题}
+\tpage{21}{Problems in Spherical Coordinates}
 
 \begin{frame}
 \chtitle{本讲内容}
@@ -155,7 +155,7 @@ Y_{1,\pm 1}(\theta,\phi) &=& \mp \sqrt{\frac{3}{8\pi}}\sin\theta e^{\pm \ii\phi}
 \left. u\right\vert_{r=R} &=& 0 , \newl
 \left. u\right\vert_{t=0} &=& T_0-T_1. \newl
 \eea
-根据问题对称性只能取$\ell = m = 0$的谐函数：$j_0(kr) = \frac{\sin kr}{kr}$。又根据零边界条件，可以得到
+其中$a=\frac{\lambda}{\rho c}$。 根据问题对称性只能取$\ell = m = 0$的谐函数：$j_0(kr) = \frac{\sin kr}{kr}$。又根据零边界条件，可以得到
 $$k = \frac{n\pi}{R}, n = 1,2,\ldots $$
 所以设
 $$ u(r,t) = \sum_{n=1}^\infty c_n\frac{\sin \frac{n\pi r}{R}}{\frac{n\pi r}{R}} e^{-\frac{n^2\pi^2 at}{R^2}}.$$ 
@@ -254,6 +254,9 @@ $$ \frac{1}{\sqrt{1-2xt+t^2}} = \sum_{\ell =0}^\infty P_\ell (x)t^\ell  $$
 
 勒让德多项式和$m=0$的球谐函数之间有如下关系：
 $$ Y_{\ell 0}(\theta, \phi) =\sqrt{\frac{2l+1}{4\pi}} P_{\ell}(\cos\theta). $$
+
+\skipline
+下次课我们要讲怎样用这个母函数公式求解点电荷在球面上的感应电荷的问题。
 \ech
 \end{frame}
 
@@ -265,7 +268,7 @@ $$ Y_{\ell 0}(\theta, \phi) =\sqrt{\frac{2l+1}{4\pi}} P_{\ell}(\cos\theta). $$
 \bch
 \bitem
 \item[49]{一个半径为$R$的孤立均匀金属球，导热系数为$\lambda$, 质量密度为$\rho$，单位质量比热为$c$。记$r$为到球心的距离，一开始$t=0$时刻球内各处的温度为$T(r) = T_0\left(1+\frac{r}{R}\right)$。计算球内各处温度随时间的变化。}
-\item[50]{已知某真空区域的电势可以写成$ u(x,y,z) = \lambda(x^2-y^2)$, $\lambda$为常量，$x,y,z$为直角坐标。把一个不带电的半径为$R$的金属球放入该区域，计算金属球表面的电荷密度分布。}
+\item[50]{已知某真空区域的电势在直角坐标系下可以写成$ u(x,y,z) = \lambda(x^2-y^2)$, $\lambda$为常量。把一个不带电的半径为$R$的金属球放入该区域，球心和原点重合。计算金属球表面的电荷密度分布。}
   
   \eitem
 \ech
