@@ -1,0 +1,204 @@
+\documentclass[CJK]{beamer}
+\input{macros.tex}
+\input{titlepage.tex}
+  \date{}
+\begin{document}
+\tpage{23}{Advanced Topics on $Y_{\ell m}$'s}
+
+\begin{frame}
+\chtitle{本讲内容}
+\bch
+\bitem
+\item{勒让德多项式的各种性质}  
+\item{球谐函数的微分表达式和连带勒让德函数}
+\item{球谐函数的加法公式}
+\item{物理问题举例}  
+\eitem
+\ech
+\end{frame}
+
+\section{Legendre Polynomials}
+\secpage{勒让德多项式的各种性质}{学完后很快会忘，所以有个印象就可以}
+
+\begin{frame}
+  \chtitle{例题1: 罗巨格公式}
+  \bch
+  
+  上一讲我们定义了{\blue 勒让德多项式
+    $$ P_{\ell}(x) := \sum_{k=0}^\ell \frac{(\ell + k)!}{(k!)^2(\ell-k)!}\left(\frac{x-1}{2}\right)^k. $$}
+
+
+  
+  试证明{\blue 罗巨格公式(Rodrigues' Formula)：
+  $$ P_\ell(x) = \frac{1}{2^\ell \ell!} \frac{d^\ell}{dx^\ell} \left[(x^2-1)^\ell\right]. $$}
+  \ech
+\end{frame}
+
+\begin{frame}
+  \chtitle{证明}
+  \bch
+  令$t = x-1$，证明直截了当：
+
+  \bea
+  \frac{1}{2^\ell \ell!} \frac{d^\ell}{dx^\ell} \left[(x^2-1)^\ell\right] &=&  \frac{1}{\ell!} \frac{d^\ell}{dt^\ell} \left[t^\ell(1+\frac{t}{2})^\ell\right]  \newl
+  &=&  \sum_{k=0}^\ell \frac{1}{2^kk!(\ell-k)!} \frac{d^\ell}{dt^\ell} \left[t^{\ell+k}\right]  \newl
+  &=&  \sum_{k=0}^\ell \frac{(\ell+k)!}{(k!)^2(\ell-k)!} \left(\frac{t}{2}\right)^k  \newl
+  &=& P_\ell(x)
+  \eea
+  \ech
+\end{frame}
+
+
+\begin{frame}
+  \chtitle{例题2: 其他递推公式}
+  \bch
+  上一讲我们借助母函数{\blue
+  $$ \frac{1}{\sqrt{1-2xt +t^2}} = \sum_{\ell=0}^\infty P_\ell(x) t^\ell, $$}
+  证明了递推公式：{\blue
+  $$ (2\ell+1)xP_\ell(x) = (\ell+1)P_{\ell+1}(x) + \ell P_\ell(x) .$$
+  }
+  
+  试证明其他两个递推公式：
+  {\blue
+    $$P_{\ell+1}'(x) = xP_\ell'(x) +(\ell+1)P_\ell(x);$$
+    $$P_{\ell-1}'(x) = xP_\ell'(x) - \ell P_\ell(x) . $$
+  }
+  当然，由这两个递推公式还能得到：
+  {\blue $$ (2\ell+1)P_\ell(x) = P_{\ell+1}'(x) - P_{\ell-1}'(x). $$}
+  \ech
+\end{frame}
+
+\begin{frame}
+  \chtitle{证明}
+  \bch
+  \eea
+  \ech
+\end{frame}
+
+
+
+\begin{frame}
+  \chtitle{题外话，高中知识：乘积多重导数公式}
+  \bch
+  设$f$,$g$为$x$的函数，我们都知道
+  $$ (fg)' = f'g + fg'. $$
+  这个公式可以推广到任意阶导数：\tbox{
+  $$ (fg)^{(n)} = \sum_{k=0}^n \frac{n!}{k!(n-k)!} f^{(k)}g^{(n-k)}, $$}
+  其中 $f^{(k)}$表示$f$的$k$重导数。
+
+  \skipline
+  {\small \darkgreen (和二项式定理一样，这个公式最简明有效的证明方法是用数学归纳法，请自行完成。）}
+  \ech
+\end{frame}
+
+
+\begin{frame}
+  \chtitle{题外话，高中知识：推广的乘积多重导数公式}
+  \bch
+  设$\rho$, $f$, $g$为$x$的函数，则
+  \tbox{
+    $$ \left(\rho\frac{d}{dx}\right)^n (fg) = \sum_{k=0}^n \frac{n!}{k!(n-k)!} \left[ \left(\rho\frac{d}{dx}\right)^k f \right]\left[  \left(\rho\frac{d}{dx}\right)^{n-k} g\right], $$}
+
+  \skipline
+  
+  {\small \darkgreen 证明思路：令$y = \int \frac{dx}{\rho}$并对变量$y$应用乘积的多重导数公式。}
+
+  
+  \ech
+\end{frame}
+
+
+
+\begin{frame}
+  \chtitle{罗巨格公式应用例题1}
+  \bch
+  \addfig{1}{think3.jpg}
+  
+  利用罗巨格公式证明$P_\ell(x)$满足
+  $$  \frac{d}{dx}\left[(1-x^2)\frac{d}{dx}P_\ell(x)\right]  + \ell(\ell+1)P_\ell(x) = 0. $$
+  \ech
+\end{frame}
+
+
+\begin{frame}
+  \chtitle{证明}
+  \bch
+  $\ell=0$情况显然，假设$\ell\ge 1$，对恒等式：
+  $$(x^2-1) \frac{d}{dx} \left[(x^2-1)^\ell\right] = 2\ell x (x^2-1)^\ell $$
+  两边同求导$\ell$次得到
+  $$(x^2-1)\frac{d^{\ell+1}}{dx^{\ell+1}} \left[(x^2-1)^\ell\right] =\ell(\ell+1) \frac{d^{\ell-1}}{dx^{\ell-1}} \left[(x^2-1)^\ell\right]. $$
+  再次两边求导，并除以$2^\ell \ell !$即完成证明。
+
+  
+  \ech
+\end{frame}
+
+
+
+\begin{frame}
+  \chtitle{罗巨格公式应用例题2}
+  \bch
+  \addfig{1}{think3.jpg}
+  
+  利用罗巨格公式证明$P_\ell(x)$满足
+  $$\int_{-1}^1 \left[P_\ell(x)\right]^2 dx = \frac{2}{2\ell+1}. $$
+  \ech
+\end{frame}
+
+
+\begin{frame}
+  \chtitle{证明}
+  \bch
+{\small
+  \bea
+  \int_{-1}^1 \left[P_\ell(x)\right]^2 dx  &=& \frac{1}{4^\ell(\ell !)^2}  \int_{-1}^1 \left\{\frac{d^\ell}{dx^\ell}\left[(x^2-1)^\ell\right]\right\}^2 dx \newl
+  &=& -\frac{1}{4^\ell(\ell !)^2}\int_{-1}^1 \frac{d^{\ell-1}}{dx^{\ell-1}}\left[(x^2-1)^\ell\right]\frac{d^{\ell+1}}{dx^{\ell+1}} \left[(x^2-1)^\ell\right] dx \newl
+  &=& \ldots \newl
+  &=& \frac{(-1)^\ell}{4^\ell(\ell !)^2}\int_{-1}^1 (x^2-1)^\ell\frac{d^{2\ell}}{dx^{2\ell}} \left[(x^2-1)^\ell\right] dx \newl
+  &=& \frac{(2\ell)!}{(\ell !)^2}\int_{-1}^1 \left(\frac{1-x^2}{4}\right)^\ell dx   \newl
+  &=& \frac{2 (2\ell)!}{(\ell !)^2}\int_0^1 t^\ell(1-t)^\ell dt  \newl
+  &=& \frac{2}{2\ell+1}
+  \eea
+  上面我们做了变量替换：$t= \frac{x-1}{2}$并使用了$B(p,q) = \frac{\sfgamma{p}\sfgamma{q}}{\sfgamma{p+q}}$。
+ }
+  \ech
+\end{frame}
+
+
+
+\section{Explicit Expression of $Y_{\ell m}$}
+\secpage{球谐函数的微分表示}{  {\scriptsize
+    $$ Y_{\ell m}(\theta,\phi) =\frac{1}{2^\ell \ell !}\sqrt{\frac{(2\ell+1)}{4\pi} \frac{(\ell+m)!}{(\ell-m)!}}\left[\sin^m\theta \left(\frac{1}{\sin\theta}\frac{d}{d\theta}\right)^{\ell+m}\sin^{2\ell}\theta \right] e^{\ii m\phi}$$}}
+
+\begin{frame}
+  \chtitle{球谐函数的微分表达式}
+  \bch
+
+  {\small \blue
+    $$ Y_{\ell m}(\theta,\phi) =\frac{1}{2^\ell \ell !}\sqrt{\frac{(2\ell+1)}{4\pi} \frac{(\ell+m)!}{(\ell-m)!}}\left[\sin^m\theta \left(\frac{1}{\sin\theta}\frac{d}{d\theta}\right)^{\ell+m}\sin^{2\ell}\theta \right] e^{\ii m\phi}$$}
+  \ech
+\end{frame}
+
+
+\begin{frame}
+  \chtitle{球谐函数的微分表达式}
+  \bch
+ 对$Y_{\ell m}$，我们要证明
+  \ech
+\end{frame}
+
+\section{Homework}
+
+\begin{frame}
+\chtitle{课后作业(题号54-56)}
+\bch
+\bitem
+\item[54]{证明对任意小于$\ell$的非负整数$n$,
+  $$\int_{-1}^1 x^n P_\ell(x) dx  = 0. $$}
+\item[55]{}
+\item[56]{}
+\eitem
+\ech
+\end{frame}
+
+\end{document}
