@@ -173,7 +173,7 @@ $\sum_{\ell m}$是双重求和$\sum_{\ell = 0}^\infty\sum_{m =-\ell}^\ell $的�
 \begin{frame}
   \chtitle{第一部分：微分方程}
   \bch
-  两边同乘以$\sin^m\theta$，并利用
+  两边同乘以$\sin^m\theta$，
   \bea
   && \sin^{m+2}\theta \hatD^{\ell+m+1}\sin^{2\ell}\theta + 2m\sin^m\theta\cos\theta \hatD^{\ell+m}\sin^{2\ell}\theta \newl
   && + (\ell+m)(\ell-m+1)\sin^m\theta\hatD^{\ell+m-1}\sin^{2\ell}\theta =0  .
@@ -432,7 +432,7 @@ $\sum_{\ell m}$是双重求和$\sum_{\ell = 0}^\infty\sum_{m =-\ell}^\ell $的�
   把$Y_{\ell m}^*(\theta,\phi) = N_{\ell, m}\Psi_{\ell m}(\theta)e^{-\ii m\phi}$在单位球面上展开：
   $$ Y_{\ell m}^*(\theta,\phi)  = \sum_{\ell',m'}c_{\ell' m'} Y_{\ell' m'}(\theta,\phi). $$
   两边同乘以$Y_{\ell'm'}^*$并在单位球面上积分，得到
-  $$c_{\ell' m'} = \int_0^\pi \sin\theta d\theta \int_0^{2\pi}d\phi \,Y_{\ell' m'}^*(\theta,\phi) Y_{\ell m}(\theta,\phi).$$
+  $$c_{\ell' m'} = \int_0^\pi \sin\theta d\theta \int_0^{2\pi}d\phi \,Y_{\ell' m'}^*(\theta,\phi) Y_{\ell m}^*(\theta,\phi).$$
   即
   $$c_{\ell' m'} = N_{\ell'm'}N_{\ell m}\int_0^\pi  \Psi _{\ell' m'}(\theta)\Psi_{\ell m}(\theta) \sin\theta d\theta \int_0^{2\pi}d\phi  e^{-\ii (m'+m)\phi}.$$
   显然，当$m'+m\ne 0$时上式为零。当$m'=-m$，但$\ell\ne \ell'$时，$\Psi_{\ell m}(\theta)\cos m\phi$和$\Psi'_{\ell' m'}(\theta)\cos m\phi$都是单位球面上的谐函数，且它们对应不同的$k^2_{2D}$ (即$\ell(\ell+1)$和$\ell'(\ell'+1)$)，根据一般正交定理，上式的积分仍为零。
@@ -568,7 +568,7 @@ $$\vecn_1\cdot\vecn_2 = \cos\theta_1\cos\theta_2+\sin\theta_1\sin\theta_2\cos(\p
   \chtitle{证明（续）}
   \bch
   另一方面，根据库仑定律直接可以算出$(r, n_2)$处的电势为
-  $$u(r,\vecn) = \frac{Q}{4\pi\epsilon_0\sqrt{1+r^2-2r\vecn_1\cdot\vecn_2}} = \frac{Q}{4\pi\epsilon_0}\sum_{\ell}P_\ell(\vecn_1\cdot\vecn_2) r^\ell .$$
+  $$u(r,\vecn_2) = \frac{Q}{4\pi\epsilon_0\sqrt{1+r^2-2r\vecn_1\cdot\vecn_2}} = \frac{Q}{4\pi\epsilon_0}\sum_{\ell}P_\ell(\vecn_1\cdot\vecn_2) r^\ell .$$
   比较$r^\ell$的系数，即得证。
   \ech
 \end{frame}
