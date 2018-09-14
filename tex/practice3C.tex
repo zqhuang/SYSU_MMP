@@ -1,0 +1,78 @@
+\documentclass[12pt,CJK]{article}
+\usepackage{geometry}
+\input{reduced_macros.tex}
+\geometry{tmargin=0.3in, bmargin=0.5in, lmargin=0.5in, rmargin=0.9in, nohead, nofoot}
+\def\mark#1{{\color{blue} (#1分)}}
+\renewcommand{\thepage}{}
+\begin{document}
+\bch
+{\large 数理方法 课堂小测III 诸神黄昏版}
+
+{\vskip 0.2in}
+
+特殊函数定义列表：
+\bea
+J_\nu(x) &=& \sum_{k=0}^\infty \frac{(-1)^k}{k!(k+\nu)!}\left(\frac{x}{2}\right)^{2k+\nu}; \newl
+Y_\nu(x) &=& \lim_{\mu\rightarrow \nu}\frac{J_\mu(x)\cos\mu\pi - J_{-\mu}(x)}{\sin (\mu\pi)}; \newl
+j_\ell(x) &=& \sqrt{\frac{\pi}{2x}} J_{\ell+1/2}(x),\ \ \ell\in Z; \newl
+y_\ell(x) &=& \sqrt{\frac{\pi}{2x}} Y_{\ell+1/2}(x), \ \ \ell\in Z; \newl
+P_{\ell}(x) &=& \sum_{k=0}^\ell \frac{(\ell + k)!}{(k!)^2(\ell-k)!}\left(\frac{x-1}{2}\right)^k,\ \ \ell\in Z, \ell\ge 0; \newl
+Y_{\ell, m}(\theta,\phi) &=&\frac{1}{2^\ell \ell !}\sqrt{\frac{(2\ell+1)}{4\pi} \frac{(\ell-m)!}{(\ell+m)!}}\left[\sin^m\theta \left(\frac{1}{\sin\theta}\frac{d}{d\theta}\right)^{\ell+m}\sin^{2\ell}\theta \right] e^{\ii m\phi},\ \ \ell,m\in Z, \ell\ge|m|.
+\eea
+
+\bitem
+\item[(一)]{选择题，每题10分，共30分。
+
+  \bitem
+
+\item[(1)]{ $\sin\theta \,\frac{\partial Y_{7,3}(\theta,\phi)}{\partial \theta} $ 可以表示成哪些球谐函数的线性组合？ \bropt
+  
+  \foptlist{$Y_{6,3}(\theta,\phi)$ 和 $Y_{7,3}(\theta,\phi)$}{$Y_{7,3}(\theta,\phi)$ 和 $Y_{8,3}(\theta,\phi)$}{$Y_{6,3}(\theta,\phi)$ 和 $Y_{8,3}(\theta,\phi)$}{$Y_{6,3}(\theta,\phi)$, $Y_{7,3}(\theta,\phi)$ 和 $Y_{8,3}(\theta,\phi)$}}
+  
+\item[(2)]{ 一个单位体积的比热为 $ 10^5 \SIJ \SIK^{-1}\SIm^{-3}$， 导热系数为$100\mathrm{W}\SIm^{-1}\SIK^{-1}$，半径为$R=0.1\SIm$的均匀材质孤立不良导体球。一开始上半球温度为$350\SIK$，下半球温度为$250\SIK$。估算至少经过多长时间后，球各处的温度都在$299.9\SIK$和$300.1\SIK$之间 (请选择数量级最接近的答案)。 \bropt
+
+  \optlist{$0.003\SIs$}{$ 0.1\SIs$}{$3\SIs$}{$90\SIs$} }
+  
+
+\item[(3)]{把$e^k$的小数部分记为$r_k$，例如$e^1= 2.718\ldots$, $r_1 = 0.718\ldots$; $e^2=7.389\ldots$, $r_2=0.389\ldots$。
+  把第$k$个质数记为$m_k$，例如$m_1=2, m_2=3, m_3=5, \ldots$。记$\ell = m_{1001}$，试估计
+  $$\sum_{k=1}^{1000} \left[ Y_{\ell, m_k }\left(\arccos (2r_k-1) , 0\right)\right] ^2$$
+  和下列哪一个数量级最接近？ \bropt
+
+  \optlist{$1$}{$10$}{$100$}{$1000$}}
+
+  \eitem  
+}
+\item[(二)]{填空题（每题10分，共20分）
+  \bitem
+  \item[(1)]{计算不定积分： $\int \frac{dx}{x\left[\left(J_3(x)\right)^2+\left(Y_3(x)\right)^2\right]} =  $ \uline{2} 。}
+\item[(2)]{请估算球面谐函数： $Y_{10000,2}\left(\frac{\pi}{50}, 0\right)\approx $ \uline{1} 。}
+  \eitem
+}
+  
+\item[(三)]{
+
+
+  内半径为$R$，外半径为$2R$的均匀不良导体空心球，导热系数为 $\lambda$，单位质量比热为 $c$，质量密度为 $\rho$，一开始温度为 $T_0$。在 $t=0$ 时刻把空心球投入温度为 $2T_0$ 的热库，计算此后空心球内各点的温度变化。（25分)
+
+    {\vskip 2in}
+
+}
+
+\item[(四)]{设在某个空间区域 $\Omega$ 内的每一点都有个对应的“势能”，即可以写出势能函数 $V(\vecx),\ \vecx\in \Omega$。考虑满足微分方程
+  $$\left[V(\vecx)-\frac{1}{2}\nabla^2\right] u = E u, $$
+  且在 $\Omega$ 的边界上满足一般零边界条件( $u$ 和 $\nabla u$ 的法向分量的某个固定线性组合为零，线性组合的系数允许在边界各个点不同)的解。其中 $E$ 为待定的“本征值”。在量子力学里, $u$是波函数，算符$-\frac{1}{2}\nabla^2$具有动能的含义，本征值$E$则代表了总能量。
+  \bitem
+\item[(1)]{证明任何两个不同的 $E$ 对应的两个解在 $\Omega$ 内正交（乘积的积分为零）。(10分)}
+\item[(2)]{设 $\Omega$ 为整个三维空间；$V(\vecx) = -\frac{1}{|\vecx|}$；是否存在$E<0$ (对应量子力学里的束缚态) 使方程有处处有限且在无穷远处趋向于零的解？如果存在，$E$要取怎样的值？ (15分)}  
+  \eitem
+}
+
+\eitem  
+
+
+
+
+
+\ech
+\end{document}

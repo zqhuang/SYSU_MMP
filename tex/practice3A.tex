@@ -1,0 +1,111 @@
+\documentclass[12pt,CJK]{article}
+\usepackage{geometry}
+\input{reduced_macros.tex}
+\geometry{tmargin=0.3in, bmargin=0.5in, lmargin=0.5in, rmargin=0.9in, nohead, nofoot}
+\def\mark#1{{\color{blue} (#1分)}}
+\renewcommand{\thepage}{}
+\begin{document}
+\bch
+{\large 数理方法 课堂小测III 初入江湖版}
+
+{\vskip 0.2in}
+
+特殊函数定义：
+\bea
+J_\nu(x) &=& \sum_{k=0}^\infty \frac{(-1)^k}{k!(k+\nu)!}\left(\frac{x}{2}\right)^{2k+\nu}; \newl
+Y_\nu(x) &=& \lim_{\mu\rightarrow \nu}\frac{J_\mu(x)\cos\mu\pi - J_{-\mu}(x)}{\sin (\mu\pi)}; \newl
+j_\ell(x) &=& \sqrt{\frac{\pi}{2x}} J_{\ell+1/2}(x),\ \ \ell\in Z; \newl
+y_\ell(x) &=& \sqrt{\frac{\pi}{2x}} Y_{\ell+1/2}(x), \ \ \ell\in Z; \newl
+P_{\ell}(x) &=& \sum_{k=0}^\ell \frac{(\ell + k)!}{(k!)^2(\ell-k)!}\left(\frac{x-1}{2}\right)^k,\ \ \ell\in Z, \ell\ge 0; \newl
+Y_{\ell, m}(\theta,\phi) &=&\frac{1}{2^\ell \ell !}\sqrt{\frac{(2\ell+1)}{4\pi} \frac{(\ell-m)!}{(\ell+m)!}}\left[\sin^m\theta \left(\frac{1}{\sin\theta}\frac{d}{d\theta}\right)^{\ell+m}\sin^{2\ell}\theta \right] e^{\ii m\phi},\ \ \ell,m\in Z, \ell\ge|m|.
+\eea
+
+\bitem
+\item[(一)]{选择题，每题3分，共30分。
+
+  \bitem
+
+\item[(1)]{下列哪个物理问题对应的方程{\bf 不是}波动方程 \bropt
+  
+  \foptlist{均匀弦的横向小振动}{均匀弹性杆的纵向小振动}{孤立均匀球的温度变化}{引力波的传播}}
+
+
+\item[(2)]{下列哪个函数具有分离变量的形式 \bropt
+  
+  \optlist{$e^{-xt}$}{$\frac{x^2}{1+e^t}$}{$\sqrt{t^2+x^2}$}{$e^{\frac{x}{t}}$}}
+  
+
+\item[(3)]{下列关于格林函数的说法{\bf 错误}的是 \bropt
+  
+  \optlist{是线性系统对脉冲输入的响应}{依赖于脉冲输入的位置}{依赖于边界条件}{只适用于无限大空间的问题}}
+
+
+\item[(4)]{球坐标系$(r,\theta,\phi)$的拉普拉斯算符为： \bropt
+  
+  \goptlist{$\frac{1}{r^2}\frac{\partial}{\partial r}\left(r^2\frac{\partial}{\partial r}\right) + \frac{1}{r^2\sin\theta}\frac{\partial}{\partial \theta}\left(\sin\theta\frac{\partial}{\partial\theta}\right) + \frac{1}{r^2\sin^2\theta}\frac{\partial^2}{\partial \phi^2} $}
+           {$\frac{1}{r}\frac{\partial}{\partial r}\left(r\frac{\partial}{\partial r}\right) + \frac{1}{r^2}\frac{\partial^2}{\partial \theta^2} + \frac{1}{r^2\sin^2\theta}\frac{\partial^2}{\partial \phi^2} $}
+           {$\frac{\partial^2}{\partial r^2} + \frac{\partial^2}{\partial \theta^2} +\frac{\partial^2}{\partial \phi^2}$}
+           {$\frac{\partial^2}{\partial r^2} + \frac{1}{r^2}\frac{\partial^2}{\partial \theta^2} + \frac{1}{r^2\sin^2\theta}\frac{\partial^2}{\partial \phi^2}$}
+}  
+
+\item[(5)]{贝塞尔函数的{\bf 导函数} $J'_{100}(x)$ 的最小正实数零点大约为 \bropt
+
+  \optlist{$1$}{$10$}{$100$}{$10^4$}}
+  
+\item[(6)]{ 下列哪个贝塞尔函数在 $x=0$ 处发散？ \bropt
+  
+  \optlist{$J_1(x)$}{$J_{-1}(x)$}{$J_{1/2}(x)$}{$J_{-1/2}(x)$} }
+
+\item[(7)]{ 积分$\int_0^a J_1(x) dx= $ \bropt
+  
+  \optlist{$J_0(a)$}{$1-J_0(a)$}{$aJ_0(a)$}{$a J_{1}(a)$} }
+
+\item[(8)]{两类贝塞尔函数的平方和 $[J_{5}(100)]^2+[Y_{5}(100)]^2$ 大约为 \bropt
+
+  \optlist{$0.006$}{$0.01$}{$0.06$}{$1$}}  
+
+\item[(9)]{设$\mu, \nu$是球贝塞尔函数$j_\ell(x)$ ($\ell\ge 0$)的两个不同的零点，则下列哪个等式一定正确？ \bropt
+  
+  \goptlist{$\int_0^1j_\ell(\mu x)j_\ell(\nu x)dx = 0 $}{ $\int_0^1j_\ell(\mu x)j_\ell(\nu x)xdx = 0 $}{$\int_0^1j_\ell(\mu x)j_\ell(\nu x)x^2dx = 0 $}{$\int_0^{1}(1-x^2)j_\ell(\mu x)j_\ell(\nu x)dx = 0 $}}
+  
+\item[(10)]{$\cos\theta\, Y_{4,2}(\theta,\phi)$ 可写成哪两个球面谐函数的线性组合？ \bropt
+  
+  \foptlist{$ Y_{3,2}(\theta,\phi)$ 和 $Y_{5,2}(\theta,\phi)$}{$Y_{4,2}(\theta,\phi)$ 和 $Y_{5,2}(\theta,\phi)$}{$Y_{3,2}(\theta,\phi)$ 和 $Y_{4,2}(\theta,\phi)$}{$Y_{4,1}(\theta,\phi)$ 和 $Y_{4,3}(\theta,\phi)$}}  
+
+\eitem  
+}
+\item[(二)]{填空题（每题5分，共30分）
+  \bitem
+\item[(1)]{设二维正交曲面坐标系$(x,y)$的正交线元长度依次为 $dx$ 和 $e^{-x^2}dy$，写出该坐标系的拉普拉斯算符的显式表达: $\nabla^2 f= $\uline{3}。}
+\item[(2)]{积分$\int_0^1 x^4 P_6(x) dx = $ \uline{1}。}
+\item[(3)]{函数 $f_1(x,y)$, $f_2(x,y)$ 在椭圆 $2x^2+ y^2 = 1$ 上的取值处处为零，在该椭圆内部分别满足
+
+  $ \nabla^2 f_1 =-k_1^2f_1$ 以及 $\nabla^2 f_2 = -k_2^2f_2$，其中$k_1>k_2>0$。
+
+  则在该椭圆内的积分$\iint f_1(x,y)f_2(x,y) dx dy = $ \uline{1}。}
+\item[(4)]{设 $\mu>0$，$J_2(\mu)=0$，则积分$\int_0^1\left[J_2(\mu x)\right]^2 x dx =$ \uline{1}。}  
+\item[(5)]{一维无边界的空间内满足方程 $\frac{\partial^2u}{\partial t^2}-a^2\frac{\partial^2u}{\partial x^2} = 0$ 和初始条件  $\left.u\right\vert_{t=0} = e^{-x^2},\ \ \left.\frac{\partial u}{\partial t}\right\vert_{t=0} = 0$ 的解是: $u(x,t)=$ \uline{3}。 }
+\item[(6)]{一维无边界的空间内满足方程 $\frac{\partial u}{\partial t}-a\frac{\partial^2u}{\partial x^2} = 0$ 和初始条件  $\left.u\right\vert_{t=0} = e^{-x^2}$ 的解是: $u(x,t)=$ \uline{3}。 }
+
+  \eitem
+}
+\item[(三)]{两端固定的，长度为$L$的均匀弦的横向振动$u(x,t)$ ($0\le x\le L$)满足初始条件：
+  \bea
+  \left.u\right\vert_{t=0} &=& A\sin \frac{\pi x}{L} \newl
+  \left. \frac{\partial u}{\partial t}\right\vert_{t=0} &=& 0.
+  \eea
+  求解$u(x,t)$。设弦的线密度$\lambda$，张力$f$均已知。（20分)
+}
+
+\item[(四)]{有半径为 $R$，导热系数为 $\lambda$，单位质量比热为 $c$，质量密度为 $\rho$ 的孤立均匀薄圆盘。以圆盘中心为原点建立极坐标 $(r,\theta)$。初始时刻各点的温度为 $\left.T\right\vert_{t=0}= T_0\left(2 + \frac{r^2}{R^2}\cos\theta\right)$。计算之后圆盘上各点的温度变化。
+(20分)}
+
+  
+\eitem  
+
+
+
+
+
+\ech
+\end{document}

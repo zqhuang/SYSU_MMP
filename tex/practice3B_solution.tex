@@ -1,0 +1,118 @@
+\documentclass[12pt,CJK]{article}
+\usepackage{geometry}
+\input{reduced_macros.tex}
+\geometry{tmargin=0.3in, bmargin=0.5in, lmargin=0.5in, rmargin=0.9in, nohead, nofoot}
+\def\mark#1{{\color{blue} (#1分)}}
+\renewcommand{\thepage}{}
+\begin{document}
+\bch
+{\large 数理方法 课堂小测III 华山论剑版}
+
+{\vskip 0.2in}
+
+\bitem
+\item[(一)]{选择题，每题6分，共30分。
+
+  \bitem
+
+
+\item[(1)]{$P_{7}(x)$ 在区间 $(0,1)$ 内有多少个实数零点？ \brans{B}
+
+  \optlist{0}{{\blue 3}}{4}{7}
+
+{\red 提示：用归纳法证明$\frac{d^n}{dx^n}(x^2-1)^\ell$在$(-1,1)$有$n$个实数零点。然后利用$P_7(x)$是奇函数。 }}
+  
+\item[(2)]{ 下列哪个数量级和第二类贝塞尔函数$|Y_0\left(\frac{1}{10000!}\right)|$最接近？ \brans{B}
+  
+  \optlist{$10^3$}{{\blue $10^5$}}{$10^7$}{$10^9$}
+
+{\red 提示：用$Y_0(x)\approx \frac{2}{\pi} \ln x $ (Lec.18 习题) 和Stirling公式。}}
+
+\item[(3)]{$f(t)$ ($t\ge 0$) 满足微分方程$f''-\frac{1}{t}f'+(4t^2-\frac{8}{t^2})f =0$以及初始条件$f(0) = 0$, 则$f(t)$和下列哪个函数成正比？ \brans{C}
+
+  \optlist{$xJ_{3}(x)$}{$x^2J_{2}(x)$}{{\blue $xJ_{3/2}(x^2)$}}{$J_{2\sqrt{2}}(x^2)$}
+  
+{\red 见 Lec.20 关于一般的贝塞尔方程的讨论。}
+}
+
+\item[(4)]{$\sin\theta\,e^{\ii \phi} Y_{5,3}^*(\theta,\phi)$ 可写成哪两个球面谐函数的线性组合? \brans{A}
+  
+  \foptlist{{\blue $Y_{4,-2}(\theta,\phi)$ 和 $Y_{6,-2}(\theta,\phi)$}}{$Y_{4,4}(\theta,\phi)$ 和 $Y_{6,4}(\theta,\phi)$}{$Y_{4,3}(\theta,\phi)$ 和 $Y_{6,3}(\theta,\phi)$}{$Y_{5,-2}(\theta,\phi)$ 和 $Y_{5,-4}(\theta,\phi)$}
+
+{\red 设$\sin\theta\,e^{\ii \phi} Y_{5,3}^*(\theta,\phi) = \sum_{\ell m}c_{\ell m}Y_{\ell m}$并利用$Y_{\ell m}$的正交归一化条件写出$c_{\ell m}$的积分表达式，然后注意到$\sin\theta e^{\ii \phi}\propto Y_{1,1}$，使用三个球谐函数积分非零的条件，以及$Y_{\ell, m}^*=(-1)^mY_{\ell,- m}$}
+}
+  
+\item[(5)]{ 设$\theta = \frac{\pi}{2}$, 则$|Y_{5, 1}(\theta,\phi)|^2+  |Y_{5, 2}(\theta,\phi)|^2+ |Y_{5, 3}(\theta,\phi)|^2+|Y_{5, 4}(\theta,\phi)|^2$ 等于 \brans{D}
+  
+  \optlist{$\frac{\pi}{2}$}{$\frac{1}{4\pi}$}{$\frac{15}{64\pi}$}{{\blue $\frac{715}{1024\pi}$}}
+
+{\red 利用 Lec.23 加法公式(令$\vecn_1=\vecn_2=(\theta,\phi)$) 以及$Y_{5,0}(\frac{\pi}{2},\phi)\propto P_5(0) = 0$，而$Y_{5,5}$可以转化为$Y_{5,-5}$并利用球谐函数的微分表示直接计算。}}
+
+\eitem  
+}
+\item[(二)]{填空题（每题10分，共30分）
+  \bitem
+\item[(1)]{积分$\int_0^1 xP_5(x)P_6(x)\,dx = $ \underline{\blue $ 6/143 $}。
+
+{\red 提示：利用 $(2\ell+1)xP_{\ell}(x) = (\ell+1)P_{\ell+1}(x) + \ell P_{\ell-1}(x)$ 以及$P_{\ell}$的奇偶对称性。}}
+\item[(2)]{积分$\int_0^1 x^4J_1(x)\, dx = $ \underline{\blue $7J_0(1)-12J_1(1)$ (或 $J_2(1)-2J_3(1)$等其他任何等价形式)}。
+
+{\red 提示：反复分部积分并利用贝塞尔函数的递推公式$(x^\nu J_\nu)' = x^\nu J_{\nu-1}$。}
+}    
+\item[(3)]{设 $J_{1}(x)$ 的所有正实数零点为 $\mu_1,\mu_2,\ldots$，则 $\sum_{i=1}^\infty \frac{1}{\mu_i^2} = $ \underline{\blue $1/8$}。
+
+{\red 提示：$J_1(x) = \frac{x}{2}\left(1-\frac{x^2}{8}+\ldots\right) = \frac{x}{2}\left(1-\frac{x^2}{\mu_1^2}\right)\left(1-\frac{x^2}{\mu_2^2}\right)\left(1-\frac{x^2}{\mu_3^2}\right)\ldots$} }
+  \eitem
+}
+  
+\item[(三)]{半径为$R$的均匀不良导体球，导热系数为 $\lambda$，单位质量比热为 $c$，质量密度为 $\rho$。以球心为原点建立球坐标系$(r,\theta,\phi)$。球表面的温度控制为$T = T_0+T_1 \cos\theta$并保持不变。计算球内部的稳定温度分布。（20分)
+
+    {\blue 观察边界条件易得$$T = T_0 + T_1\frac{r}{R}\cos\theta.$$
+
+      \skiplines
+
+      注意无论是球坐标系的$r^\ell Y_{\ell m}(\theta,\phi)$和$r^{-\ell-1} Y_{\ell m}(\theta,\phi)$，还是极坐标系的$r^{\pm m}e^{\pm \ii m\theta}$ (这个不大容易出现)，都是用来求特解，不是用来解零边界问题的。（它们可以看成$k$很小，满足巨大的的球面（圆周）上的零边界条件的谐函数在球心（圆心）附近的函数形式，零边界条件只能在很遥远的（虚构）边界上取得）。
+    }
+}
+
+\item[(四)]{ 我们在课上学习了两端固定的，长度为$L$的弦的横向小振动的解法。现在考虑空气阻力对弦的横向小振动的影响：假设单位长度的弦所受的空气阻力和弦的横向位移速度成正比，弦的振动方程就修正为
+  $$ \frac{\partial^2 u}{\partial t^2} + \frac{2}{\tau} \frac{\partial u}{\partial t}-  a^2\frac{\partial^2u }{\partial x^2} =  0 , $$
+  其中的阻尼时间$\tau \gg \frac{L}{a}$为常量。
+  设初始条件为
+  \bea
+  \left. u\right\vert_{t=0} &=& A\sin{\frac{\pi x}{L}}, \newl
+  \left.\frac{\partial u}{\partial t}\right\vert_{t=0} &=& 0
+  \eea
+  求解$u(x,t)$。 (20分)
+
+
+  {\blue
+    分离变量设$$ u = A\sin{\frac{\pi x}{L}} f(t),$$代入原方程
+    $$ f''+\frac{2}{\tau}f'+ \frac{\pi^2a^2}{L^2}f = 0 .$$
+    假设$f = C e^{\ii \omega t}$，得到
+    $$ \omega^2 - \frac{2\ii}{\tau}\omega - \frac{\pi^2a^2}{L^2} = 0. $$
+    解出
+    $$\omega = \frac{\ii}{\tau} \pm \sqrt{\frac{\pi^2a^2}{L^2} -\frac{1}{\tau^2}}. $$
+    再利用初始条件即可以确定：
+    $$ u = \frac{A}{\sqrt{1-\frac{L^2}{\pi^2a^2\tau^2}}}\sin\frac{\pi x}{L}  \cos{\left(t \sqrt{\frac{\pi^2 a^2}{L^2}-\frac{1}{\tau^2}}-\arcsin\frac{L}{\pi a\tau}\right)} e^{-\frac{t}{\tau}}.$$
+
+    \skiplines
+    
+
+    另外，如果采用近似方法（这里不再详细讲述）可以得到近似解 $$ u= A\sin\frac{\pi x}{L}  \cos\frac{\pi at}{L} e^{-\frac{t}{\tau}}.$$
+    也足够精确（主要修正是指数衰减因子）。
+
+
+  }
+
+}
+
+  
+\eitem  
+
+
+
+
+
+\ech
+\end{document}

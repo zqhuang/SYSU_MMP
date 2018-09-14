@@ -1,336 +1,178 @@
-\documentclass[CJK]{beamer}
+\documentclass[CJK, 13pt]{beamer}
 \input{macros.tex}
 \input{titlepage.tex}
   \date{}
-\begin{document}
+  \begin{document}
+  \bch
 \tpage{3}{Gamma Function}
 
 \begin{frame}
-  \bch
- {\Large 有{\huge \bf 极个别}同学反映mmp车开得太快……}
-  \ech
-\end{frame}
+\frametitle{本讲内容}
 
-
-\begin{frame}
-  \chtitle{  以前还没学车的时候，我以为教练都是这样的}
-
-  \addfig{3.8}{kaimandian.jpg}
-\end{frame}
-
-
-\begin{frame}
-\chtitle{  后来去学车，我的教练……}
-
-  \addfig{3.3}{kaikuaidian.jpg}
-
-\end{frame}
-
-
-\begin{frame}
-  \chtitle{总结上周内容}
-  \addfig{1.5}{drive.jpg}
-  \bch
-  请一位同学总结一下上一周所学的内容：柯西定理，Taylor展开，Laurent展开，留数定理。每个话题不要超过5句话。
-
-  
-  \ech
-\end{frame}
-
-
-\begin{frame}
-  \chtitle{测试下有没真正掌握上周内容（难度\sthree）}
-  \bch
-
-
-  \addfig{2}{think3.jpg}
-  
-  $n$为正整数，  试证明：实系数的一元$n$次方程
-  $$z^n+a_{n-1}z^{n-1}+a_{n-2}z^{n-2}+\ldots + a_1z + a_0 = 0$$
-  在复数域内一定有解。
-
-
-
-  \ech
-\end{frame}
-
-
-\begin{frame}
-\chtitle{本讲内容}
-\bch
 \bitem
-\item{最大模原理和解析延拓}  
+\item{解析函数的邻域近似}
+\item{解析延拓}  
 \item{$\Gamma$函数}
 \eitem
-\ech
+
 \end{frame}
 
 
-\section{Maximum Modulus Principle}
-\secpage{最大模原理和解析延拓}{皆起源于物理学家最朴素的估算}
-
 \begin{frame}
-  \chtitle{最朴素的估算：解析函数在一点附近的变化规律}
-  \bch
-
+  \frametitle{解析函数在一点附近的变化规律}
   
-  根据我们第一讲末尾证明Taylor展开收敛性时的估算截断项的方法，可以得出：{\blue $z_0$附近的任何非常数的解析函数$f$都在$z_0$足够小邻域内近似按$z-z_0$的某正整数次幂变化：
-  $$f(z)-f(z_0)\approx a_n(z-z_0)^n ,\ \ \  a_n\ne 0$$
+  
+  {\blue $z_0$附近的任何非常数的解析函数$f$都在$z_0$足够小邻域内近似按$z-z_0$的某正整数次幂变化：
+  $$f(z)\approx f(z_0) + a_n(z-z_0)^n ,\ \ \  a_n\ne 0$$
   这里$a_n$是在$a_1,a_2\ldots$中找到的第一个非零的数。}
 
 
   \skiplines
   
   也就是说，如果$a_1\ne 0$，则主导变化的是一次项：$f(z)- f(z_0) \approx a_1(z-z_0)$；若$a_1 = 0$, $a_2\ne 0$，则主导变化的是二次项：  $f(z)-f(z_0) \approx a_2(z-z_0)$；依此类推…
-  \ech
-\end{frame}
 
-\begin{frame}
-  \chtitle{最大模定理}
-  \bch
-      {\blue 在连通的区域内部解析且在边界上连续的非常数函数，其模的极大值只能在边界上取得。}
+  \skiplines
 
-
-      证明：对区域内部任意一点$z_0$，则在足够接近$z_0$的邻域内，
-     $$ f(z) \approx f(z_0)+a_n(z-z_0)^n,  a_n\ne 0$$
-      设$f(z_0)/a_n$的幅角为$\theta$, 取$z-z_0$的幅角为$\frac{\theta}{n}$，即使得$a_n(z-z_0)^n$和$f(z_0)$幅角相同，相加后模就变大了。
-      \addfig{2}{maximum_modulus.png}
-      这说明$f$的模的极大值不可能在内部取到。
-
-  \ech
-\end{frame}
-
-
-\begin{frame}
-  \chtitle{一小块是常数，则整块是常数}
-  \bch
-   上述证明有个小小的缺陷：我们从$f$是整块连通区域内的非常数函数，不加证明地直接得出了$f$在$z_0$的邻域内为非常数函数的结论。这其实涉及到下述非常厉害的引理：
-
-  \tbox{\blue 在开的子区域内为常数的解析函数在整块连通区域内都是常数。}
-
-  \bmini{0.56}
-  用反证法：假设$f$在小块开区域内是常数，但在整块连通区域内不是常数，那么必然有$f$为常数区域和不为常数的区域的分界线。在分界线上取一点$\zeta$，因在$\zeta$附近$f$不是常数，所以在足够小邻域内$f(z)-f(\zeta) \approx a_n(z-\zeta)^n$，但这样会导致图中灰色区域内$f$不为常数，产生矛盾。
-  \emini
-  \bmini{0.4}
-  \addfig{1.5}{const_or_not.png}
-  \emini
-
-  \ech
-\end{frame}
-
-
-\begin{frame}
-  \chtitle{解析延拓：窥一斑而知全豹}
-  \bch
-  由前面证明的引理“一小块为常数，则整块为常数”，我们立刻得到解析延拓定理：
+  如果所有$a_n$都为零，那么$f$就是常数了。（思考：为什么$f$在一个邻域内是常数，则在整个连通区域内都是常数？）
   
-  \tbox{\blue 在开的子区域内相等的两个解析函数在整块连通区域内都相等。}
-  （证明概要：设$f$和$g$解析，则$f-g$解析。由小块内$f-g=0$可推出整块内$f-g=0$。）
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{思考题}
+
+  用解析函数的邻域近似证明最大模定理： {\blue 非常数解析函数的模的最大值只能在区域边界上取得。}
+
+  \skipline
+  然后进一步证明代数基本定理：{\blue复系数的非常数多项式一定有复数根。}
+\end{frame}
+
+
+
+
+\begin{frame}
+  \frametitle{解析延拓定理}
+  
+  
+  \tbox{\blue 在任何一点的邻域内相等的两个解析函数在整块连通区域内都相等。}
+
+  证明大意：设$f$和$g$解析，则$f-g$解析。由小块邻域内$f-g=0$可推出整块连通区域内内$f-g=0$。
 
   \skiplines
 
   这个定理也可以理解为：
   \tbox{\blue 解析函数在整个连通区域内的值由它在任意一小块开的子区域上的值完全确定。}
   
-  这个“由内及外”的性质和之前学习过的“由外及内”的性质（解析函数的值完全由边界上的值确定）相映成趣。
-  \ech
+  
 \end{frame}
 
+
 \begin{frame}
-  \chtitle{解析延拓的例子}
-  \bch
+  \frametitle{解析延拓的例子}
+  
   在$|z|<1$范围内我们用幂级数定义解析函数
   $$f(z) = 1+z+z^2+\ldots$$
   因为在$|z|<1$范围内有恒等式$f(z) = \frac{1}{1-z}$，所以$\frac{1}{1-z}$是$f(z)$在更大的区域(全复平面挖掉$z=1$这点)内的解析延拓。
 
 
   \skiplines
-
-
-  \skipline
   
   \wulian 这个例子给我一种等于什么都没说的感觉。
   
   \bye 这是一个完全正确但是非常失败的例子。
 
-  \ech
-\end{frame}
-
-\section{Gamma Function}
-
-\secpage{$\Gamma$函数}{阶乘的推广 (据桂小荣说你们已经都会了\bye)}
-
-\begin{frame}
-  \chtitle{$x^y$是什么意思？}
-  \bch
-  \addfig{0.8}{think.jpg}
   
-  目前为止我们只把标准的指数函数推广到了复数域，
-  那么一般的$x^y$（$x$, $y$均为复数, $x\ne 0$）的含义是否可以进行推广？
-  \ech
 \end{frame}
 
 
 \begin{frame}
-  \chtitle{$x^y$是什么意思？}
-  \bch
-  能不能定义
-  $$x^y \equiv e^{y\ln x},$$
-  其中$\ln x$是多值函数？
-
-  \skiplines
+  \frametitle{$\Gamma$函数}
   
-  这样的话：
-  $$e^{\frac{1}{2}} = e^{\frac{1}{2}\ln e} = e^{\frac{1}{2}(1+2n\pi\ii)} = e^{\frac{1}{2}+n\pi\ii} = \pm e^{1/2}$$
-  ($n$取遍整数)
+  $\Gamma$函数在 $\mathrm{Re}(z) > 0$ 范围内的定义为：
+  \tbox{ $$\Gamma(z) \equiv \int_0^\infty t^{z-1}e^{-t}dt$$ }
+  这里的 $t^z$可理解为 $e^{z\ln t}$。
+
 
   \skipline
-  \wulian 符号系统发生了严重的危机…
-  \ech
-\end{frame}
 
-
-\begin{frame}
-  \chtitle{$x^y$是什么意思？}
-  \bch
-  为了避免这样的尴尬，我们约定，当没有额外说明时，{\blue 如果$x$是正实数或者恒为正实数的变量}，则规定
-  $$x^y \equiv e^{y\ln x},$$
-   其中的{\blue $\ln x$取实函数的意义。}
-
-
-   \skiplines
-   
-  也就是说，对$x$为正实数的情况，如果不作额外说明，则默认限定$x$的幅角为零。
-  \ech
-\end{frame}
-
-\begin{frame}
-  \chtitle{思考题}
-  \bch
-  \addfig{1}{think3.jpg}
-  按我们的约定，计算下列表达式：
-  \bitem
-\item{$4^{1/2}$}
-\item{$1^{\ii}$}  
-\item{$(-1)^2$}
-\item{$(-1)^{1/2}$}  
-\item{$\ii^\ii$}  
-  \eitem
-  \ech
-\end{frame}
-
-
-\begin{frame}
-  \chtitle{讨论$x^y$的符号耽搁了一点点篇幅，回到主题}
-  \bch
-  利用熟知的积分
-  $$\int_0^{\infty} e^{-at}  dt = \frac{1}{a}, \ \ \ \ a>0$$
-  两边对$a$求导$n$次并乘以$(-1)^n$， 得到
-  $$\int_0^{\infty}t^n e^{-at}  dt = \frac{n!}{a^{n+1}}, \ \ \ \ a>0$$
-  {\scriptsize 在左边把积分和求导次序进行了交换。其合法性请自己感受\bye}
-  
-  令$a=1$，有
-  {\blue
-    $$\int_0^\infty t^n e^{-t} dt = n! $$ 
-  }
-  这个结果也可以直接$n$次分部积分得到。
-  \ech
-\end{frame}
-
-
-\begin{frame}
-  \chtitle{$\Gamma$函数}
-  \bch
-  作为阶乘的推广，$\Gamma$函数的自然定义是
-  \tbox{ $$\Gamma(z) \equiv \int_0^\infty t^{z-1}e^{-t}dt$$ }
-  对正整数$n$，显然$\Gamma(n) = (n-1)!$，因此我们有时也把$\Gamma(z)$写成$(z-1)!$。
+  对正整数$n$，容易验证$\Gamma(n) = (n-1)!$，因此我们有时也把$\Gamma(z)$写成$(z-1)!$。
 
   \skiplines
   
-  这个积分定义只适用于右半平面$\mathrm{Re}(z)>0$ （否则积分不收敛）。我们下面用解析延拓的方法把$\Gamma$函数的定义域扩充到除了一些离散的点之外的整个复平面。
+  我们下面用解析延拓的方法把$\Gamma$函数的定义域扩充到除了一些离散的点之外的整个复平面。
   
-  \ech
+  
 \end{frame}
 
 
 \begin{frame}
-  \chtitle{在右半平面的解析性}
-  \bch
+  \frametitle{在右半平面的解析性}
+  
   对$\mathrm{Re}(z)>0$，在积分号下求导：
   $$\frac{d\Gamma}{dz} = \int_0^\infty t^{z-1} (\ln t) e^{-t}dt,  \ \ \ \ \ \mathrm{Re}(z)>0.$$
 
   容易验证这个积分在$\mathrm{Re}(z)>0$的情况下仍是收敛的并确实是$\Gamma(z)$的导函数，因此$\Gamma(z)$在右半平面内是解析函数。
   
-  \ech
+  
 \end{frame}
 
 \begin{frame}
-  \chtitle{$\Gamma$函数的递推公式}
-  \bch
+  \frametitle{$\Gamma$函数的递推公式}
+  
   利用$\Gamma$函数的定义，分部积分一次后可以得到递推公式
   \tbox{ $$\Gamma(z+1) = z\Gamma(z)$$}
 
  （也许你更喜欢把它写成$z! = z \cdot (z-1)!$)
-  \ech
+  
 \end{frame}
 
 \begin{frame}
-  \chtitle{$\Gamma$函数的解析延拓}
-  \bch
+  \frametitle{$\Gamma$函数的解析延拓}
+  
   考虑函数
   $$ \frac{\Gamma(z+1)}{z} $$
   它在右半平面和$\Gamma(z)$恒等，但是又在更大的区域$\mathrm{Re}(z)>-1, z\ne 0$里解析。
   因此它可以看成$\Gamma$函数在$\mathrm{Re}(z)>-1, z\ne 0$里的解析延拓。
 
-  \ech
+  
 \end{frame}
 
 
 \begin{frame}
-  \chtitle{$\Gamma$函数的解析延拓}
-  \bch
+  \frametitle{$\Gamma$函数的解析延拓}
+  
   $\Gamma$函数在$\mathrm{Re}(z)>-1, z\ne 0$里都有了定义之后，再考虑函数
   $$ \frac{\Gamma(z+1)}{z} $$
   它在右半平面和$\Gamma(z)$恒等，但是又在更大的区域$\mathrm{Re}(z)>-2, z\ne 0, -1$里解析。
   因此它可以看成$\Gamma$函数在$\mathrm{Re}(z)>-2, z\ne 0, -1$里的解析延拓。
-  \ech
+  
 \end{frame}
 
 
 \begin{frame}
-  \chtitle{$\Gamma$函数的解析延拓}
-  \bch
+  \frametitle{$\Gamma$函数的解析延拓}
+  
   $\Gamma$函数在$\mathrm{Re}(z)>-2, z\ne 0,-1$里都有了定义之后，再考虑函数
   $$ \frac{\Gamma(z+1)}{z} $$
   它在右半平面和$\Gamma(z)$恒等，但是又在更大的区域$\mathrm{Re}(z)>-3, z\ne 0, -1,-2$里解析。
   因此它可以看成$\Gamma$函数在$\mathrm{Re}(z)>-3, z\ne 0, -1,-2$里的解析延拓。
-  \ech
+  
 \end{frame}
 
 
 \begin{frame}
-  \chtitle{$\Gamma$函数的解析延拓}
-  \bch
+  \frametitle{$\Gamma$函数的解析延拓}
+  
   这样一直进行下去，我们得到一个在全复平面上除了$z=0,-1,-2,-3,\ldots$之外处处解析的$\Gamma$函数。
 
-  \ech
-\end{frame}
-
-\begin{frame}
-  \chtitle{这一讲我们车开得很稳}
-  \bch
-  \bcenter
-  \addfig{1.5}{blackq.jpg}
-  刚才发生了什么.jpg
-  \ecenter
-  \ech
+  
 \end{frame}
 
 \section{Homework}
 
 \begin{frame}
-  \chtitle{课后作业}
-  \bch
+  \frametitle{Homework for Quizphobias}
+  
   \bitem
 \item[7]{在$z=\pi$附近写出$\sin z$的近似变化行为，并估算$\sin(\pi + 0.01\ii)$的近似值。}
 \item[8]{设$n$为正整数，试用最大模原理证明：复系数的一元$n$次方程
@@ -341,7 +183,8 @@
 \item[9]{利用热学课上学过的高斯积分计算$\Gamma(1/2)$的值，然后利用递推公式计算$\Gamma(-3/2)$的值。}
 
   \eitem
-  \ech
+  
 \end{frame}
 
+\ech
 \end{document}

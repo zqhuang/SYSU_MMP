@@ -1,0 +1,176 @@
+\documentclass[12pt,CJK]{article}
+\usepackage{geometry}
+\input{reduced_macros.tex}
+\geometry{tmargin=0.3in, bmargin=0.5in, lmargin=0.5in, rmargin=0.9in, nohead, nofoot}
+\def\mark#1{{\color{blue} (#1分)}}
+\renewcommand{\thepage}{}
+\begin{document}
+\bch
+{\large 数理方法 课堂小测III 诸神黄昏版}
+
+{\vskip 0.2in}
+
+\bitem
+\item[(一)]{选择题，每题10分，共30分。
+
+  \bitem
+
+\item[(1)]{ $\sin\theta \,\frac{\partial Y_{7,3}(\theta,\phi)}{\partial \theta} $ 可以表示成哪些球谐函数的线性组合？ \brans{C}
+  
+  \foptlist{$Y_{6,3}(\theta,\phi)$ 和 $Y_{7,3}(\theta,\phi)$}{$Y_{7,3}(\theta,\phi)$ 和 $Y_{8,3}(\theta,\phi)$}{{\blue $Y_{6,3}(\theta,\phi)$ 和 $Y_{8,3}(\theta,\phi)$}}{$Y_{6,3}(\theta,\phi)$, $Y_{7,3}(\theta,\phi)$ 和 $Y_{8,3}(\theta,\phi)$}
+
+  {\red 提示：直接利用$Y_{7,3}$的微分表达式，把$\sin\theta \,\frac{\partial Y_{7,3}(\theta,\phi)}{\partial \theta} $写成$Y_{1,0}Y_{7,3}$和$Y_{1,-1}Y_{7,4}$的线性组合。然后利用我们学过的熟知技巧（Lec.23作业，初入江湖最后一题选择，华山论剑第4题选择）。}
+}
+  
+\item[(2)]{ 一个单位体积的比热为 $ 10^5 \SIJ \SIK^{-1}\SIm^{-3}$， 导热系数为$100\mathrm{W}\SIm^{-1}\SIK^{-1}$，半径为$R=0.1\SIm$的均匀材质孤立不良导体球。一开始上半球温度为$350\SIK$，下半球温度为$250\SIK$。估算至少经过多长时间后，球各处的温度都在$299.9\SIK$和$300.1\SIK$之间 (请选择数量级最接近的答案)。 \brans{C}
+
+  \optlist{$0.003\SIs$}{$ 0.1\SIs$}{{\blue $3\SIs$}}{$90\SIs$}
+
+  {\red 提示：估算最低的非零$k$然后利用$e^{-ak^2t}$的衰减规律。注意到符合边界条件的$k=\frac{\mu}{R}$，$\mu$为$j'_\ell(x)$的零点。$j_0(x) = \frac{\sin x}{x}$的导函数的第一个零点在$\frac{3\pi}{2}$附近（我课上估计比$\pi$大太随意，这个估算更精确)，其他$j'_\ell$的第一个零点则更大了（利用$J_m$的一个峰在$m$附近的知识）。所以可以估算出最小的$k\approx \frac{3\pi}{2R}$。}
+}
+  
+
+\item[(3)]{把$e^k$的小数部分记为$r_k$，例如$e^1= 2.718\ldots$, $r_1 = 0.718\ldots$; $e^2=7.389\ldots$, $r_2=0.389\ldots$。
+  把第$k$个质数记为$m_k$，例如$m_1=2, m_2=3, m_3=5, \ldots$。记$\ell = m_{1001}$，试估计
+  $$\sum_{k=1}^{1000} \left[ Y_{\ell, m_k }\left(\arccos (2r_k-1) , 0\right)\right] ^2$$
+  和下列哪一个数量级最接近？ \brans{C}
+
+  \optlist{$1$}{$10$}{{\blue $100$}}{$1000$}
+
+  {\red 提示： 记$\theta = \arccos(2r_k-1)$，则$\cos\theta$在$[-1,1]$内均匀分布。由于$\phi$不影响$|Y_{\ell m}(\theta,\phi)|$，我们不妨取$\phi$在$[0,2\pi)$内均匀分布。这样$(\theta,\phi)$在球面上均匀分布。对单位球面上随机选取的$\theta,\phi$，$|Y_{\ell m}(\theta,\phi)|^2$的平均值为$\frac{1}{4\pi}$ （这是根据归一化得到的），所以1000个这样的数的和大致为 $\frac{1000}{4\pi}\sim 100$。}
+}
+
+  \eitem  
+}
+\item[(二)]{填空题（每题10分，共20分）
+  \bitem
+\item[(1)]{计算不定积分： $\int \frac{dx}{x\left[\left(J_3(x)\right)^2+\left(Y_3(x)\right)^2\right]} =  $ \underline{\blue $\frac{\pi}{2}\arctan{\frac{Y_3(x)}{J_3(x)}}$} 。
+
+  {\red 提示：先利用$J_\nu$和$Y_\nu$满足的微分方程联合推导出$ J_\nu Y_\nu'-Y_\nu J_\nu'  = \frac{C}{x}$，然后利用$x\rightarrow 0^+$的极限求出$C = \frac{2}{\pi}$。把积分式中的$\frac{1}{x}$替换为$\frac{\pi}{2}\left(J_\nu Y_\nu'-Y_\nu J_\nu'\right)$，分子分母同除以$J_\nu^2$即可求得原函数。}
+}
+  \item[(2)]{请估算球面谐函数： $Y_{10000,2}\left(\frac{\pi}{50}, 0\right)\approx $ \underline{\blue $-0.9$ } 。
+
+    {\red 提示：在$\theta$比较小时，把北极附近的一小块区域当成平坦的，由于$Y_{\ell m}(\theta,\phi)$带了$e^{\ii m\phi}$的因子，对应了平坦近似（极坐标）的$J_m(kr)e^{\ii m\phi}$，其中$k\sqrt{\ell(\ell+1)}\approx \ell$, $r=\theta$。因此：
+      $$Y_{\ell m}(\theta,\phi) = C J_m(\ell \theta)e^{\ii m\phi},$$
+      其中的常数$C$只依赖于$\ell,m$。
+
+      下面我们来求$C$。当$\theta\rightarrow 0^+$时，取$\theta$的最低阶近似（为$O(\theta^m)$量级):
+      $$ Y_{\ell m}(\theta,\phi) \approx e^{\ii m\phi} \frac{1}{2^\ell \ell!}\sqrt{ \frac{2\ell+1}{4\pi} \frac{(\ell-m)!}{(\ell+m)!}} \theta^m \lim_{t \rightarrow 0}\left(\frac{d}{dt}\right)^{\ell+m}\left[t^\ell (2-t)^\ell \right] , $$
+        其中$t =1 -\cos\theta  $，我们在上式中利用了球谐函数的微分表示以及$\frac{1}{\sin\theta}\frac{d}{d\theta} = \frac{d}{dt}$，并注意到$\theta\rightarrow 0$时，$t=1-\cos\theta\rightarrow 0$。最后那项极限是可以求出来的:
+        $$ \lim_{t \rightarrow 0}\left(\frac{d}{dt}\right)^{\ell+m}t^\ell (2-t)^\ell = (-1)^m 2^{\ell -m}\frac{\ell!(\ell+m)!}{m!(\ell-m)!} $$
+        于是，当$\theta\rightarrow 0^+$时，
+        $$ Y_{\ell m}(\theta,\phi)\approx e^{\ii m\phi} (-1)^m\frac{1}{ 2^mm!}\sqrt{ \frac{2\ell+1}{4\pi} \frac{(\ell+m)!}{(\ell-m)!}} \theta^m .$$
+        然后对比$J_m(\ell\theta)$的最低阶近似：
+        $$J_m(\ell\theta)\approx \frac{\ell^m\theta^m}{m!2^m} $$
+        就得到系数
+        $$ C = \left(-\frac{1}{\ell}\right)^m \sqrt{\frac{2\ell+1}{4\pi}\frac{(\ell+m)!}{(\ell-m)!}}. $$
+        （注意我开始的答案把乘/除写错了，年纪大了手抖哈哈哈）
+
+
+    }
+
+  }
+    
+  \eitem
+}
+  
+\item[(三)]{
+
+
+  内半径为$R$，外半径为$2R$的均匀不良导体空心球，导热系数为 $\lambda$，单位质量比热为 $c$，质量密度为 $\rho$，一开始温度为 $T_0$。在 $t=0$ 时刻把空心球投入温度为 $2T_0$ 的热库，计算此后空心球内各点的温度变化。（25分)
+
+    {\blue
+      令$u = T - 2T_0$
+      则有
+      \bea
+      \frac{\partial u}{\partial t} - a\nabla^2 u &=& 0, \newl
+      \left. u\right\vert_{r=2R} &=& 0 ,\newl
+      \left. \frac{\partial u}{\partial r}\right\vert_{r=R} &=& 0, \newl
+      \left. u\right\vert_{t=0} = -T_0,
+      \eea
+      其中$a = \frac{\lambda}{\rho c}$。
+
+      \skipline
+      由对称性知道可以把$u$展开为$j_0(kr)e^{-ak^2t}$和$y_0(kr)e^{-ak^2t}$的线性组合。而
+      $$j_0(kr) = \frac{\sin(kr)}{kr};  y_0(kr) = -\frac{\cos(kr)}{kr}, $$
+      的线性组合要满足$r=2R$处为零，$r=R$处对$r$的偏导数为零，只有下述可能性：
+      $$ \frac{\sin\frac{\mu_i(r-2R)}{R}}{r},$$
+      $\mu_i$是所有满足
+      $$ \tan \mu + \mu = 0 $$
+      的正实数根 ($\mu_1=2.02876$, $\mu_2 = 4.91318$, $\mu_3 = 7.97867$, $\mu_4 = 11.0855$, $\mu_5 = 14.20744$ \ldots)。
+
+      \skipline
+      
+      按套路令
+      $$ u = \sum_{i}c_i \frac{\sin\frac{\mu_i(r-2R)}{R}}{r} e^{-\frac{a\mu_i^2t}{R^2}}, $$
+      剩下的问题就是求解$c_i$，根据一般正交定理
+      $$ \int_R^{2R} \frac{\sin\frac{\mu_i(r-2R)}{R}}{r} \frac{\sin\frac{\mu_j(r-2R)}{R}}{r} r^2dr = \delta_{ij} N_i,$$
+      其中$N_i$是需要花点精力计算的归一化因子：
+      $$ N_i = \int_R^{2R} \sin^2\frac{\mu_i(r-2R)}{R} dr = \frac{R}{2}\left(1-\frac{\sin 2\mu_i}{2\mu_i} \right) =  \frac{R}{2}\left(1-\frac{2\tan\mu_i}{2\mu_i(1+\tan^2\mu_i)}\right) = \frac{R(2+\mu_i^2)}{2(1+\mu_i^2)}.$$
+      于是根据初始条件
+      $$\sum_{i}c_i \frac{\sin\frac{\mu_i(r-2R)}{R}}{r}  = -T_0$$
+      得到系数
+      \bea
+      c_i &=& -\frac{T_0}{N_i}\int_R^{2R} \frac{\sin\frac{\mu_i(r-2R)}{R}}{r}  r^2dr \newl
+      &=& \frac{T_0}{N_i} \frac{R}{\mu_i}  \left[ \left. r \cos\frac{\mu_i(r-2R)}{R}\right\vert_{R}^{2R} -   \int_R^{2R}\cos\frac{\mu_i(r-2R)}{R} dr\right] \newl
+      &=& \frac{T_0}{N_i} \frac{R}{\mu_i}  \left[ (2-\cos\mu_i)R -   \frac{R}{\mu_i} \left.\sin\frac{\mu_i(r-2R)}{R} \right\vert_{R}^{2R}\right] \newl
+      &=& \frac{T_0}{N_i} \frac{R}{\mu_i}  \left[ (2-\cos\mu_i)R -   \frac{R}{\mu_i} \sin\mu_i\right]\newl
+      &=& \frac{2T_0R^2}{N_i\mu_i} \newl
+      &=& \frac{4T_0R(1+\mu_i^2)}{\mu_i(2+\mu_i^2)} \newl
+      \eea
+      最后结果就是
+      $$ T = 2T_0 \left[1+2\sum_{i}\frac{(1+\mu_i^2)}{\mu_i(2+\mu_i^2)} \frac{R}{r} \sin\frac{\mu_i(r-2R)}{R} e^{-\frac{a\mu_i^2t}{R^2}}\right]. $$
+
+      }
+
+}
+
+\item[(四)]{设在某个空间区域 $\Omega$ 内的每一点都有个对应的“势能”，即可以写出势能函数 $V(\vecx),\ \vecx\in \Omega$。考虑满足微分方程
+  $$\left[V(\vecx)-\frac{1}{2}\nabla^2\right] u = E u, $$
+  且在 $\Omega$ 的边界上满足一般零边界条件( $u$ 和 $\nabla u$ 的法向分量的某个固定线性组合为零，线性组合的系数允许在边界各个点不同)的解。其中 $E$ 为待定的“本征值”。在量子力学里, $u$是波函数，算符$-\frac{1}{2}\nabla^2$具有动能的含义，本征值$E$则代表了总能量。
+  \bitem
+\item[(1)]{证明任何两个不同的 $E$ 对应的两个解在 $\Omega$ 内正交（乘积的积分为零）。(10分)}
+\item[(2)]{设 $\Omega$ 为整个三维空间；$V(\vecx) = -\frac{1}{|\vecx|}$；是否存在$E<0$ (对应量子力学里的束缚态) 使方程有处处有限且在无穷远处趋向于零的解？如果存在，$E$要取怎样的值？ (15分)}  
+  \eitem
+
+  {\blue
+    (1) 正交性的证明和一般正交定理的证明几乎完全相同，见Lec.18。
+
+    
+    (2) 设$E  = -\frac{k^2}{2}$ ($k>0$)，$u = f(r) Y_{\ell m}(\theta,\phi)$，则
+    $$ f'' + \frac{2}{r} f' + \left(\frac{2}{r} - \frac{\ell(\ell+1)}{r^2}- k^2\right) f = 0. $$ 
+
+    在 $r\rightarrow \infty$处，微分方程渐近行为是
+    $$ f'' - k^2 f = 0 $$
+    由收敛性知道$f \sim e^{-kr}$，因此我们假设$f = g(r) e^{-kr}$，则
+    $$ f' = e^{-kr}(g' -kg)$$
+    $$ f'' = e^{-kr}(g''-2kg'+k^2g)$$
+    代入$f$的方程得到
+    \begin{equation}
+      g''+(\frac{2}{r}-2k)g'+\left[-k^2+\frac{2-2k}{r}-\frac{\ell(\ell+1)}{r^2}\right]g =0. \label{eq4}
+    \end{equation}
+    在$r=0$附近，上式的渐近行为是
+    $$g''+\frac{2}{r}g'-\frac{\ell(\ell+1)}{r^2}g = 0.$$
+    在球心有限的渐近解是$g\sim r^\ell$，因此可以设
+    $$ g = r^\ell \sum_{n=0}^\infty c_n r^n.$$
+    代入$g$的微分方程\eqref{eq4}，得到
+    $$ c_{n+1} = \frac{2k(n+\ell+1)-2}{(n+\ell+2)(n+\ell+1)-\ell(\ell+1)}c_n.$$
+    容易看出要使这个级数在$r=1$处收敛，则级数必须在某个$n$截断：
+    $$ k = \frac{1}{n+\ell+1} $$
+    即
+    $$E = -\frac{1}{2N^2}$$
+    其中 $$ N = n+\ell+1 $$为正整数。
+
+    \skiplines
+   注： 上面实际上是量子力学里面氢原子能级的计算过程，以后在学习量子力学时会再次遇到。
+  }
+}
+
+\eitem  
+
+
+
+
+
+\ech
+\end{document}

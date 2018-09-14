@@ -1,21 +1,23 @@
 \documentclass[CJK]{beamer}
 \input{macros.tex}
 \input{titlepage.tex}
-  \date{}
+\date{}
 \begin{document}
+\bch  
 \tpage{1}{Complex Functions}
 
 
+
+
 \begin{frame}
-\chtitle{本讲内容}
-\bch
+\frametitle{本讲内容}
 \bitem
 \item{复变函数}
 \item{复变函数的求导}
 \item{复变函数的积分}
 \item{解析函数}
 \eitem
-\ech
+
 \end{frame}
 
 
@@ -24,9 +26,7 @@
 \secpage{复变函数}{复数到复数的映射}
 
 \begin{frame}
-  \chtitle{从实变函数到复变函数的推广}
-  \bch
-  
+  \frametitle{从实变函数到复变函数的推广}
 
   \bex
   实变函数
@@ -35,13 +35,13 @@
   $$f(z) = z^2. \ \ (z\in C) $$
   \eex
 
-  \ech
+  
 \end{frame}
 
 
 \begin{frame}
-  \chtitle{从实变函数到复变函数的推广}
-  \bch
+  \frametitle{从实变函数到复变函数的推广}
+  
   
 
   \bex
@@ -51,78 +51,78 @@
   $$f(z) = \frac{z}{1+z^2}. \ \ (z\in C)$$
   \eex
 
-  \ech
+  
 \end{frame}
 
 
 
 \begin{frame}
-  \bch
+  
 
   \addfig{1.2}{kaisen.jpg}
   \bcenter
       {\bf \Large 这种推广简直弱爆了！}
 
       \ecenter
-  \ech
+  
 \end{frame}
 
 
 \begin{frame}
-  \chtitle{那我们继续}
-  \bch
+  \frametitle{那我们继续}
+  
   实变函数
   $$f(x) = e^x,\ \ (x\in \Re)$$
   推广为复变函数
   $$f(z) = \ ? \ \ (z\in C)$$
-  \ech
+  
 \end{frame}
 
 \begin{frame}
-  \bch
+  
   \addfig{1.2}{kaisen.jpg}
   \bcenter
   {\bf \Large 当然是$e^z$啊！}
   \ecenter
-  \ech
+  
 \end{frame}
 
 
 \begin{frame}
-  \chtitle{但，$e^z$到底是什么意思？}
-  \bch
+  \frametitle{但，$e^z$到底是什么意思？}
+  
   \addfig{1}{wocaidaan.png}
   \bcenter
   {\Large \bf  $e^{2+3\ii}$是什么意思？}
   \ecenter
-  \ech
+  
 \end{frame}
 
 
 \begin{frame}
-  \chtitle{转化为加减乘除的问题}
-  \bch
+  \frametitle{转化为加减乘除的问题}
+  
   实变的指数函数可以用“加减乘除”来替代：
   $$ e^x  = \sum_{n=0}^{\infty} \frac{x^n}{n!}$$
   由此自然而然地定义复变的指数函数
   $$ e^z = \sum_{n=0}^{\infty} \frac{z^n}{n!}$$
-  \ech
+  
 \end{frame}
 
 \begin{frame}
-  \bch
+  
   \addfig{2}{nimashinima.jpg}
   
   对推广到复数域的指数函数，证明``它是指数函数‘’。
   即对任意$z_1, z_2\in C$，有
   $$e^{z_1+z_2} = e^{z_1}e^{z_2}$$
-  \ech
+  
 \end{frame}
 
 
 \begin{frame}
-  \chtitle{证明$e^{z_1+z_2} = e^{z_1}e^{z_2}$}
-  \bch
+  \frametitle{证明$e^{z_1+z_2} = e^{z_1}e^{z_2}$}
+  
   命题等价于
   $$\sum_{n=0}^\infty \frac{(z_1+z_2)^n}{n!} = \sum_{n_1, n_2\ge 0}\frac{z_1^{n_1}z_2^{n_2}}{n_1!n_2!}$$
 
@@ -131,12 +131,12 @@
   左边$z_1^{n_1}z_2^{n_2}$的项只能来自于$n=n_1+n_2$的项的展开，在展开$(z_1+z_2)^n$时在$n_1$个括号内取$z_1$，$n_2$个括号内取$z_2$，总共有$\frac{n!}{n_1!n_2!}$种取法，即左边$z_1^{n_1}z_2^{n_2}$的系数为
   $$\frac{1}{n!} \frac{n!}{n_1!n_2!} = \frac{1}{n_1!n_2!}$$
   和右边相同。
-  \ech
+  
 \end{frame}
 
 \begin{frame}
-  \chtitle{Euler公式}
-  \bch
+  \frametitle{Euler公式}
+  
   对实数$\theta$，按定义
   $$e^{\ii\theta} = \sum_{n=0}^\infty \frac{\ii^n\theta^n}{n!} $$
   上式右边$n$为偶数的项是实数项，$n$为奇数的项是虚数项。分离实虚部即得：
@@ -144,12 +144,12 @@
   实部和虚部恰好分别是三角函数$\cos\theta$和$\sin\theta$的级数展开式，于是
   \tbox{\blue $$e^{\ii\theta} = \cos\theta + \ii\sin\theta$$}
   这就是著名的{\bf\blue 欧拉公式}。
-  \ech
+  
 \end{frame}
 
 \begin{frame}
-  \chtitle{复数的指数表示和复数的乘法规则}
-  \bch
+  \frametitle{复数的指数表示和复数的乘法规则}
+  
       {\blue 模为$r$，幅角为$\theta$的复数可以写成$re^{\ii\theta}$。}
       \addfig{1.8}{exp_expression.png}
       
@@ -157,18 +157,18 @@
   $$\left(r_1e^{\ii \theta_1}\right)\left(r_2e^{\ii\theta_2}\right) = (r_1r_2)\left(e^{\ii\theta_1}e^{\ii\theta_2}\right)= (r_1r_2)e^{\ii(\theta_1+\theta_2)}$$
       这就是模相乘，幅角相加的复数乘法法则。  
   
-  \ech
+  
 \end{frame}
 
 \begin{frame}
-  \chtitle{对数函数 $\ln z$ 是多值函数}
-  \bch
+  \frametitle{对数函数 $\ln z$ 是多值函数}
+  
   设$z$的模为$r$，幅角为$\theta$，则 
   $$e^{\ln r + \ii \theta} = r e^{\ii\theta} = z$$
   那么，是否可以定义推广的对数函数：
   $$\ln z := \ln |z| + \ii \arg z$$
   不幸地是，因为幅角$\arg z$可以随意加上$2\pi$的整数倍，所以上式是一对多的映射，不是普通意义上的函数。在复变函数论里把这样的映射称为{\bf ``多值函数''}。
-  \ech
+  
 \end{frame}
 
 \section{Differentiation}
@@ -176,26 +176,26 @@
 \secpage{复变函数的导数}{跟实变函数没多大区别，但要小心多值函数}
 
 \begin{frame}
-  \chtitle{复变函数的导数}
-  \bch
+  \frametitle{复变函数的导数}
+  
   复变函数$f(z)$的导数还是定义为$f$的微小改变量和$z$的微小改变量之比：
   $$f'(z) = \frac{df}{dz} \equiv \lim_{\Delta z\rightarrow 0}\frac{f(z+\Delta z)-f(z)}{\Delta z}$$
 
   因为$\Delta z$可以从任何方向趋向于零，所以复变函数的可导性（即上述极限的存在性）是一个比较强的条件。
-  \ech
+  
 \end{frame}
 
 \begin{frame}
-  \chtitle{复变函数的导数}
-  \bch
+  \frametitle{复变函数的导数}
+  
   对$f(z)=z^2$，根据定义：
   $$f'(z) = \lim_{\Delta z\rightarrow 0}\frac{(z+\Delta z)^2-z^2}{\Delta z} = \lim_{\Delta z\rightarrow 0}(2z +\Delta z) = 2z $$
-  \ech
+  
 \end{frame}
 
 \begin{frame}
-  \chtitle{复变函数的导数}
-  \bch
+  \frametitle{复变函数的导数}
+  
   对$f(z)=\frac{1}{1+z}$，根据定义：
 
   \bea
@@ -203,26 +203,26 @@
   &=& -\lim_{\Delta z\rightarrow 0}\frac{1}{(1+z)(1+z+\Delta z)} \nonumber \\
   &=& -\frac{1}{(1+z)^2} 
   \eea
-  \ech
+  
 \end{frame}
 
 \begin{frame}
-  \bch
+  
   {\Large {\blue 只涉及加减乘除}的复变函数的求导运算和实变函数完全相同。}
-  \ech
+  
 \end{frame}
 
 \begin{frame}
-  \chtitle{指数函数的导数}
-  \bch
+  \frametitle{指数函数的导数}
+  
   对$f(z) = e^z$按定义式逐项求导：
   $$f'(z) = \sum_{n=0}^\infty \frac{1}{n!} \frac{d(z^n)}{dz} = \sum_{n=1}^\infty \frac{nz^{n-1}}{n!} = \sum_{n=1}^\infty \frac{z^{n-1}}{(n-1)!} =\sum_{m=0}^\infty \frac{z^m}{m!}  = e^z$$
-  \ech
+  
 \end{frame}
 
 \begin{frame}
-  \chtitle{$\ln z$的连续变化观点和导数}
-  \bch
+  \frametitle{$\ln z$的连续变化观点和导数}
+  
   当$z=re^{\ii \theta}$沿复平面上的一条(不经过原点的)曲线连续变化时，我们让幅角$\theta$也连续地变化（即不允许突然心血来潮加个$2\pi$什么的)，这样$\ln z=\ln r+\ii\theta $也连续地发生变化。在这个意义下可以定义导数。
 
     \skiplines
@@ -231,15 +231,15 @@
 
  $$d\ln z = d\ln r + \ii d\theta = \frac{dr}{r} + \ii d\theta = \frac{e^{\ii\theta}dr + \ii re^{\ii\theta}d\theta}{re^{\ii\theta}} = \frac{dz}{z}$$
     
-  \ech
+  
 \end{frame}
 
 \section{Integration}
 \secpage{复变函数的积分}{原函数如果是多值函数就要小心了}
 
 \begin{frame}
-  \chtitle{复变函数的积分}
-  \bch
+  \frametitle{复变函数的积分}
+  
 当$z$沿着一条(带方向的)分段光滑曲线$C$连续变化时，$z$的变化量$dz$和$f(z)$的乘积之和(当$dz$趋向于零时)的极限可以写成积分：
 $$\int_C f(z) dz \equiv \lim_{dz\rightarrow 0}\sum_{z\in C} f(z) dz.$$
 
@@ -247,12 +247,12 @@ $$\int_C f(z) dz \equiv \lim_{dz\rightarrow 0}\sum_{z\in C} f(z) dz.$$
 
 显然，如果把沿着曲线积分的方向改成相反，则积分结果相差个负号。
 
-  \ech
+  
 \end{frame}
 
 \begin{frame}
-  \chtitle{原函数}
-  \bch
+  \frametitle{原函数}
+  
   模仿实变函数的定积分技巧：
 
   \skipline
@@ -266,12 +266,12 @@ $$\int_C f(z) dz \equiv \lim_{dz\rightarrow 0}\sum_{z\in C} f(z) dz.$$
   $F(z)$称为$f(z)$的{\bf 原函数}。
 
   (要注意，原函数未必是存在的\bye)
-  \ech
+  
 \end{frame}
 
 \begin{frame}
-  \chtitle{把我们之前讨论的一切反过来写，就有}
-  \bch
+  \frametitle{把我们之前讨论的一切反过来写，就有}
+  
   \bea
   \int z^n dz  &=& \frac{z^{n+1}}{n+1} + c,\ \ \  (n\in Z, n\ne -1) \newl
   \int e^z dz &=& e^z + c, \newl
@@ -279,7 +279,7 @@ $$\int_C f(z) dz \equiv \lim_{dz\rightarrow 0}\sum_{z\in C} f(z) dz.$$
   \eea
   当然，最后一个等式仍然需要遵循幅角连续变化的约定。
   
-  \ech
+  
 \end{frame}
 
 
@@ -288,8 +288,8 @@ $$\int_C f(z) dz \equiv \lim_{dz\rightarrow 0}\sum_{z\in C} f(z) dz.$$
 
 
 \begin{frame}
-  \chtitle{内部，外部和边界}
-  \bch
+  \frametitle{内部，外部和边界}
+  
   设复平面上有个点集$S$。
   
   \bmini{0.3}
@@ -303,21 +303,21 @@ $$\int_C f(z) dz \equiv \lim_{dz\rightarrow 0}\sum_{z\in C} f(z) dz.$$
   \item{边界的点$c$：无论取多小的$\delta$，邻域$\{z: |z-c|<\delta\}$总是部分在$S$内，部分在$S$外。}
     \eitem
   \emini
-  \ech
+  
 \end{frame}
 
 
 \begin{frame}
-  \chtitle{边界的方向：左内法则}
-  \bch
+  \frametitle{边界的方向：左内法则}
+  
   我们可以对复平面上的点集$S$的边界规定一个方向：当沿着边界的{\bf 正方向}移动，{内部的点}总在你的{\bf 左手边}。
   \addfig{2}{boundary_direction.png}
-  \ech
+  
 \end{frame}
 
 \begin{frame}
-  \chtitle{开区域和闭区域}
-  \bch
+  \frametitle{开区域和闭区域}
+  
   \bitem
   \item
  { 如果点集$S$只包含内部的点，则称$S$为开区域。
@@ -334,65 +334,65 @@ $$\int_C f(z) dz \equiv \lim_{dz\rightarrow 0}\sum_{z\in C} f(z) dz.$$
   \eex
  }
    \eitem
-  \ech
+  
 \end{frame}
 
 \begin{frame}
-  \chtitle{解析函数的定义}
-  \bch
+  \frametitle{解析函数的定义}
+  
   如果复变函数$f(z)$在某个开区域$S$内处处可导，则称$f(z)$为$S$上的{\bf 解析函数}。
 
   \skiplines
   
   (可导已经比较苛刻了，“处处可导”是更加苛刻的条件。)
-  \ech
+  
 \end{frame}
 
 
 \begin{frame}
-  \chtitle{思考题}
-  \bch
+  \frametitle{思考题}
+  
   \addfig{1}{think.jpg}
   
   在解析函数的定义里，为什么要限定处处可导的范围是开区域？换成闭区域行吗？
-  \ech
+  
 \end{frame}
 
 
 \begin{frame}
-  \chtitle{解析函数的例子}
-  \bch
+  \frametitle{解析函数的例子}
+  
   \bex
   $$f(z) = z^2$$
   是全复平面上的解析函数。
   \eex
-  \ech
+  
 \end{frame}
 
 \begin{frame}
-  \chtitle{解析函数的例子}
-  \bch
+  \frametitle{解析函数的例子}
+  
   \bex
   $$f(z) = \frac{z^2}{z+1}$$
   是全复平面挖去$z=-1$后的区域上的解析函数。
   \eex
-  \ech
+  
 \end{frame}
 
 \begin{frame}
-  \chtitle{解析函数的例子}
-  \bch
+  \frametitle{解析函数的例子}
+  
   \bex
   $$f(z) = e^z$$
   是全复平面上的解析函数。
   \eex
-  \ech
+  
 \end{frame}
 
 
 \begin{frame}
-  \chtitle{解析函数的例子}
-  \bch
+  \frametitle{解析函数的例子}
+  
   \bex
   $$f(z) = \ln z$$
   在任何可以限定幅角范围且不会导致幅角不连续变化的区域内，我们都可以通过限定幅角范围的方法来限定$\ln z$为连续的单值函数，在这个意义下$\ln z$是解析函数。
@@ -404,24 +404,24 @@ $$\int_C f(z) dz \equiv \lim_{dz\rightarrow 0}\sum_{z\in C} f(z) dz.$$
   开圆$|z-1|<1$也满足上述条件。
 
   \eex
-  \ech
+  
 \end{frame}
 
 
 \begin{frame}
-  \chtitle{解析函数的反例}
-  \bch
+  \frametitle{解析函数的反例}
+  
   \bex
   $$f(z) = |z|$$
   处处不可导，所以在任何开区域内{\bf 不是}解析函数。
   \eex
-  \ech
+  
 \end{frame}
 
 
 \begin{frame}
-  \chtitle{解析函数的反例}
-  \bch
+  \frametitle{解析函数的反例}
+  
   \bex
   $$f(z) = \Arg z$$
   处处不可导，所以在任何开区域内{\bf 不是}解析函数。
@@ -430,34 +430,34 @@ $$\int_C f(z) dz \equiv \lim_{dz\rightarrow 0}\sum_{z\in C} f(z) dz.$$
   \skiplines
 
 {\scriptsize  注：幅角主值$\Arg z$一般约定取值范围为$(-\pi,\pi]$。}
-  \ech
+  
 \end{frame}
 
 \begin{frame}
-  \chtitle{解析函数的反例}
-  \bch
+  \frametitle{解析函数的反例}
+  
   \bex
   $$f(z) = z^2 \Arg z$$
   仅在$z=0$可导，无法在一个开区域内处处可导，所以在任何开区域内{\bf 不是}解析函数。
   \eex
-  \ech
+  
 \end{frame}
 
 
 \begin{frame}
-  \chtitle{dalao泰勒}
-  \bch
+  \frametitle{dalao泰勒}
+  
   \bcenter
   \lfig{1.5}{Taylor.jpg}
 
   Brook Taylor (1685-1731)
   \ecenter
-  \ech
+  
 \end{frame}
 
 \begin{frame}
-  \chtitle{泰勒展开： 一级近似}
-  \bch
+  \frametitle{泰勒展开： 一级近似}
+  
   假设函数$f$在$z_0$无限次可导且各阶导数已知，我们想求$f$在$z_0$附近的一点$z$处的函数值。
 
 
@@ -468,12 +468,12 @@ $$\int_C f(z) dz \equiv \lim_{dz\rightarrow 0}\sum_{z\in C} f(z) dz.$$
     f(z) \approx f(z_0) + f'(z_0)(z-z_0). \nonumber
   \end{equation}
   
-  \ech
+  
 \end{frame}
 
 \begin{frame}
-  \chtitle{泰勒级数： 二级近似}
-  \bch
+  \frametitle{泰勒级数： 二级近似}
+  
   当然这样的一阶近似对导函数$f'$也成立，且对$z_0$附近的任何一点$\zeta$成立：
 $$    f'(\zeta) \approx f'(z_0) + f''(z_0)(\zeta-z_0).  $$
 
@@ -484,13 +484,13 @@ $$    f'(\zeta) \approx f'(z_0) + f''(z_0)(\zeta-z_0).  $$
     f(z) \approx f(z_0)  + f'(z_0)(z-z_0) + \frac{f''(z_0)}{2} (z-z_0)^2 \nonumber
   \end{equation}
   
-  \ech
+  
 \end{frame}
 
 
 \begin{frame}
-  \chtitle{泰勒级数： 三级近似}
-  \bch
+  \frametitle{泰勒级数： 三级近似}
+  
   同理，这样的二阶近似对导函数$f'$也成立，且对$z_0$附近的任何一点$\zeta$成立：
 $$    f'(\zeta) \approx f'(z_0) + f''(z_0)(\zeta-z_0) + \frac{f^{(3)}(z_0)}{2} (\zeta - z_0)^2.  $$
 
@@ -501,13 +501,13 @@ $$    f'(\zeta) \approx f'(z_0) + f''(z_0)(\zeta-z_0) + \frac{f^{(3)}(z_0)}{2} (
     f(z)  \approx f(z_0) + f'(z_0)(z-z_0) + \frac{f''(z_0)}{2} (z-z_0)^2 + \frac{f^{(3)}(z_0)}{3!}(z-z_0)^3. \nonumber
   \end{equation}
   
-  \ech
+  
 \end{frame}
 
 
 \begin{frame}
-  \chtitle{泰勒级数}
-  \bch
+  \frametitle{泰勒级数}
+  
   把这样的过程进行无限多次，就得到{\blue 泰勒展开公式：
   $$f(z) = \sum_{n=0}^\infty a_n(z-z_0)^n,$$
   其中$a_n = \frac{f^{(n)}(z_0)}{n!}$.}
@@ -521,24 +521,24 @@ $$    f'(\zeta) \approx f'(z_0) + f''(z_0)(\zeta-z_0) + \frac{f^{(3)}(z_0)}{2} (
   \skiplines
   
   好在对在整个圆内解析的函数而言，这个问题并不存在——
-  \ech
+  
 \end{frame}
 
 
 \begin{frame}
-  \chtitle{解析函数的本质: 任何圆内的泰勒级数收敛}
-  \bch
+  \frametitle{解析函数的本质: 任何圆内的泰勒级数收敛}
+  
   {\blue \bf
   如果$f(z)$在圆$C_R$： $|z-z_0|< R$内解析，则$f(z)$在$C_R$内无限次可导，且泰勒级数收敛
   $$f(z) = \sum_{n=0}^\infty a_n(z-z_0)^n, \  \ \ \ z\in C_R.$$
   其中$a_n = \frac{f^{(n)}(z_0)}{n!}$.
   }
-  \ech
+  
 \end{frame}
 
 \begin{frame}
-  \chtitle{证明第一步：物理学家的直觉} 
-  \bch
+  \frametitle{证明第一步：物理学家的直觉} 
+  
       {\blue 设$f$是很小的简单闭合围道内的解析函数，且在围道上连续，则$f$沿这个围道的积分是围道包围的面积的高阶无穷小量。
         \lfig{0.8}{dSint.png}$\oint_C f(z)dz = o(dS)$
         }
@@ -548,13 +548,13 @@ $$    f'(\zeta) \approx f'(z_0) + f''(z_0)(\zeta-z_0) + \frac{f^{(3)}(z_0)}{2} (
 
   \item {再估算误差：函数值的误差为围道的尺度的高阶无穷小量，再乘以$dz$积分后，误差为围道尺度平方的高阶无穷小量。对简单闭合围道而言，面积为尺度平方的量级，故得证。}
   \eitem
-  \ech
+  
 \end{frame}
 
 
 \begin{frame}
-  \chtitle{证明第二步：柯西定理} 
-  \bch
+  \frametitle{证明第二步：柯西定理} 
+  
  {\bf \blue 如果$f$在开区域$T$上解析，在$T$的边界上连续，则$f$沿$T$的边界正方向的积分为零。}
 
  把子区域$T$划分成很多简单小区域$T_1$, $T_2$, $\ldots$, $T_N$，并在每个小区域的边界上沿正方向进行积分。相邻小区域在公共边界上(按左内原则)规定的边界方向相反，积分互相抵消，所以最后只剩下那些非公共边界（即$T$的边界)上的积分。也就是说，沿$T$的边界的积分等于沿所有小区域的边界的积分之和。
@@ -565,23 +565,23 @@ $$    f'(\zeta) \approx f'(z_0) + f''(z_0)(\zeta-z_0) + \frac{f^{(3)}(z_0)}{2} (
    \bmini{0.61}
    另一方面，沿任何小区域的边界积分是小区域面积($\frac{1}{N}$量级)的高阶无穷小量。故当划分块数$N$趋向于无穷时，所有沿小区域边界的积分之和（即$N$个$\frac{1}{N}$的高阶无穷小量之和）趋向于零。故得证。
    \emini
-  \ech
+  
 \end{frame}
 
 \begin{frame}
-  \chtitle{dalao柯西}
-  \bch
+  \frametitle{dalao柯西}
+  
   \bcenter
   \lfig{1.2}{Cauchy.jpg}
 
   Augustin-Louis Cauchy
   \ecenter
-  \ech
+  
 \end{frame}
 
 \begin{frame}
-  \chtitle{证明第三步：柯西积分公式} 
-  \bch
+  \frametitle{证明第三步：柯西积分公式} 
+  
       {\bf \blue 如果$a$是区域$T$内一点，$f(z)$是$T$内的解析函数并在$T$边界上连续，则
         $$ f(a) = \frac{1}{2\pi \ii}\oint_{\partial T} \frac{f(z)}{z-a} dz $$
         其中$\oint_{\partial T}$表示沿$T$的边界的正方向积分。}
@@ -596,12 +596,12 @@ $$    f'(\zeta) \approx f'(z_0) + f''(z_0)(\zeta-z_0) + \frac{f^{(3)}(z_0)}{2} (
       $$f(a)\Delta\ln(z-a)  = -2\pi \ii f(a)$$
       故得证。
       \emini
-  \ech
+  
 \end{frame}
 
 \begin{frame}
-  \chtitle{证明第四步：推广的柯西积分公式} 
-  \bch
+  \frametitle{证明第四步：推广的柯西积分公式} 
+  
   柯西积分公式右边可以对$a$进行$n$次求导（请思考这样做的合法性），得到解析函数的$n$阶导数表达式：
 
   {\blue
@@ -611,13 +611,13 @@ $$    f'(\zeta) \approx f'(z_0) + f''(z_0)(\zeta-z_0) + \frac{f^{(3)}(z_0)}{2} (
 
   于是得到泰勒展开：
   $$f(z) = \sum_{n=0}^\infty \frac{f^{(n)}(z_0)}{n!} (z-z_0)^n$$
-  \ech
+  
 \end{frame}
 
 
 \begin{frame}
-  \chtitle{证明第五步：泰勒级数展开在圆内收敛} 
-  \bch
+  \frametitle{证明第五步：泰勒级数展开在圆内收敛} 
+  
  对圆内任意一点$z$，设$|z-z_0|=s<r$，取介于$s$和$r$之间的正数$q$ ($s<q<r$)，以$q$为半径取圆区域$C_q$: $|z-z_0|<q$，则$f(z)$在$C_q$内解析，边界上连续。于是
   $$ a_n = \frac{f^{(n)}(z_0)}{n!} = \frac{1}{2\pi \ii}\oint_{\partial C_q} \frac{f(z)}{(z-z_0)^{n+1}}dz $$
   设$|f(z)|$在圆周$\partial C_q$上的上界为$A$ (有限闭集上的连续实函数一定有上限，请思考为什么)，则
@@ -625,13 +625,13 @@ $$    f'(\zeta) \approx f'(z_0) + f''(z_0)(\zeta-z_0) + \frac{f^{(3)}(z_0)}{2} (
   因此把幂级数截断后的余项
   $$ \left\vert \sum_{n=N}^\infty a_n (z-z_0)^n \right\vert \le \sum_{n=N}^\infty \frac{A}{q^n}s^n =\frac{A}{1-\frac{s}{q}} \left(\frac{s}{q}\right)^N$$
   当$N\rightarrow$上式右边趋向于零，故得证。
-  \ech
+  
 \end{frame}
 
 
 \begin{frame}
-  \chtitle{思考题 (数学灵魂复苏……)}
-  \bch
+  \frametitle{思考题 (数学灵魂复苏……)}
+  
   \addfig{1}{think2.jpg}
   如果在一个点$a$的任意小邻域内都有点集$S$里的无数个点，则称$a$为$S$的聚点。例如$0$是点集$\{ \frac{1}{n}, n\in Z^+\}$的聚点。
 
@@ -641,15 +641,15 @@ $$    f'(\zeta) \approx f'(z_0) + f''(z_0)(\zeta-z_0) + \frac{f^{(3)}(z_0)}{2} (
 \item[1]{\bf 在有限大小的闭区域内的无穷点集必然有聚点。}
 \item[2]{\bf 有限大小的闭区域上的连续实函数必然有上下限。}
   \eitem
-  \ech
+  
 \end{frame}
 
 
 \section{Homework}
 
 \begin{frame}
-\chtitle{课后作业}
-\bch
+\frametitle{给不愿刷quiz的大佬们留的书面作业}
+
     {\small
       
 \bitem
@@ -666,9 +666,9 @@ $$    f'(\zeta) \approx f'(z_0) + f''(z_0)(\zeta-z_0) + \frac{f^{(3)}(z_0)}{2} (
 }
 \eitem
  }
-\ech
+
 \end{frame}
 
 
-
+\ech
 \end{document}

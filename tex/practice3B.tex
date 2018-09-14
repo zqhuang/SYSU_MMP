@@ -1,0 +1,84 @@
+\documentclass[12pt,CJK]{article}
+\usepackage{geometry}
+\input{reduced_macros.tex}
+\geometry{tmargin=0.3in, bmargin=0.5in, lmargin=0.5in, rmargin=0.9in, nohead, nofoot}
+\def\mark#1{{\color{blue} (#1分)}}
+\renewcommand{\thepage}{}
+\begin{document}
+\bch
+{\large 数理方法 课堂小测III 华山论剑版}
+
+{\vskip 0.2in}
+
+特殊函数定义列表：
+\bea
+J_\nu(x) &=& \sum_{k=0}^\infty \frac{(-1)^k}{k!(k+\nu)!}\left(\frac{x}{2}\right)^{2k+\nu}; \newl
+Y_\nu(x) &=& \lim_{\mu\rightarrow \nu}\frac{J_\mu(x)\cos\mu\pi - J_{-\mu}(x)}{\sin (\mu\pi)}; \newl
+j_\ell(x) &=& \sqrt{\frac{\pi}{2x}} J_{\ell+1/2}(x),\ \ \ell\in Z; \newl
+y_\ell(x) &=& \sqrt{\frac{\pi}{2x}} Y_{\ell+1/2}(x), \ \ \ell\in Z; \newl
+P_{\ell}(x) &=& \sum_{k=0}^\ell \frac{(\ell + k)!}{(k!)^2(\ell-k)!}\left(\frac{x-1}{2}\right)^k,\ \ \ell\in Z, \ell\ge 0; \newl
+Y_{\ell, m}(\theta,\phi) &=&\frac{1}{2^\ell \ell !}\sqrt{\frac{(2\ell+1)}{4\pi} \frac{(\ell-m)!}{(\ell+m)!}}\left[\sin^m\theta \left(\frac{1}{\sin\theta}\frac{d}{d\theta}\right)^{\ell+m}\sin^{2\ell}\theta \right] e^{\ii m\phi},\ \ \ell,m\in Z, \ell\ge|m|.
+\eea
+
+\bitem
+\item[(一)]{选择题，每题6分，共30分。
+
+  \bitem
+
+
+\item[(1)]{$P_{7}(x)$ 在区间 $(0,1)$ 内有多少个实数零点？ \bropt
+
+  \optlist{0}{3}{4}{7} }
+  
+\item[(2)]{ 下列哪个数量级和第二类贝塞尔函数$|Y_0\left(\frac{1}{10000!}\right)|$最接近？ \bropt
+  
+  \optlist{$10^3$}{$10^5$}{$10^7$}{$10^9$}}
+
+\item[(3)]{$f(t)$ ($t\ge 0$) 满足微分方程$f''-\frac{1}{t}f'+(4t^2-\frac{8}{t^2})f =0$以及初始条件$f(0) = 0$, 则$f(t)$和下列哪个函数成正比？ \bropt
+
+  \optlist{$xJ_{3}(x)$}{$x^2J_{2}(x)$}{$xJ_{3/2}(x^2)$}{$J_{2\sqrt{2}}(x^2)$}}
+
+\item[(4)]{$\sin\theta\,e^{\ii \phi} Y_{5,3}^*(\theta,\phi)$ 可写成哪两个球面谐函数的线性组合? \bropt
+  
+  \foptlist{$Y_{4,-2}(\theta,\phi)$ 和 $Y_{6,-2}(\theta,\phi)$}{$Y_{4,4}(\theta,\phi)$ 和 $Y_{6,4}(\theta,\phi)$}{$Y_{4,3}(\theta,\phi)$ 和 $Y_{6,3}(\theta,\phi)$}{$Y_{5,-2}(\theta,\phi)$ 和 $Y_{5,-4}(\theta,\phi)$}}
+  
+\item[(5)]{ 设$\theta = \frac{\pi}{2}$, 则$|Y_{5, 1}(\theta,\phi)|^2+  |Y_{5, 2}(\theta,\phi)|^2+ |Y_{5, 3}(\theta,\phi)|^2+|Y_{5, 4}(\theta,\phi)|^2$ 等于 \bropt
+  
+  \optlist{$\frac{\pi}{2}$}{$\frac{1}{4\pi}$}{$\frac{15}{64\pi}$}{$\frac{715}{1024\pi}$} }
+
+\eitem  
+}
+\item[(二)]{填空题（每题10分，共30分）
+  \bitem
+\item[(1)]{积分$\int_0^1 xP_5(x)P_6(x)\,dx = $ \uline{1}。}
+\item[(2)]{积分$\int_0^1 x^4J_1(x)\, dx = $ \uline{1}。}    
+\item[(3)]{设 $J_{1}(x)$ 的所有正实数零点为 $\mu_1,\mu_2,\ldots$，则 $\sum_{i=1}^\infty \frac{1}{\mu_i^2} = $ \uline{1}。}
+  \eitem
+}
+  
+\item[(三)]{半径为$R$的均匀不良导体球，导热系数为 $\lambda$，单位质量比热为 $c$，质量密度为 $\rho$。以球心为原点建立球坐标系$(r,\theta,\phi)$。球表面的温度控制为$T = T_0+T_1 \cos\theta$并保持不变。计算球内部的稳定温度分布。（20分)
+
+{\vskip 2in}
+}
+
+\item[(四)]{ 我们在课上学习了两端固定的，长度为$L$的弦的横向小振动的解法。现在考虑空气阻力对弦的横向小振动的影响：假设单位长度的弦所受的空气阻力和弦的横向位移速度成正比，弦的振动方程就修正为
+  $$ \frac{\partial^2 u}{\partial t^2} + \frac{2}{\tau} \frac{\partial u}{\partial t}-  a^2\frac{\partial^2u }{\partial x^2} =  0 , $$
+  其中的阻尼时间$\tau \gg \frac{L}{a}$为常量。
+  设初始条件为
+  \bea
+  \left. u\right\vert_{t=0} &=& A\sin{\frac{\pi x}{L}}, \newl
+  \left.\frac{\partial u}{\partial t}\right\vert_{t=0} &=& 0
+  \eea
+  求解$u(x,t)$。 (20分)
+
+}
+
+  
+\eitem  
+
+
+
+
+
+\ech
+\end{document}

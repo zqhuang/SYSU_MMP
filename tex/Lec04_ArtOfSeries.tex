@@ -1,23 +1,15 @@
-\documentclass[CJK]{beamer}
+\documentclass[CJK,13pt]{beamer}
 \input{macros.tex}
 \input{titlepage.tex}
   \date{}
-\begin{document}
+  \begin{document}
+\bch
 \tpage{4}{Art of Series}
 
 
 \begin{frame}
-  \chtitle{开动点名神器}
-  \addfig{1.5}{drive.jpg}
-  \bch
-  请一位同学总结一下上一周所学的内容：最大模定理，解析延拓和$\Gamma$函数。
-  \ech
-\end{frame}
+\frametitle{本讲内容：级数展开和求留数的技巧汇总}
 
-
-\begin{frame}
-\chtitle{本讲内容：级数展开和求留数的技巧汇总}
-\bch
 \bitem
 \item{五个谁都知道的公式}
 \item{初级技能：变量替换}
@@ -27,75 +19,65 @@
 \item{高级技能：待定系数法}
 \item{对数函数和非整数次幂函数}
  \eitem
-\ech
+
 \end{frame}
 
 
 \section{Five Formulas}
 
-\secpage{五个谁都知道的公式}{\wulian Qui sont les 谁s？}
-
 \begin{frame}
-  \chtitle{  全平面适用的三个展开公式}
-  \bch
+  \frametitle{  全平面适用的三个展开公式}
+  
   \tbox{$$ e^z = \sum_{n=0}^\infty \frac{z^n}{n!} = 1 + z + \frac{z^2}{2} + \frac{z^3}{6} + \ldots $$}
   \tbox{$$ \sin z = \sum_{n=0}^\infty \frac{(-1)^nz^{2n+1}}{(2n+1)!} = z - \frac{z^3}{6} + \frac{z^5}{120} - \ldots $$}
   \tbox{$$ \cos z = \sum_{n=0}^\infty \frac{(-1)^nz^{2n}}{(2n)!} = 1 - \frac{z^2}{2} + \frac{z^4}{24} - \ldots $$}
   
-  \ech
+  
 \end{frame}
 
 \begin{frame}
-  \chtitle{  {\bf 单位圆内适用}的两个公式(规定$z=0$时$1+z$幅角为零)}
-  \bch
+  \frametitle{  {\bf 单位圆内适用}的两个公式(规定$z=0$时$1+z$幅角为零)}
+  
   \tbox{$$\ln(1+z) = \sum_{n=1}^\infty \frac{(-1)^{n+1}z^n}{n} = z - \frac{z^2}{2} + \frac{z^3}{3} - \frac{z^4}{4} + \ldots $$}
   \tbox{$$(1+z)^\alpha = \sum_{n=0}^\infty \newt{\alpha}{n} z^n = 1 + \alpha z + \frac{\alpha(\alpha-1)}{2} z^2 + \ldots $$}
   其中$\newt{\alpha}{n}$的定义是$$\newt{\alpha}{n} \equiv \frac{\alpha(\alpha-1)\ldots(\alpha-n+1)}{n!}$$
-  \ech
-\end{frame}
-
-\begin{frame}
-  \chtitle{关于点名神器的点名神器问题}
-  \bch
-  \addfig{1}{drive.jpg}
-
-  如果每个人被点名神器抽中概率相同，请估算你30次都没有被抽中的概率大概是多少。
-  \ech
+  
 \end{frame}
 
 
+
 \begin{frame}
-  \chtitle{热身}
-  \bch
+  \frametitle{热身}
+  
   \addfig{0.8}{think.jpg}
 
-  把$\frac{1}{(z-1)(z+1)}$在环形区域$|z|>1$内展开成Laurent级数。
+  把$\frac{1}{(z-1)(z+1)}$在环形区域$|z|>1$内展开成洛朗级数。
 
   \skiplines
 
-  然后思考：当Laurent级数出现负次幂时，一定无法把所给的函数解析延拓到环形中心吗？
+  然后思考：当洛朗级数出现负次幂时，一定无法把所给的函数解析延拓到环形中心吗？
 
-  \ech
+  
 \end{frame}
 
 \section{Replace Variables}
 \secpage{初级技能：变量替换}{$t=z-z_0$还是$t=\frac{1}{z-z_0}$，取决于哪个收敛}
 
 \begin{frame}
-  \chtitle{例题1}
-  \bch
+  \frametitle{例题1}
+  
   \addfig{1}{think2.jpg}
   
-  {\blue 求$\frac{1}{z(z-1)(z-2)}$在$0<|z-1|<1$内的Laurent展开。}
+  {\blue 求$\frac{1}{z(z-1)(z-2)}$在$0<|z-1|<1$内的洛朗展开。}
 
   
-  \ech
+  
 \end{frame}
 
 
 \begin{frame}
-  \chtitle{例题1解答}
-  \bch
+  \frametitle{例题1解答}
+  
   环形区域的中心为$z_0=1$，先把$\frac{1}{z-1}$提取出来。然后做变量替换$t= z-1$
 
   \bea
@@ -106,25 +88,25 @@
   &=& -\frac{1}{t} - t - t^3 - t^5-\ldots \newl  
   \eea
   
-  \ech
+  
 \end{frame}
 
 
 \begin{frame}
-  \chtitle{例题2}
-  \bch
+  \frametitle{例题2}
+  
   \addfig{1}{think2.jpg}
   
-  {\blue 求$\frac{1}{z(z-1)(z-2)}$在$|z-1|>1$内的Laurent展开。}
+  {\blue 求$\frac{1}{z(z-1)(z-2)}$在$|z-1|>1$内的洛朗展开。}
 
   
-  \ech
+  
 \end{frame}
 
 
 \begin{frame}
-  \chtitle{例题2解答}
-  \bch
+  \frametitle{例题2解答}
+  
   环形区域的中心为$z_0=1$，先把$\frac{1}{z-1}$提取出来。然后做变量替换$t= \frac{1}{z-1}$ (注意随着展开区域的不同，做的变量替换也不同)
 
   \bea
@@ -135,28 +117,28 @@
   &=& t^3 (1+t^2+t^4+t^6+\ldots) \newl
   &=& t^3+t^5+t^7+\ldots 
   \eea
-  \ech
+  
 \end{frame}
 
 \section{Separate Terms}
 \secpage{初级技能：分式拆项}{要有拆迁大队的觉悟}
 
 \begin{frame}
-  \chtitle{例题3}
-  \bch
+  \frametitle{例题3}
+  
   在例题1和例题2中，其实只是运气好恰好能凑出$\frac{1}{1-t^2}$，现在我们来考虑运气不好的情况：
   
   \addfig{1}{think2.jpg}
 
   
-  {\blue 求$\frac{1}{z(z-1)(z-2)}$在环区域$1<|z|<2$内的Laurent展开。}  
-  \ech
+  {\blue 求$\frac{1}{z(z-1)(z-2)}$在环区域$1<|z|<2$内的洛朗展开。}  
+  
 \end{frame}
 
 
 \begin{frame}
-  \chtitle{例题3解答}
-  \bch
+  \frametitle{例题3解答}
+  
   在环区域$1<|z|<2$内，  
   \bea
     && \frac{1}{z(z-1)(z-2)}\newl
@@ -165,26 +147,26 @@
   &=& \frac{1}{z}\left[ -\frac{1}{2}\left(1+\frac{z}{2}+\frac{z^2}{4}+\ldots\right) -\frac{1}{z}\left(1+\frac{1}{z}+\frac{1}{z^2}+\ldots\right) \right] \newl
   &=& \left(-\frac{1}{2^2} - \frac{z}{2^3} - \frac{z^2}{2^4} -\ldots\right) + \left(-\frac{1}{2z} - \frac{1}{z^2} - \frac{1}{z^3}-\frac{1}{z^4}-\ldots\right) 
   \eea
-  \ech
+  
 \end{frame}
 
 
 \begin{frame}
-  \chtitle{例题4}
-  \bch
+  \frametitle{例题4}
+  
 
   拆分未必都是拆成分母为线性函数的形式。一般来说，{\blue 分母带$n$重根的分式，能拆到分母最多为$n$次幂的幂函数之和。}
   \addfig{1}{think2.jpg}
 
   
-  {\blue 求$\frac{z^2-3}{(z-1)^3(z-2)}$在环区域$1<|z|<2$内的Laurent展开。}  
-  \ech
+  {\blue 求$\frac{z^2-3}{(z-1)^3(z-2)}$在环区域$1<|z|<2$内的洛朗展开。}  
+  
 \end{frame}
 
 
 \begin{frame}
-  \chtitle{例题4解答}
-  \bch
+  \frametitle{例题4解答}
+  
   因为分母出现了$(z-1)$的高次幂，我们期待的一般拆分结果是
   $$\frac{z^2-3}{(z-1)^3(z-2)} = \frac{a_1}{z-1} + \frac{a_2}{(z-1)^2} + \frac{a_3}{(z-1)^3} + \frac{b_1}{z-2} $$
   {\blue 标准的解法是两边比较同次幂系数，列出方程解$a_1$, $a_2$, $a_3$, $b_1$。}
@@ -197,25 +179,25 @@
    &=& -\frac{1}{2}\frac{1}{1-\frac{z}{2}} -\frac{1}{z}\frac{1}{1-\frac{1}{z}} + \frac{2}{z^3} \frac{1}{(1-\frac{1}{z})^3}   \newl   
   \eea
 
-  \ech
+  
 \end{frame}
 
 \begin{frame}
-  \chtitle{例题4解答}
-  \bch
+  \frametitle{例题4解答}
+  
   前两项我们已经知道怎么展开了。对最后一项，可以用五大公式的最后一个(令$\alpha=-3$)：
   $$  \left(1-\frac{1}{z}\right)^{-3} = \sum_{n=0}^\infty \newt{-3}{n}\frac{1}{z^n}$$
   
   \bye 最后合并后的结果很啰嗦就不写了
-  \ech
+  
 \end{frame}
 
 \section{Convert to Taylor}
-\secpage{高级技能: 去极点}{化Laurent为Taylor}
+\secpage{高级技能: 去极点}{化洛朗为Taylor}
 
 \begin{frame}
-  \chtitle{极点和去极点方法}
-  \bch
+  \frametitle{极点和去极点方法}
+  
           {\blue  如果在$z_0$的邻域内，存在正整数$m$使$(z-z_0)^mf(z)$解析，但$(z-z_0)^{m-1}f(z)$不解析，则称$z_0$是$f$的$m$阶极点。}
 
           \skiplines
@@ -224,40 +206,40 @@
 
           \skiplines
           
-          在这种情况下如果要把$f$在$z_0$的去心邻域内进行Laurent展开，则只需令$g(z) = (z-z_0)^mf(z)$ (去极点)并把解析函数$g(z)$进行Taylor展开。注意$g$的Taylor展开的$m-1$次幂系数就是$f$的Laurent展开的$-1$次系数，即$f$在$z_0$的留数。
+          在这种情况下如果要把$f$在$z_0$的去心邻域内进行洛朗展开，则只需令$g(z) = (z-z_0)^mf(z)$ (去极点)并把解析函数$g(z)$进行Taylor展开。注意$g$的Taylor展开的$m-1$次幂系数就是$f$的洛朗展开的$-1$次系数，即$f$在$z_0$的留数。
 
             这就是在任何一本MMP教材里都会重点介绍的{\blue $m$阶极点求留数公式:
             $$\res{f}{z_0} = \left.\frac{1}{(m-1)!}\frac{d^{m-1}}{dz^{m-1}} \left[(z-z_0)^mf(z)\right] \right\vert_{z=z_0}\, .$$
         }
-          \ech
+          
 \end{frame}
 
 \begin{frame}
-  \chtitle{例题5}
-  \bch
+  \frametitle{例题5}
+  
   \addfig{1}{think3.jpg}
   
   计算$\frac{e^z}{\sin^2 z}$在$z_0=0$处的留数。
-  \ech
+  
 \end{frame}
 
 \begin{frame}
-  \chtitle{例题5}
-  \bch
+  \frametitle{例题5}
+  
   容易看出来$z_0=0$是$f(z)$的二阶极点。令$g(z) = z^2 f(z) = \frac{e^zz^2}{\sin^2 z}$，计算$g(z)$在$z_0$附近的Taylor展开的一次幂系数（即等于$f(z)$的$-1$次幂系数):
 
     $$\res{f}{0} = g'(0) =\left.\left[ e^z\frac{z^2}{\sin^2z} + e^z\left(\frac{z^2}{\sin^2z}\right)'\right]\right\vert_{z=0} = 1$$
 
     
-  \ech
+  
 \end{frame}
 
 \section{Dual Expansion}
 \secpage{高级技能: 二重展开}{一层又一层…，看了感觉…}
 
 \begin{frame}
-  \chtitle{例题5解法2}
-  \bch
+  \frametitle{例题5解法2}
+  
 {\small
   \bea
   \frac{e^z}{\sin^2z}  &=& \frac{2e^z}{1-\cos{2z}} \newl
@@ -269,15 +251,15 @@
   显然，$-1$次幂的系数为$1$。
 }
 
-  \ech
+  
 \end{frame}
 
 \section{Determine Coefficients}
 \secpage{高级技能: 待定系数法}{感觉这个小学就会了…}
 
 \begin{frame}
-  \chtitle{例题5解法3}
-  \bch
+  \frametitle{例题5解法3}
+  
       {\small
   还是采用分子分母都展开的方法，然后观察得出最低次幂为$-2$次，并假设一个结果（系数待定）        
   \bea
@@ -291,24 +273,24 @@
       两边比较$0$次幂系数，得到$2a_{-2} = 2$，即$a_{-2} = 1$。
 
       两边比较$1$次幂系数，得到$2a_{-1} = 2$，即$a_{-1} = 1$，即所求答案。
-  \ech
+  
 \end{frame}
 
 \section{Logarithm and Fractional Power}
 \secpage{对数函数和非整数次幂函数}{绕一圈就明白了}
 \begin{frame}
-  \chtitle{例题6}
-  \bch
+  \frametitle{例题6}
+  
   \addfig{1.}{think3.jpg}
   
-  分别判断函数$\ln\frac{z-1}{z-2}$在区域$|z|<1$，环区域$1<|z|<2$，以及环区域$|z|>2$内是否可以取适当的幅角范围令其为解析函数，如果可以的话将它Laurent展开。
+  分别判断函数$\ln\frac{z-1}{z-2}$在区域$|z|<1$，环区域$1<|z|<2$，以及环区域$|z|>2$内是否可以取适当的幅角范围令其为解析函数，如果可以的话将它洛朗展开。
   
-  \ech
+  
 \end{frame}
 
 \begin{frame}
-  \chtitle{例题6解答}
-  \bch
+  \frametitle{例题6解答}
+  
   对数函数或者非整数次幂函数是否为解析函数要看其是否能做到连续单值，也就是{\blue “绕一圈”后函数值是否发生变化}。
 
   在“幅角连续变化”的观点下：
@@ -317,48 +299,49 @@
 \item{在$1<|z|<2$范围内，可以沿绕$z_0=1$的闭合围道一圈，$z-1$的幅角变化了$2\pi$而$z-2$的幅角不变，$\ln\frac{z-1}{z-2}$函数值变化$2\pi\ii$，所以不是解析函数。}
 \item{在$|z|>2$范围内，沿任何闭合围道一圈，$\frac{z-1}{z-2}$的幅角不发生变化，$\ln\frac{z-1}{z-2}$函数值不变，所以是解析函数。}
   \eitem
-  \ech
+  
 \end{frame}
 
 
 \begin{frame}
-  \chtitle{例题6解答(续)}
-  \bch
+  \frametitle{例题6解答(续)}
+  
   在$|z|<1$范围内, 我们可以规定$z=0$时$\frac{z-1}{z-2}$幅角为零，这样
   \bea
   \ln\frac{z-1}{z-2}&=& \ln(1-z) - \ln(1-\frac{z}{2}) - \ln 2 \newl
   &=& -\sum_{n=1}^\infty \frac{z^n}{n} + \sum_{n=1}^\infty \frac{z^n}{2^nn} - \ln 2 \newl
     &=& \sum_{n=1}^\infty \frac{2^{-n}-1}{n}z^n - \ln 2   
   \eea
-  \ech
+  
 \end{frame}
 
 \begin{frame}
-  \chtitle{例题6解答(续)}
-  \bch
+  \frametitle{例题6解答(续)}
+  
   在$|z|>2$范围内, 我们可以规定$z=+\infty$时$\frac{z-1}{z-2}$幅角为零，这样
   \bea
   \ln\frac{z-1}{z-2}&=& \ln(1-\frac{1}{z}) - \ln(1-\frac{2}{z}) \newl
   &=& -\sum_{n=1}^\infty \frac{1}{nz^n} + \sum_{n=1}^\infty \frac{2^n}{z^nn}\newl
   &=& \sum_{n=1}^\infty \frac{2^n-1}{n}\frac{1}{z^n} 
   \eea
-  \ech
+  
 \end{frame}
 
 
 \section{Homework}
 
 \begin{frame}
-  \chtitle{课后作业}
-  \bch
+  \frametitle{Quizphobia's Homework}
+  
   \bitem
-\item[10]{把$\frac{1}{(z-1)z^2}$分别在$0<|z|<1$和$|z|>1$这两个区域内展开为Laurent级数。}
+\item[10]{把$\frac{1}{(z-1)z^2}$分别在$0<|z|<1$和$|z|>1$这两个区域内展开为洛朗级数。}
 \item[11]{求围道积分$\oint_C\frac{1}{e^z-1}dz$，其中积分路径$C$是逆时针方向的单位圆（$|z|=1$）。
 
 {\scriptsize 提示：用去极点法，二重展开法或者待定系数法求出$z=0$处的留数，然后应用留数定理。} }
-\item[12]{$f(z)=[z(z-1)]^{1/2}$在区域$0<|z|<1$和区域$|z|>1$内是否能限定适当的幅角范围使之成为解析函数？如果可以的话，将它进行Laurent展开。 }
+\item[12]{$f(z)=[z(z-1)]^{1/2}$在区域$0<|z|<1$和区域$|z|>1$内是否能限定适当的幅角范围使之成为解析函数？如果可以的话，将它进行洛朗展开。 }
   \eitem
-  \ech
+  
 \end{frame}
 
-\end{document}
+\ech
+  \end{document}
