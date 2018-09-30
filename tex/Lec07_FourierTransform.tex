@@ -1,0 +1,318 @@
+\documentclass[CJK,13pt]{beamer}
+\input{macros.tex}
+\input{titlepage.tex}
+  \date{}
+  \begin{document}
+  \bch
+\tpage{7}{Fourier Transform}
+
+
+\begin{frame}
+\frametitle{本讲内容}
+
+\bitem
+\item{傅立叶变换和逆变换，保内积性}
+\item{梯度算符和拉普拉斯算符}
+\item{卷积定理}
+\eitem
+
+\end{frame}
+
+\section{Fourier Transform}
+\begin{frame}
+  \frametitle{傅立叶变换}
+  实参量复值函数 $f(x)$ （即$x$必须取实数，$f$则不一定是实数）的傅立叶变换定义为：
+  $$ \widetilde{f}(k) = \frac{1}{\sqrt{2\pi}} \int_{-\infty}^\infty e^{-ikx} f(x) dx $$
+  同样，我们约定$k$必须取实数，而$\widetilde{f}$显然未必为实数。
+
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{逆变换}
+  $$ f(x) = \frac{1}{\sqrt{2\pi}} \int_{-\infty}^\infty e^{ikx} \widetilde{f}(k) dk $$
+  证明很简单：只要把$\widetilde{f}(k)$的定义代入，交换积分次序，然后用$\delta$函数的积分表示。（一系列不合法的操作玩得非常溜！）
+  
+
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{傅立叶变换的保内积性}
+
+ $$\int_{-\infty}^\infty \widetilde{f}^*(k) \widetilde{g}(k) dk = \int_{-\infty}^\infty f^*(x)g(x) dx. $$
+  证明同样可以用直接代入并用$\delta$函数的积分表示。
+  
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{思考题}
+  
+  \bmini{0.48}
+  \addfig{2}{stepfunction.png}
+  \emini
+  \bmini{0.48}
+  \be
+  u(x) = \branchll 1, & \text{ if } -1<x<1 \\ 0, & \text{ else} \branchrr
+  \ee
+  \emini
+
+  \skipline
+  
+  计算如图函数的傅立叶变换，然后利用傅立叶变换保持内积不变的性质，求积分
+  $$\int_0^\infty \frac{\sin x}{x} \,dx. $$
+  
+  
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{思考题}
+  
+  求$f(x) = \frac{\sin x}{x}$的傅立叶变换。
+  
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{$n$维空间的傅立叶变换}
+  
+  $n$维内积空间的函数$f(\vecx)$的傅立叶变换就是对每个维度都进行傅立叶变换：
+  $$ \widetilde{f}(\veck) = \frac{1}{(2\pi)^{n/2}}\int f(\vecx) e^{-\ii \veck \cdot \vecx} d^n\vecx $$
+
+  其逆变换为
+  
+  $$ f(\vecx) = \frac{1}{(2\pi)^{n/2}}\int \widetilde{f}(\veck) e^{\ii \veck \cdot \vecx} d^n\veck. $$
+
+  在物理问题中，我们经常把$\vecx$所在的$n$维空间称为位置空间，把$\veck$所在的空间叫傅立叶空间或动量空间。
+
+  {\scriptsize 当然上述叫法不是绝对的：在一维傅立叶变换中，有时我们考虑的是时间的函数的傅立叶变换。这时对应的两个空间常常被叫做时间域和频率域。}
+\end{frame}
+
+
+
+\begin{frame}
+  \frametitle{思考题}
+  
+  试证明：  高维空间傅立叶变换保持内积不变的结论也依然成立，设$\widetilde{f}, \widetilde{g}$分别为$f,g$的傅立叶变换，则
+{\blue  $$\int  f^*(\vecx)g(\vecx)\,d^n\vecx = \int \widetilde{f}^*(\veck) \widetilde{g}(\veck)\, d^n\veck . $$}
+
+\end{frame}
+
+
+
+\section{Gradient Operator}
+\secpage{梯度算符和拉普拉斯算符}{引而不发才是高境界}
+
+\begin{frame}
+  \frametitle{算符}
+  
+      {\blue 算符是把一种对象映射到另一种对象的操作}。
+
+
+      \bcenter
+      \lfig{1}{blackq.jpg}
+      
+      感觉等于什么都没说.jpg
+      \ecenter
+      
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{梯度算符}
+  
+  \bex
+  $n$维空间梯度算符$\nabla$把$n$维空间的函数$f(\vecx)$映射为该函数的梯度(矢量）
+    $$ \nabla f \equiv (\partial_1 f, \partial_2 f,\ldots, \partial_n f) .$$
+    
+    (为了简单起见，我们把第$i$个方向的偏导算符$\frac{\partial}{\partial_{x_i}}$简写为了$\partial_i$。)
+  \eex
+
+  
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{广义矢量}
+  
+  $n$维空间的矢量$\vecx = (x_1, x_2, \ldots, x_n)$, 可以看成$n$个基的线性组合：
+
+  $$\vecx = x_1\vece_1 + x_2\vece_2 + \ldots + x_n\vece_n. $$
+
+  对广义矢量，{\blue 基的线性组合可以不仅仅用数字作为系数，还能用任何对象。}
+  例如，在二维内积空间，
+
+  \skipline
+  
+  (苹果，橘子) = 苹果$\times \vece_1$ + 橘子$\times\vece_2$.
+
+  \skipline
+  
+  (尚小嚎，肖凉) = 尚小嚎$\times \vece_1$ + 肖凉$\times\vece_2$.  
+  
+  
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{思考题}
+  
+  计算矢量$(3,2)$和(苹果，橘子) 的内积。
+  
+\end{frame}
+
+\begin{frame}
+  \frametitle{梯度算符}
+  
+  梯度算符$\nabla$又可以看成一个广义矢量，它的每个分量是偏导算符：
+  $$\nabla \equiv (\partial_1, \partial_2,\ldots, \partial_n). $$
+
+  这就是数学中省略作用对象的“引而不发”的写法。如果在两边补充写个$f$，则又回到熟悉的小学生可以理解的形式：
+  $$\nabla f \equiv (\partial_1f, \partial_2f,\ldots, \partial_nf). $$
+  
+\end{frame}
+
+\begin{frame}
+  \frametitle{散度}
+  
+  梯度算符$\nabla$和矢量函数$\mathbf{E}(\vecx) = \left(E_1(\vecx), E_2(\vecx), \ldots, E_n(\vecx)\right)$的内积为
+  $$\nabla\cdot \mathbf{E} \equiv \partial_1 E_1 + \partial_2 E_2 + \ldots + \partial_n E_n $$
+  这通常称为$\mathbf{E}$的{\blue 散度}。
+  \skipline
+  
+  
+\end{frame}
+
+\begin{frame}
+  \frametitle{拉普拉斯算符}
+  
+  梯度算符作用到一个标量函数$f(\vecx)$上，就得到一个矢量函数$\nabla f = (\partial_1 f, \partial_2 f, \ldots, \partial_n f)$。然后$\nabla$和$\nabla f$的内积就是
+  
+  $$ \nabla \cdot \nabla f \equiv \partial_1^2 f + \partial_2^2 f + \ldots + \partial_n^2 f.$$
+  上式左边的$\nabla\cdot \nabla$称为{\blue 拉普拉斯算符}，通常简写为{\blue $\nabla^2$}，重写一遍就是：\tbox{
+    $$ \nabla^2 f \equiv \partial_1^2 f + \partial_2^2 f + \ldots + \partial_n^2 f.$$}
+  
+  {
+    \small
+  在静电磁学里，电场强度$\mathbf{E}$正比于电势$\varphi$的梯度: $\mathbf{E} = -\nabla \varphi$。高斯定律（电场的散度正比于电荷密度）就可以写成
+  $$ \nabla^2 \varphi = -\frac{\rho}{\epsilon_0} $$}
+  
+  
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{$\nabla \rightarrow \ii \veck$}
+  
+  对傅立叶逆变换式
+  $$ f(\vecx) = \frac{1}{(2\pi)^{n/2}}\int \widetilde{f}(\veck) e^{\ii \veck \cdot \vecx} d^n\veck. $$
+  两边作用$\partial_j$
+  $$ \partial_j f(\vecx) =  \frac{1}{(2\pi)^{n/2}}\int (\ii k_j \widetilde{f}(\veck)) e^{\ii \veck \cdot \vecx} d^n\veck. $$
+  当$j$取遍$1,2,\ldots, n$，上式可以写成矢量形式：
+  {\blue  $$ \widetilde{\ \nabla f\ } = \ii \veck \widetilde{f} $$}
+  在量子力学里，我们常常说：位置空间的算符$-\ii\nabla$对应于（动量空间的）动量$\veck$。
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{思考题}
+      位置空间的拉普拉斯算符 $\nabla^2$ 在傅立叶空间对应什么？
+
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{第一个数理方程的例子}
+  
+  用高斯定律来计算在原点的点电荷$Q$造成的电势$\varphi$
+  $$\nabla^2 \varphi(\vecx) = -\frac{Q}{\epsilon_0} \,\delta^{(3)}(\vecx)$$
+  
+  对这个方程两边进行傅立叶变换，
+  $$ -k^2\widetilde{\varphi}(\veck) = -\frac{1}{(2\pi)^{3/2}} \frac{Q}{\epsilon_0} ,$$
+  即
+  $$\widetilde{\varphi}(\veck) = \frac{1}{(2\pi)^{3/2}\epsilon_0} \frac{Q}{k^2}.$$
+  再进行逆变换
+ $$\varphi(\vecx) =\frac{Q}{(2\pi)^3\epsilon_0} \int \frac{e^{\ii \veck\cdot\vecx}}{k^2}d^3\veck$$
+  
+\end{frame}
+
+\begin{frame}
+  \frametitle{第一个数理方程的例子}
+  
+  取$\vecx$方向为北极方向在傅立叶空间建立球坐标$(k, \theta,\phi)$，记$r=|\vecx|$
+  \bea
+  \int \frac{e^{\ii \veck\cdot\vecx}}{k^2}d^3\veck &=& \int_0^\infty k^2 dk \int_{-1}^1 d(\cos\theta)\int_0^{2\pi} \frac{e^{\ii kr cos\theta}}{k^2} d\phi \newl
+  &=& 2\pi \int_0^\infty dk \int_{-1}^1 d(\cos\theta) e^{\ii kr cos\theta} \newl
+  &=& 2\pi  \int_0^\infty dk  \frac{2\sin(kr)}{kr} \newl
+  &=& \frac{2\pi^2}{r}
+  \eea
+  由此我们求出
+  $$\varphi(\vecx) = \frac{Q}{4\pi \epsilon_0r}$$
+  
+\end{frame}
+
+\begin{frame}
+  \frametitle{思考题}
+  
+  电势可以随便取零点，为什么解出来的电势不带积分常数？
+  
+\end{frame}
+
+\section{Convolution}
+\secpage{卷积定理}{$$ \widetilde{f\star g} = \widetilde{f}\, \widetilde{g}  $$}
+
+
+\begin{frame}
+  \frametitle{卷积}
+  
+  
+  两个函数$f(\vecx)$和$g(\vecx)$的卷积定义为
+  \tbox{$$ (f\star g)(\vecx) \equiv \frac{1}{(2\pi)^{n/2}} \int f(\vecy)\,g(\vecx - \vecy)\, d^n\vecy  $$}
+
+  显然，卷积满足交换律： {\blue $f\star g = g\star f$}。
+
+  更重要的是卷积定理: 设$f,g$的傅立叶变换依次为$\widetilde{f},\widetilde{g}$，则$f\star g$的傅立叶变换为$\widetilde{f}\widetilde{g}$，即
+  \tbox{卷积的傅立叶变换等于傅立叶变换的乘积}
+  
+ \end{frame}
+
+
+\begin{frame}
+  \frametitle{思考题}
+  
+  请用666的操作证明卷积定理。
+  
+ \end{frame}
+
+
+
+
+\section{Homework for Quizphobias}
+
+\begin{frame}
+  \frametitle{课后作业}
+  
+  \bitem
+\item[19]{计算高斯函数$$f(x) = \frac{1}{\sqrt{2\pi}\sigma} e^{-\frac{x^2}{2\sigma^2}}$$
+的傅立叶变换。}
+\item[20]{用你喜欢的方法求积分
+  $$\int_0^\infty \left(\frac{\sin x}{x}\right)^2dx . $$}
+\item[21]{计算三维top-hat函数
+  \begin{equation}
+    h(x,y,z) = \left\{
+    \begin{array}{ll}
+      1, & \text{ if }\ x^2+y^2+z^2 \le 1 \\
+      0, & \text{ else.}
+    \end{array}
+    \right. \nonumber
+  \end{equation}
+  的傅立叶变换。}  
+  \eitem
+  
+\end{frame}
+
+
+\ech
+\end{document}

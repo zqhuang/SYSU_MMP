@@ -178,7 +178,8 @@
 \begin{frame}
   \frametitle{证明大意}
   \bea
-  &&  \frac{1}{2\pi}\int_{-\infty}^\infty e^{ikx-\frac{\epsilon}{2}k^2}dk \newl
+  && \frac{1}{2\pi}\int_{-\infty}^\infty e^{ikx}dk \newl  
+  &=& \lim_{\epsilon\rightarrow 0^+} \frac{1}{2\pi}\int_{-\infty}^\infty e^{ikx-\frac{\epsilon}{2}k^2}dk \newl
   &=& \lim_{\epsilon\rightarrow 0^+}\frac{1}{2\pi}\int_{-\infty}^\infty e^{-\frac{\epsilon}{2}(k-\frac{ix}{\epsilon})^2-\frac{x^2}{2\epsilon }}dk \newl
   &=&  \lim_{\epsilon\rightarrow 0^+}\frac{1}{\sqrt{2\pi\epsilon}}e^{-\frac{ x^2}{2\epsilon}} \newl  
   &=& \delta(x)
@@ -251,13 +252,13 @@ $$\rho(\vecx) = Q\, \delta^{(3)}(\vecx - \vecx')$$
 
 \begin{frame}
   \frametitle{思考题}
-  静电势可以用积分
+  原点处的静电势可以用积分
   $$U = \frac{1}{4\pi\epsilon_0} \int \frac{\rho(\vecx)}{|\vecx|} d^3\vecx, $$
   来计算。
 
   \skipline
   
-  由此计算在$\vecx_0$处点电荷$Q$产生的电势。
+  由此计算在$\vecx_0$处点电荷$Q$在原点产生的电势。
 \end{frame}
 
 
