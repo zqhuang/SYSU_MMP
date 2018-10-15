@@ -9,220 +9,36 @@
 \begin{document}
 \bch
 
-\tpage{9}{Problem Set I}
-
-
-\newcounter{chap}
-\newcounter{problem}[chap]
-\def\proid{{Problem \thechap.\theproblem}\ }
+\tpage{9}{Stirling Formula, $n$-sphere Integral}
 
 \begin{frame}
-  \chtitle{本讲内容：估算是物理的根本}
-  \bch
+  \frametitle{本讲内容}
+  
   \bitem
-\item{热传导方程}  
-\item{解析函数的邻域近似}
 \item{Stirling 公式}
 \item{$n$维限和积分公式}
   \eitem
 
-  \skiplines
-
-   {\blue 解决物理问题的根本方法是抓住主要物理图像进行估算。只擅长处理细节的物理学家最多只能是二流物理学家。}
-  \ech
 \end{frame}
 
-\setcounter{chap}{1}
-\setcounter{problem}{0}
+\section{Stirling's Formula}
 
 \begin{frame}
-  \chtitle{一维热传导方程}
-  \bch
-  考虑一根很长的不良导体棒(这里指热的传导)的温度$T(x, t)$，其中$x$是在导体棒上的位置，$t$是时间。
-  在温度梯度不大的情况下，可以用线性近似：{\blue 热流正比于温度梯度}。
-  显然，这个比例系数是负的，
-  $$ j =  -\lambda \frac{\partial T}{\partial x} $$
-  其中$\lambda >0$为常量，称为{\blue 导热系数}。
-
-  \addfig{2.2}{heatflux.png}
-
-  {\small 注：热流是指单位时间通过单位面积的热量。}
-  \ech
-\end{frame}
-
-
-\begin{frame}
-  \chtitle{一维热传导方程}
-  \bch
-
-  \addfig{2.2}{heateq.png}
-{\small
-  考虑长为$dx$的一小段不良导体棒，进入和出去的热流差为
-  $$j(x)-j(x+dx) = -\lambda \left[\left.\frac{\partial T}{\partial x}\right\vert_{x}-\left.\frac{\partial T}{\partial x}\right\vert_{x+dx}\right]\approx \lambda \frac{\partial^2 T}{\partial x^2} dx. $$
-  设材料单位质量的比热为$c$，质量密度为$\rho$，横截面积为$S$，则
-  $$ (c \rho S dx) dT = \dbar Q = [j(x)-j(x+dx)] S dt =  \lambda \frac{\partial^2 T}{\partial x^2} dx  (S dt) $$
-  这里的$dT$和$dt$都是对固定$x$而言，两者之比为$\frac{\partial T}{\partial t}$。令$a = \frac{\lambda}{\rho c}$，则：\tbox{
-  $$ \frac{\partial T}{\partial t} - a \frac{\partial^2T}{\partial x^2} = 0$$
-  }
-
-  }
-  \ech
-\end{frame}
-
-\stepcounter{problem}
-\begin{frame}
-  \chtitle{\proid (\sthree)}
-  \bch
-  \addfig{2.5}{heatflux2.png}
+  \frametitle{Stirling公式}
   
-  在一根长为$2L$的不良导体棒在$t=0$时刻温度为$T_0$。在$t>0$时刻，不良导体棒两端均有强度为$j$的热流进入。设材料的导热系数$\lambda$，质量密度$\rho$，单位质量的比热$c$均已知，试计算$t\ge 0$时刻不良导体棒各处的温度$T(x,t)$。
-  \ech
-\end{frame}
-
-\begin{frame}
-  \chtitle{\proid 解答}
-  \bch
-  根据对称性，在棒中间处热流和温度梯度均为零。写出如下的方程和边界条件：
-  \bea
-  \frac{\partial T}{\partial t} - a\frac{\partial^2 T}{\partial x^2} &=& 0 \newl
-  \left.\frac{\partial T}{\partial x}\right\vert_{x=0} &=& 0 \newl
-  \left.\frac{\partial T}{\partial x}\right\vert_{x=L} &=& \frac{j}{\lambda}  \newl
-  \left.T\right\vert_{t=0} &=&  T_0 
-  \eea
-  其中$a = \frac{\lambda}{\rho c} $。
-  
-  \ech
-\end{frame}
-
-
-\begin{frame}
-  \chtitle{\proid 解答}
-  \bch
-  先分析主要图像。
-
-  \skiplines
-
-  在$t$时刻，累计流入的热量为$Q =  2 j St$ (其中$S$为横截面积)。棒子热容为$C =  c \rho (2SL)$。所以$t$时刻棒子的平均温度为
-  $$ \bar{T} =   T_0  + \frac{Q}{C} = T_0 + \frac{j}{\rho cL}t $$
-  
-  \ech
-\end{frame}
-
-
-\begin{frame}
-  \chtitle{\proid 解答 (续)}
-  \bch
-  把平均温度去掉，研究各处温度起伏：$\Delta T(x, t) = T(x, t) - \left(T_0+\frac{j}{\rho cL} t\right)$。显然$\Delta T$满足方程：
-  \bea
-  \frac{\partial \Delta T }{\partial t} - a \frac{\partial^2 \Delta T}{\partial x^2} &=&  -\frac{j}{\rho cL} \newl
-  \left.\frac{\partial \Delta T}{\partial x}\right\vert_{x=0} &=& 0 \newl
-  \left.\frac{\partial \Delta  T}{\partial x}\right\vert_{x=L} &=& \frac{j}{\lambda}  \newl
-  \left.\Delta T\right\vert_{t=0} = 0
-  \eea
-  因为$\Delta T$描述的是温度起伏，还有一个额外条件：
-  $$\int_0^L \Delta T(x, t) dx = 0 $$
-  \ech
-\end{frame}
-
-\begin{frame}
-  \chtitle{\proid 解答 (续)}
-  \bch
-  当$t$很大时，棒上的温度梯度趋于稳定，即$\Delta T$仅仅依赖于$x$，满足
-  \bea
-  - a \frac{\partial^2 \Delta T}{\partial x^2} &=&  -\frac{j}{\rho cL} \newl
-  \left.\frac{\partial \Delta T}{\partial x}\right\vert_{x=0} &=& 0 \newl
-  \left.\frac{\partial \Delta  T}{\partial x}\right\vert_{x=L} &=& \frac{j}{\lambda}  \newl
-  \int_0^L \Delta T(x, t) dx &=& 0  
-  \eea
-  由此不难解出
-  $$\Delta T = \frac{j}{2\lambda} \left(\frac{x^2}{L} - \frac{L}{3}\right) $$
-  \ech
-\end{frame}
-
-\begin{frame}
-  \chtitle{\proid 解答 (续)}
-  \bch
-  也就是说，当$t${\bf 很大}时
-  $$ T = \left(T_0+\frac{j}{\rho cL} t\right) + \frac{j}{2\lambda} \left(\frac{x^2}{L} - \frac{L}{3}\right)  $$
-  现在还留下两个问题：
-  \bitem
-\item{$t$多大时算“很大”？}
-\item{$t$不大（即刚开始加热）时，$T(x,t)$的严格解是什么？}
-  \eitem
- 第一个问题很容易估算：根据热传导方程，$T$的典型“变化时间”$\Delta t$和“变化尺度”$L$之间满足$ \frac{1}{\Delta t} \sim a\frac{1}{L^2} $。我们所说的$t$很大，即指$t\gg \Delta t \sim \frac{L^2}{a}$。
-
-  第二个问题涉及一些数学技巧(“二流物理学家的研究对象”\huaixiao)，我们留到下半学期再讨论。
-  \ech
-\end{frame}
-
-
-\begin{frame}
-  \chtitle{解析函数的邻域近似}
-  \bch
-      {\blue  非常数的解析函数的邻域近似$f(z) \approx f(z_0) + a_n(z-z_0)^n$。}其中$n$是使$a_n$非零的最小正整数。
-
-      \skiplines
-      
-      我们曾用上述估算方法证明了最大模原理和解析延拓原理。下面我们再用它来解决一些其他问题。
-  \ech
-\end{frame}
-
-\stepcounter{problem}
-\begin{frame}
-  \chtitle{\proid (\stwo)}
-  \bch
-  试证明：{\blue  非常数的解析函数把开区域映射为开区域。}
-
-  \ech
-\end{frame}
-
-
-\begin{frame}
-  \chtitle{\proid 解答}
-  \bch
-  证明：设$T$为开区域，非常数的解析函数$f$把$T$映射为$V$。设$z_0$是$T$内任意一点，由于邻域近似
-  $f(z) - f(z_0)  \approx  a_n (z-z_0)^n$能取到任意幅角和模，所以$f(z_0)$是$V$的内点，证毕。
-  \ech
-\end{frame}
-
-\stepcounter{problem}
-\begin{frame}
-  \chtitle{\proid (\stwo)}
-  \bch
-  试证明：{\blue  存在单值的反函数的解析函数是保角映射。}即如果存在单值的反函数的解析函数$f$把两条相交的曲线映射为两条相交的曲线，则两曲线的夹角在映射前后保持不变。
-  \ech
-\end{frame}
-
-\begin{frame}
-  \chtitle{\proid 解答}
-  \bch
-  证明：设两曲线相交点为$z_0$。$f$的邻域近似为$f(z) \approx f(z_0) + c(z-z_0)^n$。因为存在单值的反函数，只能是$n=1$ （否则附近的$z-z_0$有$n$个解)，这样对模很小的复数$\Delta z_1$, $\Delta z_2$ ， $\Delta f_2 \equiv f(z_0+\Delta z_2) - f(z_0)$和$\Delta f_1 \equiv f(z_0+\Delta z_1) -f(z_0)$的幅角差为
-    $$ \arg \frac{\Delta f_2}{\Delta f_1} \approx \arg\frac{c\Delta z_2}{c\Delta z_1} = \arg \frac{\Delta z_2}{\Delta z_1} $$
-  即两曲线交角在映射前后不变。
-
-  \addfig{2}{anginvariant.png}
-    
-
-  \ech
-\end{frame}
-
-
-\begin{frame}
-  \chtitle{Stirling公式}
-  \bch
-  当$x\gg 1$时，有如下的近似表达式 (Stirling公式)：
+ 当$x\gg 1$时，有如下的近似表达式 (Stirling公式)：
       {\blue
 \tbox{        
   \be
   x! \approx \sqrt{2\pi x}\left(\frac{x}{e}\right)^x
   \ee}
   }
-  \ech
+  
 \end{frame}
 
 \begin{frame}
-  \chtitle{Stirling公式的证明}
-  \bch
+  \frametitle{Stirling公式的证明}
+  
   利用$\Gamma$函数的定义：
   $$ x! = \int_0^\infty t^xe^{-t}dt =\int_0^\infty e^{-t+x\ln t}dt $$
   被积函数在极大值点$t=x$附近贡献较大，所以把$-t+x\ln t$在$t=x$附近泰勒展开:
@@ -234,12 +50,12 @@
   \eea
     
   
-  \ech
+  
 \end{frame}
 
 \begin{frame}
-  \chtitle{Stirling公式的加强版}
-  \bch
+  \frametitle{Stirling公式的加强版}
+  
   Stirling公式的终级版本为：
   \be
   x! = \sqrt{2\pi x}\left(\frac{x}{e}\right)^x e^{\frac{1}{12x}-\frac{1}{360 x^3} + \frac{1}{1260 x^5} - \frac{1}{1680 x^7}\ldots}
@@ -255,21 +71,21 @@
       }
      对$x\ge 3$，结果的相对误差$\lesssim 3\times 10^{-6}$。因此，一个快速用初等函数计算 $\Gamma$函数的办法是用递推公式转化为$x\ge 3$时的$\Gamma$函数的计算问题。
 
-  \ech
+  
 \end{frame}
 
-\stepcounter{problem}
+
 \begin{frame}
-  \chtitle{\proid (\stwo)}
-  \bch
+  \frametitle{例题}
+  
   计算$\Gamma\left(\frac{1}{3}\right)$，要求误差小于$10^{-5}$。
-  \ech
+  
 \end{frame}
 
 
 \begin{frame}
-  \chtitle{\proid 解法一}
-  \bch
+  \frametitle{ 解法一}
+  
   大多数编程语言和脚本语言都有内置的$\Gamma$函数。例如，在python环境中输入命令：
 
   \skipline
@@ -288,51 +104,49 @@
   {\darkgreen
   2.678938534707748
   }
-  \ech
+  
 \end{frame}
 
 
 \begin{frame}
-  \chtitle{\proid 解法二}
-  \bch
+  \frametitle{ 解法二}
+  
   如果手头没有可以现成计算$\Gamma$函数的工具，那么就利用Stirling公式的加强版：
     {\small
     $$
       \sfgamma{\frac{1}{3}} = \frac{ \left(\frac{10}{3}\right)!}{\frac{1}{3}\times \frac{4}{3} \times \frac{7}{3}\times\frac{10}{3}}  \approx \sqrt{\frac{20\pi}{3}}\left(\frac{10}{3e}\right)^{\frac{10}{3}} e^{\frac{1}{40} - \frac{3}{4000}}\times \frac{81}{280}\approx 2.678934   $$
       }
-  \ech
+  
 \end{frame}
 
 
 \begin{frame}
-  \chtitle{Euler常数 —— 重要性仅次于$\pi$和$e$的数学常数}
-  \bch
+  \frametitle{Euler常数 —— 重要性仅次于$\pi$和$e$的数学常数}
+  
   可以用连续的积分$$ T_n = \int_1^{n} \frac{1}{x} dx = \ln n $$
   来近似级数和
   $$S_n = 1+\frac{1}{2}+\frac{1}{3} + \frac{1}{4} + \ldots + \frac{1}{n}$$
   误差当$n\rightarrow \infty$时趋向于一个常数，定义其为Euler常数：
   \tbox{$$\gamma = \lim_{n\rightarrow \infty} \left(1+\frac{1}{2}+\frac{1}{3}  + \ldots + \frac{1}{n} - \ln n\right) = 0.5772156649\ldots$$}
-  \ech
+  
 \end{frame}
 
 
-\stepcounter{problem}
 \begin{frame}
-  \chtitle{\proid (\sthree)}
-  \bch
+  \frametitle{例题}
+  
   证明$\Gamma$函数的无穷乘积表达式：
   \tbox{
     $$\frac{1}{\sfgamma{z}} = z e^{\gamma z}\prod_{n=1}^\infty \left(1+\frac{z}{n}\right) e^{-\frac{z}{n}}. $$
     }
-  \ech
+  
 \end{frame}
 
 
 \begin{frame}
-  \chtitle{\proid 解答}
-  \bch
+  \frametitle{证明:利用$\Gamma$函数递推关系}
+  
   {\small  
-  证明:利用$\Gamma$函数递推关系
   \bea
   \frac{1}{\sfgamma{z}} &=& \frac{z(z+1)(z+2)\ldots (z+n)}{(z+n)!} \newl
   &=& \frac{n!z(1+z)\left(1+\frac{z}{2}\right)\left(1+\frac{z}{3}\right)\ldots \left(1+\frac{z}{n}\right)}{(z+n)!}
@@ -346,21 +160,20 @@
   &=& \lim_{n\rightarrow \infty}e^{\gamma z - (1+\frac{1}{2}+\frac{1}{3}+\ldots+\frac{1}{n})z}  z(1+z)\left(1+\frac{z}{2}\right)\left(1+\frac{z}{3}\right)\ldots \left(1+\frac{z}{n}\right)  
   \eea
   }
-  \ech
+  
 \end{frame}
 
-\stepcounter{problem}
 \begin{frame}
-  \chtitle{\proid (\stwo)}
-  \bch
+  \frametitle{例题}
+  
   随机抛100次硬币，估算恰好有50次正面向上的概率。
-  \ech
+  
 \end{frame}
 
 
 \begin{frame}
-  \chtitle{\proid 解答}
-  \bch
+  \frametitle{解答}
+  
   \bea
   p &=& \frac{1}{2^{100}} \times \frac{100!}{(50!)^2} \newl
   &\approx & \frac{1}{2^{100}} \times  \frac{\sqrt{200\pi}\left(\frac{100}{e}\right)^{100}}{100\pi\left(\frac{50}{e}\right)^{100}} \newl
@@ -373,26 +186,27 @@
 
   {请尝试用Stirling公式的加强版来计算更加精确的结果。}
   
-  \ech
+  
 \end{frame}
 
+\section{Integral in a $n$D sphere}
 
 \begin{frame}
-  \chtitle{$n$维限和积分公式 ($B$函数的推广)}
-  \bch
+  \frametitle{$n$维限和积分公式 ($B$函数的推广)}
+  
       {\blue
   \bea
  && \int_{\Omega_n} x_1^{\alpha_1-1}x_2^{\alpha_2-1}\ldots x_n^{\alpha_n-1} f(x_1+x_2+\ldots+x_n)dx_1dx_2\ldots dx_n \newl
   &=& \frac{\Gamma(\alpha_1)\Gamma(\alpha_2)\ldots \Gamma(\alpha_n)}{\Gamma(\alpha_1+\alpha_2+\ldots + \alpha_n)}\int_0^1f(u)u^{\alpha_1+\alpha_2+\ldots + \alpha_n-1} du \,.
   \eea
   其中等式左边的积分区域$\Omega_n = \{(x_1,x_2,\ldots,x_n): x_1,x_2,\ldots, x_n\ge 0; x_1+x_2+\ldots+x_n\le 1 \}$.}
-  \ech
+  
 \end{frame}
 
 
 \begin{frame}
-  \chtitle{$n$维限和积分公式的证明}
-  \bch
+  \frametitle{$n$维限和积分公式的证明}
+  
   {\scriptsize
   证明：用归纳法，$n=1$时命题显然成立。假设命题对$n-1$成立，考虑积分
   \scriptsize
@@ -406,12 +220,12 @@
   &=& \frac{\Gamma(\alpha_1)\Gamma(\alpha_2)\ldots \Gamma(\alpha_n)}{\Gamma(\alpha_1+\alpha_2+\ldots + \alpha_n)}
   \eea
   }
-  \ech
+  
 \end{frame}
 
 \begin{frame}
-  \chtitle{$n$维限和积分公式的证明(续)}
-  \bch
+  \frametitle{$n$维限和积分公式的证明(续)}
+  
       {\scriptsize
         然后对任意$0<u<1$，考虑积分
         \begin{equation}
@@ -426,20 +240,19 @@
         $$ \int_0^1 I(u) f(u) du $$
         于是证毕。
         }
-  \ech
+  
 \end{frame}
 
-\stepcounter{problem}
 \begin{frame}
-  \chtitle{\proid (\stwo)}
-  \bch
+  \frametitle{例题}
+  
   计算$n$-维空间的球体的体积 ($n\in Z^+$)。
-  \ech
+  
 \end{frame}
 
 \begin{frame}
-  \chtitle{\proid 解答}
-  \bch
+  \frametitle{解答}
+  
   {\small
   $$ V_n = \int_{x_1^2+x_2^2+\ldots +x_n^2\le 1} dx_1 dx_2 \ldots dx_n  $$
   利用对称性可以写成
@@ -448,51 +261,54 @@
   $$  V_n = \int_{\Omega_n} y_1^{-\frac{1}{2}}y_2^{-\frac{1}{2}}\ldots y_n^{-\frac{1}{2}}dy_1 dy_2 \ldots dy_n  $$
   再利用$n$维限和积分公式：
 $$V_n = \frac{\Gamma\left(\frac{1}{2}\right)^n}{\Gamma\left(\frac{n}{2}\right)}\int_0^1 u^{\frac{n}{2}-1} du = \frac{\pi^{n/2}}{\Gamma\left(\frac{n}{2}\right)}\frac{2}{n} = \frac{\pi^{n/2}}{\left(\frac{n}{2}\right)!} $$}
-  \ech
+  
 \end{frame}
 
-\stepcounter{problem}
 \begin{frame}
-  \chtitle{\proid (\sfour)}
-  \bch
+  \frametitle{例题}
+  
   满足标准正态分布$$P(x) = \frac{1}{\sqrt{2\pi}}e^{-\frac{x^2}{2}}$$的随机变量$x$的$100$次独立采样值为$x_1,x_2,\ldots, x_{100}$；请估算$x_1^2+x_2^2+\ldots +x_{100}^2 > 200 $ 的概率。
-  \ech
+  
 \end{frame}
 
 
 \begin{frame}
-  \chtitle{\proid 解答}
-  \bch
-      {\small
+  \frametitle{ 解答}
+  
   我们先考虑$n$个独立地满足标准正态分布的变量$x_1,x_2,\ldots, x_n$的平方和不大于$s$ ($s\ge 0$)的概率：
 
   \be
   P_n(s) = \frac{1}{(2\pi)^{n/2}}\int_{x_1^2+x_2^2+\ldots x_n^2<s}  e^{-\frac{x_1^2+x_2^2+\ldots+x_n^2}{2}}dx_1dx_2\ldots dx_n.
   \ee
-  由正态分布的对称性，可以把积分限定在$x_1,x_2,\ldots,x_n\ge 0$的范围内：}
+  由正态分布的对称性，可以把积分限定在$x_1,x_2,\ldots,x_n\ge 0$的范围内：
         {\scriptsize
   \be
   P_n(s) = \frac{2^n}{(2\pi)^{n/2}}\int_{x_1,x_2,\ldots,x_n\ge 0;x_1^2+x_2^2+\ldots x_n^2<s}  e^{-\frac{x_1^2+x_2^2+\ldots+x_n^2}{2}}dx_1dx_2\ldots dx_n .
   \ee}
- {\small 
+\end{frame}
+
+\begin{frame}
+  \frametitle{ 解答(续)}
+  
   做变量替换$x_i=\sqrt{sy_i}$ ($i=1,2,\ldots,n$)，并利用$n$维限和积分公式：
-  \bea
+  {\small
+    \bea
   P_n(s) &=& \frac{s^{\frac{n}{2}}}{(2\pi)^{n/2}}\int_{\Omega_n} y_1^{-\frac{1}{2}}y_2^{-\frac{1}{2}}\ldots y_n^{-\frac{1}{2}} e^{-\frac{s(y_1+y_2+\ldots+y_n)}{2}}dy_1dy_2\ldots dy_n  \newl
   &=& \frac{s^{\frac{n}{2}}}{(2\pi)^{n/2}} \frac{\left[\Gamma\left(\frac{1}{2}\right)\right]^n}{\Gamma\left(\frac{n}{2}\right)}\int_0^1e^{-\frac{su}{2}}u^{\frac{n}{2}-1}du  \newl
   &=& \frac{1}{\Gamma\left(\frac{n}{2}\right)}\int_0^{\frac{s}{2}} e^{-t} t^{\frac{n}{2}-1} dt .
   \eea
   }
-  \ech
-\end{frame}
-
-\begin{frame}
-  \chtitle{\proid 解答(续)}
-  \bch
-      {\small
        我们需要计算的是：
         \be
         p = 1-P_{100}(200) = \frac{1}{\Gamma(50)}\int_{100}^\infty t^{49}e^{-t}dt  = \frac{1}{\Gamma(50)}\int_{100}^\infty e^{-t+49\ln t}dt 
         \ee
+  
+\end{frame}
+
+\begin{frame}
+  \frametitle{解答(续)}
+  
+
         被积函数随着$t$增大而迅速减少。因此我们在$t=100$附近做泰勒展开
         $$ -t + 49\ln t \approx  -100 + 49 \ln 100 - 0.51(t-100) $$
         积分得到
@@ -503,9 +319,23 @@ $$V_n = \frac{\Gamma\left(\frac{1}{2}\right)^n}{\Gamma\left(\frac{n}{2}\right)}\
         \be
         p \approx \frac{ e^{-100 + 49\ln 100 - (-49+49\ln 49)} }{0.51\times \sqrt{98\pi}} \approx 1.2\times 10^{-8}
         \ee
-        }
-  \ech
+        
+  
 \end{frame}
+
+\section{Homework}
+
+\begin{frame}
+  \frametitle{Homework for quizphobia}
+  \bitem
+\item[25]{抛6000次骰子，每个面（1，2，3，4，5，6）恰好各出现1000次的概率大约为多少？}
+\item[26]{计算质量为$m$半径为$r$的刚性球的转动惯量。}
+\item[27]{理想气体中任取100个分子，这100个分子的方均根速率超过所有分子的方均根速率的2倍的概率大概是多大？}  
+
+  \eitem
+  
+\end{frame}
+
 
 
 \ech

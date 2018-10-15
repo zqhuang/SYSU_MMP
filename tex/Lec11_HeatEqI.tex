@@ -2,26 +2,152 @@
 \input{macros.tex}
 \input{titlepage.tex}
   \date{}
-\begin{document}
+  \begin{document}
+  \bch
 \tpage{11}{Heat Equation (I)}
 
 \begin{frame}
-  \chtitle{本讲内容}
-  \bch
+  \frametitle{本讲内容}
+  
   \bitem
-\item{\Large 热传导方程的直观理解}
-\item{\Large 分离变量法求解热传导方程}
+\item{一维热传导问题}  
+\item{热传导方程的直观理解}
+\item{分离变量法求解热传导方程}
   \eitem
-  \ech
+  
 \end{frame}
+
+\section{Introduction}
+
+\begin{frame}
+  \frametitle{一维热传导方程}
+  
+  考虑一根很长的不良导体棒(这里指热的传导)的温度$T(x, t)$，其中$x$是在导体棒上的位置，$t$是时间。
+  在温度梯度不大的情况下，可以用线性近似：{\blue 热流正比于温度梯度}。
+  显然，这个比例系数是负的，
+  $$ j =  -\lambda \frac{\partial T}{\partial x} $$
+  其中$\lambda >0$为常量，称为{\blue 导热系数}。
+
+  \addfig{2.2}{heatflux.png}
+
+  {\small 注：热流是指单位时间通过单位面积的热量。}
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{一维热传导方程}
+  
+
+  \addfig{2.6}{heateq.png}
+  考虑长为$dx$的一小段不良导体棒，进入和出去的热流差为
+  $$j(x)-j(x+dx) = -\lambda \left[\left.\frac{\partial T}{\partial x}\right\vert_{x}-\left.\frac{\partial T}{\partial x}\right\vert_{x+dx}\right]\approx \lambda \frac{\partial^2 T}{\partial x^2} dx. $$
+\end{frame}
+\begin{frame}
+  设材料单位质量的比热为$c$，质量密度为$\rho$，横截面积为$S$，则
+  $$ (c \rho S dx) dT = \dbar Q = [j(x)-j(x+dx)] S dt =  \lambda \frac{\partial^2 T}{\partial x^2} dx  (S dt) $$
+  这里的$dT$和$dt$都是对固定$x$而言，两者之比为$\frac{\partial T}{\partial t}$。令$a = \frac{\lambda}{\rho c}$，则
+  \tbox{
+  $$ \frac{\partial T}{\partial t} - a \frac{\partial^2T}{\partial x^2} = 0$$
+  }
+  我们有时把{\blue $a=\frac{\lambda}{\rho c}$}叫做{\blue 热传导方程的参数}。
+  
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{例题}
+  
+  \addfig{2.5}{heatflux2.png}
+  
+  在一根长为$2L$的不良导体棒在$t=0$时刻温度为$T_0$。在$t>0$时刻，不良导体棒两端均有强度为$j$的热流进入。设材料的导热系数$\lambda$，质量密度$\rho$，单位质量的比热$c$均已知，试计算$t\ge 0$时刻不良导体棒各处的温度$T(x,t)$。
+  
+\end{frame}
+
+\begin{frame}
+  \frametitle{ 解答}
+  
+  根据对称性，在棒中间处热流和温度梯度均为零。写出如下的方程和边界条件：
+  \bea
+  \frac{\partial T}{\partial t} - a\frac{\partial^2 T}{\partial x^2} &=& 0 \newl
+  \left.\frac{\partial T}{\partial x}\right\vert_{x=0} &=& 0 \newl
+  \left.\frac{\partial T}{\partial x}\right\vert_{x=L} &=& \frac{j}{\lambda}  \newl
+  \left.T\right\vert_{t=0} &=&  T_0 
+  \eea
+  其中$a = \frac{\lambda}{\rho c} $。
+  
+  
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{ 解答}
+  
+  先分析主要图像。
+
+  \skiplines
+
+  在$t$时刻，累计流入的热量为$Q =  2 j St$ (其中$S$为横截面积)。棒子热容为$C =  c \rho (2SL)$。所以$t$时刻棒子的平均温度为
+  $$ \bar{T} =   T_0  + \frac{Q}{C} = T_0 + \frac{j}{\rho cL}t $$
+  
+  
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{ 解答 (续)}
+  
+  把平均温度去掉，研究各处温度起伏：$\Delta T(x, t) = T(x, t) - \left(T_0+\frac{j}{\rho cL} t\right)$。显然$\Delta T$满足方程：
+  \bea
+  \frac{\partial \Delta T }{\partial t} - a \frac{\partial^2 \Delta T}{\partial x^2} &=&  -\frac{j}{\rho cL} \newl
+  \left.\frac{\partial \Delta T}{\partial x}\right\vert_{x=0} &=& 0 \newl
+  \left.\frac{\partial \Delta  T}{\partial x}\right\vert_{x=L} &=& \frac{j}{\lambda}  \newl
+  \left.\Delta T\right\vert_{t=0} = 0
+  \eea
+  因为$\Delta T$描述的是温度起伏，还有一个额外条件：
+  $$\int_0^L \Delta T(x, t) dx = 0 $$
+  
+\end{frame}
+
+\begin{frame}
+  \frametitle{解答 (续)}
+  
+  当$t$很大时，棒上的温度梯度趋于稳定，即$\Delta T$仅仅依赖于$x$，满足
+  \bea
+  - a \frac{\partial^2 \Delta T}{\partial x^2} &=&  -\frac{j}{\rho cL} \newl
+  \left.\frac{\partial \Delta T}{\partial x}\right\vert_{x=0} &=& 0 \newl
+  \left.\frac{\partial \Delta  T}{\partial x}\right\vert_{x=L} &=& \frac{j}{\lambda}  \newl
+  \int_0^L \Delta T(x, t) dx &=& 0  
+  \eea
+  由此不难解出
+  $$\Delta T = \frac{j}{2\lambda} \left(\frac{x^2}{L} - \frac{L}{3}\right) $$
+  
+\end{frame}
+
+\begin{frame}
+  \frametitle{ 解答 (续)}
+  
+  也就是说，当$t${\bf 很大}时
+  $$ T = \left(T_0+\frac{j}{\rho cL} t\right) + \frac{j}{2\lambda} \left(\frac{x^2}{L} - \frac{L}{3}\right)  $$
+  现在还留下两个问题：
+  \bitem
+\item{$t$多大时算“很大”？}
+\item{$t$不大（即刚开始加热）时，$T(x,t)$的严格解是什么？}
+  \eitem
+ 第一个问题很容易估算：根据热传导方程，$T$的典型“变化时间”$\Delta t$和“变化尺度”$L$之间满足$ \frac{1}{\Delta t} \sim a\frac{1}{L^2} $。我们所说的$t$很大，即指$t\gg \Delta t \sim \frac{L^2}{a}$。
+
+  第二个问题涉及一些数学技巧(“二流物理学家的研究对象”\huaixiao)，我们下面再来详细讨论。
+  
+\end{frame}
+
+
 
 \section{Understanding Heat Eq.}
 \secpage{热传导方程的直观理解}{散度是单位体积流出率}
 
 
 \begin{frame}
-  \chtitle{流密度}
-  \bch
+  \frametitle{流密度}
+  
   流密度$ \mathbf{j} = (j_x, j_y, j_z) $： 单位时间单位面积流过的某种物理量。
   
   \bex
@@ -29,34 +155,33 @@
 
   \eex  
 
-  \ech
+  
 \end{frame}
 
 
 \begin{frame}
-  \chtitle{散度等于单位体积流出率}
-  \bch
-{\small
+  \frametitle{散度等于单位体积流出率}
+  {\small
   考虑以$(x, y, z)$和$(x+dx, y+dy, z+dz)$连线为对角线的小长方体。
+
   \addfig{1}{box.png}
   
   如果只有$x$方向有热流，则如图示，在坐标为$x$的横截面上，单位时间进入的热量为
   $$j_x(x, y, z) dy dz$$
   而在对面坐标为$x+dx$的横截面上，单位时间流出的热量为
   $$ j_x(x+dx,y,z)dydz$$
-  因此，单位时间内小长方体内积累的热量为
+  单位时间内小长方体内积累的热量为
   $$ \frac{\partial Q}{\partial t} = (-j_x(x+dx, y, z) + j_x(y, z))dy dz \approx  - \frac{\partial j_x}{\partial x} dxdydz $$
   
   }
-  \ech
 \end{frame}
 
 
 
 
 \begin{frame}
-  \chtitle{散度等于单位体积流出率 （续）}
-  \bch
+  \frametitle{散度等于单位体积流出率 （续）}
+  
 {\small
   考虑三个方向都有这种不平衡的热流，就有
 
@@ -70,20 +195,20 @@
 
 也就是说：{\blue \bf 对守恒量X，X流的散度可以看成X的单位体积流出率。} 这里的X可以是电荷，热量，质量等。
 
-  \ech
+  
 \end{frame}
 
 
 \begin{frame}
-  \chtitle{据说你们理论力学学过守恒流}
-  \bch
+  \frametitle{据说你们理论力学学过守恒流}
+  
   \addfig{2.2}{Noether.jpg}
-  \ech
+  
 \end{frame}
 
 \begin{frame}
-  \chtitle{热传导方程的直观理解}
-  \bch
+  \frametitle{热传导方程的直观理解}
+  
   {\small
   根据导热系数的定义
   $$j = -\lambda\nabla T$$
@@ -97,7 +222,7 @@
     $$ \frac{\partial  T}{\partial t} - a\nabla^2T = 0,$$}
     其中$a = \frac{\lambda}{\rho c}$。这就是我们之前在一维情况下推导过的热传导方程。
   }  
-  \ech
+  
 \end{frame}
 
 \section{SV method}
@@ -105,8 +230,8 @@
 
 
 \begin{frame}
-  \chtitle{猜一猜}
-  \bch
+  \frametitle{猜一猜}
+  
 
   \addfig{0.6}{think2.jpg}
   
@@ -114,22 +239,22 @@
   $$ \frac{\partial T}{\partial t} - a\frac{\partial^2T}{\partial x^2} = 0,$$
   你能猜出一个非常数解吗？
   
-  \ech
+  
 \end{frame}
 
 
 \begin{frame}
-  \chtitle{分离变量法的大致想法}
-  \bch
+  \frametitle{分离变量法的大致想法}
+  
 \tbox{ \Large 寻找形如$\phi(x)\psi(t)$的解。}
 \tbox{\Large 把解拆分成一堆$\phi(x)\psi(t)$的和。}
-  \ech
+  
 \end{frame}
 
 
 \begin{frame}
-  \chtitle{寻找形如$\phi(x)\psi(t)$的解}
-  \bch
+  \frametitle{寻找形如$\phi(x)\psi(t)$的解}
+  
   对热传导方程
   $$ \frac{\partial T}{\partial t} - a\frac{\partial^2T}{\partial x^2} = 0,$$
   设某个解为$\phi(x)\psi(t)$，代入上式，得到
@@ -138,13 +263,13 @@
   $$ \psi = e^{\lambda t},\ \phi = e^{ \sqrt{\frac{\lambda}{a}}x}.$$
   也就是我们找到了一种满足热传导方程的解
  $$e^{\lambda t + \sqrt{\frac{\lambda}{a}}x}$$
-  \ech
+  
 \end{frame}
 
 
 \begin{frame}
-  \chtitle{寻找形如$\phi(x)\psi(t)$的解}
-  \bch
+  \frametitle{寻找形如$\phi(x)\psi(t)$的解}
+  
   $$e^{\lambda t + \sqrt{\frac{\lambda}{a}}x}$$
   根据$\lambda$的正负，有
   \bitem
@@ -155,12 +280,12 @@
   $$ e^{-ak^2t}e^{\ii kx} .$$ }
   \eitem
   {\small 如果需要实数解，可以把衰减模式对应$k$和$-k$的解进行线性组合，写成$e^{-ak^2t}\cos{(kx)}$和$e^{-ak^2t}\sin{(kx)}$。}
-  \ech
+  
 \end{frame}
 
 \begin{frame}
-  \chtitle{物理分析}
-  \bch
+  \frametitle{物理分析}
+  
   物理上我们知道温度会自发地趋向于均匀。
 
   \skiplines
@@ -175,26 +300,26 @@
     \eitem
 
   
-  \ech
+  
 \end{frame}
 
 
 
 \begin{frame}
-  \chtitle{衰减模式的典型衰减时间}
-  \bch
+  \frametitle{衰减模式的典型衰减时间}
+  
       {\blue  当$t\gg \frac{1}{ak^2}$时，显然衰减模式$e^{-ak^2t}e^{ikx}$会变得非常小（跟初始条件比）。}
 
 
       \skiplines
       
   之前我们考虑过的不良导体棒的问题，因棒长有限，空间频率只可能取到$k\gtrsim \frac{1}{L}$。所以一开始对稳恒态的偏差（可以看作很多不同$k$的衰减模式的线性叠加）需要的时间$\frac{1}{ak^2}\lesssim\frac{L^2}{a}$进行衰减。
-  \ech
+  
 \end{frame}
 
 \begin{frame}
-  \chtitle{热求导方程求解举例}
-  \bch
+  \frametitle{热求导方程求解举例}
+  
   \addfig{3}{HeatEq1.png}
   以我们讲过的如下边界条件为例：
   \bea
@@ -204,26 +329,26 @@
   \left.T\right\vert_{t=0} &=&  T_0 
   \eea
   
-  \ech
+  
 \end{frame}
 
 
 \begin{frame}
-  \chtitle{不想蛮干}
-  \bch
+  \frametitle{不想蛮干}
+  
   我们并不准备蛮干，先分析下解的渐近行为总不会吃亏。
 
   \skipline
   
   题目所给的边界条件比较简单，所以猜测解有稳恒的渐近行为。按照第9讲的分析方法可以得到：当$t\gg L^2/a$时，
     $$ T \rightarrow \left(T_0+\frac{j}{\rho cL} t\right) + \frac{j}{2\lambda} \left(\frac{x^2}{L} - \frac{L}{3}\right)  $$
-  \ech
+  
 \end{frame}
 
 
 \begin{frame}
-  \chtitle{不想蛮干}
-  \bch
+  \frametitle{不想蛮干}
+  
   那么，令
   $$ T = \left(T_0+\frac{j}{\rho cL} t\right) + \frac{j}{2\lambda} \left(\frac{x^2}{L} - \frac{L}{3}\right) +\delta T(x, t), $$
 
@@ -233,13 +358,13 @@
   \left.\frac{\partial \delta T}{\partial x}\right\vert_{x=L} &=& 0 \newl
   \left.\delta T\right\vert_{t=0} &=&  -\frac{j}{2\lambda} \left(\frac{x^2}{L} - \frac{L}{3}\right) 
   \eea
-  \ech
+  
 \end{frame}
 
 
 \begin{frame}
-  \chtitle{$0+0=0$}
-  \bch
+  \frametitle{$0+0=0$}
+  
   通过上述操作，我们得到了每一项都是$T$或$T$的导数的一次幂的“齐次边界条件”。
   \bea
   \left.\frac{\partial \delta T}{\partial x}\right\vert_{x=0} &=& 0 \newl
@@ -247,13 +372,13 @@
   \eea
   容易看出，所有形如$e^{-a\frac{n^2\pi^2}{L^2}t}\cos{\left(\frac{n\pi }{L}x\right)}$ ($n=0,1,2,\ldots$)的衰减模式的{\bf 线性叠加}都符合要求。因此我们不妨假设
   $$\delta T(x, t) = \sum_{n=0}^\infty c_n e^{-a\frac{n^2\pi^2}{L^2}t}\cos{\left(\frac{n\pi }{L}x\right)}.$$
-  \ech
+  
 \end{frame}
 
 
 \begin{frame}
-  \chtitle{还得回顾下高数知识}
-  \bch
+  \frametitle{还得回顾下高数知识}
+  
   最后，利用$t=0$时的初始条件，有
   $$ -\frac{j}{2\lambda} \left(\frac{x^2}{L} - \frac{L}{3}\right) =\sum_{n=0}^\infty c_n\cos{\left(\frac{n\pi}{L}x\right)} .$$
   这是个标准的正交级数展开问题。两边乘以$\cos{\left(\frac{n\pi}{L}x\right)}$ 并对$x$从 $0$ 到 $L$进行积分，利用余弦函数的正交性得到：
@@ -261,13 +386,13 @@
   c_0&=& 0,\newl
   c_n &=& (-1)^{n+1}\frac{2jL}{\lambda n^2\pi^2}
   \eea
-  \ech
+  
 \end{frame}
 
 
 \begin{frame}
-  \chtitle{大功告成}
-  \bch
+  \frametitle{大功告成}
+  
   最后，完整的解为：
   {\small
   $$ T = \left(T_0+\frac{j}{\rho cL} t\right) + \frac{j}{2\lambda} \left(\frac{x^2}{L} - \frac{L}{3}\right) - \frac{2jL}{\lambda \pi^2}\sum_{n=1}^\infty \frac{(-1)^n}{n^2}e^{-a\frac{n^2\pi^2}{L^2}t}\cos{\left(\frac{n\pi }{L}x\right)}$$}
@@ -278,13 +403,13 @@
   
   现在我们可以清楚地看到，当$t\gg L^2/a$时，所有衰减项确实都被指数式压缩（终于放心了。）
   
-  \ech
+  
 \end{frame}
 
 
 \begin{frame}
-  \chtitle{总结}
-  \bch
+  \frametitle{总结}
+  
   上述问题的求解过程包含了三步：
 
   \bitem
@@ -293,21 +418,21 @@
 \item[(3)]{令解 = 稳恒渐近项 + 衰减项。根据衰减项满足的齐次边界条件进行级数展开。}
   \eitem
   
-  \ech
+  
 \end{frame}
 
 \begin{frame}
-  \chtitle{Practice I的那道送分题}
-  \bch
+  \frametitle{Practice I的那道送分题}
+  
   \addfig{3}{HeatEq2.png}
   
   长度为$L$的不良导体棒一端和温度为$T_0$的热库接触，并在$t=0$时刻和热库处于热平衡。从$t=0$时刻开始，在不良导体棒的另一端注入恒定大小为$j$的热流。设不良导体棒的导热系数$\lambda$，单位质量的比热$c$和质量密度$\rho$均已知。求解不良导体棒上温度$T(x, t)$ ($0\le x\le L, t\ge 0$)。
-  \ech
+  
 \end{frame}
 
 \begin{frame}
-  \chtitle{边界条件}
-  \bch
+  \frametitle{边界条件}
+  
     方程为
     \be
     \frac{\partial T}{\partial t} -a\frac{\partial^2T}{\partial x^2} = 0 \, .
@@ -321,20 +446,20 @@
     \left.\frac{\partial T}{\partial x}\right\vert_{x=L} &=& \frac{j}{\lambda}
     \eea
 
-    \ech
+    
 \end{frame}
 
 \begin{frame}
-  \chtitle{渐近行为分析}
-  \bch
+  \frametitle{渐近行为分析}
+  
   假设当$t$远大于典型的变化时间$L^2/a$时，系统处于稳恒状态（温度梯度不再变化）。因为一端温度是固定的，要得到稳恒状态的必要条件是热量不在不良导体棒上积累，也就是说进来的热流$j$必须保持不变地通过整个不良导体棒，最后从另一端进入热库。这说明稳恒状态下$\frac{\partial T}{\partial x}$处处等于$\frac{j}{\lambda}$。由此得出：
     $$T(x, t) \rightarrow T_0+\frac{j}{\lambda} x$$
-    \ech
+    
 \end{frame}
 
 \begin{frame}
-  \chtitle{分离变量法}
-  \bch
+  \frametitle{分离变量法}
+  
   虽然很快如愿得到了解的渐近行为，但刚学习了分离变量法，必须求出严格解炫耀一下。令
   $$T(x,t) = T_0+\frac{j}{\lambda}x + \delta T(x,t)$$
   易见$\delta T$也满足热传导方程，且
@@ -343,46 +468,47 @@
   \left.\frac{\partial \delta T}{\partial x}\right\vert_{x=L} &=& 0, \newl
   \left.\delta T\right\vert_{t=0} &=& -\frac{j}{\lambda}x.
   \eea
-  \ech
+  
 \end{frame}
 
 
 \begin{frame}
-  \chtitle{级数展开}
-  \bch
+  \frametitle{级数展开}
+  
   熟练地利用零边界条件进行衰减模式的分解：
   $$ \delta T = \sum_{n=0}^\infty c_ne^{-a\frac{(n+\frac{1}{2})^2\pi^2}{L^2}t}\sin{\left(\frac{(n+\frac{1}{2})\pi}{L}x\right)}. $$
   利用$t=0$时的初始条件
   $$ -\frac{j}{\lambda}x = \sum_{n=0}^\infty c_n\sin{\left(\frac{(n+\frac{1}{2})\pi}{L}x\right)} .$$
   最后，上式两边乘以$\sin{\left(\frac{(n+\frac{1}{2})\pi}{L}x\right)}$并两边对$x$从$0$积分到$L$，得到：
   $$c_n = (-1)^{n+1}\frac{2jL}{\lambda \left(n+\frac{1}{2}\right)^2\pi^2}.$$
-  \ech
+  
 \end{frame}
 
 
 \begin{frame}
-  \chtitle{再次大功告成}
-  \bch
+  \frametitle{再次大功告成}
+  
   最后的结果是
   $$T(x,t) = T_0+\frac{j}{\lambda}x -\frac{2jL}{\lambda \pi^2}\sum_{n=0}^\infty \frac{(-1)^n}{\left(n+\frac{1}{2}\right)^2}e^{-a\frac{(n+\frac{1}{2})^2\pi^2}{L^2}t}\sin{\left(\frac{(n+\frac{1}{2})\pi}{L}x\right)}.$$
-  \ech
+  
 \end{frame}
 
 \section{Homework}
 
 \begin{frame}
-  \chtitle{课后作业 (题号25)}
-  \bch
+  \frametitle{Homework for quizphobia}
+  
   
   \bitem
-\item[25]{长度为$L$的不良导体棒一端 ($x=0$处) 和温度为$T_0$的热库接触，并在$t=0$时刻和热库处于热平衡。从$t=0$时刻开始，把不良导体棒的另一端 ($x=L$处) 和温度为$T_1$的热库保持接触。设不良导体棒的导热系数$\lambda$，单位质量的比热$c$和质量密度$\rho$均已知。求解不良导体棒上温度$T(x, t)$ ($0\le x\le L, t\ge 0$)。
+\item[31]{长度为$L$的不良导体棒一端 ($x=0$处) 和温度为$T_0$的热库接触，并在$t=0$时刻和热库处于热平衡。从$t=0$时刻开始，把不良导体棒的另一端 ($x=L$处) 和温度为$T_1$的热库保持接触。设不良导体棒的导热系数$\lambda$，单位质量的比热$c$和质量密度$\rho$均已知。求解不良导体棒上温度$T(x, t)$ ($0\le x\le L, t\ge 0$)。
 
   \addfig{3}{HeatEq3.png}
 }
     \eitem
 %{\scriptsize 参考答案   $$T(x,t) = T_0+\frac{T_1-T_0}{L}x + \frac{T_1-T_0}{\pi}\sum_{n=1}^\infty \frac{(-1)^n}{n}e^{-a\frac{n^2\pi^2}{L^2}t}\sin{\left(\frac{n\pi}{L}x\right)},$$}
 
-  \ech
+  
 \end{frame}
 
+\ech
 \end{document}
