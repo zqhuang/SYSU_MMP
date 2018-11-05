@@ -1,0 +1,351 @@
+\documentclass[CJK]{beamer}
+\input{macros.tex}
+\input{titlepage.tex}
+  \date{}
+  \begin{document}
+  \bch
+\tpage{13}{有源的方程和非齐次边界条件}
+
+
+\begin{frame}
+  \frametitle{内容摘要}
+  \bitem
+\item{有源的方程}  
+\item{非齐次边界条件}
+\item{附录：一些比较复杂的问题}
+  \eitem
+\end{frame}
+
+
+\section{Source in the Equation}
+\secpage{有源的方程}{把源进行分解}
+
+\begin{frame}
+\frametitle{例题1}
+求解$0\le x\le L$上的烤串问题：
+\bea
+\frac{\partial u}{\partial t} - a\frac{\partial^2u}{\partial x^2} &=& \phi(x,t), \newl
+\left. u \right\vert_{x=0} = 0, \newl
+\left. u \right\vert_{x=L} = 0, \newl
+\left. u \right\vert_{t=0} = 0. \newl
+\eea
+这里热源$\phi(x,t)$是已知函数。
+\end{frame}
+
+\begin{frame}
+\frametitle{改变时间演化因子}
+如果没有$\phi(x,t)$的存在，我们将进行分解：
+$$u = \sum_{n = 0}^\infty c_ne^{-\frac{an^2\pi^2t}{L^2} } \sin\frac{n\pi x}{L}. $$
+有$\phi(x,t)$的情况，我们猜想 $e^{-\frac{an^2\pi^2t}{L^2} }$有可能需要替换成一个其他什么东西：
+$$u = \sum_{n = 0}^\infty T_n(t) \sin\frac{n\pi x}{L}. $$
+其中每个$T_n(t)$都是待定函数。利用初始条件显然有
+$$T_n(0) = 0. $$
+\end{frame}
+
+
+\begin{frame}
+\frametitle{对源的分解}
+
+为了求出$T_n$，我们把等式右边的$\phi(x,t)$也进行级数展开：
+$$\phi(x,t) = \sum_{n=0}^\infty G_n(t) \sin\frac{n\pi x}{L}. $$
+代入到原方程，得到
+$$ \sum_{n = 0}^\infty\left[ T_n'(t) +\frac{n^2\pi^2a}{L^2}T(t)\right] \sin\frac{n\pi x}{L} = \sum_{n=0}^\infty G_n(t) \sin\frac{n\pi x}{L}.$$
+两边比较系数得到
+$$ T_n'(t) + \frac{n^2\pi^2a}{L^2}T(t) = G_n(t). $$
+再利用初始条件$T_n(0)  = 0$，原则上(\wulian)可以求出$T_n(t)$。
+\end{frame}
+
+\begin{frame}
+  \frametitle{思考题}
+  例题中如果给定$\phi(x,t) = \sin\frac{\pi x}{L}$，试求出具体的$u(x,t)$。
+\end{frame}
+
+
+\section{Nonlinear BC}
+\secpage{非齐次边界条件}{特解=渐近解}
+
+
+
+
+\begin{frame}
+  \frametitle{例题2}
+  
+  \addfig{3}{HeatEq2.png}
+  
+  长度为$L$的导热棒一端和温度为零（这里是随意规定了一个温度零点，不是绝对零度）的热库接触，并在$t=0$时刻和热库处于热平衡。从$t=0$时刻开始，在导热棒的另一端注入恒定大小为$j$的热流。设已知导热棒的导热系数$\lambda$和热传导方程参数$a$，求解导热棒上温度$u(x, t)$ ($0\le x\le L, t\ge 0$)。
+  
+\end{frame}
+
+\begin{frame}
+  \frametitle{数理方程}
+      \bea
+    \frac{\partial u}{\partial t} -a\frac{\partial^2u}{\partial x^2} &=& 0, \newl
+    \left.u\right\vert_{x=0} &=& 0, \newl
+    \left.\frac{\partial u}{\partial x}\right\vert_{x=L} &=& \frac{j}{\lambda}, \newl
+    \left.u\right\vert_{t=0} &=& 0.
+    \eea
+
+    下一步目标是通过寻找特解，把非线性的边界条件转化为非线性的初始条件，回到标准套路。{\blue 对热传导方程，寻找特解有一个非常简便的办法：分析渐近行为。}
+\end{frame}
+
+\begin{frame}
+  \frametitle{渐近行为分析}
+  
+  猜想当$t$远大于典型热扩散时间$L^2/a$时，系统处于稳恒状态（温度梯度不再变化）。因为一端温度是固定的，要得到稳恒状态的必要条件是热量不在导热棒上积累，也就是说进来的热流$j$必须保持不变地通过整个导热棒，最后从另一端进入热库。这说明稳恒状态下$\frac{\partial u}{\partial x}$处处等于$\frac{j}{\lambda}$。由此得出：
+    $$u(x, t) \rightarrow \frac{j}{\lambda} x$$
+  这就是我们需要的特解。
+\end{frame}
+
+\begin{frame}
+  \frametitle{分离变量法}
+  令
+  $$u(x,t) = \frac{j}{\lambda}x + \upsilon(x,t)$$
+  易见$\upsilon$也满足热传导方程，且
+  \bea
+  \left.\upsilon\right\vert_{x=0} &=& 0, \newl
+  \left.\frac{\partial \upsilon}{\partial x}\right\vert_{x=L} &=& 0, \newl
+  \left.\upsilon\right\vert_{t=0} &=& -\frac{j}{\lambda}x.
+  \eea
+  显然$\upsilon$可以用我们熟悉的“标准套路”解出来。
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{最终结果}
+  解出$\upsilon$之后得到
+  $$u(x,t) = \frac{j}{\lambda}x -\frac{2jL}{\lambda \pi^2}\sum_{n=0}^\infty \frac{(-1)^n}{\left(n+\frac{1}{2}\right)^2}e^{-a\frac{(n+\frac{1}{2})^2\pi^2}{L^2}t}\sin{\left(\frac{(n+\frac{1}{2})\pi}{L}x\right)}.$$
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{思考题}
+  请补充完整$\upsilon$的求解过程。
+\end{frame}
+
+
+
+
+\begin{frame}
+  \frametitle{例题3}
+  
+  \addfig{3}{problem12-1.png}
+  
+  有长为$2L$，温度为$T_0$的均匀导热棒。导热系数$\lambda$，质量密度$\rho$，单位质量比热$c$均已知。在$t=0$时刻，在它的两端$x=\pm L$处分别接上温度为$T_1$的相同材质相同截面形状的非常长的均匀导热棒。求之后导热棒上的温度变化。
+  
+\end{frame}
+
+
+
+
+\begin{frame}
+  \frametitle{写出方程}
+  
+  \addfig{3}{problem12-1.png}
+
+  显然渐近解是$T=T_1$，所以令$T(x,t) = T_1 + u(x,t)$，$u$满足
+  \bea
+  \frac{\partial u}{\partial t} - a\frac{\partial^2 u}{\partial x^2} &=& 0, \newl
+  u_{t=0} &=&  (T_0-T_1) \theta_L(x) .
+  \eea
+  其中$\theta_L(x)$当且仅当$|x|<L$时为$1$，否则为零。
+  
+  
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{格林函数方法求解}
+  \bea
+  u(x,t) &=& \int_{-L}^L \frac{1}{\sqrt{4\pi at}}e^{-\frac{(x-x_0)^2}{4at}} (T_0-T_1)dx_0 \newl
+  &=& \frac{T_0-T_1}{\sqrt{4\pi at}} \int_{-L}^L e^{-\frac{(x-x_0)^2}{4at}} dx_0
+  \eea
+  当然，如果你喜欢，可以把上述积分写成误差函数。
+
+  最后结果为
+  $$T(x,t) = T_1 +  \frac{T_0-T_1}{\sqrt{4\pi at}} \int_{-L}^L e^{-\frac{(x-x_0)^2}{4at}} dx_0 $$
+  
+\end{frame}
+
+
+
+  
+\section{Homework}
+
+\begin{frame}
+  \frametitle{Homework for quizphobias}
+  \bitem
+  \item[37]{在一根很长的导热棒一端输入热量$Q$，之后温度将如何变化？设初始温度$T_0$，截面积$S$，质量密度$\rho$, 单位质量比热$c$，导热系数$\lambda$均已知。}
+\item[38]{长度为$L$的导热棒一端 ($x=0$处) 和温度为$T_0$的热库接触，并在$t=0$时刻和热库处于热平衡。从$t=0$时刻开始，把导热棒的另一端 ($x=L$处) 和温度为$T_1$的热库保持接触。设导热棒的导热系数$\lambda$，单位质量的比热$c$和质量密度$\rho$均已知。求解导热棒上温度$T(x, t)$ ($0\le x\le L, t\ge 0$)。
+
+  \addfig{3}{HeatEq3.png}
+%{\scriptsize 参考答案   $$T(x,t) = T_0+\frac{T_1-T_0}{L}x + \frac{T_1-T_0}{\pi}\sum_{n=1}^\infty \frac{(-1)^n}{n}e^{-a\frac{n^2\pi^2}{L^2}t}\sin{\left(\frac{n\pi}{L}x\right)},$$}  
+}
+  \eitem
+\end{frame}
+
+\begin{frame}
+  \frametitle{Homework for quizphobias}
+  \bitem
+\item[39]{  有长为$L$，温度为$T_0$的均匀导热棒。导热系数$\lambda$，质量密度$\rho$，单位质量比热$c$均已知。在$t=0$时刻，在它的一端$x= L$处接上温度为$T_1$的相同材质相同截面形状的非常长的均匀导热棒。求之后导热棒上的温度变化。
+
+  \addfig{3}{problem12-2.png}
+}
+  \eitem
+\end{frame}
+
+\section{Appendix}
+
+\begin{frame}
+  \frametitle{附录1：平均温度一直变化的例子}
+  
+  \addfig{2.5}{heatflux2.png}
+  
+  在一根长为$2L$的导热棒在$t=0$时刻温度为$T_0$。在$t>0$时刻，导热棒两端均有强度为$j$的热流进入。设材料的导热系数$\lambda$，质量密度$\rho$，单位质量的比热$c$均已知，试计算$t\ge 0$时刻导热棒各处的温度$T(x,t)$。
+  
+\end{frame}
+
+\begin{frame}
+  \frametitle{附录1：平均温度一直变化的例子}
+  
+  根据对称性，在棒中间处热流和温度梯度均为零。写出如下的方程和边界条件：
+  \bea
+  \frac{\partial T}{\partial t} - a\frac{\partial^2 T}{\partial x^2} &=& 0 \newl
+  \left.\frac{\partial T}{\partial x}\right\vert_{x=0} &=& 0 \newl
+  \left.\frac{\partial T}{\partial x}\right\vert_{x=L} &=& \frac{j}{\lambda}  \newl
+  \left.T\right\vert_{t=0} &=&  T_0 
+  \eea
+  其中$a = \frac{\lambda}{\rho c} $。
+  
+  
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{附录1：平均温度一直变化的例子}
+  
+  先分析主要图像。
+
+  \skiplines
+
+  在$t$时刻，累计流入的热量为$Q =  2 j St$ (其中$S$为横截面积)。棒的热容为$C =  c \rho (2SL)$。所以$t$时刻棒的的平均温度为
+  $$ \bar{T} =   T_0  + \frac{Q}{C} = T_0 + \frac{j}{\rho cL}t $$
+  
+  
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{附录1：平均温度一直变化的例子}
+  
+  把平均温度去掉，研究各处温度起伏：$\Delta T(x, t) = T(x, t) - \left(T_0+\frac{j}{\rho cL} t\right)$。显然$\Delta T$满足方程：
+  \bea
+  \frac{\partial \Delta T }{\partial t} - a \frac{\partial^2 \Delta T}{\partial x^2} &=&  -\frac{j}{\rho cL} \newl
+  \left.\frac{\partial \Delta T}{\partial x}\right\vert_{x=0} &=& 0 \newl
+  \left.\frac{\partial \Delta  T}{\partial x}\right\vert_{x=L} &=& \frac{j}{\lambda}  \newl
+  \left.\Delta T\right\vert_{t=0} = 0
+  \eea
+  因为$\Delta T$描述的是温度起伏，还有一个额外条件：
+  $$\int_0^L \Delta T(x, t) dx = 0 $$
+  
+\end{frame}
+
+\begin{frame}
+  \frametitle{附录1：平均温度一直变化的例子}
+  
+  当$t$很大时，棒上的温度梯度趋于稳定，即$\Delta T$仅仅依赖于$x$，满足
+  \bea
+  - a \frac{\partial^2 \Delta T}{\partial x^2} &=&  -\frac{j}{\rho cL} \newl
+  \left.\frac{\partial \Delta T}{\partial x}\right\vert_{x=0} &=& 0 \newl
+  \left.\frac{\partial \Delta  T}{\partial x}\right\vert_{x=L} &=& \frac{j}{\lambda}  \newl
+  \int_0^L \Delta T(x, t) dx &=& 0  
+  \eea
+  由此不难解出
+  $$\Delta T = \frac{j}{2\lambda} \left(\frac{x^2}{L} - \frac{L}{3}\right) $$
+  
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{附录1：平均温度一直变化的例子}  
+  把“稳恒解”（虽然平均温度不断变化，但各处的温度梯度稳定不变）当作特解，令
+  $$ T = \left(T_0+\frac{j}{\rho cL} t\right) + \frac{j}{2\lambda} \left(\frac{x^2}{L} - \frac{L}{3}\right) +\delta T(x, t), $$
+  这里的$\delta T(x,t)$描述了解对稳恒态的偏差如何衰减。把$T(x,t)$直接代入初始的方程和边界条件，易见$\delta T$也满足热传导方程，并满足：
+  \bea
+  \left.\frac{\partial \delta T}{\partial x}\right\vert_{x=0} &=& 0 \newl
+  \left.\frac{\partial \delta T}{\partial x}\right\vert_{x=L} &=& 0 \newl
+  \left.\delta T\right\vert_{t=0} &=&  -\frac{j}{2\lambda} \left(\frac{x^2}{L} - \frac{L}{3}\right) 
+  \eea
+
+\end{frame}
+
+\begin{frame}
+  \frametitle{附录1：平均温度一直变化的例子}  
+  显然$\delta T$可以用标准套路解出来。 请自行完成这部分计算。  最后的完整解是：
+{\small  $$ T = \left(T_0+\frac{j}{\rho cL} t\right) + \frac{j}{2\lambda} \left(\frac{x^2}{L} - \frac{L}{3}\right) - \frac{2jL}{\lambda \pi^2}\sum_{n=1}^\infty \frac{(-1)^n}{n^2}e^{-a\frac{n^2\pi^2}{L^2}t}\cos{\left(\frac{n\pi }{L}x\right)}$$}
+
+  这个解的第一个括号内是平均温度的变化，第二部分描述稳恒态的形状，第三部分描述初始时对稳恒态的偏离是如何衰减掉的。
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{附录2：波动方程，不好借助渐近解的例子}
+求解一端固定，另一端正弦驱动的弦振动：
+\bea
+\frac{\partial ^2u}{\partial t^2}  -  a^2 \frac{\partial^2u}{\partial x^2} &=& 0, \newl
+\left.u\right\vert_{x=0} &=& 0,\newl
+\left.u\right\vert_{x=L} &=& A\sin (\omega t),\newl
+\left.u\right\vert_{t=0} &=& 0 , \newl
+\left.\frac{\partial u}{\partial t}\right\vert_{t=0} &=&  0.
+\eea
+\end{frame}
+
+\begin{frame}
+\frametitle{附录2：波动方程，不好借助渐近解的例子（解法一）}
+考虑如下的{\blue 满足边界条件但不满足初始条件的特解}：
+$$ u_0(x,t) = A \sin(\omega t) \frac{\sin\frac{\omega x}{a}}{\sin\frac{\omega L}{a}}  $$
+令$u(x,t) = u_0(x,t) + \upsilon(x,t)$，则$\upsilon(x,t)$满足：
+\bea
+\frac{\partial ^2\upsilon}{\partial t^2}  -  a^2 \frac{\partial^2\upsilon}{\partial x^2} &=& 0, \newl
+\left.\upsilon\right\vert_{x=0} &=& 0, \newl
+\left.\upsilon \right\vert_{x=L} &=& 0,\newl
+\left.\upsilon \right\vert_{t=0} &=& 0 , \newl
+\left.\frac{\partial \upsilon}{\partial t}\right\vert_{t=0} &=&  -A\omega \frac{\sin\frac{\omega x}{a}}{\sin\frac{\omega L}{a}}
+\eea
+$\upsilon(x,t)$显然可以用标准套路求解，请自行完成。
+\end{frame}
+
+\begin{frame}
+\frametitle{附录2：波动方程，不好借助渐近解的例子（解法二）}
+
+解法一的办法是把非线性的边界条件转化为非线性的初始条件，手段是找一个既满足方程又满足边界条件的特解，这往往需要高超的技巧。
+
+事实上，我们还可以把非线性的边界条件转化为非线性的方程（准确地说是带源的方程），而且这样做对技巧的要求降低了很多: 你只要随便找一个满足边界条件但并不满足方程的“瞎解”。
+
+\skipline
+
+写一个满足边界条件但并不满足方程的解显然要容易得多，例如：
+$$\frac{Ax}{L} \sin(\omega t)$$
+
+\end{frame}
+
+\begin{frame}
+\frametitle{附录2：波动方程，不好借助渐近解的例子（解法二）}
+
+令
+$$ u(x,t)  = \frac{Ax}{L} \sin(\omega t) + \upsilon(x,t)$$
+代回原方程，得到:
+
+\bea
+\frac{\partial ^2\upsilon}{\partial t^2}  -  a^2 \frac{\partial^2\upsilon}{\partial x^2} &=& \frac{A\omega^2x}{L} \sin(\omega t) , \newl
+\left.\upsilon \right\vert_{x=0} &=& 0,\newl
+\left.\upsilon \right\vert_{x=L} &=& 0,\newl
+\left.\upsilon \right\vert_{t=0} &=& 0 , \newl
+\left.\frac{\partial \upsilon}{\partial t}\right\vert_{t=0} &=&  -\frac{A\omega x}{L}
+\eea
+这样就把问题转化为求有源的方程。可以参考例题1的标准套路解决这个问题，请自行完成。
+
+\end{frame}
+
+
+\ech
+\end{document}

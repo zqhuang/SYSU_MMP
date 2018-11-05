@@ -2,23 +2,24 @@
 \input{macros.tex}
 \input{titlepage.tex}
   \date{}
-\begin{document}
-\tpage{13}{Wave Equation}
+  \begin{document}
+  \bch
+\tpage{14}{波动方程}
 
 \begin{frame}
-\chtitle{本讲内容}
-\bch
+\frametitle{本讲内容}
+
 \bitem
-\item{波动方程的例子：
-  \bitem
+\item{波动方程的例子
+\bitem  
 \item{弦的横振动}
 \item{杆的纵振动}
-\item{电磁波和引力波}
+\item{电磁波}
   \eitem}
-\item{齐次边界条件下的解法}
-\item{非齐次边界条件}  
+\item{一维无界波动方程的通解}
+\item{二维薄膜的横向小振动问题}  
 \eitem
-\ech
+
 \end{frame}
 
 
@@ -26,8 +27,8 @@
 \secpage{波动方程}{$$\frac{\partial^2 u}{\partial t^2}-a^2\nabla^2u = 0$$}
 
 \begin{frame}
-\chtitle{弦的横振动方程}
-\bch
+\frametitle{弦的横振动方程}
+
 完全均匀沿水平方向绷直的的弦，线密度为$\rho$，张力为$f$。弦的各部分沿垂直方向稍稍偏离平衡位置，偏离量$u$是水平位置$x$的函数。
 
 \addfig{2}{string_force.png}
@@ -35,66 +36,65 @@
 如图考虑弦的一小段，弦的纵向（沿$x$向）净受力为 $$ f \cos\theta_2 - f\cos\theta_1 \approx \frac{1}{2}\left(\theta_1^2-\theta_2^2\right) f $$
 这是$\theta_1$和$\theta_2$的高阶小量，我们将它忽略掉（即认为横向是受力平衡的）。
 
-\ech
+
 \end{frame}
 
 
 
 \begin{frame}
-\chtitle{弦的横振动方程}
-\bch
+\frametitle{弦的横振动方程}
+
 \addfig{2.}{string_force.png}
 
 弦的横向净受力为 $$ f \sin\theta_2 - f\sin\theta_1 \approx \left(\theta_2-\theta_1\right) f $$
 $\theta_2$和$\theta_1$可以近似用弦的斜率来代替，设这一小段的坐标从$x$到$x+dx$
 $$\theta_2-\theta_1 \approx \left.\frac{\partial u}{\partial x}\right\vert_{x+dx}-\left.\frac{\partial u}{\partial x}\right\vert_{x} \approx \frac{\partial^2u}{\partial x^2} dx $$
 
-\ech
+
 \end{frame}
 
 
 \begin{frame}
-\chtitle{弦的横振动方程}
-\bch
+\frametitle{弦的横振动方程}
+
 \addfig{2.}{string_force.png}
 根据$F=ma$，得到弦的这一段沿垂直方向的加速度
 $$\frac{\partial ^2u}{\partial t^2} = \frac{f\frac{\partial^2u}{\partial x^2} dx}{\rho dx} = a^2 \frac{\partial^2u}{\partial x^2} ,$$
 其中$\rho$为质量线密度， $a$定义为$\sqrt{\frac{f}{\rho}}$，具有速度的量纲。
 
-\ech
+
 \end{frame}
 
 
 
 \begin{frame}
-\chtitle{弦的横振动方程}
-\bch
+\frametitle{弦的横振动方程}
+
 最后，得到弦的横振动方程为波动方程：
 \tbox{\blue $$ \frac{\partial ^2u}{\partial t^2}  -  a^2 \frac{\partial^2u}{\partial x^2} = 0 $$}
 波动方程和热传导方程不同：
 \bitem
-\item{热传导方程分离变量之后得到的时间因子方程是$\Psi'/\Psi =$常数，解的变化规律是指数式衰减（指数式增长模式因一般不符合物理图像而被无情地抛弃）；}
-\item{
-  波动方程分离变量后得到的时间因子方程是$\Psi''/\Psi =$常数，解的变化规律是无衰减的波动(正弦和余弦）。}
+\item{热传导方程分离变量之后得到的时间因子方程是$\Psi'/\Psi =$常数，解的变化规律是指数式衰减（指数式增长模式因无法满足边界条件舍去）；}
+\item{波动方程分离变量后得到的时间因子方程是$\Psi''/\Psi =$常数，解的变化规律是无衰减的波动(正弦和余弦）。}
   \eitem
 
-\ech
+
 \end{frame}
 
 
 \begin{frame}
-\chtitle{思考题}
-\bch
+\frametitle{思考题}
+
 \addfig{0.8}{think1.jpg}
 
 弦一振动不是就被拉长了吗？为什么在前面的推导过程中把张力$f$当成常量？
-\ech
+
 \end{frame}
 
 
 \begin{frame}
-\chtitle{杆的纵振动方程}
-\bch
+\frametitle{杆的纵振动方程}
+
 设一根均匀弹性杆，一开始处于静止并受力平衡，各个切面的位置可以用$x$来标记。
 
 然后考虑沿杆的方向发生压缩-拉伸的变化： 每个初始坐标为$x$的切面沿着杆的方向有小小的偏离平衡位置的位移$u(x)$。
@@ -106,16 +106,16 @@ $$\frac{\partial ^2u}{\partial t^2} = \frac{f\frac{\partial^2u}{\partial x^2} dx
 $$ P = E\frac{\partial u}{\partial x},$$
 其中$E$称为杨氏模量 （Young's modulus).
 
-\ech
+
 \end{frame}
 
 
 
 \begin{frame}
-\chtitle{杆的纵振动方程}
-\bch
+\frametitle{杆的纵振动方程}
 
-按照套路，对$x$和$x+dx$之间的一小段杆运用强大的$F=ma$，得到
+
+按照套路，对$x$和$x+dx$之间的一小段杆运用$F=ma$，得到
 $$ \frac{\partial^2u}{\partial t^2} = \frac{(P(x+dx)-P(x))S}{\rho S dx} = \frac{E}{\rho} \frac{\partial^2u}{\partial x^2},$$
 其中 $S$为截面积，$\rho$为质量密度。
 
@@ -125,35 +125,45 @@ $$ \frac{\partial^2u}{\partial t^2} = \frac{(P(x+dx)-P(x))S}{\rho S dx} = \frac{
 
 \tbox{\blue $$ \frac{\partial ^2u}{\partial t^2}  -  a^2 \frac{\partial^2u}{\partial x^2} = 0 $$}
 
-\ech
+
 \end{frame}
 
 
 \begin{frame}
-\chtitle{电磁波和引力波}
-\bch
-上述两个例子里空间是一维的，一般的波动方程为
-\tbox{\blue $$\frac{\partial ^2u}{\partial t^2}  -  a^2 \nabla^2 u = 0 $$}
-我们马上会看到，$a$的物理意义为波速。
-
-\skiplines
-
-
-电磁波和引力波都满足上述方程($a$为光速)。
-
-电磁波的情况，$u$是垂直电磁波的传播方向的电场强度或磁场强度；
-
-引力波的情况，$u$是度规二阶张量的分量(此处有黑人问号.jpg)。
-
-\ech
+\frametitle{电磁波}
+真空中的电磁场满足无源的麦克斯韦方程：
+$$ \nabla\cdot \mathbf{E} = 0,\ \nabla\cdot\mathbf{B} = 0.$$
+$$\nabla\times \mathbf{E} = - \frac{\partial \mathbf{B}}{\partial t},\ \nabla\times \mathbf{B} = \frac{1}{c^2} \frac{\partial \mathbf{E}}{\partial t}.$$
+由此可以得到
+$$\nabla\times \nabla\times \mathbf{E} = - \frac{1}{c^2}\frac{\partial^2\mathbf{E}}{\partial t^2}.$$
 \end{frame}
 
-\section{BD1}
-\secpage{齐次边界条件下的解法}{按套路来就行}
+\begin{frame}
+  \frametitle{电磁波}
+  利用{\blue 旋度的旋度是散度的梯度和梯度的散度之差}，即
+  $$ \nabla\times \nabla\times \mathbf{E} = \nabla(\nabla\cdot\mathbf{E}) - \nabla^2\mathbf{E} = -\nabla^2\mathbf{E},$$
+  这里的$\nabla^2\mathbf{E}$是指矢量$(\nabla^2E_x, \nabla^2E_y, \nabla^2E_z)$
+
+  最后得到电场的方程
+  $$ \frac{\partial^2\mathbf{E}}{\partial t^2} - c^2\nabla^2\mathbf{E} = 0. $$
+  类似的操作可以得到磁场满足同样的方程：
+  $$ \frac{\partial^2\mathbf{B}}{\partial t^2} - c^2\nabla^2\mathbf{B} = 0. $$  
+\end{frame}
+
 
 \begin{frame}
-\chtitle{分离变量法}
-\bch
+上述几个例子给出的方程可以统一地写成：
+\tbox{\blue $$\frac{\partial ^2u}{\partial t^2}  -  a^2 \nabla^2 u = 0, $$}
+$a$的物理意义为波的相速度。
+
+\end{frame}
+
+
+\section{1D general solution}
+
+\begin{frame}
+\frametitle{分离变量法}
+
 仍然回到一维空间的情况：
 
 令 $u = \Phi(x)\Psi(t)$，代入波动方程，得到
@@ -167,13 +177,13 @@ $$ e^{\ii k(x\mp at)}, $$
 
 如果我们追踪相位为零的点，则得到$x = \pm at$；即 $e^{\ii k(x - at)}$描述的是沿$x$轴正向传播的波，$e^{\ii k(x + at)}$ 描述的是沿$x$轴负向传播的波。
 
-\ech
+
 \end{frame}
 
 
 \begin{frame}
-\chtitle{分离变量法}
-\bch
+\frametitle{分离变量法}
+
 虽然
 $$ e^{\ii k(x\mp at)}, $$
 具有很容易看出波速的优点，但这并不是唯一的写法。
@@ -184,13 +194,13 @@ $$ e^{\ii k(x\mp at)}, $$
 当我们需要实数解时，可以把解写成：
 $$ \cos (kx)\cos(akt),\ \sin(kx)\cos(akt),\ \cos(kx)\sin(akt),\ \sin(kx)\sin(akt)$$
 的线性组合。
-\ech
+
 \end{frame}
 
 
 \begin{frame}
-\chtitle{无界的情形}
-\bch
+\frametitle{无界的情形}
+
 在空间无边界的情况下，可以按照套路写出：
 $$ u(x,t) = \frac{1}{\sqrt{2\pi}} \int c(k)e^{\ii k(x-at)} dk + \frac{1}{\sqrt{2\pi}} \int d(k)e^{\ii k(x+at)} dk $$
 设$c(k)$和$d(k)$的傅立叶逆变换为$C(x)$和$D(x)$。上式只是把傅立叶逆变换中的$x$换成了$x\mp at$，结果应为：
@@ -199,12 +209,12 @@ $$ u(x, t) = C(x-at) + D(x+at).$$
 
 {\scriptsize $u(x,t)$显然除了依赖于初始的位移$u$，还依赖于初始的速度$\frac{\partial u}{\partial t}$，因此需要两个初始条件，相应可以确定两个未知函数$C$和$D$。}
 
-\ech
+
 \end{frame}
 
 \begin{frame}
-\chtitle{例题}
-\bch
+\frametitle{例题}
+
 求解满足下列初始条件的无边界波动方程：
 \bea
 \frac{\partial ^2u}{\partial t^2}  -  a^2 \frac{\partial^2u}{\partial x^2} &=& 0, \newl
@@ -212,12 +222,12 @@ $$ u(x, t) = C(x-at) + D(x+at).$$
 \left.\frac{\partial u}{\partial t}\right\vert_{t=0} &=&  0.  
 \eea
 其中$A,\sigma$均为已知常量。
-\ech
+
 \end{frame}
 
 \begin{frame}
-\chtitle{解答}
-\bch
+\frametitle{解答}
+
 令 $u(x,t) = C(x-at)+D(x+at)$，则根据初始条件，有
 $$ C(x) + D(x) = Ae^{-\frac{x^2}{2\sigma^2}} $$
 以及
@@ -225,13 +235,13 @@ $$ C'(x) = D'(x)  $$
 由此易解出
 $$ u(x,t) = \frac{A}{2}\left(e^{-\frac{(x-at)^2}{2\sigma^2}}  + e^{-\frac{(x+at)^2}{2\sigma^2}}\right).$$
 
-\ech
+
 \end{frame}
 
 \begin{frame}
-\chtitle{解答}
-\chtitle{思考题}
-\bch
+\frametitle{解答}
+\frametitle{思考题}
+
 
 \addfig{1}{think2.jpg}
 
@@ -241,146 +251,57 @@ $$ u(x,t) = \frac{A}{2}\left(e^{-\frac{(x-at)^2}{2\sigma^2}}  + e^{-\frac{(x+at)
 \left.\frac{\partial u}{\partial t}\right\vert_{t=0} &=&  \psi(x).
 \eea
 其中$\phi(x)$和$\psi(x)$为给定的函数，你还能求解吗？
-\ech
+
 \end{frame}
 
+
+\section{2D problem}
 
 \begin{frame}
-\chtitle{思考题}
-\bch
+  \frametitle{膜振动问题}
 
-\addfig{1}{think3.jpg}
+  把一个边长为$L$的方形薄膜四周固定，然后研究它的横向小振动$u(x,y,t)$ ($0\le x,y\le L$, $t\ge 0$)：
 
-波动方程也是线性方程，可以用积分变换和格林函数的方法来求解无边界问题吗？
-\ech
+  \bea
+  \frac{\partial ^2u}{\partial t^2} - a^2\nabla^2 u &=& 0,\newl
+  \left.u\right\vert_{x=0}=\left.u\right\vert_{x=L}=\left.u\right\vert_{y=0}=\left.u\right\vert_{y=L} &=& 0, \newl
+  \left. u\right\vert_{t=0} &=& \phi(x,y), \newl
+  \left. \frac{\partial u}{\partial t}\right\vert_{t=0} &=& \psi(x,y),
+  \eea
+  
+  其中$\phi(x,y)$和$\psi(x,y)$都是已知函数。
 \end{frame}
-
 
 \begin{frame}
-\chtitle{有边界的情况}
-\bch
-设弦的两端固定于$x=0$和$x=L$处，则
-
-\bea
-\frac{\partial ^2u}{\partial t^2}  -  a^2 \frac{\partial^2u}{\partial x^2} &=& 0, \newl
-\left.u\right\vert_{x=0} &=& 0,\newl
-\left.u\right\vert_{x=L} &=& 0,\newl
-\left.u\right\vert_{t=0} &=& \phi(x) , \newl
-\left.\frac{\partial u}{\partial t}\right\vert_{t=0} &=&  \psi(x).
-\eea
-其中$\phi$和$\psi$均为给定的函数。
-\ech
+  \frametitle{解答大意}
+  按照分离变量法套路得到
+  {\scriptsize $$ u(x,y,t) = \sum_{n=1}^\infty\sum_{m=1}^\infty \sin\frac{n\pi x}{L}\sin\frac{m\pi y}{L}\left(c_{nm} \cos\frac{\sqrt{m^2+n^2}\pi at}{L} + s_{nm}\sin\frac{\sqrt{m^2+n^2}\pi at}{L}\right).$$}
+  再由初始条件得到
+  $$\phi(x,y) = \sum_{n=1}^\infty\sum_{m=1}^\infty c_{nm}\sin\frac{n\pi x}{L}\sin\frac{m\pi y}{L},$$
+  和
+  $$\psi(x,y) = \sum_{n=1}^\infty\sum_{m=1}^\infty \frac{\sqrt{m^2+n^2}\pi a}{L} s_{nm}\sin\frac{n\pi x}{L}\sin\frac{m\pi y}{L}.$$
+  由此可以确定$c_{mn}$和$s_{mn}$.
 \end{frame}
-
-
-
-\begin{frame}
-\chtitle{套路}
-\bch
-    （空间）边界条件已经是齐次的了，可以直接看出解为$\sin(\frac{n\pi}{L} x)\cos{\frac{n\pi a}{L}t}$和$\sin(\frac{n\pi}{L} x)\sin{\frac{n\pi a}{L}t}$的线性组合。不妨设：
-
-    $$u(x,t) = \sum_{n=0}^\infty \sin(\frac{n\pi}{L} x)\left(c_n\cos{\frac{n\pi a}{L}t} + s_n \sin{\frac{n\pi a}{L}t} \right). $$
-    利用第一个初始条件：
-    $$ \sum_{n=0}^\infty c_n \sin(\frac{n\pi}{L} x) = \phi(x) $$
-    可以确定$c_n$。
-    再利用第二个初始条件：
-    $$ \sum_{n=0}^\infty \frac{n\pi a}{L} s_n \sin(\frac{n\pi}{L} x) = \psi(x) $$   可以确定 $s_n$。
-\ech
-\end{frame}
-
-\section{BD2}
-\secpage{非齐次边界条件}{凑/蒙特解：能否成功看人品…}
-
-\begin{frame}
-\chtitle{非齐次边界条件}
-\bch
-考虑固定在$x=0$和$x=L$之间的弦的横振动问题。设一开始$t=0$时刻弦处于平衡位置静止，在$t>0$时强迫弦的$x=L$端以振幅$A$，频率$\omega$振动。
-
-\bea
-\frac{\partial ^2u}{\partial t^2}  -  a^2 \frac{\partial^2u}{\partial x^2} &=& 0, \newl
-\left.u\right\vert_{x=0} &=& 0,\newl
-\left.u\right\vert_{x=L} &=& A\sin (\omega t),\newl
-\left.u\right\vert_{t=0} &=& 0 , \newl
-\left.\frac{\partial u}{\partial t}\right\vert_{t=0} &=&  0.
-\eea
-\ech
-\end{frame}
-
-
-\begin{frame}
-\chtitle{求（蒙）特解化为齐次边界条件问题}
-\bch
-考虑如下的{\blue 满足边界条件但不满足初始条件的特解}：
-$$ u_0(x,t) = A \sin(\omega t) \frac{\sin\frac{\omega x}{a}}{\sin\frac{\omega L}{a}}  $$
-令$u(x,t) = u_0(x,t) + \upsilon(x,t)$，则$\upsilon(x,t)$满足：
-\bea
-\frac{\partial ^2\upsilon}{\partial t^2}  -  a^2 \frac{\partial^2\upsilon}{\partial x^2} &=& 0, \newl
-\left.\upsilon\right\vert_{x=0} &=& 0, \newl
-\left.\upsilon \right\vert_{x=L} &=& 0,\newl
-\left.\upsilon \right\vert_{t=0} &=& 0 , \newl
-\left.\frac{\partial \upsilon}{\partial t}\right\vert_{t=0} &=&  -A\omega \frac{\sin\frac{\omega x}{a}}{\sin\frac{\omega L}{a}}
-\eea
-用标准套路求解$\upsilon(x,t)$的任务就留给你了。
-\ech
-\end{frame}
-
 
 \section{Homework}
 
 \begin{frame}
-\chtitle{课后作业 (题号 27-29)}
-\bch
+\frametitle{Homework for Quizphobias}
+
 \bitem
-\item[27]{求解无边界的定解问题：
+\item[40]{波动问题为什么需要两个初始条件？}
+\item[41]{证明“旋度的旋度等于散度的梯度和梯度的散度之差”。}
+\item[42]{求解无边界的定解问题：
 \bea
 \frac{\partial ^2u}{\partial t^2}  -  a^2 \frac{\partial^2u}{\partial x^2} &=& 0, \newl
 \left.u\right\vert_{t=0} &=& A e^{-\frac{x^2}{2\sigma^2}} , \newl
 \left.\frac{\partial u}{\partial t}\right\vert_{t=0} &=&  Bxe^{-\frac{x^2}{2\sigma^2}} .  
 \eea
 其中$a, A,B,\sigma$均为已知常量。
-}
+}  
 \eitem
-\ech
+
 \end{frame}
 
-
-\begin{frame}
-\chtitle{课后作业 (题号 27-29)}
-\bch
-\bitem
-\item[28]{求解$0\le x\le L$上的定解问题:
-\bea
-\frac{\partial ^2u}{\partial t^2}  -  a^2 \frac{\partial^2u}{\partial x^2} &=& 0, \newl
-\left. u\right\vert_{x=0} &=& 0,\newl
-\left.\frac{\partial u}{\partial x}\right\vert_{x=L} &=& 0,\newl
-\left.u\right\vert_{t=0} &=& \phi(x) , \newl
-\left.\frac{\partial u}{\partial t}\right\vert_{t=0} &=& \psi(x) 
-\eea
-其中 $a$为常量， $\phi$和$\psi$为已知函数。
-}
-\eitem
 \ech
-\end{frame}
-
-
-\begin{frame}
-\chtitle{课后作业 (题号 27-29)}
-\bch
-\bitem
-\item[29]{
-我们在课上讨论了$0\le x\le L$上的定解问题：
-\bea
-\frac{\partial ^2u}{\partial t^2}  -  a^2 \frac{\partial^2u}{\partial x^2} &=& 0, \newl
-\left. u\right\vert_{x=0} &=& 0,\newl
-\left. u\right\vert_{x=L} &=& A \sin(\omega t),\newl
-\left.u \right\vert_{t=0} &=& 0 , \newl
-\left.\frac{\partial u}{\partial t}\right\vert_{t=0} &=& 0 
-\eea
-其中$a$, $A$, $\omega$均为已知常量。把求解过程补充完整，求出最终的解，并讨论：当$\frac{\omega L}{\pi a}$为整数时，是否有可能维持这种振动？
-}
-\eitem
-\ech
-\end{frame}
-
-
 \end{document}

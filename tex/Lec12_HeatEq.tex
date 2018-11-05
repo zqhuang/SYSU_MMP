@@ -1,0 +1,353 @@
+\documentclass[CJK]{beamer}
+\input{macros.tex}
+\input{titlepage.tex}
+  \date{}
+  \begin{document}
+  \bch
+\tpage{12}{热传导方程}
+
+
+\begin{frame}
+  \frametitle{内容摘要}
+  \bitem
+\item{热传导方程和它的物理意义}
+\item{分离变量法}  
+\item{格林函数方法}
+  \eitem
+\end{frame}
+
+\section{Heat Equation}
+
+\secpage{热传导方程}{$$\frac{\partial u}{\partial t} - a \nabla^2u = 0.$$}
+
+\begin{frame}
+  \frametitle{热流密度}
+             {\blue 单位时间单位面积流过的热量称为热流密度，它是一个矢量。}
+
+
+               \addfig{1.6}{heatflux.png}             
+
+             
+             上图演示了一根长导热棒中均匀流过热流时的情况：热流密度$\mathbf{j}$的方向沿着导热棒的方向，大小是单位时间单位截面积流过的热量。
+
+
+
+\end{frame}
+
+\begin{frame}
+  \frametitle{傅立叶热导律和导热系数}
+  在没有额外热源的情况下，{\blue 傅立叶热传导定律}把热流密度$\mathbf{j}$和温度的不均匀性(梯度$\nabla T$)联系起来：
+
+  {\blue $$\mathbf{j} = -\lambda\nabla T$$}
+
+  比例系数$\lambda$叫做{\blue 导热系数}。
+
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{思考题}
+  一根长为$2.3\mathrm{m}$，截面积为$10^{-3}\mathrm{m^2}$的均匀铝棒，两端分别和温度为$320\SIK$和$280\SIK$的热库接触。等铝棒上的温度分布达到均匀后，每秒钟有多少热量从高温热库进入铝棒并流向低温热库？
+  （已知在室温附近，铝的导热系数约为 $230\,\mathrm{W/m/K}$。）
+
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{热传导方程}
+  对$\vecj = -\lambda\nabla T$两边取散度得到
+  $$\nabla \cdot \vecj = -\lambda \nabla^2T$$
+  散度等于单位体积流出率，在没有热源、没有相变的情况下能量守恒：
+  $$\nabla\cdot \vecj = -c\rho \frac{\partial T}{\partial t}$$
+  （这里$c$是单位质量热容，$\rho$是质量密度，$c\rho$是单位体积的热容)
+    结合上面两个式子得到\tbox{\blue
+    $$ \frac{\partial  T}{\partial t} - a\nabla^2T = 0,$$}
+    这就是{\blue 热传导方程，$a = \frac{\lambda}{\rho c}$是热传导方程的参数。}
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{思考题}
+  计算下列材料的热传导方程参数$a$:
+
+  \begin{tabular}{ccccc}
+    \hline
+    \hline
+    材料 & $\lambda$ ($\mathrm{W/m/K}$) & $\rho$ ($\SIkg/\SIm^3$) & $c$ ($\SIJ/\SIkg/\SIK$) & $a$ ($\SIm^2/\SIs$) \\
+    \hline
+    铝 & $230$ & $2.7\times 10^3$ & $900$ & \\
+    铅 &  $33$ & $11.3\times 10^3$ & $125$ & \\
+    某种砖 & $0.75$ & $2\times 10^3$ & $750$ & \\
+    \hline
+  \end{tabular}
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{热传导方程参数$a$的物理意义}
+
+  \addfig{1}{think1.jpg}
+  
+  热传导方程参数$a$的量纲是什么？讨论它的物理意义。
+\end{frame}
+
+
+\section{Separation of Variables}
+\secpage{分离变量法}{寻找形如$\phi(x)\psi(t)$的满足（线性的）“方程+边界条件”的解}
+
+
+
+\begin{frame}
+  \frametitle{例题1}
+  求一维空间热传导问题的解$u(x,t)$ ($0\le x\le L, t\ge 0$)
+  $$ \frac{\partial u}{\partial t} - a\frac{\partial^2u}{\partial x^2} = 0;$$
+  边界条件
+  $$ \left.u\right\vert_{x=0} = 0,\ \left.u\right\vert_{x=L}=0; $$
+  初始条件
+  $$ \left.u\right\vert_{t=0} = \phi(x). $$
+  其中$\phi(x)$是已知的函数。
+
+  \skiplines
+  {\scriptsize （**和波动方程不同，热传导方程只需要一个初始条件。数学原因是因为方程里对时间的偏导只有一次。物理上是因为一旦温度定了，热量的流动就由傅立叶定律决定，不需要一个“初始热量流动速度”。**）}
+\end{frame}  
+
+
+\begin{frame}
+  \frametitle{解答：用分离变量法}
+  先不管初始条件。设满足方程和边界条件的某个解为$\phi(x)\psi(t)$，代入方程可以得到：
+  $$\frac{1}{a}\frac{\psi'(t)}{\psi(t)} = \frac{\phi''(x)}{\phi(x)} $$
+  左边是$t$的函数，右边是$x$的函数，两者要恒等就必须是常数:
+  \bitem
+\item{第一种情况，这个常数是正的: $\frac{1}{a}\frac{\psi'}{\psi} = \frac{\phi''}{\phi} = k^2$（这里$k\ge 0$）。由此得到的$\phi(x) = c_1e^ {kx}+c_2e^{-kx}$无法满足$\phi(0)=\phi(L)=0$的边界条件。}
+\item{第二种情况，这个常数是负的: $\frac{1}{a}\frac{\psi'}{\psi} = \frac{\phi''}{\phi} = -k^2$（这里$k\ge 0$）。由此得到$\phi(x) = c_1\cos{kx} + c_2\sin{kx}$, $\psi(t) \propto e^{-ak^2t}$。这样的解可以满足$\phi(0)=\phi(L)=0$的边界条件，只需要$c_1 = 0$, $c_2=1$, $k=\frac{n\pi}{L}$ ($n=1,2\ldots $).}
+  \eitem
+  
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{解答：用分离变量法}
+  把$u$按得到的分离变量形式的解$\sin\frac{n\pi x}{L}e^{-\frac{an^2\pi^2t}{L^2}}$展开：
+  $$ u(x,t) = \sum_{n=1}^\infty c_n  \sin\frac{n\pi x}{L}e^{-\frac{an^2\pi^2t}{L^2}} .$$
+  上式令$t=0$，由初始条件得到：
+  $$\phi(x) = \sum_{n=1}^\infty c_n \sin\frac{n\pi x}{L}. $$
+  两边同乘以$\sin\frac{m\pi x}{L}$并从$0$到$L$积分，得到：
+  $$ c_m = \frac{2}{L}\int_0^L \phi(x)\sin\frac{m\pi x}{L} dx . $$
+\end{frame}
+
+\begin{frame}
+  \frametitle{解答：用分离变量法}
+  最后完整把解写出来就是：
+  $$ u(x,t) = \frac{2}{L}\sum_{n=1}^\infty \left(\int_0^L \phi(y)\sin\frac{n\pi y}{L} dy \right)\, \sin\frac{n\pi x}{L}e^{-\frac{an^2\pi^2t}{L^2}} .$$
+
+\end{frame}
+
+\begin{frame}
+  \frametitle{思考题}
+  在例题1中得到的分离变量形式的成分$\sin\frac{n\pi x}{L}e^{-\frac{an^2\pi^2t}{L^2}}$描述的是温度在尺度$\sim \frac{L}{n}$上的不均匀性。它经过$\frac{L^2}{n^2\pi^2a}$的时间后就会衰减$e$倍。可见温度先是在小尺度范围内变得均匀，然后在大尺度范围内变得均匀。这和$a$的物理意义相符。
+
+  \skipline
+
+  在最大的尺度上，不均匀性需要$\sim \frac{L^2}{\pi^2a}$的时间才会变小$e$倍。请粗略地估算，一个半径为$0.1\SIm$的温度不均匀的孤立铝球，大致经过多久会温度变得均匀（所谓相同，是指各处温差很小，跟初始状态比可以忽略不计）。已知铝的热传导方程参数大约为$10^{-4}\SIm^2/\SIs$。
+\end{frame}
+
+
+\section{Green's Function}
+\secpage{格林函数方法}{格林函数是线性系统对单位脉冲输入的响应}
+
+\begin{frame}
+  \frametitle{思考题}
+  \addfig{0.5}{think2.jpg}
+
+  我们介绍了常用套路：{\blue “方程+边界条件”线性，对初始条件进行分解。}
+  
+  能不能换成：{\blue “方程+初始条件”线性，对边界条件进行分解？}
+
+  或者：{\blue “边界条件+初始条件”线性，对方程进行分解？}
+  
+\end{frame}  
+
+
+\begin{frame}
+  \frametitle{非常规套路的例子}
+  静电场的电势$\phi(\vecx)$满足
+  $$\nabla^2\phi = -\frac{\rho}{\epsilon_0}.$$
+  由于右边的源$-\frac{\rho}{\epsilon_0}$的存在，方程不是线性的；
+  
+  边界条件（$\phi$在无穷远处趋向于零）是线性的；
+
+  因方程没有时间导数项，不需要初始条件。
+
+  \skiplines
+  
+  所以这是个典型的需要“对方程（右边的源）进行分解”的例子。
+\end{frame}  
+
+
+
+\begin{frame}
+  \frametitle{输入和响应}
+  \bitem
+\item{如果使用常规套路：{\blue “方程+边界条件”线性，对初始条件进行分解。}初始条件可以视为“输入”，对应的解可以视为对输入的“响应”。}
+\item{对非常规套路：{\blue “方程+初始条件”线性，对边界条件进行分解。} 边界条件是“输入”，对应的解是“响应”。}
+\item{对非常规套路： {\blue “边界条件+初始条件”线性，对方程进行分解。} 方程里的源是“输入”，对应的解是“响应”。}
+  \eitem
+  共同的特点是：“响应”线性地依赖于“输入”。
+
+  \skipline
+{\scriptsize  在前面举的静电场的电势问题中，响应$\phi(\vecx)$线性地依赖于输入$\rho(\vecx)$：如果$\rho_1(\vecx)$产生电势$\phi_1(\vecx)$，$\rho_2(\vecx)$产生电势$\phi_2(\vecx)$，则对任意常数$c_1,c_2$，$c_1\rho_1(\vecx)+c_2\rho_2(\vecx)$产生电势$c_1\phi_1(\vecx)+c_2\phi(\vecx)$。}
+\end{frame}  
+
+
+\begin{frame}
+  \frametitle{格林函数(Green's Function)}
+  
+  “输入”往往是时间/空间坐标的函数。
+
+  {\scriptsize 在常规套路中，初始条件是“输入”，它一般是依赖于空间坐标的一个或多个函数。当边界条件是“输入”时，“输入”是依赖于时间的函数（描述我在边界上怎么捣腾这个系统）。当方程里的源是“输入”时，“输入”可以同时是时间和空间坐标的函数。}
+
+  \skiplines
+
+  我们把{\blue 某个时间或空间点的单位脉冲输入（$\delta$函数）引起的“响应”称为格林函数}。
+
+  {\scriptsize 注意格林函数是一系列函数，每个时间/空间点的脉冲输入都对应一个格林函数。}
+
+  \skiplines
+  
+  用格林函数解数理方程的办法就是{\blue 把问题给定的“输入”看成很多个单位脉冲的线性组合，然后把这些单位脉冲对应的格林函数按相同权重进行线性组合就得到问题的解。}
+\end{frame}
+
+
+
+\begin{frame}
+  \frametitle{例题2：一维无边界热传导问题}
+  
+  描述一维无边界热传导问题的数理方程是
+  \bea
+  \frac{\partial u}{\partial t} - a\frac{\partial^2 u}{\partial x^2} &=& 0; \newl
+  u_{x=\pm \infty} &=& 0;  \newl  
+  u_{t=0} &=& \phi(x).
+  \eea
+
+  这里初始条件$\phi(x)$是输入，要求解的是响应$u(x,t)$。
+\end{frame}
+
+
+
+\begin{frame}
+  \frametitle{ 一维无边界的热传导方程的格林函数}
+  
+  当输入为某点$x_0$处的单位脉冲，即$\phi(x) = \delta(x-x_0)$时，可以求出解(即格林函数)等于（详细过程参考附录）：
+  $$ G(x, t; x_0)  \equiv \frac{1}{\sqrt{4\pi at}} e^{-\frac{(x-x_0)^2}{4at}}. $$
+\end{frame}
+
+
+
+\begin{frame}
+  \frametitle{格林函数方法}
+
+  对一般的$\phi(x)$，把它拆分成很多个单位脉冲的线性组合：
+  $$ \phi(x) = \sum_{x_0} (\phi(x_0)dx_0)  \delta(x-x_0). $$
+  写成积分形式也许你会更舒服
+  $$\phi(x) = \int \phi(x_0) \delta(x-x_0) dx_0. $$
+
+  问题的解就是把每个脉冲引起的响应（格林函数）做线性迭加：  
+  \tbox{\blue $$u(x,t) = \int_{-\infty}^\infty \,\phi(x_0)G(x,t; x_0)\,dx_0 $$}
+  
+\end{frame}
+
+
+
+
+\section{Homework}
+
+\begin{frame}
+  \frametitle{Homework for quizphobias}
+  \bitem
+\item[34]{课上讲的静电势问题的格林函数是什么？}
+\item[35]{求一维空间热传导问题的解$u(x,t)$ ($0\le x\le L, t\ge 0$)
+  $$ \frac{\partial u}{\partial t} - a\frac{\partial^2u}{\partial x^2} = 0;$$
+  $$ \left.\frac{\partial u}{\partial x}\right\vert_{x=0} = 0,\ \left.\frac{\partial u}{\partial x}\right\vert_{x=L}=0; $$
+  $$ \left.u\right\vert_{t=0} = \phi(x). $$
+  其中$\phi(x)$是已知的函数。}
+\item[36]{在一根均匀的无限长导热棒上的某点注入热量$Q$，导热棒上的温度分布将如何变化？设初始温度$T_0$，截面积$S$，质量密度$\rho$, 单位质量比热$c$，导热系数$\lambda$均已知。}
+
+  \eitem
+\end{frame}
+
+\section{Appendix}
+
+\begin{frame}
+  \frametitle{附录：一维无边界热传导问题的格林函数求解过程}
+  
+  如果{\bf 暂时不管边界条件和初始条件}，用分离变量法可以找到解的形式为
+  \begin{equation}
+    \left(c_k e^{k x} + s_k e^{-k x}\right) e^{ak^2t},\ \ \ (k\ge 0) \label{eq:s1}
+  \end{equation}
+  对固定的$k$，$c_k$和$s_k$都是常系数。
+
+  或者
+  \begin{equation}
+    \left(c_k e^{\ii k x} + c_k^* e^{-\ii k x}\right) e^{- ak^2t},\ \ \ (k\ge 0) \label{eq:s2}
+  \end{equation}
+  对固定的$k$，$c_k$是常系数。
+  
+\end{frame}
+
+\begin{frame}
+  \frametitle{附录：一维无边界热传导问题的格林函数求解过程}
+  这些函数看起来都不满足边界条件，但形式\eqref{eq:s2}其实可以勉强一用。
+
+  一方面，跟形式\eqref{eq:s1}在无穷远处的狂暴行为相比，形式\eqref{eq:s2}显得更有节制。
+
+  另一方面，按照形式\eqref{eq:s2}的展开其实就是傅立叶变换。记得某叫兽曾经讲过：{\blue 傅立叶变换的默认设置是源和像在无穷远处都趋向于零。}（当然这句话并非绝对正确，数学上很容易构造出一堆反例。）
+
+\end{frame}
+
+\begin{frame}
+  \frametitle{附录：一维无边界热传导问题的格林函数求解过程}  
+  把喜欢搞事情的数学家都踢飞之后，写出
+  $$ u(x,t) = \frac{1}{\sqrt{2\pi}}\int_{-\infty}^\infty c(k) e^{-ak^2t}e^{\ii k x} dk $$
+  也就是说，之前的$c_k$被写成了$\frac{c(k)dk}{\sqrt{2\pi}}$，在$k$连续取值的极限下，求和变成了积分。
+  
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{附录：一维无边界热传导问题的格林函数求解过程}
+  
+  仍然按照套路，为了求出系数$c(k)$，令$t=0$并利用初始条件，
+  $$ \delta(x-x_0) = \frac{1}{\sqrt{2\pi}}\int_{-\infty}^\infty c(k) e^{\ii k x} dk $$
+  把上式看成傅立叶逆变换，显然$c(k)$可以用傅立叶变换求得：
+  $$ c(k) = \frac{1}{\sqrt{2\pi}}\int_{-\infty}^\infty  \delta(x-x_0)e^{-\ii kx}dx = \frac{ e^{-\ii kx_0}}{\sqrt{2\pi}} $$
+  于是得到
+  $$ u(x,t) = \frac{1}{2\pi}\int_{-\infty}^\infty e^{-ak^2t}e^{\ii k (x-x_0)} dk $$
+  
+  
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{附录：一维无边界热传导问题的格林函数求解过程}
+  
+  再进行简单的积分（回忆计算  $e^{-x^2}\cos x$的积分时的技巧)：
+    \bea
+    u(x,t) &=& \frac{1}{2\pi}\int_{-\infty}^\infty e^{-ak^2t}e^{\ii k (x-x_0)} dk \newl
+    &=& \frac{1}{2\pi}e^{-\frac{(x-x_0)^2}{4at}}\int_{-\infty}^\infty e^{-at(k+\ii\frac{x-x_0}{2at})^2} dk \newl
+    &=& \frac{1}{2\pi}e^{-\frac{(x-x_0)^2}{4at}} \sqrt{\frac{\pi}{at}}\newl
+    &=&  \frac{1}{\sqrt{4\pi at}} e^{-\frac{(x-x_0)^2}{4at}}    
+    \eea
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{物理直觉大补汤：随机热运动的时间积累}
+  在这个格林函数解里，温度是标准差为$\sqrt{2at}$的正态分布。
+
+  这印证了热传导方程的参数$a$的物理含义：{\blue $a$大致是单位时间内热量扩散尺度的平方。}
+  
+\end{frame}
+
+
+\ech
+\end{document}
