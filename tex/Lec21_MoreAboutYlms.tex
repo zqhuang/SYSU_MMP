@@ -4,118 +4,73 @@
   \date{}
   \begin{document}
   \bch
-\tpage{23}{Advanced Topics on $Y_{\ell m}$'s}
+\tpage{21}{勒让德多项式，球谐函数的更多性质}
+
+
+
 
 \begin{frame}
 \frametitle{本讲内容}
 
 \bitem
-\item{$\delta$函数和正交归一完备函数组的关系}
-\item{球面谐函数的微分表达式}
-\item{球面谐函数的加法公式}
+\item{$Y_{\ell 0}$和勒让德多项式}
+\item{罗巨格公式，连带勒让德函数}  
+\item{$Y_{\ell m}$的各种对称性}
+\item{$\delta$的展开}  
+\item{加法公式}
 \eitem
 
 \end{frame}
 
-\section{$\delta$ function expansion}
-\secpage{$\delta$函数和正交归一完备函数组的关系}{$$\delta(\vecx-\vecx') = \sum_i Q_i(\vecx)Q_i(\vecx') $$}
+\section{Legendre Polynomials}
+
 
 \begin{frame}
-  \frametitle{$\delta$函数和正交归一完备函数组的关系}
-  
-  设$n$维空间的某区域$\Omega$内函数组$Q_i(\vecx)$构成正交归一的完备函数组，即
-  $$\int_\Omega Q_i(\vecx)Q_j(\vecx) d^n\vecx = \delta_{ij},$$
-  由完备性，$\Omega$内的函数总是可以用$Q_i(\vecx)$进行展开，特别地，对固定的$\vecx'$，我们把函数$\delta(\vecx-\vecx')$进行展开：
-  $$\delta(\vecx-\vecx') = \sum_i c_iQ_i(\vecx)$$
-  由$Q_i$的正交归一性，系数
-  $$c_i = \int_\Omega \delta(\vecx-\vecx')Q_i(\vecx) d^n\vecx = Q_i(\vecx')$$
-  
-  
+\frametitle{金属球外的点电荷}
+
+金属球外距离球心$a$处的点电荷$Q$造成的电势是一个熟悉的距离反比电势。
+\bmini{0.5}
+\lfig{2}{potential_inside.png}
+\emini
+\bmini{0.45}
+如图建立球坐标系。设感应电荷产生的电势为$u(r, \theta)$ (由轴对称性很容易看出$u$不依赖于$\phi$)。则在星号位置处的总电势为：
+\emini
+$$U_{\rm total} = u(r, \theta) +\frac{Q}{4\pi\epsilon_0 \sqrt{a^2+r^2-2ar\cos\theta}}. $$
+
+\end{frame}
+
+\begin{frame}
+\frametitle{勒让德函数的母函数定理}
+
+套路当然是要把$\frac{Q}{4\pi\epsilon_0 \sqrt{a^2+r^2-2ar\cos\theta}}$写成一堆球坐标系谐函数的和。这要用到下列{\blue 勒让德多项式的母函数定理：
+  $$ \frac{1}{\sqrt{1+t^2-2xt}} = \sum_{\ell =0}^\infty P_\ell (x) t^\ell,\ \ \ t<|x\pm \sqrt{x^2-1}|  .$$}
+其中的勒让德多项式$P_\ell(x)$是一个$\ell$次多项式，它和$m=0$的球谐函数的关系为{\blue 
+$$P_\ell(\cos\theta) = \sqrt{\frac{4\pi}{2\ell + 1}}Y_{\ell 0}(\theta,\phi).$$}
+
 \end{frame}
 
 
 \begin{frame}
-  \frametitle{$\delta$函数和正交归一完备函数组的关系}
-  
-  把$c_i$代回去得到：
-  \tbox{
-    $$\delta(\vecx-\vecx') = \sum_i Q_i(\vecx')Q_i(\vecx).$$}
-  如果是用{\blue 复函数内积定义的正交归一性}，则上式变为
-  \tbox{\blue 
-    $$\delta(\vecx-\vecx') = \sum_i Q_i^*(\vecx')Q_i(\vecx).$$}
-  如果正交归一性里的内积定义带权重：$\int_\Omega Q_i(\vecx)Q_j(\vecx)\rho(\vecx)d^n\vecx = \delta_{ij} $，则
+\frametitle{球外点电荷感应电势问题的解}
 
-  \tbox{\blue 
-    $$\delta(\vecx-\vecx') = \sum_i \rho(\vecx')Q_i(\vecx')Q_i(\vecx).$$}
+\bea
+\frac{Q}{4\pi\epsilon_0 \sqrt{a^2+r^2-2ar\cos\theta}} &=& \frac{Q}{4\pi\epsilon_0 a \sqrt{1+ \left(\frac{r}{a}\right)^2-2\frac{r}{a}\cos\theta}} \newl
+&=& \frac{Q}{4\pi\epsilon_0a}\sum_{\ell= 0}^\infty P_{\ell}(\cos\theta)\left(\frac{r}{a}\right)^\ell .
+\eea
+要求球内部总电势处处相等，则$\ell >0 $的项必须全部被$u$抵消。又根据球心处$u=0$，可以确定常数项为零：
+$$\left. u(r, \theta)\right\vert_{r\le R} = - \frac{Q}{4\pi\epsilon_0a}\sum_{\ell= 1}^\infty P_{\ell}(\cos\theta)\left(\frac{r}{a}\right)^\ell . $$
 
-  
-\end{frame}
-
-\begin{frame}
-  \frametitle{单位球面上的$\delta$函数}
-  
-  单位球面上的坐标$\theta,\phi$对应了一个方向$\vecn$(从原点出发指向单位球面上$\theta,\phi$点的单位矢量)。单位球面上的函数可以抽象地写为$f(\vecn)$的形式。单位球面上的面积元$\sin\theta d\theta d\phi$可以抽象地写作$d^2\vecn$。
-  
-
-  \skipline
-  
-  在不致引起混淆的情况下，我们也{\blue 用$Y_{\ell m}(\vecn)$来表示$Y_{\ell m}(\theta,\phi)$}。根据前面的讨论，有
-{\blue
-  $$\delta(\vecn-\vecn') = \sum_{\ell m} Y_{\ell m}^*(\vecn') Y_{\ell m}(\vecn).$$}
-这里的$\delta(\vecn-\vecn')$是单位球面上的二维$\delta$函数（在$\vecn'$处的大小为$\epsilon\rightarrow 0^+$的小面积上的函数值为$\frac{1}{\epsilon}$，其余处处为零）。
-$\sum_{\ell m}$是双重求和$\sum_{\ell = 0}^\infty\sum_{m =-\ell}^\ell $的简写。
-  
-\end{frame}
-
-
-
-\section{Explicit Expression of $Y_{\ell m}$}
-\secpage{球面谐函数的微分表示}{  {\scriptsize
-    $$ Y_{\ell m}(\theta,\phi) =\frac{1}{2^\ell \ell !}\sqrt{\frac{(2\ell+1)}{4\pi} \frac{(\ell-m)!}{(\ell+m)!}}\left[\sin^m\theta \left(\frac{1}{\sin\theta}\frac{d}{d\theta}\right)^{\ell+m}\sin^{2\ell}\theta \right] e^{\ii m\phi}$$}}
-
-\begin{frame}
-  \frametitle{准备工作：乘积多重导数公式}
-  
-  设$f$,$g$为$x$的函数，我们都知道
-  $$ (fg)' = f'g + fg'. $$
-  这个公式可以推广到任意阶导数：\tbox{
-  $$ (fg)^{(n)} = \sum_{k=0}^n \frac{n!}{k!(n-k)!} f^{(k)}g^{(n-k)}, $$}
-  其中 $f^{(k)}$表示$f$的$k$重导数。
-
-  \skipline
-  {\small \darkgreen (和二项式定理一样，这个公式最简明有效的证明方法是用数学归纳法，请自行完成。）}
-  
 \end{frame}
 
 
 \begin{frame}
-  \frametitle{准备工作：推广的乘积多重导数公式}
-  
-  设$\rho$, $f$, $g$为$x$的函数，则
-  \tbox{
-    $$ \left(\rho\frac{d}{dx}\right)^n (fg) = \sum_{k=0}^n \frac{n!}{k!(n-k)!} \left[ \left(\rho\frac{d}{dx}\right)^k f \right]\left[  \left(\rho\frac{d}{dx}\right)^{n-k} g\right], $$}
+\frametitle{球外点电荷感应电势问题的解}
 
-  \skipline
-  
-  {\small \darkgreen 证明思路：令$y = \int \frac{dx}{\rho}$并对变量$y$应用乘积的多重导数公式。}
-  
-  
-\end{frame}
+根据套路，在球外的解只要作个替换$r^\ell \rightarrow \frac{R^{2\ell +1}}{r^{\ell+1}}$:
 
+$$\left. u(r, \theta)\right\vert_{r>R} = - \frac{Q}{4\pi\epsilon_0a}\sum_{\ell= 1}^\infty P_{\ell}(\cos\theta)\frac{R^{2\ell+1}}{a^\ell r^{\ell +1}}. $$
 
-\begin{frame}
-\frametitle{思考题}
-
-记算符$\hatD = \frac{1}{\sin\theta}\frac{d}{d\theta}$，请验证：
-\bitem
-\item{$\hatD\sin^2\theta = 2\cos\theta$;}
-\item{$\hatD^2\sin^2\theta = -2$;}
-\item{对整数$n>2$，$\hatD^n \sin^2\theta = 0$.}  
-\item{$\hatD\cos\theta = -1$;}
-\item{对整数$m$, $\hatD \sin^m\theta = m \sin^{m-2}\theta \cos\theta$;}
-\item{对整数$m$, $\hatD (\sin^m\theta\cos\theta) =m\sin^{m-2}\theta - (m+1)\sin^m\theta$;}  
-\eitem
-  
+用镜像电荷（因为是电磁学内容，和数理方程关系不大，不再详细讲解）得到的表达式是有限的。这里的结果是级数展开。有兴趣的话可以尝试证明两者互相等价
 
 \end{frame}
 
@@ -123,150 +78,81 @@ $\sum_{\ell m}$是双重求和$\sum_{\ell = 0}^\infty\sum_{m =-\ell}^\ell $的�
 
 
 \begin{frame}
-  \frametitle{球面谐函数的微分表达式}
-  
+\frametitle{勒让德多项式的母函数定理的证明}
 
-  {\small \blue
-    $$ Y_{\ell m}(\theta,\phi) =\frac{1}{2^\ell \ell !}\sqrt{\frac{(2\ell+1)}{4\pi} \frac{(\ell-m)!}{(\ell+m)!}}\left[\sin^m\theta \left(\frac{1}{\sin\theta}\frac{d}{d\theta}\right)^{\ell+m}\sin^{2\ell}\theta \right] e^{\ii m\phi}$$}
-
-  
-\end{frame}
-
-
-\begin{frame}
-  \frametitle{证明概要}
-  
-  记
-  $$N_{\ell m}  := \frac{1}{2^\ell \ell !}\sqrt{\frac{(2\ell+1)}{4\pi} \frac{(\ell-m)!}{(\ell+m)!}};$$
-  $$\Psi_{\ell m}(\theta)  := \sin^m\theta \left(\frac{1}{\sin\theta}\frac{d}{d\theta}\right)^{\ell+m}\sin^{2\ell}\theta. $$
-  则只要证明微分方程和归一化：
-  \bitem
-\item{$$ \frac{1}{\sin \theta}\frac{d}{d\theta} \left[\sin\theta \frac{d}{d\theta}\Psi_{\ell m}\right] + \left[\ell(\ell+1)-\frac{m^2}{\sin^2\theta}\right]\Psi_{\ell m} = 0.$$}
-\item{$$ \int_0^\pi \left[\Psi_{\ell m}(\theta)\right]^2 \sin\theta d\theta =  \frac{1}{2\pi N_{\ell m}^2} = 4^\ell (\ell!)^2\frac{(\ell+m)!}{(\ell-m)!} \frac{2}{2\ell+1}.  $$
+{\small
+\bea
+\frac{1}{\sqrt{1+t^2-2xt}} &=&\frac{1}{(1-t)\sqrt{1-\frac{2(x-1)t}{(1-t)^2}}} \newl
+&=& \frac{1}{1-t}\sum_{k=0}^\infty \bral -\frac{1}{2}\\ k \brar \left(-\frac{2(x-1)t}{(1-t)^2}\right)^k \newl
+&=& \sum_{k=0}^\infty \frac{(2k)!}{2^k(k!)^2}(x-1)^kt^k(1-t)^{-2k-1}\newl
+&=& \sum_{k=0}^\infty \frac{(2k)!}{2^k(k!)^2}(x-1)^kt^k\sum_{n=0}^\infty \bral -2k-1 \\ n \brar (-t)^n\newl
+&=& \sum_{k=0}^\infty\sum_{n=0}^\infty \frac{(2k+n)!}{2^k(k!)^2n!}(x-1)^k  t^{n+k}\newl
+&=& \sum_{\ell=0}^\infty\sum_{k=0}^\ell \frac{(\ell + k)!}{(k!)^2(\ell-k)!}\left(\frac{x-1}{2}\right)^k  t^\ell
+\eea
 }
-  \eitem
-  
+
 \end{frame}
 
 
 
 \begin{frame}
-  \frametitle{第一部分：微分方程}
-  
-  令$\hatD = \frac{1}{\sin\theta}\frac{d}{d\theta}$，在恒等式
-  $$\sin^2\theta \hatD\sin^{2\ell}\theta = 2\ell \cos\theta \sin^{2\ell}\theta $$
-  两边作用$\hatD^{\ell+m}$，得到
-  \bea
-  && \sin^2\theta \hatD^{\ell+m+1}\sin^{2\ell}\theta + 2(\ell+m)\cos\theta \hatD^{\ell+m}\sin^{2\ell}\theta \newl
-  && - (\ell+m)(\ell+m-1)\hatD^{\ell+m-1}\sin^{2\ell}\theta \newl
-  &=& 2\ell\cos\theta\hatD^{\ell+m}\sin^{2\ell}\theta - 2\ell(\ell+m)\hatD^{\ell+m-1}\sin^{2\ell}\theta.
-  \eea
-  稍作整理：
-  \begin{eqnarray}
-  && \sin^2\theta \hatD^{\ell+m+1}\sin^{2\ell}\theta + 2m\cos\theta \hatD^{\ell+m}\sin^{2\ell}\theta \newl
-  && + (\ell+m)(\ell-m+1)\hatD^{\ell+m-1}\sin^{2\ell}\theta =0 . \label{eq1}
-  \end{eqnarray}
+\frametitle{勒让德多项式的母函数定理的证明(续)}
 
-  
+定义{\blue 勒让德多项式
+  $$ P_{\ell} = \sum_{k=0}^\ell \frac{(\ell + k)!}{(k!)^2(\ell-k)!}\left(\frac{x-1}{2}\right)^k. $$}
+显然它是$\ell$次多项式。于是只要证明
+\bitem
+\item[1]{$P_\ell(\cos\theta)$满足$m=0$的单位球面谐函数方程}
+\item[2]{$P_\ell$的归一化满足
+$$ \frac{2\ell+1}{4\pi} \int_0^\pi P_\ell(\cos\theta)^2 \sin\theta d\theta\int_0^{2\pi}d\phi = 1 .$$
+即{\blue
+$$ \int_{-1}^1 \left[P_\ell(x)\right]^2 dx = \frac{2}{2\ell+1}.$$}
+}
+\eitem
+
 \end{frame}
 
 
 \begin{frame}
-  \frametitle{第一部分：微分方程}
-  
-  两边同乘以$\sin^m\theta$，
-  \bea
-  && \sin^{m+2}\theta \hatD^{\ell+m+1}\sin^{2\ell}\theta + 2m\sin^m\theta\cos\theta \hatD^{\ell+m}\sin^{2\ell}\theta \newl
-  && + (\ell+m)(\ell-m+1)\sin^m\theta\hatD^{\ell+m-1}\sin^{2\ell}\theta =0  .
-  \eea
-  上式可以写成
-  \bea
-  && \sin^2\theta \hatD\left[\sin^m\theta \hatD^{\ell+m}\sin^{2\ell}\theta\right] + m\sin^m\theta\cos\theta \hatD^{\ell+m}\sin^{2\ell}\theta \newl 
-   && + (\ell+m)(\ell-m+1)\sin^m\theta\hatD^{\ell+m-1}\sin^{2\ell}\theta =0  .
-  \eea
-  
-\end{frame}
+\frametitle{勒让德多项式的母函数定理的证明(续)}
 
+回忆$m=0$的谐函数方程为
+$$ \frac{1}{\sin\theta}\frac{d}{d\theta}\left(\sin\theta \frac{d}{d\theta}\Psi\right) + \ell(\ell+1) \Psi= 0.$$
+令$x = \cos\theta$，则该微分方程等价于：
+$$ \frac{d}{dx}\left[(1-x^2)\frac{d}{dx} \Psi\right]+\ell(\ell+1)\Psi=0 .$$
+验证$P_\ell(x)$满足该微分方程的过程并不困难，留为练习。
 
-\begin{frame}
-  \frametitle{第一部分：微分方程}
-  
-  两边作用$\hatD$，得到
-  \bea
-  && \hatD\left\{\sin^2\theta \hatD\left[\sin^m\theta \hatD^{\ell+m}\sin^{2\ell}\theta\right]\right\} + m^2\sin^{m-2}\theta \hatD^{\ell+m}\sin^{2\ell}\theta \newl
-  && -m(m+1)\sin^m\theta \hatD^{\ell+m}\sin^{2\ell}\theta  + {\blue m\sin^m\theta\cos\theta \hatD^{\ell+m+1}\sin^{2\ell}\theta} \newl
-  &&{\blue  + (\ell+m)(\ell-m+1)m\sin^{m-2}\cos\theta\hatD^{\ell+m-1}\sin^{2\ell}\theta} \newl
-  && + (\ell+m)(\ell-m+1)\sin^m\theta\hatD^{\ell+m}\sin^{2\ell}\theta =0  .
-  \eea
-  利用前面的方程\eqref{eq1}，把上式蓝色部分替换掉，得到：
+\skipline
 
-  \bea
-  && \hatD\left\{\sin^2\theta \hatD\left[\sin^m\theta \hatD^{\ell+m}\sin^{2\ell}\theta\right]\right\} + m^2\sin^{m-2}\theta \hatD^{\ell+m}\sin^{2\ell}\theta \newl
-  && -m(m+1)\sin^m\theta \hatD^{\ell+m}\sin^{2\ell}\theta  {\blue - 2m^2\sin^{m-2}\theta\hatD^{\ell+m}\sin^{2\ell}\theta} \newl
-  && {\blue +2m^2\sin^m\theta\hatD^{\ell+m}\sin^{2\ell}\theta} \newl
-  && + (\ell+m)(\ell-m+1)\sin^m\theta\hatD^{\ell+m}\sin^{2\ell}\theta =0  .
-  \eea  
+剩下的归一化条件，只要用到不同$\ell$对应的勒让德多项式互相正交，就能很容易证明。也留为作业。
 
-  
-\end{frame}
-
-
-\begin{frame}
-  \frametitle{第一部分：微分方程}
-  
-  把同类项都写到一起就得到了最后的结果
-  \bea
-  && \hatD\left\{\sin^2\theta \hatD\left[\sin^m\theta \hatD^{\ell+m}\sin^{2\ell}\theta\right]\right\} \newl
-  && +\left[\ell(\ell+1)-\frac{m^2}{\sin^2\theta}\right]\sin^m\theta\hatD^{\ell+m}\sin^{2\ell}\theta = 0 .
-  \eea
-  即
-  $$ \frac{1}{\sin \theta}\frac{d}{d\theta} \left[\sin\theta \frac{d}{d\theta}\Psi_{\ell m}\right] + \left[\ell(\ell+1)-\frac{m^2}{\sin^2\theta}\right]\Psi_{\ell m} = 0.$$
-  第一部分证毕。
-  
-\end{frame}
-
-
-\begin{frame}
-  \frametitle{第二部分：归一化}
-  
-  \bea
-  && \int_{0}^\pi \left[\Psi_{\ell m}(\theta)\right]^2\sin\theta d\theta \newl
-  &=& \int_{0}^\pi \sin^{2m}\theta \left[\left(\frac{1}{\sin\theta}\frac{d}{d\theta}\right)^{\ell+m}\sin^{2\ell}\theta\right]\sin\theta d\theta \newl
-  &=& \int_{-1}^1 (1-x^2)^m \left[\frac{d^{\ell+m}}{dx^{\ell+m}}(1-x^2)^\ell\right]^2 dx 
-  \eea
-  在最后一步我们做了变量替换$x=\cos\theta$。
-  
 \end{frame}
 
 \begin{frame}
-  \frametitle{第二部分：归一化}
-  
-  分部积分$\ell+m$次，注意$1-x^2$在端点总是消失，就得到
-  \bea
-  && \int_{0}^\pi \left[\Psi_{\ell m}(\theta)\right]^2\sin\theta d\theta \newl
-  &=& (-1)^{\ell+m}\int_{-1}^1 (1-x^2)^\ell{\blue \frac{d^{\ell+m}}{dx^{\ell+m}}\left[(1-x^2)^m\frac{d^{\ell+m}}{dx^{\ell+m}}(1-x^2)^\ell\right]} dx \newl
-  &=&  {\blue \frac{(2\ell)!(\ell+m)!}{(\ell-m)!}  } \int_{-1}^1 (1-x^2)^\ell dx
-  \eea
-  注意蓝色部分之所以为常数，是因为$(1-x^2)^m\frac{d^{\ell+m}}{dx^{\ell+m}}(1-x^2)^\ell$是$\ell+m$次多项式，求导$\ell+m$次后只有最高次幂有非零贡献。
-  
-\end{frame}
+\frametitle{勒让德多项式的递推关系}
 
+除了母函数定理之外，勒让德多项式最重要的性质是它的递推公式：
+\tbox
+    {$$ (2\ell+1)xP_\ell(x) = (\ell+1)P_{\ell+1}(x)+\ell P_{\ell-1}(x)$$ }
+
+    (请先思考一下怎么证明）
+
+\end{frame}
 
 \begin{frame}
-  \frametitle{第二部分：归一化}
-  
-  最后，做变量替换$ t = \frac{1+x}{2}$，得到
-  \bea
-  && \int_{0}^\pi \left[\Psi_{\ell m}(\theta)\right]^2\sin\theta d\theta \newl
-  &=&  \frac{2^{2\ell+1}(2\ell)!(\ell+m)!}{(\ell-m)!}   \int_0^1  t^\ell (1-t)^\ell dt \newl
-  &=&  \frac{2^{2\ell+1}(2\ell)!(\ell+m)! }{(\ell-m)!}  \frac{\left[\Gamma(\ell+1)\right]^2}{\Gamma(2\ell+2)} \newl
-  &=&  \frac{2^{2\ell+1}(2\ell)!(\ell+m)! }{(\ell-m)!}  \frac{\left(\ell!\right)^2}{(2\ell+1)!}  \newl
-  &=&  4^\ell \left(\ell!\right)^2 \frac{ (\ell+m)! }{(\ell-m)!}  \frac{2}{2\ell+1}   
-  \eea
-  第二部分证毕。  
-  
+\frametitle{勒让德多项式的递推关系证明概要}
+
+  $$ \frac{1}{\sqrt{1+t^2-2xt}} = \sum_{\ell =0}^\infty P_\ell (x) t^\ell,\ \ \ t<|x\pm \sqrt{x^2-1}|  .$$
+两边对$t$求导，得到
+$$ \frac{t-x}{(1-2xt+t^2)^{3/2}} =  \sum_{\ell = 1}^\infty \ell P_\ell(x)t^{\ell-1}$$
+即
+$$(x-t)\sum_{\ell=0}^\infty P_\ell(x)t^\ell  = (1-2xt+t^2)\sum_{\ell=1}^\infty \ell P_\ell(x)t^{\ell-1}$$
+两边比较同次项系数即得证。
+
 \end{frame}
 
+
+\section{Rodrigues Formula}
 
 
 \begin{frame}
@@ -392,19 +278,18 @@ $\sum_{\ell m}$是双重求和$\sum_{\ell = 0}^\infty\sum_{m =-\ell}^\ell $的�
 \end{frame}
 
 
+\section{Symmetries of $Y_{\ell m}$}
+
 
 \begin{frame}
-  \frametitle{例题3: $Y_{\ell m}(\vecn)$和$Y_{\ell,m}(-\vecn)$之间的关系}
-  
-
-
-  证明：对相反的两个方向，有
+  \frametitle{球谐函数的宇称：$Y_{\ell m}(\vecn)$和$Y_{\ell,m}(-\vecn)$之间的关系}
+  对相反的两个方向，有
   \tbox{$$ Y_{\ell m}(\vecn) = (-1)^\ell Y_{\ell m}(-\vecn)$$}
   
 \end{frame}
 
 \begin{frame}
-  \frametitle{解答}
+  \frametitle{证明}
   
   如果$\vecn$对应$(\theta,\phi)$，则$-\vecn$对应$(\pi-\theta, \pi+\phi)$。{\small
   \bea
@@ -419,16 +304,16 @@ $\sum_{\ell m}$是双重求和$\sum_{\ell = 0}^\infty\sum_{m =-\ell}^\ell $的�
 \end{frame}
 
 \begin{frame}
-  \frametitle{例题4:$Y_{\ell m}$和$Y_{\ell,-m}$之间的关系}
+  \frametitle{$Y_{\ell m}$和$Y_{\ell,-m}$之间的关系}
   
-  证明
+
   \tbox{$$Y_{\ell, -m}(\theta, \phi) = (-1)^m Y_{\ell, m}^*(\theta,\phi)$$}
   
 \end{frame}
 
 
 \begin{frame}
-  \frametitle{解答}
+  \frametitle{证明大意}
   
   把$Y_{\ell m}^*(\theta,\phi) = N_{\ell, m}\Psi_{\ell m}(\theta)e^{-\ii m\phi}$在单位球面上展开：
   $$ Y_{\ell m}^*(\theta,\phi)  = \sum_{\ell',m'}c_{\ell' m'} Y_{\ell' m'}(\theta,\phi). $$
@@ -444,7 +329,7 @@ $\sum_{\ell m}$是双重求和$\sum_{\ell = 0}^\infty\sum_{m =-\ell}^\ell $的�
 \end{frame}
 
 \begin{frame}
-  \frametitle{解答(续)}
+  \frametitle{证明大意}
   
 
   
@@ -465,9 +350,9 @@ $\sum_{\ell m}$是双重求和$\sum_{\ell = 0}^\infty\sum_{m =-\ell}^\ell $的�
 \end{frame}
 
 \begin{frame}
-  \frametitle{例题5: 3个$Y_{\ell m}$积分的对称性}
+  \frametitle{三个$Y_{\ell m}$积分的对称性}
   
-  证明，要使单位球面上的积分
+  定理：要使单位球面上的积分
   $$\int Y_{\ell_1m_1}(\vecn)Y_{\ell_2m_2}(\vecn)Y_{\ell_3m_3}(\vecn) d^2\vecn$$
   非零，则必须有：
   \bitem
@@ -519,6 +404,57 @@ $\sum_{\ell m}$是双重求和$\sum_{\ell = 0}^\infty\sum_{m =-\ell}^\ell $的�
   显然若$\ell_1+\ell_2+\ell_3$为奇数时，积分在$\vecn$和$-\vecn$处两两抵消，结果为零。
   
 \end{frame}
+
+\section{$\delta$ function expansion}
+\secpage{$\delta$函数和正交归一完备函数组的关系}{$$\delta(\vecx-\vecx') = \sum_i Q_i(\vecx)Q_i(\vecx') $$}
+
+\begin{frame}
+  \frametitle{$\delta$函数和正交归一完备函数组的关系}
+  
+  设$n$维空间的某区域$\Omega$内函数组$Q_i(\vecx)$构成正交归一的完备函数组，即
+  $$\int_\Omega Q_i(\vecx)Q_j(\vecx) d^n\vecx = \delta_{ij},$$
+  由完备性，$\Omega$内的函数总是可以用$Q_i(\vecx)$进行展开，特别地，对固定的$\vecx'$，我们把函数$\delta(\vecx-\vecx')$进行展开：
+  $$\delta(\vecx-\vecx') = \sum_i c_iQ_i(\vecx)$$
+  由$Q_i$的正交归一性，系数
+  $$c_i = \int_\Omega \delta(\vecx-\vecx')Q_i(\vecx) d^n\vecx = Q_i(\vecx')$$
+  
+  
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{$\delta$函数和正交归一完备函数组的关系}
+  
+  把$c_i$代回去得到：
+  \tbox{
+    $$\delta(\vecx-\vecx') = \sum_i Q_i(\vecx')Q_i(\vecx).$$}
+  如果是用{\blue 复函数内积定义的正交归一性}，则上式变为
+  \tbox{\blue 
+    $$\delta(\vecx-\vecx') = \sum_i Q_i^*(\vecx')Q_i(\vecx).$$}
+  如果正交归一性里的内积定义带权重：$\int_\Omega Q_i(\vecx)Q_j(\vecx)\rho(\vecx)d^n\vecx = \delta_{ij} $，则
+
+  \tbox{\blue 
+    $$\delta(\vecx-\vecx') = \sum_i \rho(\vecx')Q_i(\vecx')Q_i(\vecx).$$}
+
+  
+\end{frame}
+
+\begin{frame}
+  \frametitle{单位球面上的$\delta$函数}
+  
+  单位球面上的坐标$\theta,\phi$对应了一个方向$\vecn$(从原点出发指向单位球面上$\theta,\phi$点的单位矢量)。单位球面上的函数可以抽象地写为$f(\vecn)$的形式。单位球面上的面积元$\sin\theta d\theta d\phi$可以抽象地写作$d^2\vecn$。
+  
+
+  \skipline
+  
+  在不致引起混淆的情况下，我们也{\blue 用$Y_{\ell m}(\vecn)$来表示$Y_{\ell m}(\theta,\phi)$}。根据前面的讨论，有
+{\blue
+  $$\delta(\vecn-\vecn') = \sum_{\ell m} Y_{\ell m}^*(\vecn') Y_{\ell m}(\vecn).$$}
+这里的$\delta(\vecn-\vecn')$是单位球面上的二维$\delta$函数（在$\vecn'$处的大小为$\epsilon\rightarrow 0^+$的小面积上的函数值为$\frac{1}{\epsilon}$，其余处处为零）。
+$\sum_{\ell m}$是双重求和$\sum_{\ell = 0}^\infty\sum_{m =-\ell}^\ell $的简写。
+  
+\end{frame}
+
 
 
 
@@ -577,36 +513,24 @@ $$\vecn_1\cdot\vecn_2 = \cos\theta_1\cos\theta_2+\sin\theta_1\sin\theta_2\cos(\p
 
 \section{Homework}
 
-
-
-\begin{frame}
-\frametitle{课后作业(题号54-56)}
-
-\bitem
-\item[54]{计算积分
-  $$\int_{-1}^1 P_\ell(x)\ln(1-x)dx, $$
-其中$P_\ell$为勒让德多项式。}
-\item[55]{证明$\cos\theta Y_{\ell m}(\theta,\phi)$可以写成$Y_{\ell+1,m}(\theta,\phi)$和$Y_{\ell-1,m}(\theta,\phi)$的线性组合:
-  $$ \cos\theta Y_{\ell m}(\theta,\phi) = a Y_{\ell+1,m}(\theta,\phi)+ b Y_{\ell-1,m}(\theta,\phi), $$
-  其中$a, b$为只依赖于$\ell, m$的常数。
-}
-\eitem
-
-\end{frame}
-
-
 \begin{frame}
 \frametitle{Homework for Quizphobias}
 
 \bitem
-\item[51]{我们曾经提到过同样的$k$对应的不同坐标系的谐函数可以互相线性表示出来。对直角坐标系和球坐标系而言，我们在课上证明了轴对称的情况。请利用球面谐函数的加法公式把这个结果推广到任意的平面波：
+\item[61]{计算积分
+  $$\int_{-1}^1 P_\ell(x)\ln(1-x)dx, $$
+其中$P_\ell$为勒让德多项式。
+}
+\item[62]{证明$\cos\theta Y_{\ell m}(\theta,\phi)$可以写成$Y_{\ell+1,m}(\theta,\phi)$和$Y_{\ell-1,m}(\theta,\phi)$的线性组合:
+  $$ \cos\theta Y_{\ell m}(\theta,\phi) = a Y_{\ell+1,m}(\theta,\phi)+ b Y_{\ell-1,m}(\theta,\phi), $$
+  其中$a, b$为只依赖于$\ell, m$的常数。
+  }
+\item[63]{我们曾经提到过同样的$k$对应的不同坐标系的谐函数可以互相线性表示出来。对直角坐标系和球坐标系而言，我们在课上证明了轴对称的情况。请利用球面谐函数的加法公式把这个结果推广到任意的平面波：
   $$ e^{\ii \veck\cdot\vecx} = 4\pi \sum_{\ell, m}\ii^\ell Y_{\ell m}^*(\hat{\veck})Y_{\ell m}(\hat{\vecx})j_{\ell}(kr),$$
 其中$r=|\vecx|$， $\hat{\vecx}$和$\hat{\veck}$分别是$\vecx$和$\veck$方向的单位矢量。}
-\eitem
+  \eitem
 
 \end{frame}
-
-
 
 \ech
 \end{document}
