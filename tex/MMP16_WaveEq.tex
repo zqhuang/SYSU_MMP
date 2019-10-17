@@ -1,0 +1,419 @@
+\documentclass[CJK]{beamer}
+\input{macros.tex}
+\input{titlepage.tex}
+  \date{}
+  \begin{document}
+  \bch
+\tpage{16}{Wave Equation; Linear Decomposition}
+
+\begin{frame}
+  \frametitle{Outline}  
+  \tableofcontents
+\end{frame}
+
+
+\section{Wave Equation}
+\secpage{波动方程}{$$\frac{\partial^2 u}{\partial t^2}-a^2\nabla^2u = 0$$}
+
+\begin{frame}
+\frametitle{弦的横振动方程}
+
+完全均匀沿水平方向绷直的的弦，线密度为$\rho$，张力为$f$。弦的各部分沿垂直方向稍稍偏离平衡位置，偏离量$u$是水平位置$x$的函数。
+
+\addfig{2}{string_force.png}
+
+如图考虑弦的一小段，弦的纵向（沿$x$向）净受力为 $$ f \cos\theta_2 - f\cos\theta_1 \approx \frac{1}{2}\left(\theta_1^2-\theta_2^2\right) f $$
+这是$\theta_1$和$\theta_2$的高阶小量，我们将它忽略掉（即认为横向是受力平衡的）。
+
+
+\end{frame}
+
+
+
+\begin{frame}
+\frametitle{弦的横振动方程}
+
+\addfig{2.}{string_force.png}
+
+弦的横向净受力为 $$ f \sin\theta_2 - f\sin\theta_1 \approx \left(\theta_2-\theta_1\right) f $$
+$\theta_2$和$\theta_1$可以近似用弦的斜率来代替，设这一小段的坐标从$x$到$x+dx$
+$$\theta_2-\theta_1 \approx \left.\frac{\partial u}{\partial x}\right\vert_{x+dx}-\left.\frac{\partial u}{\partial x}\right\vert_{x} \approx \frac{\partial^2u}{\partial x^2} dx $$
+
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{弦的横振动方程}
+
+\addfig{2.}{string_force.png}
+根据$F=ma$，得到弦的这一段沿垂直方向的加速度
+$$\frac{\partial ^2u}{\partial t^2} = \frac{f\frac{\partial^2u}{\partial x^2} dx}{\rho dx} = a^2 \frac{\partial^2u}{\partial x^2} ,$$
+其中$\rho$为质量线密度， $a$定义为$\sqrt{\frac{f}{\rho}}$，具有速度的量纲。
+
+
+\end{frame}
+
+
+
+\begin{frame}
+\frametitle{弦的横振动方程}
+
+最后，得到弦的横振动方程为波动方程：
+\tbox{\blue $$ \frac{\partial ^2u}{\partial t^2}  -  a^2 \frac{\partial^2u}{\partial x^2} = 0 $$}
+波动方程和热传导方程不同：
+\bitem
+\item{热传导方程分离变量之后得到的时间因子方程是$\Psi'/\Psi =$常数，解的变化规律是指数式衰减（指数式增长模式因一般不符合物理图像而被无情地抛弃）；}
+\item{
+  波动方程分离变量后得到的时间因子方程是$\Psi''/\Psi =$常数，解的变化规律是无衰减的波动(正弦和余弦）。}
+  \eitem
+
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{思考题}
+
+\addfig{0.8}{think1.jpg}
+
+弦一振动不是就被拉长了吗？为什么在前面的推导过程中把张力$f$当成常量？
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{杆的纵振动方程}
+
+设一根均匀弹性杆，一开始处于静止并受力平衡，各个切面的位置可以用$x$来标记。
+
+然后考虑沿杆的方向发生压缩-拉伸的变化： 每个初始坐标为$x$的切面沿着杆的方向有小小的偏离平衡位置的位移$u(x)$。
+
+\addfig{3.2}{longi_osc.png}
+
+在线性近似下，应力$P$（横截面上单位面积受力）和$\frac{\partial u}{\partial x}$成正比 (可以对一小段杆运用胡克定律导出这个结论)：
+
+$$ P = E\frac{\partial u}{\partial x},$$
+其中$E$称为杨氏模量 （Young's modulus).
+
+
+\end{frame}
+
+
+
+\begin{frame}
+\frametitle{杆的纵振动方程}
+
+
+按照套路，对$x$和$x+dx$之间的一小段杆运用强大的$F=ma$，得到
+$$ \frac{\partial^2u}{\partial t^2} = \frac{(P(x+dx)-P(x))S}{\rho S dx} = \frac{E}{\rho} \frac{\partial^2u}{\partial x^2},$$
+其中 $S$为截面积，$\rho$为质量密度。
+
+\skipline
+
+令$a = \sqrt{\frac{E}{\rho}}$，则又得到了波动方程。
+
+\tbox{\blue $$ \frac{\partial ^2u}{\partial t^2}  -  a^2 \frac{\partial^2u}{\partial x^2} = 0 $$}
+
+
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{真空中的电磁波}
+  真空中的电场$\mathbf{E}$和磁场$\mathbf{B}$满足真空中的Maxwell方程组：
+  $$\nabla\cdot\mathbf{E} = 0 $$
+  $$\nabla\times \mathbf{E} = -\frac{\partial B}{\partial t}$$
+  $$\nabla\cdot\mathbf{B} = 0 $$  
+  $$\nabla\times \mathbf{B} = \frac{1}{c^2}\frac{\partial E}{\partial t}$$
+  这里用的是国际单位制。
+\end{frame}
+
+\begin{frame}
+  利用前面学习过的矢量分析知识：“旋度的旋度等于散度的梯度与梯度的散度之差”（绕死我了），可以得到：
+  \begin{eqnarray}
+    \frac{\partial^2 \mathbf{B}}{\partial t^2}
+    &=& -\frac{\partial}{\partial t}\left(\nabla\times\mathbf{E}\right) \newl
+    &=& -\nabla\times\left(\frac{\partial}{\partial t}\mathbf{E}\right) \newl     
+    &=& -c^2\nabla\times(\nabla\times \mathbf{B}) \newl
+    &=& -c^2\left(\nabla(\nabla\cdot\mathbf{B}) -\nabla^2\mathbf{B}\right) \newl
+    &=& c^2\nabla^2\mathbf{B}\nonumber
+  \end{eqnarray}
+
+  请自行验证，可以用一样的过程推导出$\mathbf{E}$也满足波动方程：
+  $$\frac{\partial^2 \mathbf{E}}{\partial t^2}-c^2\nabla^2\mathbf{E}=0.$$
+
+  （注意这里用了简写：$\mathbf{B}$和$\mathbf{E}$的每个分量都满足波动方程。当然，对真空中的电磁波而言，它们只能是横波，所以一共有4个独立振动方程。）
+\end{frame}
+
+
+\begin{frame}
+\frametitle{自由波动方程总结}
+
+综合前面的一维和三维的多个例子，我们总结出一般的自由波动方程为：
+\tbox{\blue $$\frac{\partial ^2u}{\partial t^2}  -  a^2 \nabla^2 u = 0, $$}
+我们马上会看到，$a$的物理意义为波的相速度。
+
+\skiplines
+
+{\scriptsize 注：引力波也满足$a=c$的波动方程，$u$是度规二阶张量的分量(此处有黑人问号.jpg)。}
+
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{平面波解}
+仍然回到一维空间的情况：
+
+令 $u = \Phi(x)\Psi(t)$，代入波动方程，得到
+
+$$ a^2\frac{\Phi'' }{\Phi} =  \frac{\Psi''}{\Psi}, $$
+等式两边分别是$x$和$t$的函数，所以只能是常数。由此得到两个解
+
+$$ e^{\ii k(x\mp at)}, $$
+
+其中$k$是任意的常数。
+
+如果我们追踪相位为零的点，则得到$x = \pm at$；即 $e^{\ii k(x - at)}$描述的是沿$x$轴正向传播的波，$e^{\ii k(x + at)}$ 描述的是沿$x$轴负向传播的波。
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{另一种线性分解的方法}
+
+虽然
+$$ e^{\ii k(x\mp at)}, $$
+具有很容易看出波速的优点，但这并不是唯一的写法。
+
+\skiplines
+
+当我们需要实数解时，可以把解写成：
+$$ \cos (kx)\cos(akt),\ \sin(kx)\cos(akt),\ \cos(kx)\sin(akt),\ \sin(kx)\sin(akt)$$
+的线性组合。我们在后面立刻会再次接触到这种线性分解的做法。
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{无界的情形}
+
+在空间无边界的情况下，可以按照套路写出：
+$$ u(x,t) = \frac{1}{\sqrt{2\pi}} \int c(k)e^{\ii k(x-at)} dk + \frac{1}{\sqrt{2\pi}} \int d(k)e^{\ii k(x+at)} dk $$
+设$c(k)$和$d(k)$的傅立叶逆变换为$C(x)$和$D(x)$。上式只是把傅立叶逆变换中的$x$换成了$x\mp at$，结果应为：
+$$ u(x, t) = C(x-at) + D(x+at).$$
+这就是无边界波动问题的最一般解。$C$和$D$的形式可以通过初始条件来确定。
+
+{\scriptsize $u(x,t)$显然除了依赖于初始的位移$u$，还依赖于初始的速度$\frac{\partial u}{\partial t}$，因此需要两个初始条件，相应可以确定两个未知函数$C$和$D$。}
+
+
+\end{frame}
+
+\begin{frame}
+\frametitle{例题}
+求解满足下列初始条件的无边界波动方程：
+\bea
+\frac{\partial ^2u}{\partial t^2}  -  a^2 \frac{\partial^2u}{\partial x^2} &=& 0, \newl
+\left.u\right\vert_{t=0} &=& A e^{-\frac{x^2}{2\sigma^2}} , \newl
+\left.\frac{\partial u}{\partial t}\right\vert_{t=0} &=&  0.  
+\eea
+其中$A,\sigma$均为已知常量。
+\end{frame}
+
+\begin{frame}
+\frametitle{解答}
+令 $u(x,t) = C(x-at)+D(x+at)$，则根据初始条件，有
+$$ C(x) + D(x) = Ae^{-\frac{x^2}{2\sigma^2}} $$
+以及
+$$ C'(x) = D'(x)  $$
+由此易解出
+$$ u(x,t) = \frac{A}{2}\left(e^{-\frac{(x-at)^2}{2\sigma^2}}  + e^{-\frac{(x+at)^2}{2\sigma^2}}\right).$$
+
+\end{frame}
+
+\begin{frame}
+\frametitle{思考题}
+
+\addfig{1}{think2.jpg}
+
+把初始条件换成一般的
+\bea
+\left.u\right\vert_{t=0} &=& \phi(x) , \newl
+\left.\frac{\partial u}{\partial t}\right\vert_{t=0} &=&  \psi(x).
+\eea
+其中$\phi(x)$和$\psi(x)$为给定的函数，你还能求解吗？
+\end{frame}
+
+
+\section{Linear Decomposition}
+
+\secpage{线性数理方程}{方程+边界条件线性 $\rightarrow$ 线性分解初始条件}
+
+\begin{frame}
+  \frametitle{偏微分方程}
+  我们经常会遇到对空间、时间坐标的偏微分算符和未知函数组合而成的偏微分方程。例如，静电学的泊松方程：
+  $$ \nabla^2\phi = -\frac{\rho}{\epsilon_0};$$
+  法拉第电磁感应定律：
+  $$ \nabla\times \mathbf{E} = -\frac{\partial \mathbf{B}}{\partial t};$$
+  热传导方程
+  $$\frac{\partial u}{\partial t} - a\nabla^2 u = 0;$$
+  以及我们刚刚学习的波动方程
+  $$\frac{\partial ^2u}{\partial t^2}  -  a^2 \nabla^2 u = 0, $$
+\end{frame}
+
+
+
+
+\begin{frame}
+  \frametitle{边界条件和初始条件}
+  一个完整的物理问题除了运动方程之外，还有边界条件和初始条件。
+
+  例如一根长为$L$的两端固定的弦的横向小振动$u(x, t)$ ($0\le x\le L, t\ge 0$) 满足波动方程
+  $$\frac{\partial^2u}{\partial t^2} - a^2\frac{\partial^2u}{\partial x^2} = 0 .$$
+  “两端固定”分别对应的边界条件：
+  $$ \left.u\right\vert_{x=0} = 0;\ \left.u\right\vert_{x=L} = 0.$$
+  初始时刻弦上各点的位置和速度就是初始条件：
+  $$ \left.u\right\vert_{t=0} = \phi(x);\ \left.\frac{\partial u}{\partial t}\right\vert_{t=0} = \psi(x),$$
+  其中$\phi(x)$和$\psi(x)$都是已知函数。
+\end{frame}
+
+\begin{frame}
+  \frametitle{数理方程三要素，解存在且唯一性}
+  
+  {\blue 方程，边界条件，初始条件构成了数理方程的三个要素。}
+
+  \skipline
+
+  我们默认“给够了条件的”物理问题总是存在唯一解。
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{“线性”（可迭加性）}
+  （为了减少本课重修人数，）{\blue 我们只要求掌握线性问题或能简单转化为线性问题的情况。}
+
+  “线性”是指这样的特性：如果$f$，$g$都是满足条件的解，则对任意常数$c_1$, $c_2$，$c_1f+c_2g$也是满足条件的解。
+
+  \addfig{0.5}{think1.jpg}
+
+  诶？刚刚不是假设了问题存在唯一解吗？“$f$, $g$都是满足条件的解”是神马操作？
+  
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{退而求其次}
+一般来说，{\blue “方程+边界条件+初始条件”不是线性}的。
+
+\skipline
+
+我们所说的“线性”，一般是指退而求其次，只要求 {\blue “方程+边界条件”线性}，很多时候甚至只要求{\blue 方程线性}。
+
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{思考题}
+
+  刚才我们写出的两端固定弦横向小振动的方程和边界条件是线性的吗？
+
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{求解线性问题的套路}
+
+  满足方程+边界条件的解有很多个：$f_1$, $f_2$, \ldots （它们的任意线性组合仍然是满足方程+边界条件的解）。
+
+  所以解决问题的思路很简单：
+
+  \bitem
+\item{先找出这么一堆$f_1$, $f_2$,\ldots；设它们分别对应的初始条件为$I_1$, $I_2$, \ldots}
+\item{把问题中真正的初始条件$I$分解为$I_1$, $I_2$, \ldots 的线性组合；把$f_1$, $f_2$, \ldots 作同样的线性组合即得到问题的解。}
+  \eitem
+
+  \skiplines
+
+  {\scriptsize 注：这样的操作默认了 $f_1,f_2,\ldots$ 是完备的，即任何函数都能分解为它们的线性组合。完备性的原理请参考课外阅读材料，我们养生课上就不讨论了（为保头发，情非得已，见谅……）}
+\end{frame}
+
+\section{Examples}
+
+\begin{frame}
+  \frametitle{练习1}
+  求解两端固定弦的横振动$u(x, t)$ ($0\le x\le L, t\ge 0$)：
+  $$\frac{\partial^2u}{\partial t^2} - a^2\frac{\partial^2u}{\partial x^2} = 0 .$$
+  $$ \left.u\right\vert_{x=0} = 0;\ \left.u\right\vert_{x=L} = 0.$$
+  $$ \left.u\right\vert_{t=0} = A\sin\frac{\pi x}{L};\ \left.\frac{\partial u}{\partial t}\right\vert_{t=0} = 0.$$
+  这里$a>0$, $A>0$都是常量。$L$是弦的长度。
+\end{frame}
+
+
+
+\begin{frame}
+  \frametitle{练习2}
+  求解两端固定弦的横振动$u(x, t)$ ($0\le x\le L, t\ge 0$)：
+  $$\frac{\partial^2u}{\partial t^2} - a^2\frac{\partial^2u}{\partial x^2} = 0 .$$
+  $$ \left.u\right\vert_{x=0} = 0;\ \left.u\right\vert_{x=L} = 0.$$
+  $$ \left.u\right\vert_{t=0} = A\sin\frac{2\pi x}{L}\cos\frac{\pi x}{L};\ \left.\frac{\partial u}{\partial t}\right\vert_{t=0} = 0.$$
+  这里$a>0$, $A>0$都是常量。$L$是弦的长度。
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{练习3}
+  求解两端固定弦的横振动$u(x, t)$ ($0\le x\le L, t\ge 0$)：
+  $$\frac{\partial^2u}{\partial t^2} - a^2\frac{\partial^2u}{\partial x^2} = 0 .$$
+  $$ \left.u\right\vert_{x=0} = 0;\ \left.u\right\vert_{x=L} = 0.$$
+  $$ \left.u\right\vert_{t=0} = Ax(L-x);\ \left.\frac{\partial u}{\partial t}\right\vert_{t=0} = 0.$$
+  这里$a>0$, $A>0$都是常量。$L$是弦的长度。
+\end{frame}
+
+\begin{frame}
+  \frametitle{练习4}
+  求解两端固定弦的横振动$u(x, t)$ ($0\le x\le L, t\ge 0$)：
+  $$\frac{\partial^2u}{\partial t^2} - a^2\frac{\partial^2u}{\partial x^2} = 0 .$$
+  $$ \left.u\right\vert_{x=0} = 0;\ \left.u\right\vert_{x=L} = 0.$$
+  $$ \left.u\right\vert_{t=0} = \delta(x-x_0);\ \left.\frac{\partial u}{\partial t}\right\vert_{t=0} = 0.$$
+  这里$L$是弦的长度；$a>0$, $0<x_0<L$都是常量。
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{练习5}
+  求解两端固定弦的横振动$u(x, t)$ ($0\le x\le L, t\ge 0$)：
+  $$\frac{\partial^2u}{\partial t^2} - a^2\frac{\partial^2u}{\partial x^2} = 0 .$$
+  $$ \left.u\right\vert_{x=0} = 0;\ \left.u\right\vert_{x=L} = 0.$$
+  $$ \left.u\right\vert_{t=0} = \phi(x);\ \left.\frac{\partial u}{\partial t}\right\vert_{t=0} = 0.$$
+  这里$a$是常量；$L$是弦的长度；$\phi(x)$是已知函数。
+
+  \skipline
+  你能用两种不同的方法求解该问题吗？
+\end{frame}
+
+
+\section{Homework}
+
+\begin{frame}
+  \frametitle{Homework}
+  {\small
+    \bitem
+  \item{求解无边界的定解问题：
+      \bea
+      \frac{\partial ^2u}{\partial t^2}  -  a^2 \frac{\partial^2u}{\partial x^2} &=& 0, \newl
+      \left.u\right\vert_{t=0} &=& A e^{-\frac{x^2}{2\sigma^2}} , \newl
+      \left.\frac{\partial u}{\partial t}\right\vert_{t=0} &=&  Bxe^{-\frac{x^2}{2\sigma^2}} .  
+      \eea
+      其中$a, A,B,\sigma$均为已知常量。
+    }
+  \item{求解两端固定弦的横振动$u(x, t)$ ($0\le x\le L, t\ge 0$)：
+  $$\frac{\partial^2u}{\partial t^2} - a^2\frac{\partial^2u}{\partial x^2} = 0 .$$
+  $$ \left.u\right\vert_{x=0} = 0;\ \left.u\right\vert_{x=L} = 0.$$
+  $$ \left.u\right\vert_{t=0} = 0;\ \left.\frac{\partial u}{\partial t}\right\vert_{t=0} = Ax(L-x).$$
+    这里$a>0$, $A>0$都是常量。$L$是弦的长度。}
+    \eitem}
+\end{frame}
+
+\ech
+\end{document}

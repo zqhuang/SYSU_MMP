@@ -1,0 +1,336 @@
+\documentclass[CJK,13pt]{beamer}
+
+\input{macros.tex}
+
+\input{titlepage.tex}
+
+\date{}
+
+\begin{document}
+\bch
+
+\tpage{15}{Stirling Formula, $n$D spherical Integral}
+
+\begin{frame}
+  \frametitle{Outline}
+  \tableofcontents
+\end{frame}
+
+\section{Stirling's Formula}
+
+\begin{frame}
+  \frametitle{Stirling公式}
+  
+ 当$x\gg 1$时，有如下的近似表达式 (Stirling公式)：
+      {\blue
+\tbox{        
+  \be
+  x! \approx \sqrt{2\pi x}\left(\frac{x}{e}\right)^x
+  \ee}
+  }
+  
+\end{frame}
+
+\begin{frame}
+  \frametitle{Stirling公式的证明}
+  
+  利用$\Gamma$函数的定义：
+  $$ x! = \int_0^\infty t^xe^{-t}dt =\int_0^\infty e^{-t+x\ln t}dt $$
+  被积函数在极大值点$t=x$附近贡献较大，所以把$-t+x\ln t$在$t=x$附近泰勒展开:
+  $$ -t+x\ln t \approx -x + x\ln x - \frac{(t-x)^2}{2x} $$
+  \bea
+  x! &\approx & \int_0^\infty e^{-x+x\ln x}e^{-\frac{(t-x)^2}{2x}}dt \newl
+    &\approx & \left(\frac{x}{e}\right)^x\int_{-\infty}^\infty e^{-\frac{(t-x)^2}{2x}}dt \newl
+    &= & \sqrt{2\pi x}\left(\frac{x}{e}\right)^x
+  \eea
+    
+  
+  
+\end{frame}
+
+\begin{frame}
+  \frametitle{Stirling公式的加强版}
+  
+  Stirling公式的终级版本为：
+  \be
+  x! = \sqrt{2\pi x}\left(\frac{x}{e}\right)^x e^{\frac{1}{12x}-\frac{1}{360 x^3} + \frac{1}{1260 x^5} - \frac{1}{1680 x^7}\ldots}
+  \ee
+      （证明略）
+      
+      如果取截断
+      {\blue
+\tbox{        
+  \be
+  x!\approx \sqrt{2\pi x}\left(\frac{x}{e}\right)^x e^{\frac{1}{12x}-\frac{1}{360 x^3} }
+  \ee}
+      }
+     对$x\ge 3$，结果的相对误差$\lesssim 3\times 10^{-6}$。因此，一个快速用初等函数计算 $\Gamma$函数的办法是用递推公式转化为$x\ge 3$时的$\Gamma$函数的计算问题。
+
+  
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{例题}
+  
+  计算$\Gamma\left(\frac{1}{3}\right)$，要求误差小于$10^{-5}$。
+  
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{ 解法一}
+  
+  大多数编程语言和脚本语言都有内置的$\Gamma$函数。例如，在python环境中输入命令：
+
+  \skipline
+
+  
+  \tbox{\darkgreen
+  from math import * \\
+  gamma(1/3.)
+  }
+  
+  得到输出结果
+
+  \skipline
+  
+  \tbox
+  {\darkgreen
+  2.678938534707748
+  }
+  
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{ 解法二}
+  
+  如果手头没有可以现成计算$\Gamma$函数的工具，那么就利用Stirling公式的加强版：
+    {\small
+    $$
+      \sfgamma{\frac{1}{3}} = \frac{ \left(\frac{10}{3}\right)!}{\frac{1}{3}\times \frac{4}{3} \times \frac{7}{3}\times\frac{10}{3}}  \approx \sqrt{\frac{20\pi}{3}}\left(\frac{10}{3e}\right)^{\frac{10}{3}} e^{\frac{1}{40} - \frac{3}{4000}}\times \frac{81}{280}\approx 2.678934   $$
+      }
+  
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Euler常数 —— 重要性仅次于$\pi$和$e$的数学常数}
+  
+  可以用连续的积分$$ T_n = \int_1^{n} \frac{1}{x} dx = \ln n $$
+  来近似级数和
+  $$S_n = 1+\frac{1}{2}+\frac{1}{3} + \frac{1}{4} + \ldots + \frac{1}{n}$$
+  误差当$n\rightarrow \infty$时趋向于一个常数，定义其为Euler常数：
+  \tbox{$$\gamma = \lim_{n\rightarrow \infty} \left(1+\frac{1}{2}+\frac{1}{3}  + \ldots + \frac{1}{n} - \ln n\right) = 0.5772156649\ldots$$}
+  
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{例题}
+  
+  证明$\Gamma$函数的无穷乘积表达式：
+  \tbox{
+    $$\frac{1}{\sfgamma{z}} = z e^{\gamma z}\prod_{n=1}^\infty \left(1+\frac{z}{n}\right) e^{-\frac{z}{n}}. $$
+    }
+  
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{证明:利用$\Gamma$函数递推关系}
+  
+  {\small  
+  \bea
+  \frac{1}{\sfgamma{z}} &=& \frac{z(z+1)(z+2)\ldots (z+n)}{(z+n)!} \newl
+  &=& \frac{n!z(1+z)\left(1+\frac{z}{2}\right)\left(1+\frac{z}{3}\right)\ldots \left(1+\frac{z}{n}\right)}{(z+n)!}
+  \eea
+  令$n\rightarrow \infty$，并利用Stirling公式
+  \bea
+  \frac{1}{\sfgamma{z}} &=& \lim_{n\rightarrow \infty}\frac{(\frac{n}{e})^n}{(\frac{z+n}{e})^{n+z}} z(1+z)\left(1+\frac{z}{2}\right)\left(1+\frac{z}{3}\right)\ldots \left(1+\frac{z}{n}\right) \newl
+  &=& \lim_{n\rightarrow \infty}\left(1+\frac{z}{n}\right)^{-n}e^zn^{-z} z(1+z)\left(1+\frac{z}{2}\right)\left(1+\frac{z}{3}\right)\ldots \left(1+\frac{z}{n}\right) \newl
+  &=& \lim_{n\rightarrow \infty}n^{-z} z(1+z)\left(1+\frac{z}{2}\right)\left(1+\frac{z}{3}\right)\ldots \left(1+\frac{z}{n}\right)  \newl
+  &=& \lim_{n\rightarrow \infty}e^{-z \ln n}  z(1+z)\left(1+\frac{z}{2}\right)\left(1+\frac{z}{3}\right)\ldots \left(1+\frac{z}{n}\right) \newl
+  &=& \lim_{n\rightarrow \infty}e^{\gamma z - (1+\frac{1}{2}+\frac{1}{3}+\ldots+\frac{1}{n})z}  z(1+z)\left(1+\frac{z}{2}\right)\left(1+\frac{z}{3}\right)\ldots \left(1+\frac{z}{n}\right)  
+  \eea
+  }
+  
+\end{frame}
+
+\begin{frame}
+  \frametitle{例题}
+  
+  随机抛100次硬币，估算恰好有50次正面向上的概率。
+  
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{解答}
+  
+  \bea
+  p &=& \frac{1}{2^{100}} \times \frac{100!}{(50!)^2} \newl
+  &\approx & \frac{1}{2^{100}} \times  \frac{\sqrt{200\pi}\left(\frac{100}{e}\right)^{100}}{100\pi\left(\frac{50}{e}\right)^{100}} \newl
+  &=& \frac{1}{10}\sqrt{\frac{2}{\pi}} \newl
+  &\approx & 0.080
+  \eea
+
+
+  \skiplines
+
+  {请尝试用Stirling公式的加强版来计算更加精确的结果。}
+  
+  
+\end{frame}
+
+\section{n-D spherical Integral}
+
+\begin{frame}
+  \frametitle{$n$维限和积分公式 ($B$函数的推广)}
+{\blue
+  \bea
+ && \int_{\Omega_n} x_1^{\alpha_1-1}x_2^{\alpha_2-1}\ldots x_n^{\alpha_n-1} f(x_1+x_2+\ldots+x_n)dx_1dx_2\ldots dx_n \newl
+  &=& \frac{\Gamma(\alpha_1)\Gamma(\alpha_2)\ldots \Gamma(\alpha_n)}{\Gamma(\alpha_1+\alpha_2+\ldots + \alpha_n)}\int_0^1f(u)u^{\alpha_1+\alpha_2+\ldots + \alpha_n-1} du \,. \nonumber
+  \eea
+  其中等式左边的积分区域$\Omega_n = \{(x_1,x_2,\ldots,x_n): x_1,x_2,\ldots, x_n\ge 0; x_1+x_2+\ldots+x_n\le 1 \}$.
+}  
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{$n$维限和积分公式的证明}
+  
+  {\scriptsize
+  证明：用归纳法，$n=1$时命题显然成立。假设命题对$n-1$成立，考虑积分
+  \scriptsize
+  $$ J  =  \int_{\Omega_n} x_1^{\alpha_1-1}x_2^{\alpha_2-1}\ldots x_{n}^{\alpha_{n}-1}\delta(x_1+x_2+\ldots+x_n-1)dx_1dx_2\ldots dx_n.$$
+  先对$x_n$积分，得到
+  $$ J = \int_{\Omega_{n-1}} x_1^{\alpha_1-1}x_2^{\alpha_2-1}\ldots x_{n-1}^{\alpha_{n-1}-1}(1-x_1-x_2-\ldots -x_{n-1})^{\alpha_n-1} dx_1dx_2\ldots dx_{n-1}. $$
+  利用对$n-1$的归纳假设，以及$B$函数和$\Gamma$函数的关系，得到
+  \bea
+  J &=& \frac{\Gamma(\alpha_1)\Gamma(\alpha_2)\ldots\Gamma(\alpha_{n-1})}{\Gamma(\alpha_1+\alpha_2+\ldots+\alpha_{n-1})} \int_0^1(1-t)^{\alpha_n-1}t^{\alpha_1+\alpha_2+\ldots+\alpha_{n-1}-1} dt \newl
+  &=& \frac{\Gamma(\alpha_1)\Gamma(\alpha_2)\ldots\Gamma(\alpha_{n-1})}{\Gamma(\alpha_1+\alpha_2+\ldots+\alpha_{n-1})} \frac{\Gamma(\alpha_n)\Gamma(\alpha_1+\alpha_2+\ldots+\alpha_{n-1})}{\Gamma(\alpha_1+\alpha_2+\ldots+\alpha_{n-1}+\alpha_n)} \newl
+  &=& \frac{\Gamma(\alpha_1)\Gamma(\alpha_2)\ldots \Gamma(\alpha_n)}{\Gamma(\alpha_1+\alpha_2+\ldots + \alpha_n)}
+  \eea
+  }
+  
+\end{frame}
+
+\begin{frame}
+  \frametitle{$n$维限和积分公式的证明(续)}
+  
+      {\scriptsize
+        然后对任意$0<u<1$，考虑积分
+        \begin{equation}
+        I(u)= \int_{\Omega_n} x_1^{\alpha_1-1}x_2^{\alpha_2-1}\ldots x_n^{\alpha_n-1} \delta(x_1+x_2+\ldots+x_n-u) dx_1dx_2\ldots dx_n.\label{eq:1}
+        \end{equation}
+        做变量替换$x_i = uy_i$，并利用前面得到的积分$J$，就得到
+        \begin{eqnarray}
+        I(u) &=& u^{\alpha_1+\alpha_2+\ldots+\alpha_n-1} \int_{\Omega_n} y_1^{\alpha_1-1}y_2^{\alpha_2-1}\ldots y_n^{\alpha_n-1} \delta(y_1+y_2+\ldots+y_n-1) dy_1dy_2\ldots dy_n \nonumber \\
+        &=& u^{\alpha_1+\alpha_2+\ldots+\alpha_n-1} \frac{\Gamma(\alpha_1)\Gamma(\alpha_2)\ldots \Gamma(\alpha_n)}{\Gamma(\alpha_1+\alpha_2+\ldots + \alpha_n)} \label{eq:2}
+        \end{eqnarray}
+        最后，分别利用\eqref{eq:1}和\eqref{eq:2}可以看出所要求证的等式左右两边都等于
+        $$ \int_0^1 I(u) f(u) du $$
+        于是证毕。
+        }
+  
+\end{frame}
+
+\begin{frame}
+  \frametitle{例题}
+  
+  计算$n$-维空间的球体的体积 ($n\in Z^+$)。
+  
+\end{frame}
+
+\begin{frame}
+  \frametitle{解答}
+  
+  {\small
+  $$ V_n = \int_{x_1^2+x_2^2+\ldots +x_n^2\le 1} dx_1 dx_2 \ldots dx_n  $$
+  利用对称性可以写成
+  $$ V_n = 2^n\int_{x_1,x_2,\ldots,x_n\ge 0; x_1^2+x_2^2+\ldots +x_n^2\le 1} dx_1 dx_2 \ldots dx_n  $$
+  作变量替换$x_i = \sqrt{y_i}$，
+  $$  V_n = \int_{\Omega_n} y_1^{-\frac{1}{2}}y_2^{-\frac{1}{2}}\ldots y_n^{-\frac{1}{2}}dy_1 dy_2 \ldots dy_n  $$
+  再利用$n$维限和积分公式：
+$$V_n = \frac{\Gamma\left(\frac{1}{2}\right)^n}{\Gamma\left(\frac{n}{2}\right)}\int_0^1 u^{\frac{n}{2}-1} du = \frac{\pi^{n/2}}{\Gamma\left(\frac{n}{2}\right)}\frac{2}{n} = \frac{\pi^{n/2}}{\left(\frac{n}{2}\right)!} $$}
+  
+\end{frame}
+
+\begin{frame}
+  \frametitle{例题}
+  
+  满足标准正态分布$$P(x) = \frac{1}{\sqrt{2\pi}}e^{-\frac{x^2}{2}}$$的随机变量$x$的$100$次独立采样值为$x_1,x_2,\ldots, x_{100}$；请估算$x_1^2+x_2^2+\ldots +x_{100}^2 > 200 $ 的概率。
+  
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{ 解答}
+  
+  我们先考虑$n$个独立地满足标准正态分布的变量$x_1,x_2,\ldots, x_n$的平方和不大于$s$ ($s\ge 0$)的概率：
+
+  \be
+  P_n(s) = \frac{1}{(2\pi)^{n/2}}\int_{x_1^2+x_2^2+\ldots x_n^2<s}  e^{-\frac{x_1^2+x_2^2+\ldots+x_n^2}{2}}dx_1dx_2\ldots dx_n.
+  \ee
+  由正态分布的对称性，可以把积分限定在$x_1,x_2,\ldots,x_n\ge 0$的范围内：
+        {\scriptsize
+  \be
+  P_n(s) = \frac{2^n}{(2\pi)^{n/2}}\int_{x_1,x_2,\ldots,x_n\ge 0;x_1^2+x_2^2+\ldots x_n^2<s}  e^{-\frac{x_1^2+x_2^2+\ldots+x_n^2}{2}}dx_1dx_2\ldots dx_n .
+  \ee}
+\end{frame}
+
+\begin{frame}
+  \frametitle{ 解答(续)}
+  
+  做变量替换$x_i=\sqrt{sy_i}$ ($i=1,2,\ldots,n$)，并利用$n$维限和积分公式：
+  {\small
+    \bea
+  P_n(s) &=& \frac{s^{\frac{n}{2}}}{(2\pi)^{n/2}}\int_{\Omega_n} y_1^{-\frac{1}{2}}y_2^{-\frac{1}{2}}\ldots y_n^{-\frac{1}{2}} e^{-\frac{s(y_1+y_2+\ldots+y_n)}{2}}dy_1dy_2\ldots dy_n  \newl
+  &=& \frac{s^{\frac{n}{2}}}{(2\pi)^{n/2}} \frac{\left[\Gamma\left(\frac{1}{2}\right)\right]^n}{\Gamma\left(\frac{n}{2}\right)}\int_0^1e^{-\frac{su}{2}}u^{\frac{n}{2}-1}du  \newl
+  &=& \frac{1}{\Gamma\left(\frac{n}{2}\right)}\int_0^{\frac{s}{2}} e^{-t} t^{\frac{n}{2}-1} dt .
+  \eea
+  }
+       我们需要计算的是：
+        \be
+        p = 1-P_{100}(200) = \frac{1}{\Gamma(50)}\int_{100}^\infty t^{49}e^{-t}dt  = \frac{1}{\Gamma(50)}\int_{100}^\infty e^{-t+49\ln t}dt 
+        \ee
+  
+\end{frame}
+
+\begin{frame}
+  \frametitle{解答(续)}
+  
+
+        被积函数随着$t$增大而迅速减少。因此我们在$t=100$附近做泰勒展开
+        $$ -t + 49\ln t \approx  -100 + 49 \ln 100 - 0.51(t-100) $$
+        积分得到
+        \be
+        \int_{100}^\infty t^{49}e^{-t}dt  \approx  e^{-100+49\ln 100} \int_{100}^\infty e^{-0.51 (t-100)} dt \approx \frac{ e^{-100+49\ln 100} }{0.51}
+        \ee
+        再利用Stirling公式，
+        \be
+        p \approx \frac{ e^{-100 + 49\ln 100 - (-49+49\ln 49)} }{0.51\times \sqrt{98\pi}} \approx 1.2\times 10^{-8}
+        \ee
+        
+  
+\end{frame}
+
+\section{Homework}
+
+\begin{frame}
+  \frametitle{Homework}
+  \bitem
+\item{抛6000次骰子，每个面（1，2，3，4，5，6）恰好各出现1000次的概率大约为多少？}
+\item{计算质量为$m$半径为$r$的刚性球的转动惯量。}
+\item{理想气体中任取100个分子，这100个分子的方均根速率超过所有分子的方均根速率的2倍的概率大概是多大？}  
+
+  \eitem
+  
+\end{frame}
+
+
+
+\ech
+\end{document}

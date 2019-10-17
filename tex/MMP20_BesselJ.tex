@@ -1,0 +1,350 @@
+\documentclass[CJK]{beamer}
+\input{macros.tex}
+\input{titlepage.tex}
+  \date{}
+  \begin{document}
+  \bch
+\tpage{20}{第一类贝塞尔函数和应用举例}
+
+\begin{frame}
+\frametitle{本讲内容}
+\tableofcontents
+\end{frame}
+
+\section{Bessel Functions of the First Kind}
+\secpage{第一类贝塞尔函数的基本性质}{$$\frac{d}{dx}\left[x^mJ_m(x)\right] = x^mJ_{m-1}(x); \ \frac{d}{dx}\left[x^{-m}J_m(x)\right] = -x^{-m}J_{m+1}(x).$$}
+
+\begin{frame}
+  \frametitle{第一类贝塞尔函数的级数定义}
+  
+  第一类贝塞尔函数定义为
+  \tbox{
+    $$J_m(x) = \sum_{k=0}^\infty \frac{(-1)^k}{k!(k+m)!}\left(\frac{x}{2}\right)^{2k+m}$$}
+
+  先讨论物理问题中最常用的$m=0,1,2,\ldots$的情形 （$m$不是整数和$m<0$的情况且听下回分解）。
+
+  
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{$J_0$, $J_1$, 和 $J_2$}
+  
+  \addfig{3}{Bessel012.png}
+  
+\end{frame}
+
+\begin{frame}
+  \frametitle{$J_m(x)$的定性特点}
+  
+  \tbox{第一个峰，也就是最大值，大致在$x \approx m$处取到}
+  \tbox{第一个峰左边近似以$x^m$增长}
+  \tbox{第一个峰右边是振幅不断衰减的振荡型函数}
+ 注： 在$x$比较大时，振幅大致上$\sim \frac{1}{\sqrt{x}}$，周期趋向于$2\pi$。
+  
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{思考题}
+  
+  \addfig{0.5}{think.jpg}
+  请一位同学在黑板上画出$J_{100}(x)$的大致图像.
+  
+\end{frame}
+
+
+
+\begin{frame}
+  \frametitle{怎么计算$J_m(x)$}
+  
+  大多数编程语言(C, Fortran等)和带数学库的脚本语言 （Python, Mathematica等)都内置有贝塞尔函数，直接调用就能计算。
+
+    \skiplines
+    
+  致手算强迫症患者\huaixiao：有一整套的近似公式可以满足你的需求，欢迎来电采购，量大优惠。
+  
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{贝塞尔函数的递推关系}
+  
+  贝塞尔函数大概有几十条性质。养生MMP课里不可能全部介绍，因此，从最重要也最普遍的递推关系出发
+
+  {\blue 贝塞尔函数的第一条递推性质}
+  \tbox{$$\frac{d}{dx}\left[x^mJ_m(x)\right] = x^mJ_{m-1}(x).$$}
+
+  {\blue 贝塞尔函数的第二条递推性质}
+  \tbox{$$\frac{d}{dx}\left[x^{-m}J_m(x)\right] = -x^{-m}J_{m+1}(x).$$}
+
+  （之所以说这是普遍关系，是因为第二类贝塞尔函数$N_m(x)$也满足完全一样的递推关系。）
+  
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{贝塞尔函数的递推关系的简单应用}
+  
+  \addfig{0.6}{think2.jpg}
+  证明：
+  \bea
+  J_{m-1}(x)-J_{m+1}(x) &=& 2 J_m'(x),\newl
+  J_{m-1}(x)+J_{m+1}(x) &=& \frac{2m}{x} J_m(x).
+  \eea
+  
+\end{frame}
+
+
+
+
+\begin{frame}
+  
+  \addfig{1}{think1.jpg}
+  
+  剩下几十条性质，从哪儿开始入手呢？
+  
+\end{frame}
+
+
+
+\section{Brane Oscillation}
+
+\secpage{圆形薄膜的振动问题}{用谐函数$J_m(kr)\cos{m\theta}$和$J_m(kr)\sin{m\theta}$}
+
+\begin{frame}
+  \frametitle{圆形薄膜的振动问题}
+  
+
+  \addfig{1.2}{drum.jpg}
+  
+  考虑固定边界的，半径为$R$的圆形薄膜的横向小振动问题。在$t=0$时刻的初始位移为$A\left[1-\left(\frac{r}{R}\right)^2\right]$ （其中$A$为常量，$r$为距离圆盘中心的距离，$0\le r\le R$)，初始速度为零。求解之后薄膜的振动。
+  
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{写出方程和边界条件}
+  
+  取极坐标系，设位移为$u(r,\theta,t)$。
+
+  \bea
+  \frac{\partial^2u}{\partial t^2} - a^2\nabla^2 u = 0 , \newl
+  \left.u\right\vert_{r=R} = 0,\newl
+  \left.u\right\vert_{t = 0} = A\left[1-\left(\frac{r}{R}\right)^2\right] , \newl
+  \left.\frac{\partial u}{\partial t}\right\vert_{t = 0} = 0.
+  \eea
+  
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{分离变量}
+  
+  我们知道圆盘内的谐函数为$J_m(kr)e^{\pm \ii m\theta}$。在这个问题里初始条件是旋转对称的（不依赖于$\theta$)，所以解也不依赖于$\theta$。也就是说，只需要考虑$m=0$的情形，分离变量形式的解为
+    $$J_0(kr)\cos (akt),\  \  J_0(kr)\sin(akt)$$
+    
+
+
+    然后考虑边界条件：符合$J_0(kR) = 0$的解为
+    $$ k = \frac{\mu_i}{R}, i = 1,2,\ldots $$
+    其中$\mu_i$是贝塞尔函数$J_0(x)$的第$i$个正实数根。
+
+    
+$\mu_1\approx 2.4048$, $\mu_2 \approx 5.5201$, $\mu_3 \approx 8.6537$, $\mu_4 \approx 11.7915$, $\mu_5\approx 14.9309$, \ldots	
+
+    
+  
+\end{frame}
+
+
+
+
+\begin{frame}
+  \frametitle{展开}
+  
+  解的展开形式就是
+  $$u = \sum_i c_i J_0\left(\frac{\mu_ir}{R}\right) \cos\left(\frac{\mu_iat}{R}\right) + s_i J_0\left(\frac{\mu_ir}{R}\right) \sin\left(\frac{\mu_iat}{R}\right). $$  
+  利用速度为零的初始条件，立刻可以扔掉所有$\sin(akt)$项。
+  $$u = \sum_i c_i J_0\left(\frac{\mu_ir}{R}\right) \cos\left(\frac{\mu_iat}{R}\right). $$
+  再利用初始位移，得到
+  $$\sum_i c_i J_0\left(\frac{\mu_ir}{R}\right) =  A\left[1-\left(\frac{r}{R}\right)^2\right]. $$  
+  
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{求系数的套路}
+  
+  记得我们以前的套路是两边同乘上谐函数（正弦或余弦），然后在所求问题的物理范围内积分。利用谐函数的积分正交性就可以求出系数$c_i$。
+
+  \skipline
+  根据谐函数的正交定理，我们仍然可以这么做，区别就是要在圆盘内进行面积分。由谐函数正交定理，有：
+  $$\int_0^R r dr\int_0^{2\pi} d\theta\, J_0\left(\frac{\mu_ir}{R}\right) J_0\left(\frac{\mu_jr}{R}\right) = N_i \delta_{ij}. $$
+  这里
+  $$N_i = 2\pi \int_0^R\left[ J_0\left(\frac{\mu_ir}{R}\right) \right]^2  r dr$$
+\end{frame}
+
+
+\begin{frame}
+  把展开式
+  $$\sum_i c_i J_0\left(\frac{\mu_ir}{R}\right) =  A\left[1-\left(\frac{r}{R}\right)^2\right]. $$  
+  按照套路两边同乘以 $J_0\left(\frac{\mu_jr}{R}\right)$并在圆盘内进行面积分，得到
+  $$ c_j N_j = \int_0^Rrdr\int_0^{2\pi}d\theta\, A\left[1-\left(\frac{r}{R}\right)^2\right]J_0\left(\frac{\mu_jr}{R}\right). $$
+  稍作整理得到系数：
+  $$ c_j = \frac{2\pi A}{N_j}\int_0^R r\left[1-\left(\frac{r}{R}\right)^2\right]J_0\left(\frac{\mu_jr}{R}\right)\, dr. $$  
+\end{frame}
+
+
+\begin{frame}
+  再回过头来看结果中的两个积分
+  $$N_i = 2\pi \int_0^R\left[ J_0\left(\frac{\mu_ir}{R}\right) \right]^2  r dr =  2\pi R^2 \int_0^1 x\left[ J_0\left(\mu_i x\right) \right]^2  \,dx$$
+  和
+  $$\int_0^R r\left[1-\left(\frac{r}{R}\right)^2\right]J_0\left(\frac{\mu_jr}{R}\right)\, dr = R^2\int_0^1 x(1-x^2)J_0(\mu_ix)dx.$$
+
+  （我们作了替换$x=r/R$）
+
+  \skiplines
+  
+  虽然这些积分会不会求并不影响大局，我们还是来仔细研究一下（前方高能请看戏就好）——
+  
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{贝塞尔函数的正交定理}
+  
+  设$\mu_i$, $\mu_j$是$J_m(x)$第$i$个和第$j$个正实数根，则
+  \tbox{
+    $$\int_0^1 \,x\,J_m(\mu_ix)J_m(\mu_j x) \,dx = \delta_{ij} \frac{\left[J_{m+1}(\mu_i)\right]^2}{2} .$$}
+  也就是说，只要定义内积时乘上权重$x$（这个权重来自于极坐标系的散度的”面积修正因子“），那么$J_m(\mu_ix)$ ($i=1,2,\ldots$)就是在$[0,1]$内的正交函数组了。
+  
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{证明}
+  
+  回忆$J_m(\mu_ix)$满足的贝塞尔方程：
+
+  \be
+    \frac{1}{x}\frac{d}{dx}\left[x\frac{d}{dx} J_m(\mu_i x)\right] + \left(\mu_i^2-\frac{m^2}{x^2}\right)J_m(\mu_ix) = 0.
+   \ee
+  两边同乘以$xJ_m(\mu_j x)$，得到
+   \begin{equation}
+     J_m(\mu_jx)\frac{d}{dx}\left[x\frac{d}{dx} J_m(\mu_i x)\right] + \left(\mu_i^2-\frac{m^2}{x^2}\right)xJ_m(\mu_ix)J_m(\mu_jx) = 0. \label{eq1}
+   \end{equation}
+   交换$i$和$j$，得到
+   \begin{equation}
+     J_m(\mu_ix)\frac{d}{dx}\left[x\frac{d}{dx} J_m(\mu_j x)\right] + \left(\mu_j^2-\frac{m^2}{x^2}\right)xJ_m(\mu_ix)J_m(\mu_jx) = 0. \label{eq2}
+   \end{equation}
+  
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{证明（续）}
+  
+  \eqref{eq1}减去\eqref{eq2}，得到
+  \begin{eqnarray}
+ && \frac{d}{dx}\left[ xJ_m(\mu_jx)\frac{d}{dx} J_m(\mu_i x) - xJ_m(\mu_ix)\frac{d}{dx} J_m(\mu_j x) \right] \newl
+  && + (\mu_i^2-\mu_j^2)xJ_m(\mu_ix)J_m(\mu_jx) = 0. \label{eq3}
+  \end{eqnarray}
+  如果$i\ne j$，两边从$0$到$1$积分即得到
+  $$\int_0^1 xJ_m(\mu_ix)J_m(\mu_jx) = 0. $$
+  
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{证明（续）}
+  
+  事实上，在推导\eqref{eq3}时，$\mu_i$，$\mu_j$可以为任何正数，所以我们还可以取$\mu_i$为$J_m$的零点，而$\mu_j = \mu_i +\epsilon$。
+    同样从$0$到$1$积分，得到
+    $$ \mu_iJ_m(\mu_i+\epsilon) J_m'(\mu_i)  -(2\mu_i+\epsilon)\epsilon\int_0^1xJ_m(\mu_ix)J_m[(\mu_i+\epsilon)x]dx = 0 $$
+    两边除以$\epsilon$并令 $\epsilon\rightarrow 0^+$
+    $$ \int_0^1x\left[J_m(\mu_ix)\right]^2dx = \frac{[J_m'(\mu_i)]^2}{2} $$
+    最后，在递推关系
+    $$\frac{d}{dx}\left[x^{-m}J_m(x)\right] = -x^{-m} J_{m+1}(x)$$
+  两边取$x = \mu_i$，即得到 $J_m'(\mu_i) = -J_{m+1}(\mu_i)$。于是命题在$i=j$时也得到了证明。
+    
+  
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{另一个积分}
+  令$m=0$，上述定理给出了$N_j = \pi R^2\left[J_1(\mu_j)\right]^2$.
+
+  然后考虑另一个积分
+  $$I =   \int_0^1x\left(1-x^2\right)J_0(\mu_jx)dx. $$
+\end{frame}
+
+\begin{frame}
+  利用
+  $$ \mu_jxJ_0(\mu_j x) = \frac{d}{dx} \left[xJ_1(\mu_jx)\right]. $$
+  分部积分，即得到
+  $$I = \left.\frac{1-x^2}{\mu_j} xJ_1(\mu_jx) \right\vert_0^1 + \frac{2}{\mu_j} \int_0^1 x^2J_1(\mu_jx) dx. $$
+  再利用
+  $$\mu_jx^2J_1(\mu_j x) = \frac{d}{dx}\left[x^2J_2(\mu_j x)\right] $$
+  得到
+  $$I  =  \frac{2}{\mu_j} \int_0^1 x^2J_1(\mu_jx) dx = \frac{2}{\mu_j^2}J_2(\mu_j). $$
+  
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{求出系数}
+  
+  最后，利用
+  $$J_0(x)+J_2(x) = \frac{2}{x}J_1(x)$$
+  得到
+  $$J_2(\mu_j) = \frac{2}{\mu_j}J_1(\mu_j).$$
+  综合前面所有结果，最终得到
+  $$ c_j = \frac{8A}{\mu_j^3J_1(\mu_j)} $$
+  
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{最终解}
+  
+  薄膜的振动解为
+  $$ u = \sum_{j=0}^\infty \frac{8A}{\mu_j^3J_1(\mu_j)}J_0\left( \frac{\mu_jr}{R}\right)\cos\frac{\mu_jat}{R}. $$
+
+  \skiplines
+
+  （思考：会不会发生某个分母中的$J_1(\mu_j)=0$的情况？)
+  
+\end{frame}
+
+
+\begin{frame}
+  
+  \bcenter
+  \lfig{1}{blackq.jpg}
+
+  刚才发生了什么.jpg
+  \ecenter
+
+\end{frame}
+
+
+\section{Homework}
+
+\begin{frame}
+  \frametitle{Homework}
+  
+  \bitem
+\item{通过逐项求导的办法证明贝塞尔函数的两个递推关系}
+\item{如果$J_m(\mu) = 0$ （$\mu$为正实数，$m$为非负整数)，计算积分
+    $$\int_0^1x\left[J_{m+1}(\mu x)\right]^2 dx. $$
+}
+\item{ 考虑固定边界的，半径为$R$的圆形薄膜的横向小振动问题。在$t=0$时刻的初始速度为$A\left[1-\left(\frac{r}{R}\right)^2\right]$ （其中$A$为常量，$r$为距离圆盘中心的距离，$0\le r\le R$)，初始位移为零。求解之后薄膜的振动。
+ }
+  \eitem
+  
+\end{frame}
+
+\ech
+\end{document}

@@ -1,0 +1,292 @@
+\documentclass[CJK]{beamer}
+
+\input{macros.tex}
+
+\input{titlepage.tex}
+
+\date{}
+
+\begin{document}
+\bch
+
+\tpage{6}{Poisson Equation and Heat Equation}
+
+\begin{frame}
+\frametitle{Outline}
+\tableofcontents
+\end{frame}
+
+\section{Poisson Equation}
+
+\secpage{泊松方程}{$$ \nabla^2\varphi = -\frac{\rho}{\epsilon_0} $$}
+
+\begin{frame}
+  \frametitle{静电学的泊松方程}
+  静电学中，联立高斯定律
+  $$\nabla\cdot \mathbf{E}= \frac{\rho}{\epsilon_0} $$
+  和电场与电势的关系 
+  $$\mathbf{E} = -\nabla \varphi,$$
+  可以得到泊松方程
+  $$\nabla^2\varphi = -\frac{\rho}{\epsilon_0}. $$
+\end{frame}
+
+\begin{frame}
+  \frametitle{真空中的静电势和拉普拉斯方程}
+  在真空中，静电势满足拉普拉斯方程：
+  $$\nabla^2\varphi =0$$
+  求解这类问题要合理运用对称性，选取合适的坐标系。
+\end{frame}
+
+
+
+\begin{frame}
+  \frametitle{例题1}
+  用泊松方程计算点电荷$q$产生的电势。
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{解答}
+  取点电荷所在点为原点建立球坐标系$(r,\theta,\phi)$。根据对称性，电势$\varphi$只和$r$有关。
+  在$r>0$处，电势满足拉普拉斯方程
+  $$\frac{\partial }{r^2\partial r}\left(r^2 \frac{\partial \varphi}{\partial r}\right) = 0.$$
+  这个方程的通解是
+  $$\varphi = \frac{C_1}{r}+C_2$$
+  如果取无穷远点为电势零点，则$C_2=0$。
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{解答（续）}
+  为了确定常数$C_1$。可以对包含原点的泊松方程
+  $$\nabla\cdot(\nabla\varphi) = -\frac{q}{\epsilon_0}\delta(\vecx)$$
+  上述方程在原点为中心，半径为$a$的小球内积分，并利用$\nabla \varphi$的散度的体积分等于它的表面净流出量(实际上就是高斯定律)：
+  $$ (-\frac{C_1}{a^2})4\pi a^2 = -\frac{q}{\epsilon_0}$$
+  由此得到$$C_1=\frac{q}{4\pi\epsilon_0}.$$
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{例题2}
+  \addfig{2}{problem_planes_potential.png}
+
+  如图，地面（视为无限大半平面）电势为零，墙面（也视为无限大半平面）电势为$V_0$ (这里$V_0\ne 0$)。求墙与地之间的空间内的静电势$\varphi(x,y)$.
+
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{解答}
+  在柱坐标系$(r,\theta,z)$内求解，$\varphi$满足边界条件
+  $$ \left.\varphi\right\vert_{\theta=0}=0,\ \left.\varphi\right\vert_{\theta=\frac{\pi}{2}}=V_0$$
+  和柱坐标系拉普拉斯方程(请使出洪荒之力回忆正交曲面坐标系的相关知识)：
+  $$\frac{1}{r}\frac{\partial}{\partial r}\left(r\frac{\partial\varphi}{\partial r}\right) + \frac{1}{r^2}\frac{\partial^2\varphi}{\partial\theta^2} + \frac{\partial^2\varphi}{\partial z^2} = 0.$$
+  显然，$\varphi = \frac{2}{\pi}\theta V_0$ 是问题的解。
+
+  \skiplines
+
+  （静电势解的唯一性在《电磁学》课上会介绍，这里不做过多讨论）。
+\end{frame}
+
+\begin{frame}
+  \frametitle{思考题}
+  \addfig{2}{problem_mirrorcharge.png}
+
+  如图，在无限大接地金属板上方$h$处放置点电荷$q$。求点电荷受金属板上感应电荷的吸引力大小。
+
+  \skiplines
+  
+ {\scriptsize （提示：把感应电荷都拿掉，并在关于金属板对称的位置放置点电荷$-q$。考虑这种情况产生的电势和原问题的电势是否满足相同的边界条件和方程。)}
+
+\end{frame}
+
+\section{Heat Equation}
+
+\secpage{热传导方程}{$$\frac{\partial u}{\partial t} - a \nabla^2u = 0.$$}
+
+\begin{frame}
+  \frametitle{热流密度}
+             {\blue 单位时间单位面积流过的热量称为热流密度，它是一个矢量。}
+
+
+               \addfig{1.6}{heatflux.png}             
+
+             
+             上图演示了一根长导热棒中均匀流过热流时的情况：热流密度$\mathbf{j}$的方向沿着导热棒的方向，大小是单位时间单位截面积流过的热量。
+
+
+
+\end{frame}
+
+\begin{frame}
+  \frametitle{傅立叶热导律和导热系数}
+  在没有额外热源的情况下，{\blue 傅立叶热传导定律}把热流密度$\mathbf{j}$和温度的不均匀性(梯度$\nabla T$)联系起来：
+
+  {\blue $$\mathbf{j} = -\lambda\nabla T$$}
+
+  比例系数$\lambda$叫做{\blue 导热系数}。
+
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{思考题}
+  一根长为$2.3\mathrm{m}$，截面积为$10^{-3}\mathrm{m^2}$的均匀铝棒，两端分别和温度为$320\SIK$和$280\SIK$的热库接触。等铝棒上的温度分布达到均匀后，每秒钟有多少热量从高温热库进入铝棒并流向低温热库？
+  （已知在室温附近，铝的导热系数约为 $230\,\mathrm{W/m/K}$。）
+
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{热传导方程}
+  对$\vecj = -\lambda\nabla T$两边取散度得到
+  $$\nabla \cdot \vecj = -\lambda \nabla^2T$$
+  散度等于单位体积流出率，在没有热源、没有相变的情况下能量守恒：
+  $$\nabla\cdot \vecj = -c\rho \frac{\partial T}{\partial t}$$
+  （这里$c$是单位质量热容，$\rho$是质量密度，$c\rho$是单位体积的热容)
+    结合上面两个式子得到\tbox{\blue
+    $$ \frac{\partial  T}{\partial t} - a\nabla^2T = 0,$$}
+    这就是{\blue 热传导方程，$a = \frac{\lambda}{\rho c}$是热传导方程的参数。}
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{思考题}
+  计算下列材料的热传导方程参数$a$:
+
+  \begin{tabular}{ccccc}
+    \hline
+    \hline
+    材料 & $\lambda$ ($\mathrm{W/m/K}$) & $\rho$ ($\SIkg/\SIm^3$) & $c$ ($\SIJ/\SIkg/\SIK$) & $a$ ($\SIm^2/\SIs$) \\
+    \hline
+    铝 & $230$ & $2.7\times 10^3$ & $900$ & \\
+    铅 &  $33$ & $11.3\times 10^3$ & $125$ & \\
+    某种砖 & $0.75$ & $2\times 10^3$ & $750$ & \\
+    \hline
+  \end{tabular}
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{热传导方程参数$a$的物理意义}
+
+  \addfig{1}{think1.jpg}
+  
+  热传导方程参数$a$的量纲是什么？讨论它的物理意义。
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{热扩散的特点}
+  热扩散、布朗运动，随机行走这些现象都有个特点：{\blue 扩散范围的尺度大致和时间的平方根成正比}。这个结论和空间维度无关；时间越长，这个规律越准确。
+
+  \skipline
+
+  (也就是说：扩散范围的尺度的平方和时间成正比。)
+
+  \skipline
+
+  {\blue 热传导方程的参数$a$大致描述的就是单位时间内扩散尺度的平方。}
+
+  
+ 
+\end{frame}
+
+
+\section{Sample Problem}
+\secpage{热传导问题的定性分析法}{遇到热传导问题先做定性分析}
+
+
+\begin{frame}
+  \frametitle{热传导实验的定性分析}
+
+  在《基础物理实验》课上可能会接触到如下的问题：
+  
+  \addfig{2.3}{heatflux2.png}
+  
+  在一根长为$2L$的不良导体棒在$t=0$时刻温度为$T_0$。在$t>0$时刻，不良导体棒两端均有强度为$j$的热流进入。设材料的导热系数$\lambda$，质量密度$\rho$，单位质量的比热$c$均已知，试计算$t> 0$时刻不良导体棒各处的温度$T(x,t)$。
+  
+\end{frame}
+
+\begin{frame}
+  \frametitle{解答}
+  
+  根据对称性，在棒中间处热流和温度梯度均为零。写出如下的方程和边界条件：
+  \bea
+  \frac{\partial T}{\partial t} - a\frac{\partial^2 T}{\partial x^2} &=& 0 \newl
+  \left.\frac{\partial T}{\partial x}\right\vert_{x=0} &=& 0 \newl
+  \left.\frac{\partial T}{\partial x}\right\vert_{x=L} &=& \frac{j}{\lambda}  \newl
+  \left.T\right\vert_{t=0} &=&  T_0 
+  \eea
+  其中$a = \frac{\lambda}{\rho c} $。
+  
+  
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{解答}
+  
+  先分析主要图像。
+
+  \skiplines
+
+  在$t$时刻，累计流入的热量为$Q =  2 j St$ (其中$S$为横截面积)。棒子热容为$C =  c \rho (2SL)$。所以$t$时刻棒子的平均温度为
+  $$ \bar{T} =   T_0  + \frac{Q}{C} = T_0 + \frac{j}{\rho cL}t $$
+  
+  
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{解答 (续)}
+  
+  把平均温度去掉，研究各处温度起伏：$\Delta T(x, t) = T(x, t) - \left(T_0+\frac{j}{\rho cL} t\right)$。显然$\Delta T$满足方程：
+  \bea
+  \frac{\partial \Delta T }{\partial t} - a \frac{\partial^2 \Delta T}{\partial x^2} &=&  -\frac{j}{\rho cL} \newl
+  \left.\frac{\partial \Delta T}{\partial x}\right\vert_{x=0} &=& 0 \newl
+  \left.\frac{\partial \Delta  T}{\partial x}\right\vert_{x=L} &=& \frac{j}{\lambda}  \newl
+  \left.\Delta T\right\vert_{t=0} = 0
+  \eea
+  因为$\Delta T$描述的是温度起伏，还有一个额外条件：
+  $$\int_0^L \Delta T(x, t) dx = 0 $$
+  
+\end{frame}
+
+\begin{frame}
+  \frametitle{解答 (续)}
+  
+  因为$a$的物理意义是单位时间扩散距离的平方，当$at\gg L^2$时，棒上的温度梯度趋于稳定，即$\Delta T$仅仅依赖于$x$，满足
+  \bea
+  - a \frac{\partial^2 \Delta T}{\partial x^2} &=&  -\frac{j}{\rho cL} \newl
+  \left.\frac{\partial \Delta T}{\partial x}\right\vert_{x=0} &=& 0 \newl
+  \left.\frac{\partial \Delta  T}{\partial x}\right\vert_{x=L} &=& \frac{j}{\lambda}  \newl
+  \int_0^L \Delta T(x, t) dx &=& 0  
+  \eea
+  由此不难解出
+  $$\Delta T = \frac{j}{2\lambda} \left(\frac{x^2}{L} - \frac{L}{3}\right) $$
+  
+\end{frame}
+
+\begin{frame}
+  \frametitle{解答 (续)}
+  
+  最后我们得到，当$t\gg \frac{L^2}{a}$时
+  $$ T = \left(T_0+\frac{j}{\rho cL} t\right) + \frac{j}{2\lambda} \left(\frac{x^2}{L} - \frac{L}{3}\right)  $$
+
+  要进一步了解$t\lesssim \frac{L^2}{a}$时的行为，需要用一些额外的知识求出问题的严格解，我们会在本课程的后半部分讨论。
+
+\end{frame}
+
+\section{Homework}
+
+\begin{frame}
+  \frametitle{Homework}
+  \bitem
+\item{在一个半径为$R$的孤立金属球外距离球心$a>R$处放置一个点电荷，计算金属球受点电荷的静电吸引力大小。}
+\item{长度为$L$的不良导体棒一端和温度为$T_0$的热库接触，并在$t=0$时刻和热库处于热平衡。从$t=0$时刻开始，在不良导体棒的另一端注入恒定大小为$j$的热流。设不良导体棒的导热系数$\lambda$，单位质量的比热$c$和质量密度$\rho$均已知。写出不良导体棒上温度$T(x, t)$ ($0\le x\le L, t\ge 0$)满足的方程和边界条件，并简要分析当$t$很大时的解的渐近行为。}
+  \eitem
+\end{frame}
+
+\ech
+\end{document}

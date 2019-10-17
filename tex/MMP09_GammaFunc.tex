@@ -1,0 +1,189 @@
+\documentclass[CJK, 13pt]{beamer}
+\input{macros.tex}
+\input{titlepage.tex}
+  \date{}
+  \begin{document}
+  \bch
+\tpage{09}{Gamma Function and Analytic Continuation}
+
+\begin{frame}
+\frametitle{Outline}
+\tableofcontents
+\end{frame}
+
+
+\section{Local approximation}
+
+\begin{frame}
+  \frametitle{解析函数在一点附近的变化规律}
+  
+  
+  {\blue $z_0$附近的任何非常数的解析函数$f$都在$z_0$足够小邻域内近似按$z-z_0$的某正整数次幂变化：
+  $$f(z)\approx f(z_0) + a_n(z-z_0)^n ,\ \ \  a_n\ne 0$$
+  这里$a_n$是在$a_1,a_2\ldots$中找到的第一个非零的数。}
+
+
+  \skiplines
+  
+  也就是说，如果$a_1\ne 0$，则主导变化的是一次项：$f(z)- f(z_0) \approx a_1(z-z_0)$；若$a_1 = 0$, $a_2\ne 0$，则主导变化的是二次项：  $f(z)-f(z_0) \approx a_2(z-z_0)$；依此类推…
+
+  \skiplines
+
+  如果所有$a_n$都为零，那么$f$就是常数了。（思考：为什么$f$在一个邻域内是常数，则在整个连通区域内都是常数？）
+  
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{思考题}
+
+  用解析函数的邻域近似证明最大模定理： {\blue 非常数解析函数的模的最大值只能在区域边界上取得。}
+
+  \skipline
+  然后进一步证明代数基本定理：{\blue复系数的非常数多项式一定有复数根。}
+\end{frame}
+
+
+\section{Analytic Continuation}
+
+\begin{frame}
+  \frametitle{解析延拓定理}
+  
+  
+  \tbox{\blue 在任何一点的邻域内相等的两个解析函数在整块连通区域内都相等。}
+
+  证明大意：设$f$和$g$解析，则$f-g$解析。由小块邻域内$f-g=0$可推出整块连通区域内内$f-g=0$。
+
+  \skiplines
+
+  这个定理也可以理解为：
+  \tbox{\blue 解析函数在整个连通区域内的值由它在任意一小块开的子区域上的值完全确定。}
+  
+  
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{解析延拓的例子}
+  
+  在$|z|<1$范围内我们用幂级数定义解析函数
+  $$f(z) = 1+z+z^2+\ldots$$
+  因为在$|z|<1$范围内有恒等式$f(z) = \frac{1}{1-z}$，所以$\frac{1}{1-z}$是$f(z)$在更大的区域(全复平面挖掉$z=1$这点)内的解析延拓。
+
+
+  \skiplines
+  
+  \wulian 这个例子给我一种等于什么都没说的感觉。
+  
+  \bye 这是一个完全正确但是非常失败的例子。
+
+  
+\end{frame}
+
+\section{Gamma Function}
+
+\begin{frame}
+  \frametitle{$\Gamma$函数}
+  
+  $\Gamma$函数在 $\mathrm{Re}(z) > 0$ 范围内的定义为：
+  \tbox{ $$\Gamma(z) \equiv \int_0^\infty t^{z-1}e^{-t}dt$$ }
+  这里的 $t^z$可理解为 $e^{z\ln t}$。
+
+
+  \skipline
+
+  对正整数$n$，容易验证$\Gamma(n) = (n-1)!$，因此我们有时也把$\Gamma(z)$写成$(z-1)!$。
+
+  \skiplines
+  
+  我们下面用解析延拓的方法把$\Gamma$函数的定义域扩充到除了一些离散的点之外的整个复平面。
+  
+  
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{在右半平面的解析性}
+  
+  对$\mathrm{Re}(z)>0$，在积分号下求导：
+  $$\frac{d\Gamma}{dz} = \int_0^\infty t^{z-1} (\ln t) e^{-t}dt,  \ \ \ \ \ \mathrm{Re}(z)>0.$$
+
+  容易验证这个积分在$\mathrm{Re}(z)>0$的情况下仍是收敛的并确实是$\Gamma(z)$的导函数，因此$\Gamma(z)$在右半平面内是解析函数。
+  
+  
+\end{frame}
+
+\begin{frame}
+  \frametitle{$\Gamma$函数的递推公式}
+  
+  利用$\Gamma$函数的定义，分部积分一次后可以得到递推公式
+  \tbox{ $$\Gamma(z+1) = z\Gamma(z)$$}
+
+ （也许你更喜欢把它写成$z! = z \cdot (z-1)!$)
+  
+\end{frame}
+
+\begin{frame}
+  \frametitle{$\Gamma$函数的解析延拓}
+  
+  考虑函数
+  $$ \frac{\Gamma(z+1)}{z} $$
+  它在右半平面和$\Gamma(z)$恒等，但是又在更大的区域$\mathrm{Re}(z)>-1, z\ne 0$里解析。
+  因此它可以看成$\Gamma$函数在$\mathrm{Re}(z)>-1, z\ne 0$里的解析延拓。
+
+  
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{$\Gamma$函数的解析延拓}
+  
+  $\Gamma$函数在$\mathrm{Re}(z)>-1, z\ne 0$里都有了定义之后，再考虑函数
+  $$ \frac{\Gamma(z+1)}{z} $$
+  它在右半平面和$\Gamma(z)$恒等，但是又在更大的区域$\mathrm{Re}(z)>-2, z\ne 0, -1$里解析。
+  因此它可以看成$\Gamma$函数在$\mathrm{Re}(z)>-2, z\ne 0, -1$里的解析延拓。
+  
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{$\Gamma$函数的解析延拓}
+  
+  $\Gamma$函数在$\mathrm{Re}(z)>-2, z\ne 0,-1$里都有了定义之后，再考虑函数
+  $$ \frac{\Gamma(z+1)}{z} $$
+  它在右半平面和$\Gamma(z)$恒等，但是又在更大的区域$\mathrm{Re}(z)>-3, z\ne 0, -1,-2$里解析。
+  因此它可以看成$\Gamma$函数在$\mathrm{Re}(z)>-3, z\ne 0, -1,-2$里的解析延拓。
+  
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{$\Gamma$函数的解析延拓}
+  
+  这样一直进行下去，我们得到一个在全复平面上除了$z=0,-1,-2,-3,\ldots$之外处处解析的$\Gamma$函数。
+
+  
+\end{frame}
+
+
+
+\section{Homework}
+
+\begin{frame}
+  \frametitle{Homework}
+  
+  \bitem
+\item{在$z=\pi$附近写出$\sin z$的近似变化行为，并估算$\sin(\pi + 0.01\ii)$的近似值。}
+\item{设$n$为正整数，试用最大模原理证明：复系数的一元$n$次方程
+  $$z^n+c_{n-1}z^{n-1}+c_{n-2}z^{n-2}+\ldots + c_1z + c_0 = 0$$
+  在复数域内一定有解。
+
+  提示：用反证法。}
+\item{利用热学课上学过的高斯积分计算$\Gamma(1/2)$的值，然后利用递推公式计算$\Gamma(-3/2)$的值。}
+
+  \eitem
+  
+\end{frame}
+
+\ech
+\end{document}

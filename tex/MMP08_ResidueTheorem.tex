@@ -1,0 +1,264 @@
+\documentclass[CJK]{beamer}
+\input{macros.tex}
+\input{titlepage.tex}
+  \date{}
+  \begin{document}
+  \bch
+\tpage{8}{Risidue Theorem}
+
+
+\begin{frame}
+\frametitle{Outline}
+\tableofcontents
+\end{frame}
+
+\section{Laurent Series}
+\secpage{洛朗展开}{挖掉中心后再展开就会出现负次幂}
+
+\begin{frame}
+  \frametitle{泰勒展开定理的另一种证法}
+  
+  {\small   
+    对$|z-z_0|=s<r$，取$s<q<r$并以$q$为半径作圆区域$C_q$：$|z-z_0| < q$。根据柯西积分公式：
+  \bea
+  f(z) = \frac{1}{2\pi\ii}\oint_{\partial C_q}\frac{f(\zeta)}{\zeta - z} d\zeta   &=& \frac{1}{2\pi\ii}\oint_{\partial  C_q}\frac{f(\zeta)}{(\zeta - z_0) - (z-z_0)} d\zeta \newl
+  &=& \frac{1}{2\pi\ii}\oint_{\partial C_q}\frac{1}{\zeta-z_0}\frac{f(\zeta)}{1 - \frac{z-z_0}{\zeta-z_0}} d\zeta \newl
+  &=& \frac{1}{2\pi\ii}\oint_{\partial C_q}\frac{1}{\zeta-z_0}f(\zeta)\sum_{n=0}^\infty\left(\frac{z-z_0}{\zeta-z_0}\right)^n d\zeta \newl
+  &=& \sum_{n=0}^\infty a_n(z-z_0)^n  
+  \eea
+  其中$a_n = \frac{1}{2\pi\ii}\oint_{\partial  C_q}\frac{f(\zeta)}{(\zeta-z_0)^{n+1}}d\zeta.$
+
+  }
+  
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{在一个环里解析的函数: 洛朗展开定理}
+  
+  {\blue
+  设$f(z)$在环区域$r<|z-z_0|<R$ (这里允许$r=0$和$R=\infty$)内解析，则
+  $$f(z) = \sum_{n=-\infty}^\infty a_n (z-z_0)^n,$$
+  其中
+  $$a_n = \frac{1}{2\pi\ii}\oint_C\frac{f(\zeta)}{(\zeta-z_0)^{n+1}}d\zeta,$$
+  积分路径$C$可以是环内任意的一条逆时针绕$z_0$一周的分段光滑曲线。}
+
+  这个展开式称为洛朗展开。注意和Taylor展开不同，指标的求和范围从$-\infty$到$\infty$。而且$a_n$不再和$f$在$z_0$处的$n$阶导数相关（\bye $z_0$根本就不在函数的定义域内)。
+  
+\end{frame}
+
+\begin{frame}
+  \frametitle{思考题}
+  
+  你能参考我们刚才证明泰勒展开定理的方法，证明洛朗展开定理吗？
+  
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{总结: Taylor展开和洛朗展开}
+  
+  \bmini{0.48}
+  \addfig{1}{TaylorExpansion.png}
+
+  {\small
+  $$f(z) = \sum_{n=0}^\infty a_n(z-z_0)^n$$
+  }{
+    \scriptsize
+    $$a_n = \frac{1}{2\pi\ii}\oint_{C}\frac{f(\zeta)}{(\zeta-z_0)^{n+1}}d\zeta {\blue = \frac{f^{(n)}(z_0)}{n!}}$$
+  
+  }
+  \emini
+  \bmini{0.48}
+  \addfig{1}{LaurentExpansion.png}
+
+  {\small
+    $$f(z) = \sum^\infty_{{\blue n=-\infty}} a_n (z-z_0)^n$$
+}{    \scriptsize
+    $$a_n = \frac{1}{2\pi\ii}\oint_{C}\frac{f(\zeta)}{(\zeta-z_0)^{n+1}}d\zeta$$
+  }
+  \emini
+  
+\end{frame}
+
+
+
+\begin{frame}
+  \frametitle{思考题}
+  
+  你能不通过柯西积分公式，用很直观的方式说出为什么Taylor和洛朗级数展开中$n$次幂项的系数总是
+  $$a_n = \frac{1}{2\pi\ii}\oint_{C}\frac{f(z)}{(z-z_0)^{n+1}}dz$$
+  吗？
+  
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{求洛朗展开的例子}
+  
+  $f(z) = \frac{1}{z(1+z)}$在环区域$0<|z|<1$内解析，洛朗展开为：
+  
+  \bea
+  \frac{1}{z(1+z)} &=& \frac{1}{z}\,\cdot\, \frac{1}{1+z} \newl
+  &=&\frac{1}{z}\left(1-z+z^2-z^3+\ldots\right) \newl
+  &=& \frac{1}{z} - 1 + z - z^2 + \ldots
+  \eea
+
+  级数展开的很多技巧我们之后会结合习题进行专门讲解，先不展开讨论。
+  
+\end{frame}
+
+
+
+\section{Residue Theorem}
+
+\secpage{留数定理}{其实就是$\frac{1}{z-z_0}$的原函数$\ln (z-z_0)$绕$z_0$一圈变化$2\pi \ii$}
+
+\begin{frame}
+  \frametitle{孤立奇点}
+  
+  如果$f(z)$在$z_0$的邻域$0<|z-z_0|<\delta$内解析（$\delta$可以是任意一个小的正数)，但在$z=z_0$不解析（没有定义或者有定义却不可导），则称$z_0$为$f(z)$的{\bf 孤立奇点}。
+
+    \skiplines
+    
+    \bex
+    $0, 1, 2$都是函数$\frac{1}{z^2(z^2-3z+2)}$的孤立奇点。
+    
+    $\pm \ii$都是函数$\frac{1}{z^2+1}$的孤立奇点。
+    \eex
+  
+\end{frame}
+
+\begin{frame}
+  \frametitle{孤立奇点的留数}
+  
+  如果$z_0$是$f(z)$的孤立奇点，则$f$可在邻域$0<|z-z_0|<\delta$ 内洛朗展开。因为我们知道$(z-z_0)^n$绕$z_0$积分一圈当且仅当$n= -1$时结果不为零(为$2 \pi\ii$)，所以我们特别关注$(z-z_0)^{-1}$前的系数$a_{-1}$，并把它称为$f$在$z_0$处的{\bf 留数，记作$\res{f}{z_0}$}.
+  \tbox{$$\res{f}{z_0} \equiv a_{-1}$$}
+  
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{留数定理}
+  
+      {\blue \bf 留数定理：设$f$在区域$T$内除有限个孤立奇点$b_1,b_2,\ldots,b_n$之外解析，在$T$的边界上连续，则$f$沿$T$的边界的积分等于$2\pi\ii$乘以$f$在所有孤立奇点处的留数之和}
+      \tbox{$$\oint_{\partial T} f(z)dz  = 2\pi\ii\sum_{k=1}^n\res{f}{b_k}$$}
+
+
+  
+\end{frame}
+
+\begin{frame}
+  \frametitle{图解留数定理}
+  
+  \bmini{0.6}
+  两个孤立奇点的例子: 由柯西定理
+  $$\oint_C f(z) dz - \oint_{C_1}f(z)dz - \oint_{C_2}f(z) dz = 0$$
+  \emini
+  \bmini{0.36}
+  \addfig{1.2}{ResidueTheorem.png}
+  \emini
+
+    {\scriptsize 在$C_1$和$C_2$上的积分前多了个负号，是因为$C_1$和$C_2$方向和左内法则规定的正方向相反。}  
+
+  再利用$(z-b_1)^n$沿$C_1$积分当且仅当$n=-1$时不为零(为$2\pi\ii$)，即可得到
+  $$\oint_{C_1}f(z)dz = 2\pi\ii \res{f}{b_1}$$
+  同理有
+  $$\oint_{C_2}f(z)dz = 2\pi\ii \res{f}{b_2}$$
+  代回最上面的式子即得证。当孤立奇点个数更多时同理可证。 
+  
+\end{frame}
+
+\begin{frame}
+  \frametitle{留数定理应用举例}
+  
+  计算定积分
+  $$I = \int_0^\infty \frac{\sin x}{x} dx $$
+  
+\end{frame}
+
+\begin{frame}
+  \frametitle{留数定理应用举例}
+  
+  思路：首先$\frac{\sin x}{x}$是偶函数，所以
+  $$I = \frac{1}{2} \int_{-\infty}^\infty \frac{\sin x}{x} dx. $$
+
+  $\sin x$是$e^{\ii x}$的虚部，即
+  $$I = \frac{1}{2}\mathrm{Im} \left(\int_{-\infty}^\infty \frac{e^{ix}}{x} dx \right)$$
+  
+\end{frame}
+
+\begin{frame}
+  \frametitle{留数定理应用举例}
+  
+  想使用留数定理就必然要把积分路径补成一个闭合围道。考虑到$e^{iz}$当$z$的虚部很大时趋向于零，我们就尽量在上半平面补。
+
+  最简单当然是补一个上半圆$C_R$(半径$R\rightarrow \infty$)，如下图所示：
+  
+  \addfig{2.5}{sinxbyxpath0.png}
+
+  
+  
+  
+\end{frame}
+
+\begin{frame}
+  \frametitle{留数定理应用举例}
+  
+  问题是，在这个围道上$\frac{e^{iz}}{z}$在$z=0$处没有定义，我们就要想办法绕开这个奇点。
+
+  如下图所示，在原点附近拐个弯，再取一个小半圆$C_\delta$ (半径$\delta \rightarrow 0^+$)。
+  
+  \addfig{3}{sinxbyxpath.png}
+
+  
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{留数定理应用举例}
+  \bmini{0.45}  
+  \lfig{1.45}{sinxbyxpath.png}
+  \emini
+  \bmini{0.5}
+  在这个围道内部，$\frac{e^{iz}}{z}$处处解析，根据柯西定理或留数定理，
+  \emini
+
+  $$\left(\int_{-R}^{-\delta} + \int_{\delta}^{R} + \int_{C_R} + \int_{C_\delta}\right)\frac{e^{iz}}{z} dz = 0  $$
+ 当$\delta \rightarrow 0^+$时，
+ $$\int_{C_\delta} \frac{e^{iz}}{z}dz  \rightarrow \int_{C_\delta} \frac{1}{z}dz = \Delta \ln z = - \ii \pi $$
+ 当$R\rightarrow \infty$时，可以(这里还是要稍作思考)估算出
+ $$\int_{C_R} \frac{e^{iz}}{z}dz \rightarrow 0$$
+  
+\end{frame}
+
+\begin{frame}
+  \frametitle{留数定理应用举例}
+    
+  \addfig{1.45}{sinxbyxpath.png}
+    所以我们最后得到$\delta\rightarrow 0$, $R\rightarrow \infty$时，
+    $$\left(\int_{-R}^{-\delta} + \int_{\delta}^{R}\right)  \frac{e^{iz}}{z} dz \rightarrow \ii\pi $$
+    即
+    $$ I = \frac{1}{2}\mathrm{Im}(\ii\pi) = \frac{\pi}{2}.$$
+  
+\end{frame}
+
+\section{Homework}
+\begin{frame}
+  \frametitle{Homework}
+  
+  \bitem
+\item{函数$\frac{e^{iz}}{z}$在环形区域$0<|z|<\infty$内解析，试求它的洛朗展开。}
+\item{计算函数$\frac{e^{iz}}{z}$在$z=0$处的留数。}
+\item{仿照课上用$\frac{e^{iz}}{z}$的围道积分计算
+  $$I=\int_0^{\infty}\frac{\sin x}{x}dx$$
+  的方法，但是取围道时把小半圆$C_\delta$取成下半圆，如图所示。用这个围道重新计算$I$。
+  
+  \addfig{1.8}{sinxbyxpath1.png}
+}
+  \eitem
+    
+\end{frame}
+
+\ech
+\end{document}

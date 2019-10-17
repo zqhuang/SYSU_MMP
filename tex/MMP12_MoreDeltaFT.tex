@@ -1,0 +1,184 @@
+\documentclass[CJK]{beamer}
+\input{macros.tex}
+\input{titlepage.tex}
+  \date{}
+  \begin{document}
+  \bch
+\tpage{12}{Advanced Topics on $\delta$ Function and Fourier Transform}
+
+\begin{frame}
+  \tableofcontents
+\end{frame}
+
+\section{Delta function}
+\secpage{$\delta$函数的高级性质}{$$ \delta\left(\alpha(x)\right)  = \sum_{\rm roots}  \frac{\delta(x-x_i)}{|\alpha'(x_i)|}$$}
+
+
+\begin{frame}
+  \frametitle{再复习一下$\delta$函数的积分表示}
+
+  \tbox{$$\frac{1}{2\pi}\int_{-\infty}^\infty e^{ikx}dk = \delta(x).$$}
+
+  在大量的物理问题中会用到它。
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{用围道积分的证明方法}
+  \bea
+  && \frac{1}{2\pi}\int_{-\infty}^\infty e^{ikx}dk \newl  
+  &=& \lim_{\epsilon\rightarrow 0^+} \frac{1}{2\pi}\int_{-\infty}^\infty e^{ikx-\frac{\epsilon}{2}k^2}dk \newl
+  &=& \lim_{\epsilon\rightarrow 0^+}\frac{1}{2\pi}\int_{-\infty}^\infty e^{-\frac{\epsilon}{2}(k-\frac{ix}{\epsilon})^2-\frac{x^2}{2\epsilon }}dk \newl
+  &=&  \lim_{\epsilon\rightarrow 0^+}\frac{1}{\sqrt{2\pi\epsilon}}e^{-\frac{ x^2}{2\epsilon}} \newl  
+  &=& \delta(x)
+  \eea
+\end{frame}
+
+\begin{frame}
+  \frametitle{$n$维空间的$\delta$函数的积分表示}
+  
+  \tbox{
+   $$ \frac{1}{(2\pi)^n} \int e^{i\veck\cdot\vecx} d^n\veck =  \delta^{(n)}(\vecx)$$
+   }
+
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{$\delta$函数的导函数}
+  
+  利用$\delta$函数在两边都是零的特点，可以用分部积分的方法得到$\delta$函数的导数的性质：
+  {\blue
+  $$\int_{-\infty}^\infty \left[\frac{d^n}{dx^n}\delta(x-x_0)\right] f(x)\, dx = (-1)^n f^{(n)}(x_0)$$}
+  
+\end{frame}
+
+\begin{frame}
+  \frametitle{思考题}
+  
+  计算积分
+  $$\int_{-\infty}^{\infty}   \delta'(x-\frac{\pi}{2})\cos x\,dx $$
+  
+\end{frame}
+
+
+
+\begin{frame}
+  \frametitle{$\delta$函数的终极大招}
+  
+  用变量替换的方法可以得到：\tbox{
+    $$ \delta\left(\alpha(x)\right)  = \sum_{\rm roots}  \frac{\delta(x-x_i)}{|\alpha'(x_i)|}$$}
+  求和对所有$\alpha(x)$的根$x_1$, $x_2$, \ldots 进行。
+
+   {\scriptsize （请思考当$\alpha(x)$没有根或者有重根的情形上面的等式会如何。)}
+
+  \skiplines
+  
+ {\small 另一种等价的写法是：
+  $$\int_{-\infty}^\infty \delta\left(\alpha(x)\right) f(x) \,dx = \sum_{\rm roots} \frac{f(x_i)}{|\alpha'(x_i)|}.$$}
+  
+  
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{思考题}
+  计算积分
+  $$\int_{-\infty}^\infty \delta(x^2-1) e^x\, dx$$
+\end{frame}
+
+
+
+
+\section{Fourier Transform}
+\secpage{傅立叶变换的高级性质}{$$ (f\star g)(\vecx) \equiv \frac{1}{(2\pi)^{n/2}} \int f(\vecy)\,g(\vecx - \vecy)\, d^n\vecy  $$}
+
+\begin{frame}
+  \frametitle{$\nabla \rightarrow \ii \veck$}
+  
+  对傅立叶逆变换式
+  $$ f(\vecx) = \frac{1}{(2\pi)^{n/2}}\int \widetilde{f}(\veck) e^{\ii \veck \cdot \vecx} d^n\veck. $$
+  两边作用$\partial_j$
+  $$ \partial_j f(\vecx) =  \frac{1}{(2\pi)^{n/2}}\int (\ii k_j \widetilde{f}(\veck)) e^{\ii \veck \cdot \vecx} d^n\veck. $$
+  当$j$取遍$1,2,\ldots, n$，上式可以写成矢量形式：
+  {\blue  $$ \widetilde{\ \nabla f\ } = \ii \veck \widetilde{f} $$}
+  在量子力学里，我们常常说：位置空间的算符$-\ii\nabla$对应于（动量空间的）动量$\veck$。
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{思考题}
+      位置空间的拉普拉斯算符 $\nabla^2$ 在傅立叶空间对应什么？
+
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{卷积}
+  
+  
+  两个函数$f(\vecx)$和$g(\vecx)$的卷积定义为
+  \tbox{$$ (f\star g)(\vecx) \equiv \frac{1}{(2\pi)^{n/2}} \int f(\vecy)\,g(\vecx - \vecy)\, d^n\vecy  $$}
+
+  显然，卷积满足交换律： {\blue $f\star g = g\star f$}。
+
+  更重要的是卷积定理: 设$f,g$的傅立叶变换依次为$\widetilde{f},\widetilde{g}$，则$f\star g$的傅立叶变换为$\widetilde{f}\widetilde{g}$，即
+  \tbox{卷积的傅立叶变换等于傅立叶变换的乘积}
+  
+ \end{frame}
+
+
+\begin{frame}
+  \frametitle{思考题}
+  
+  请用666的操作证明卷积定理。
+  
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{思考题}
+
+  定义函数
+  $$ f(x) = \int_{x-1}^{x+1}e^{-t^2}dt $$
+  求$f(x)$ 的傅立叶变换。
+  
+ \end{frame}
+
+
+
+\begin{frame}
+  \frametitle{思考题}
+
+  如果在傅立叶空间也定义卷积：
+  \tbox{$$ (\widetilde{f}\star \widetilde{g})(\veck) \equiv \frac{1}{(2\pi)^{n/2}} \int \widetilde{f}(\vecp)\,\widetilde{g}(\veck - \vecp)\, d^n\vecp  $$}
+
+  那么是否有
+  $$\widetilde{\,fg\,} = \widetilde{f}\star \widetilde{g} $$
+  即乘积的傅立叶变换是否等于傅立叶变换的卷积?
+  
+\end{frame}
+
+
+
+
+\section{Homework}
+
+\begin{frame}
+  \frametitle{Homework}
+  
+  \bitem
+\item{计算积分$$\int_{-\infty}^\infty \delta\left(\sin x\right) e^{-|x|} dx.$$ }
+\item{定义函数
+  $$ F(k) = \int_0^\infty e^{-x+ik(x^2-1)} dx, $$
+  计算积分
+  $$ \int_{-\infty}^\infty F(k) dk. $$}
+\item{把二维空间的$\delta$函数写成积分表示，然后换到极坐标下重新写一遍这个积分表示。}  
+  \eitem
+  
+\end{frame}
+
+
+
+\ech
+\end{document}

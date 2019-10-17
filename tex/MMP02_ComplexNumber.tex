@@ -1,0 +1,499 @@
+\documentclass[CJK,13pt]{beamer}
+\input{macros.tex}
+\input{titlepage.tex}
+  \date{}
+  \begin{document}
+  \bch
+\tpage{2}{Complex Numbers}
+
+\begin{frame}
+\frametitle{Outline}
+\tableofcontents
+\end{frame}
+
+\section{Euler's Identity}
+
+\secpage{欧拉公式}{$$e^{\ii \theta}=\cos\theta+\ii \sin\theta$$}
+
+\begin{frame}
+  \question{你知道欧拉公式吗？}
+
+  \answer{$e^{\ii \theta}=\cos\theta+\ii \sin\theta$}
+
+  \question{这是不是可以看作对$e^{\ii\theta}$的定义？}
+
+   \ \ \ (言下之意：欧拉公式不是等于什么都没说吗！）
+  
+  \answer{年轻人，你想得太简单了！}
+\end{frame}
+
+\begin{frame}
+  \frametitle{从实变函数到复变函数的推广}
+
+  \bex
+  实变函数
+  $$f(x) = x^2, \ \ (x\in \Re)$$
+  可以推广为复变函数
+  $$f(z) = z^2. \ \ (z\in C) $$
+  \eex
+
+  
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{从实变函数到复变函数的推广}
+  
+  
+
+  \bex
+  实变函数
+  $$f(x) = \frac{x}{1+x^2},\ \ (x\in \Re)$$
+  可以推广为复变函数
+  $$f(z) = \frac{z}{1+z^2}. \ \ (z\in C)$$
+  \eex
+
+  
+\end{frame}
+
+
+
+\begin{frame}
+  
+
+  \addfig{1.2}{kaisen.jpg}
+  \bcenter
+      {\bf \Large 这种推广简直弱爆了！}
+
+      \ecenter
+  
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{那我们继续}
+  
+  实变函数
+  $$f(x) = e^x,\ \ (x\in \Re)$$
+  推广为复变函数
+  $$f(z) = \ ? \ \ (z\in C)$$
+  
+\end{frame}
+
+\begin{frame}
+  
+  \addfig{1.2}{kaisen.jpg}
+  \bcenter
+  {\bf \Large 当然是$e^z$啊！}
+  \ecenter
+  
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{但，$e^z$到底是什么意思？}
+  
+  \addfig{1}{wocaidaan.png}
+  \bcenter
+  {\Large \bf  $e^{2+3\ii}$是什么意思？}
+  \ecenter
+  
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{转化为加减乘除的问题}
+  
+  实变的指数函数可以用“加减乘除”来替代：
+  $$ e^x  = \sum_{n=0}^{\infty} \frac{x^n}{n!}$$
+  由此自然而然地定义复变的指数函数
+  $$ e^z = \sum_{n=0}^{\infty} \frac{z^n}{n!}$$
+  
+\end{frame}
+
+\begin{frame}
+
+  \frametitle{思考题}
+  \addfig{2}{nimashinima.jpg}
+  
+  对推广到复数域的指数函数，证明``它是指数函数‘’。
+  即对任意$z_1, z_2\in C$，有
+  $$e^{z_1+z_2} = e^{z_1}e^{z_2}$$
+  
+\end{frame}
+
+
+
+\begin{frame}
+  \frametitle{Euler公式}
+  
+  对实数$\theta$，按定义
+  $$e^{\ii\theta} = \sum_{n=0}^\infty \frac{\ii^n\theta^n}{n!} $$
+  上式右边$n$为偶数的项是实数项，$n$为奇数的项是虚数项。分离实虚部即得：
+  $$e^{\ii\theta} = \sum_{n=0}^\infty \frac{(-1)^n\theta^{2n}}{(2n)!} + \ii  \sum_{n=0}^\infty \frac{(-1)^n\theta^{2n+1}}{(2n+1)!}$$
+  实部和虚部恰好分别是三角函数$\cos\theta$和$\sin\theta$的级数展开式，于是
+  \tbox{\blue $$e^{\ii\theta} = \cos\theta + \ii\sin\theta$$}
+  这就是著名的{\bf\blue 欧拉公式}。
+  
+\end{frame}
+
+\begin{frame}
+  \frametitle{复数的指数表示和复数的乘法规则}
+  
+      {\blue 模为$r$，幅角为$\theta$的复数可以写成$re^{\ii\theta}$。}
+      \addfig{1.8}{exp_expression.png}
+      
+  对两个复数$r_1e^{\ii \theta_1}$和$r_2e^{\ii\theta_2}$，利用刚刚证明的$e^{z_1}e^{z_2} =e^{z_1+z_2}$，就有
+  $$\left(r_1e^{\ii \theta_1}\right)\left(r_2e^{\ii\theta_2}\right) = (r_1r_2)\left(e^{\ii\theta_1}e^{\ii\theta_2}\right)= (r_1r_2)e^{\ii(\theta_1+\theta_2)}$$
+      这就是模相乘，幅角相加的复数乘法法则。  
+  
+  
+\end{frame}
+
+
+\thinka{我们采用从零开始``C语言''计数习惯，定义一个$N\times N$的方阵$E$的第$m$行第$n$列($m,n$遍历$0,1,\ldots, N-1$)元素为
+  $$E_{mn} = \frac{1}{\sqrt{N}}e^{- \frac{2\pi mn \ii }{N}}$$
+    证明$E$是个酉矩阵。
+}
+
+
+\begin{frame}
+  \frametitle{对数函数 $\ln z$ 是多值函数}
+  
+  设$z$的模为$r$，幅角为$\theta$，则 
+  $$e^{\ln r + \ii \theta} = r e^{\ii\theta} = z$$
+  那么，是否可以定义推广的对数函数：
+  $${\blue \ln z := \ln |z| + \ii \arg z}$$
+  （$|\cdot|$表示取模，$\arg$表示取幅角）
+  
+  不幸地是，因为$\arg z$可以随意加上$2\pi$的整数倍，所以上式是一对多的映射，不是普通意义上的函数。在复变函数论里把这样的映射称为{\bf\blue ``多值函数''}。
+
+  \skipline
+  
+  {\blue $\ln z$的多值性直接导致了柯西积分公式、留数定理等}。我们稍后就会接触到。
+\end{frame}
+
+\section{Delta Function}
+
+\secpage{又高又瘦的$\delta$函数}{$$\int_{-\infty}^{\infty} \delta(x-x_0)f(x) \,dx = f(x_0)$$}
+
+\begin{frame}
+  \frametitle{物理里的理想化模型}
+  
+  物理里有很多“无穷大$\times$无穷小 = 有限“的模型：
+  \bitem
+\item{瞬时冲量： 力无限大，作用时间无穷短，但两者的乘积（冲量）是有限的。}
+\item{质点：质量密度无穷大，体积无穷小，但两者的乘积（总质量）是有限的。}
+\item{点电荷：电荷密度无穷大，体积无穷小，但两者的乘积（总电荷）是有限的。}
+  \eitem
+
+  \skiplines
+  
+  在数学上这些表述都是不合法的，需要搞很多事情才能把这些模型说清楚。 不喜欢搞事情的物理学家们于是发明了{\blue $\delta$函数}。
+  
+\end{frame}
+
+\begin{frame}
+  \frametitle{重量级dalao —— Paul Dirac （狄拉克）}
+  
+  \bcenter
+  \lfig{1.2}{Dirac.jpg}
+
+  你们不要搞事情
+  \ecenter
+  
+\end{frame}
+  
+\begin{frame}
+  \frametitle{Dirac $\delta$ function}
+  
+  \bmini{0.4}
+  \lfig{1.5}{DiracDelta.png}
+  \emini
+  \bmini{0.55}
+  Dirac $\delta$ function 不是传统意义上的函数。它可以通过下面的{\blue 单位脉冲函数取脉冲时间为零的极限}得到：
+  $$\delta_D(x) = \left\{\begin{array}{ll} \frac{1}{\epsilon}, & \text{ if } -\frac{\epsilon}{2}<x<\frac{\epsilon}{2} \\  0, & \text{ else}\end{array}\right. $$
+  其中$\epsilon\rightarrow 0^+$。  
+  \emini
+
+  在本课程中，我们{\blue 简称Dirac $\delta$ function为$\delta$函数，并简写为$\delta(x)$}。
+  
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{$\delta$函数的另一种逼近方式}
+  
+  有时候需要计算$\delta$函数的导数甚至高阶导数，这时可以考虑用高斯函数逼近方式：
+
+  $$\delta(x) = \frac{1}{\sqrt{2\pi\epsilon}}e^{-\frac{x^2}{2\epsilon}},$$
+  其中$\epsilon\rightarrow 0^+$。
+
+%  {\scriptsize 注：这一般只是为了帮助理解$\delta$函数的导数的图像，并非为了计算。如果要用具体的逼近方式来进行计算，$\delta$函数的便捷性就大打折扣了。}
+  
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{$\delta$函数的抽象定义}
+  
+  借助上述两种逼近方式的辅助，我们归纳出$\delta$函数的下述抽象定义：
+  {\blue
+    \be
+    \delta(x) = \left\{
+    \begin{array}{ll}
+      0, & \text{ if } x\ne 0; \\
+      +\infty, & \text{ if } x = 0;
+    \end{array}\right.
+    \ee
+    $$ \int_{-\infty}^\infty \delta(x)\,dx = 1.$$ 
+  }
+  从上述抽象定义中可以看出$\delta$函数是偶函数：
+  $$\delta(-x) = \delta(x)$$
+  此外，积分的范围可以限定在$0$的任意小领域。
+    $$ \int_{0^-}^{0^+} \delta(x)\,dx = 1.$$   
+  
+\end{frame}
+
+\begin{frame}
+  \frametitle{$\delta$函数最重要的性质}
+  
+  从被使用频率上来讲，下式至关重要：
+  \tbox{
+    $$\int_{-\infty}^\infty \delta(x-x_0) f(x)\, dx = f(x_0).$$}
+
+  （请自行用物理图像理解上式）
+  
+\end{frame}
+
+\begin{frame}
+  \frametitle{$n$维空间的$\delta$函数}
+  
+  $n$维$\delta$函数标记为{\blue $\delta^{(n)}(\vecx)$}，既可以理解为
+      {\blue
+        $$\delta^{(n)}(\vecx) = \delta(x_1)\delta(x_2)\ldots\delta(x_n) $$
+      }
+      （其中$(x_1,x_2,\ldots, x_n)$是$\vecx$的坐标分量),
+        
+      也可以直接抽象地理解为{\blue 在原点附近体积为$\epsilon \rightarrow 0^+$的邻域内，函数值为$\frac{1}{\epsilon}\rightarrow \infty $，而在其余位置函数值均为零的函数。}
+
+      \skiplines
+      
+\bex
+三维空间某点$\vecx'$处的点电荷的电荷密度可以写成
+$$\rho(\vecx) = Q\, \delta^{(3)}(\vecx - \vecx')$$
+\eex
+
+\end{frame}
+
+\begin{frame}
+  \frametitle{$n$维空间的$\delta$函数的性质}
+  
+  和一维空间类似，
+  \tbox{
+   $$ \int \delta^{(n)}(\vecx - \vecx_0) f(\vecx)\, d^n\vecx = f(\vecx_0)$$
+   }
+  这里的$\int d^n\vecx$是$n$重积分$\int_{-\infty}^\infty dx_1\int_{-\infty}^\infty dx_2\ldots\int_{-\infty}^\infty dx_n$的简写，物理文献中经常碰到这种写法。
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{思考题}
+  原点处的静电势可以用积分
+  $$U = \frac{1}{4\pi\epsilon_0} \int \frac{\rho(\vecx)}{|\vecx|} d^3\vecx, $$
+  来计算。
+
+  \skipline
+  
+  由此计算在$\vecx_0$处点电荷$Q$在原点产生的电势。
+\end{frame}
+
+
+
+\section{Fourier Transform}
+
+\secpage{傅立叶变换}{$$\widetilde{f}(k) = \frac{1}{\sqrt{2\pi}}\int_{-\infty}^{\infty}e^{-\ii kx}f(x) dx$$}
+
+
+\begin{frame}
+  \frametitle{一维傅立叶变换的定义}
+傅立叶变换把``$x$空间''的函数$f(x)$变换到``k空间''的函数：
+  \tbox{  $$ \widetilde{f}(k) \equiv \frac{1}{\sqrt{2\pi}} \int_{-\infty}^\infty e^{-ikx} f(x) dx $$}
+
+  \bitem
+  \item{注意$x$和$k$都是实参量；但$f(x)$和$\widetilde{f}(k)$的取值可以为复数。}
+\item{在实际物理问题中，$x$空间和$k$空间（也叫傅立叶空间）往往对应明确的物理空间。例如在量子力学中，$x$空间对应坐标空间，$k$空间对应动量空间；在频谱分析中，$x$空间对应时间轴，$k$空间对应频率空间。}
+\item{注意在有些文献中没有$\frac{1}{\sqrt{2\pi}}$这个因子，很多公式的系数会有所区别。}
+  \eitem
+\end{frame}
+
+\thinka{设$f(x)$在区间$[-1,1]$上取值为$1$，其余处处为零。计算$f(x)$的傅立叶变换。}
+
+\begin{frame}
+  \frametitle{傅立叶变换的逆变换}
+  请阅读附录B理解傅立叶变换本质上是一个酉变换（复向量的旋转）。
+
+  附录B的离散傅立叶变换的逆变换过渡到连续情况就是：
+  \tbox{  $$ f(x) = \frac{1}{\sqrt{2\pi}} \int_{-\infty}^\infty e^{ikx} \widetilde{f}(k) dk $$}
+\end{frame}
+
+\begin{frame}
+  \frametitle{$n$维空间的傅立叶变换}
+  
+  $n$维空间的函数$f(\vecx)$的傅立叶变换就是对每个维度都进行一维傅立叶变换：
+  
+  $$ \widetilde{f}(\veck) = \frac{1}{(2\pi)^{n/2}}\int f(\vecx) e^{-\ii \veck \cdot \vecx} d^n\vecx $$
+
+  这里的$\veck\cdot\vecx = k_1x_1+k_2x_2+\ldots+k_nx_n$.
+  
+  
+  显然，其逆变换为
+  
+  $$ f(\vecx) = \frac{1}{(2\pi)^{n/2}}\int \widetilde{f}(\veck) e^{\ii \veck \cdot \vecx} d^n\veck. $$
+
+\end{frame}
+
+
+
+\begin{frame}
+  \frametitle{$\delta(x)$的积分表示}
+  通过把$\delta(x)$傅立叶变换再求逆变换，可以得到：
+  
+  \tbox{$$\frac{1}{2\pi}\int_{-\infty}^\infty e^{ikx}dk = \delta(x).$$}
+
+  这个结论连续运用$n$次，可以把结果推广到$n$维空间：
+  \tbox{
+   $$ \frac{1}{(2\pi)^n} \int e^{i\veck\cdot\vecx} d^n\veck =  \delta^{(n)}(\vecx)$$
+   }
+  
+  在大量的物理问题中会用到它。
+\end{frame}
+
+\begin{frame}
+  \frametitle{傅立叶变换保内积不变}
+
+  设$f(x)$, $g(x)$的傅立叶变换分别为$\widetilde{f}(k)$和$\widetilde{g}(k)$，则
+
+  $$\int_{-\infty}^\infty f^\dagger(x) g(x) dx =  \int_{-\infty}^\infty \widetilde{f}^\dagger(k) \widetilde{g}(k) dk$$
+  
+  证明：由于傅立叶变换是酉变换（见附录B），所以保内积不变。
+  
+\end{frame}
+
+\thinka{计算积分$$\int_0^\infty \left(\frac{\sin x}{x}\right)^2dx.$$}
+
+\section{Homework}
+
+\begin{frame}
+  \frametitle{Homework}
+  \bitem
+  \item{仿照复数域上指数函数$e^z$的定义方法，用全复平面收敛的幂级数把正弦和余弦函数推广到复数域：
+  $$\sin z \equiv \sum_{n=0}^\infty \frac{(-1)^nz^{2n+1}}{(2n+1)!};\ \ \ \cos z \equiv \sum_{n=0}^\infty \frac{(-1)^nz^{2n}}{(2n)!}.$$
+  \bitem
+  \item[(1)]{ 用指数函数来表示正弦和余弦函数；}
+  \item[(2)]{ 求出满足$\sin z = 0$的全部复数解$z$。}
+    \eitem}
+\item{课堂上用傅立叶变换的逆变换证明了$\delta$函数的积分表示，请反过来用$\delta$函数的积分表示证明傅立叶变换的逆变换。}
+\item{用$\delta$函数的积分表示证明傅立叶变换的保内积性。}
+\item{计算积分$$\int_0^\infty \frac{\sin x}{x} dx.$$}    
+  \eitem
+\end{frame}
+
+
+\section{Appendices}
+
+\append{A}{``指数函数是指数函数''的证明}
+
+\begin{frame}
+  \frametitle{$e^{z_1+z_2} = e^{z_1}e^{z_2}$的证明}
+  
+  按照$e^z$的定义，命题等价于
+  $$\sum_{n=0}^\infty \frac{(z_1+z_2)^n}{n!} = \sum_{n_1, n_2\ge 0}\frac{z_1^{n_1}z_2^{n_2}}{n_1!n_2!}$$
+
+  对任意$n_1,n_2\ge0$，我们来比较两边$z_1^{n_1}z_2^{n_2}$的项的系数：
+  
+  左边$z_1^{n_1}z_2^{n_2}$的项只能来自于$n=n_1+n_2$的项的展开，在展开$(z_1+z_2)^n$时在$n_1$个括号内取$z_1$，$n_2$个括号内取$z_2$，总共有$\frac{n!}{n_1!n_2!}$种取法，即左边$z_1^{n_1}z_2^{n_2}$的系数为
+  $$\frac{1}{n!} \frac{n!}{n_1!n_2!} = \frac{1}{n_1!n_2!}$$
+  和右边相同。
+  
+\end{frame}
+
+
+\append{B}{傅立叶变换的本质是复向量的旋转}
+
+\begin{frame}
+  \frametitle{一维有限格点世界}
+  $\delta(x-x_0)$函数在$x_0$处的取值是$\infty$，这件事多多少少有点让人不爽。有没有更好的描述$\delta$函数的办法呢?
+
+  具体的物理问题总是局限在有限的范围内，对位置的测量精度也总是有限的。因此我们假想$x$在一根长度为$L$（$L$非常非常大）的线段上，且$x$的位置的测量精度为$dx=L/N$（这里我们稍稍改变了$dx$的含义，把它看成一个很小很小，但是有限的长度）。$x$的取值局限为$x_0=0, x_1=dx, x_2=2dx, \ldots, x_{N-1}=(N-1)dx$中的一个。
+
+  {\blue 函数$f(x)$退化为一个$N$维空间矢量
+    $$ \vecf = \left( f(x_0) \sqrt{dx}, f(x_1) \sqrt{dx},\ldots, f(x_{N-1})\sqrt{dx} \right).$$}
+    这里的$\sqrt{dx}$的因子看起来有些奇怪，其实去掉也无妨，留着它的好处是可以把很多函数的术语和线性代数的术语统一起来。
+
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{积分的离散化形式}
+
+  在有限格点空间里，积分也被离散化了：
+
+  $$\int_{-\infty}^{\infty} f(x) dx \rightarrow \sum_{i=0}^{N-1} f(x_i) dx = \sqrt{dx} \sum_{i=0}^{N-1} \vecf_{i} $$
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{内积}
+  两个函数$f(x)$, $g(x)$的内积就可以和矢量内积统一起来：
+  $$ \int_{-\infty}^\infty f^\dagger(x) g(x) dx \rightarrow \sum_{i=0}^{N-1} f^\dagger(x_i)g(x_i) dx  = \vecf^\dagger\vecg. $$
+  注意我们把$dx$拆成两个$\sqrt{dx}$并分别吸收到矢量$\vecf$, $\vecg$的定义中去了。
+\end{frame}
+
+\begin{frame}
+  \frametitle{$\delta$函数}
+  在任意一点$x_i$处的$\delta$脉冲也变得非常简明：
+  $$\delta(x-x_i) = \left\{\begin{array}{ll}\frac{1}{dx}, &\text{ if }x=x_i \\
+  0, & \text{ else}\end{array}\right.$$
+  至少，在我们的游戏规则里$\frac{1}{dx}$是有限的数！
+\end{frame}
+
+\begin{frame}
+  \frametitle{旋转}
+  还记得我们讨论过一个$N\times N$的酉矩阵$E$吗？
+  $$E_{mn} = \frac{1}{\sqrt{N}}e^{-\frac{2\pi mn \ii }{N}}$$
+  用这个酉矩阵把函数（向量）$\vecf$旋转一下会发生什么呢？
+  $$ \widetilde{\vecf} \equiv E\vecf$$
+  的第$m$个分量是：
+  $$ \widetilde{\vecf}_m = \sum_{n=0}^{N-1} \frac{1}{\sqrt{N}}e^{-\frac{2\pi mn \ii }{N}} f(x_n)\sqrt{dx}. $$
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{对偶空间}
+  把$\widetilde{\vecf}_m$看成一个和原空间互为对偶的有限格点空间里的函数（矢量）；为了区别于原来的有限格点空间，我们用$k$来表示这个对偶空间里的坐标。这两个空间的格点数$N$是相同的，
+  而且满足 {\blue $dk\, dx = \frac{2\pi}{N}$} (怎么看着有点像量子力学的不确定性原理）。
+
+      {\scriptsize （如果你熟悉傅立叶分析，也许你更喜欢把它写成$dk = \frac{2\pi}{N\,dx}=\frac{2\pi}{L}$.）}
+
+  \skipline
+      
+  在$k$空间里我们关注的格点为$k_0=0$, $k_1=dk = \frac{2\pi}{N\,dx}$, $k_2=2dk=\frac{4\pi}{N\,dx}$, \ldots
+
+  容易验证$\frac{1}{\sqrt{N}} = \frac{\sqrt{dk\, dx}}{\sqrt{2\pi}}$， $\frac{2\pi mn}{N} = k_mx_n $， 于是
+  $$\widetilde{\vecf}_m = \sqrt{dk} \, \left(\frac{1}{\sqrt{2\pi}}\sum_{i=0}^{N-1} e^{-\ii k_m x_n} f(x_n) dx \right)$$
+
+\end{frame}
+
+\begin{frame}
+  \frametitle{离散傅立叶变换和逆变换}
+  也就是说，矢量$\widetilde{\vecf}$对应于$k$空间的函数：
+  $$ \widetilde{f}(k_m)= \frac{1}{\sqrt{2\pi}}\sum_{i=0}^{N-1} e^{-\ii k_m x_n} f(x_n) dx. $$
+  利用$E^\dagger E = I$，很容易反过来得到$\vecf = E^\dagger \widetilde{\vecf}$。
+  经过几乎是一模一样的推理（除了把$-\ii$换成了$\ii$），得到：
+  $$f(x_n) = \frac{1}{\sqrt{2\pi}} \sum_{i=0}^{N-1}e^{\ii k_m x_n} \widetilde{f}(k_m) dk .$$
+  上面的$f\rightarrow \widetilde{f}$的操作就是离散傅立叶变换；反过来的操作就是离散傅立叶逆变换。它们的本质是对复向量的一种旋转和相应的逆旋转。
+\end{frame}
+
+\ech
+\end{document}

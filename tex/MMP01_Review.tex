@@ -1,0 +1,471 @@
+\documentclass[CJK,13pt]{beamer}
+\input{macros.tex}
+\input{titlepage.tex}
+  \date{}
+  \begin{document}
+  \bch
+\tpage{1}{Review}
+
+\begin{frame}
+\frametitle{Outline}
+\tableofcontents
+\end{frame}
+
+\section{Calculus}
+
+\secpage{微积分回顾}{$$(1+x)^\alpha = 1+\alpha x+\frac{\alpha(\alpha-1)}{2!}x^2 +\frac{\alpha(\alpha-1)(\alpha-2)}{3!}x^3 + \ldots $$
+}
+
+\begin{frame}
+  \frametitle{五个展开公式（前三个）}
+  \tbox{$$e^x = 1+x+\frac{x^2}{2!} + \frac{x^3}{3!} + \ldots$$}
+  \tbox{$$\sin x = x-\frac{x^3}{3!} + \frac{x^5}{5!} - \frac{x^7}{7!} + \ldots$$}
+  \tbox{$$\cos x = 1-\frac{x^2}{2!} + \frac{x^4}{4!} - \frac{x^6}{6!} + \ldots$$}
+  这三个公式无条件成立
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{五个展开公式(后两个)}
+  \tbox{$$(1+x)^\alpha = 1+\alpha x+\frac{\alpha(\alpha-1)}{2!}x^2 +\frac{\alpha(\alpha-1)(\alpha-2)}{3!}x^3 + \ldots $$}
+  \tbox{$$\ln (1+x) =  x-\frac{x^2}{2} +\frac{x^3}{3} -\frac{x^4}{4} + \ldots $$}
+  这两个公式{\blue 适用于$|x|< 1$}; 你也可以在$|x|=1$时浪一下，一般不会出问题。但是，{\blue 在$|x|>1$的情况下一定不能浪，在$|x|>1$的情况下一定不能浪，在$|x|>1$的情况下一定不能浪}——重要的事情说三遍。
+\end{frame}
+
+
+
+\thinka{$e^\pi$和$\pi^e$哪个大？（2019年大学生夏令营面试题）}
+
+
+\begin{frame}
+  \frametitle{含参量的积分：固定上下界}
+  设$f$是已知的二元函数，$a,b$是常数，可以用含参量的积分来定义函数
+  $$F(x) =\int_a^b f(x, t) dt.$$
+  当{\bf 积分收敛性和光滑性很好时，可以交换积分和求导的次序}
+  $$F'(x) =\int_a^b \frac{\partial f(x, t)}{\partial x} dt.$$  
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{含参量的积分:变上下界}
+  设$\alpha,\beta$是已知的一元函数，$f$是已知的二元函数，定义函数
+  $$F(x) =\int_{\alpha(x)}^{\beta(x)} f(x, t) dt.$$
+  当积分收敛性和光滑性很好时，
+  \tbox{$$F'(x) =\int_{\alpha(x)}^{\beta(x)} \frac{\partial f(x, t)}{\partial x} dt + \beta'(x) f\left(x,\beta(x)\right) - \alpha'(x)f\left(x,\alpha(x)\right) .$$ }
+  {\scriptsize (上面的结果有非常简单的几何解释，你能给出来吗？)}
+  
+\end{frame}
+
+\thinka{在$x\in(0,\infty)$上定义$\Gamma$函数$$\Gamma(x) = \int_0^\infty t^{x-1}e^{-t}dt.$$
+  试证明$-1<\Gamma'(1)<0.$}
+
+\section{Linear Algebra}
+
+\secpage{线性代数回顾}{厄米矩阵本征值都是实数；本征矢可以取成正交归一化。}
+
+\begin{frame}
+  \frametitle{共轭与共轭转置(conjugate transpose)}
+
+  复数取共轭是指令其虚部反号：
+  
+  \tbox{$$(a+b\ii)^* \equiv a - b\ii,  \  a, b\in \Re $$}
+  
+  把一个复数矩阵$A$每个元素都取共轭，然后再把整个矩阵取转置，就得到$A$的{\bf 共轭转置矩阵}，简单记作$A^\dagger$。当然，你也可以先转置，再取共轭。
+
+  \tbox{$$A^\dagger\equiv (A^*)^T= (A^T)^*$$}
+
+  显然，对实数矩阵而言，共轭转置就是转置。
+
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{例子}
+
+  \be
+    A = \left(
+    \begin{array}{lll}
+      1+\ii &  2+\ii & \ii \\
+      3-\ii &  -4-2\ii & 0 
+    \end{array}
+    \right)
+    \ee
+取共轭转置后为
+
+  \be
+    A^\dagger = \left(
+    \begin{array}{ll}
+      1-\ii & 3+\ii \\
+      2-\ii & -4+2\ii \\
+      -\ii &   0 
+    \end{array}
+    \right)
+    \ee
+
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{共轭转置的基本性质}
+    容易证明：
+    \bitem
+    \item{乘积的共轭转置等于共轭转置的倒序乘积
+    $$  (AB)^\dagger = B^\dagger A^\dagger, $$
+    $$ (ABC)^\dagger  = C^\dagger B^\dagger A^\dagger, $$
+      \ldots}
+    \item{共轭转置矩阵的行列式是原矩阵的行列式的共轭
+      $$\det\left(A^\dagger\right)  = (\det A)^*$$
+    }
+      \eitem
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{内积}
+
+  \bitem
+  \item{实向量（看成$n\times 1$实元素矩阵）$\vecu,\vecv$的内积可以用矩阵乘法简洁地写成$\vecu^T\vecv$.
+  
+  {\scriptsize (它恒等于$\vecv^T \vecu$，所以实向量内积满足交换律)}}
+
+\item{复向量（看成$n\times 1$复元素矩阵）$\vecu,\vecv$的内积则定义为 $\vecu^\dagger\vecv$.
+
+  {\scriptsize (它一般不等于$\vecv^\dagger \vecu$，复向量内积只有当内积为实数时才满足交换律)}}
+\item{  复向量的模定义为它和自己的内积的平方根 $\lVert \vecu\rVert \equiv \sqrt{\vecu^\dagger\vecu } $
+
+  {\scriptsize（即它的每个分量的模的平方和再开平方根）}}
+\item{如果两个向量内积为零，则说它们正交。}
+\item{如果一个向量的所有元素为零，则称它为零向量}
+  \eitem
+  
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{酉矩阵(Unitary Matrix)}
+  如果一个方阵和自己的共轭转置互逆($AA^\dagger = A^\dagger A = I$)，就称它为{\bf \blue 酉(Unitary)矩阵}。
+
+  \skipline
+
+  $n\times n$的酉矩阵的所有列（或行）构成$n$维复空间的一组完备的正交归一化的基。反过来，如果有$n$维复空间的一组完备的正交归一化的基，以它们为列（或行）可以得到一个酉矩阵。
+
+  \skipline
+  
+  当然，实正交矩阵是酉矩阵的特例。
+\end{frame}
+
+\begin{frame}
+  \frametitle{酉矩阵(Unitary Matrix)的行列式的模为$1$}
+  对酉矩阵$U$，
+  $$  |\det U|^2 = \det(U^\dagger)\det(U) =  \det(U^\dagger U)  = 1$$
+  所以$\det U$是模为$1$的复数。
+\end{frame}
+
+\begin{frame}
+  \frametitle{复向量的``旋转''}
+  酉矩阵可以看成复向量空间的旋转操作，具有保内积不变的特点：
+  $$ (U\vecx)^\dagger (U\vecy) = \vecx^\dagger U^\dagger U \vecy = \vecx^\dagger \vecy. $$
+  特别地，当酉矩阵$U$作用到一个复向量上$\vecx$时，复向量的模不变。这符合我们对“旋转”的直观理解。
+  
+\end{frame}
+
+
+
+\begin{frame}
+  \frametitle{厄米矩阵(Hermitian Matrix)}
+  如果一个方阵的共轭转置等于自身($A^\dagger = A$)，就称它为{\bf \blue 厄米(Hermitian)矩阵}。
+  \skipline
+
+  例如
+  \be
+    A = \left(
+    \begin{array}{ll}
+      1 &  2+\ii \\
+      2-\ii &  -4
+    \end{array}
+    \right)
+  \ee
+  就是厄米矩阵。
+
+  \skipline
+  
+  当然，实对称矩阵是厄米矩阵的特例。
+\end{frame}
+
+\begin{frame}
+  \frametitle{厄米矩阵的本征值和本征矢}
+  \bitem
+      \item{设$A$是$n\times n$厄米矩阵，通过求解方程
+  $$ \det\left( \lambda I - A\right) = 0 $$
+  可以得到$n$个本征值（$m$重根视为$m$个），这些本征值一定是实数。}
+
+  \item{只出现$m=1$次的本征值对应的本征矢方向确定（但允许乘$-1$)，且和其他本征值的本征矢都正交。}
+
+  \item{重复$m>1$次的本征值的所有本征矢构成（和其他本征值的本征矢都正交的）$m$维线性子空间。可以取一组正交基，人为地使这些本征矢也两两正交；这样的取法当然有无穷多种。}
+    \eitem
+
+
+  {\scriptsize 证明参见附录B }
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{厄米矩阵的酉对角化}
+  
+  根据前述讨论，对厄米矩阵$A$总是可以取一组正交归一化的本征矢，令它们为列向量就得到一个酉矩阵$U$。容易根据本征矢的定义直接验证
+  $U^\dagger A U$是一个以$A$的所有本征值为对角元的对角矩阵。
+
+  \skipline
+
+ {\scriptsize 题外话：一般地，对一个方阵$S$，如果存在一个酉矩阵$U$使得$U^\dagger SU$是对角矩阵，则称$S$可以酉对角化。在矩阵论中有一个深奥的定理：一个矩阵$S$可以酉对角化的充分必要条件是它和自己的共轭矩阵对易(也就是$S S^\dagger = S^\dagger S$) —— 这样的矩阵叫正规矩阵(Normal Matrix)。显然，酉矩阵和厄米矩阵都是正规矩阵，所以都能酉对角化。}
+\end{frame}
+
+\thinka{计算厄米矩阵$$\left(
+  \begin{array}{lll}
+    1 & 0 & 0 \\
+    0 &   0 & -\ii \\
+    0 &  \ii & 0 
+    \end{array}
+    \right)$$的所有本征值，并写出一组正交归一化的本征矢。
+}
+
+\begin{frame}
+  \frametitle{厄米矩阵和二次型}
+  设$n\times n$的厄米矩阵本征值分别为$\lambda_1\le\lambda_2\le\ldots\le\lambda_n$.把对应的本征矢取为正交归一化的基$\vecu_1,\vecu_2,\ldots, \vecu_n$。考虑任意非零复矢量
+  $$ \vecx = x_1\vecu_1 + x_2\vecu_2+\ldots+x_n\vecu_n.$$
+  那么，$\vecx$的二次型
+  $$\frac{\vecx^\dagger A\vecx}{\vecx^\dagger \vecx} = \frac{\lambda_1|x_1|^2 + \lambda_2|x_2|^2+\ldots + \lambda_n|x_n|^2}{|x_1|^2+|x_2|^2+\ldots+|x_n|^2}$$
+  也就是说二次型$\frac{\vecx^\dagger A\vecx}{\vecx^\dagger \vecx}$是$A$的本征值的加权平均（权重均为非负实数）。显然，当$\vecx$取遍所有非零复矢量时，$\frac{\vecx^\dagger A\vecx}{\vecx^\dagger \vecx}$可以取遍$[\lambda_1, \lambda_n]$区间内的所有实数。
+\end{frame}
+
+\thinka{设$x,y$为复变量，满足$|x|^2+|y|^2=1$。证明下述表达式
+  $$ 2|x|^2 + 3|y|^2 + (1+\ii)x^*y + (1-\ii)xy^*$$
+  一定是实数。并计算这个表达式的最大可能取值。}
+
+\section{Hyperbolic Function}
+
+\secpage{双曲函数}{$$\cosh^2x - \sinh^2x=1$$}
+
+
+\begin{frame}
+\frametitle{双曲正弦和双曲余弦}
+
+双曲正弦函数$\sinh$和双曲余弦函数$\cosh$分别定义为：
+
+\tbox{$$ \sinh x \equiv \frac{e^x-e^{-x}}{2} $$}
+
+\tbox{$$ \cosh x \equiv \frac{e^x+e^{-x}}{2} $$}
+
+此外还有双曲正切$\tanh x \equiv \frac{\sinh x }{ \cosh x}$，双曲余切$\coth\equiv  \frac{ \cosh x}{\sinh x }$，双曲正割$\sech x\equiv \frac{1}{\cosh x}$，双曲余割$\csch x\equiv \frac{1}{\sinh x}$等。
+\end{frame}
+
+\begin{frame}
+\frametitle{双曲函数公式和三角函数公式对比}
+
+\bmini{0.48}
+\begin{eqnarray}
+  \cos^2x + \sin^2x   &=& 1 \newl
+  \frac{d}{dx}\sin x   &=& \cos x \newl
+  \frac{d}{dx}\cos x   &=& -\sin x \newl
+  \frac{d}{dx}\tan x   &=& \sec^2 x \newl  
+  \frac{d}{dx}\cot x   &=& -\csc^2 x \newl  
+  \sin(2x) &=& 2\sin x \cos x \newl
+  \cos(2x) &=& 2\cos^2 x - 1 \nonumber
+\end{eqnarray}
+\emini
+\bmini{0.48}
+\begin{eqnarray}
+ \cosh^2x - \sinh^2x   &=& 1 \newl
+  \frac{d}{dx}\sinh x   &=& \cosh x \newl
+  \frac{d}{dx}\cosh x   &=& \sinh x \newl
+  \frac{d}{dx}\tanh x   &=& \sech^2 x \newl    
+  \frac{d}{dx}\coth x   &=& -\csch^2 x \newl    
+  \sinh(2x) &=& 2\sinh x \cosh x \newl
+  \cosh(2x) &=& 2\cosh^2x - 1 \nonumber
+\end{eqnarray}
+\emini
+\end{frame}
+
+\thinka{计算积分$\int_0^1 \sqrt{1+x^2} dx$}
+
+
+\section{Cycloid}
+
+\secpage{滚轮线(Cycloid)}{$$x=a(\theta-\sin\theta)
+  ,\ y=a(1-\cos\theta) $$}
+
+\begin{frame}
+  \frametitle{滚轮线(Cycloid)}
+  当一个轮子在平地上滚动时，轮子边上的固定点走过的轨迹就是滚轮线 (cycloid)。滚轮线又叫摆线。
+  \addfig{3.2}{cycloid.jpg}
+  设轮子半径为$a$，$y$对$x$的依赖关系可以通过中间变量（滚过的角度）$\theta$间接确定。
+  $$x=a(\theta-\sin\theta) ,\ y=a(1-\cos\theta). $$
+
+
+\end{frame}
+
+\thinka{半径为$1$的轮子在平地上滚一圈，轮子边缘上的固定点的轨迹的长度是多少？}
+
+\section{Homework}
+
+\begin{frame}
+  \frametitle{Homework}
+  \bitem
+\item{求极限$$\lim_{x\rightarrow 0}\frac{1}{x^2} \ln\frac{\pi x}{\sin (\pi x)}.$$}
+\item{思考题中介绍了$\Gamma$函数并估算了$-1<\Gamma'(1)<0$。请证明更强的结果: $-\frac{29}{36}<\Gamma'(1)<\frac{1}{e}-\frac{3}{4}$。}  
+\item{已知$A$为厄米矩阵。如果对任意非零矢量$\vecu$，$\vecu^\dagger A\vecu $都为正实数，则称$A$正定。证明：$A$正定的充分必要条件是它的本征值全部为正实数。}
+\item{计算积分$$\int_0^1\frac{1}{(1+x^2)^{3/2}}dx.$$}
+\item{有滚轮线$$x=\theta-\sin\theta ,\ y=1-\cos\theta.$$
+  在$0\le x\le 2\pi$范围内，曲线下方围的面积$\int_0^{2\pi} y dx$是多少？}
+  \eitem
+\end{frame}
+
+
+\section{Appendices}
+
+\append{A}{线性变换的本质}
+
+\begin{frame}
+  \frametitle{线性变换}
+
+  设$A$为线性算符；$\vecx$为矢量；$c$为普通的数，则
+  
+  $$ A (c\vecx) = c (A\vecx) $$  
+
+  $$ A(\vecx +\vecy)= A\vecx + A\vecy $$
+
+\end{frame}
+
+
+\begin{frame}
+  \bmini{0.3}
+  \lfig{1.}{xiongbenxiong.jpg}
+  \emini
+  \bmini{0.32}
+
+  线性变换$\Rightarrow$
+
+  $$(\vecx \Rightarrow A\vecx)$$
+
+  \skiplines
+
+  \skiplines
+
+  \skiplines  
+
+  非线性变换$\Rightarrow$
+
+  $$(\vecx \Rightarrow \#\$\%\&)$$
+  \emini
+  \bmini{0.25}
+  \lfig{0.8}{xiongbenxiong_rotate.jpg}
+
+  \skipline
+  
+  \lfig{0.8}{xiongbenxiong_curved.jpg}  
+  \emini
+\end{frame}
+
+
+\begin{frame}
+
+  \question 什么是线性变换？
+  
+  \answer {\bf 拉升+旋转}
+
+  \question 什么是拉升？
+  
+  \answer 缩放坐标
+
+  \question 什么是旋转？
+
+  \answer 换一组基
+\end{frame}
+  
+
+
+\begin{frame}
+  \frametitle{奇异值分解（SVD）定理（证明略）}
+
+  如果一个给定的线性算符$A$把$n$维“原始空间”的矢量映射到$m$维“目标空间”，那么一定存在原始空间的一组正交归一化的基$\vecu_1, \vecu_2,\ldots, \vecu_n$，在目标空间的一组正交归一化的基$\vecv_1,\vecv_2,\ldots, \vecv_m$，以及一组缩放系数$\lambda_1,\lambda_2,\ldots,\lambda_p$ (这里$p=\min(m,n)$)；使得
+    $$A(x_1\vecu_1+x_2\vecu_2+\ldots+x_n\vecu_n) = (\lambda_1x_1)\vecv_1+(\lambda_2x_2)\vecv_2+\ldots+(\lambda_px_p)\vecv_p.$$
+    对任意$x_1,x_2,\ldots, x_n$成立.
+
+  \skipline
+
+找出正交归一化基以及缩放系数的操作称为A的{\bf 奇异值分解（Single Value Decomposition，简称SVD)}。
+
+    \skipline
+  
+ {\scriptsize SVD存在符号可交换性（例如可以把$\vecu_1$换成$-\vecu_1$，同时把$\lambda_1$换成$-\lambda_1$)、次序可交换性（例如把下标1和2互换）、以及简并可重组性（当两个$\lambda_i=\lambda_j$，可以把$\vecu_i, \vecu_j$以及$\vecv_i,\vecv_j$进行同样方式的线性重组）；从这些意义上讲，SVD不是唯一的。}
+
+\end{frame}
+
+
+
+\append{B}{厄米矩阵的本征值和本征矢}
+
+\begin{frame}
+  \frametitle{厄米矩阵的本征值都是实数}
+  设$A$是厄米矩阵，$\lambda$是$A$的本征值，则存在非零向量$x$(本征矢)使得
+
+  \begin{equation}
+    A \vecx = \lambda \vecx. \label{eq:1}
+  \end{equation}
+  左边乘以$\vecx^\dagger$，得到：
+  \begin{equation}
+      \vecx^\dagger A \vecx  = \lambda \vecx^\dagger \vecx. \label{eq:2}
+  \end{equation}
+  然后两边取共轭转置，并利用$A^\dagger = A$，得到：
+  \begin{equation}
+      \vecx^\dagger A \vecx  = \lambda^* \vecx^\dagger \vecx. \label{eq:3}
+  \end{equation}
+  比较\eqref{eq:2}和\eqref{eq:3}立刻得到$\lambda = \lambda^*$。  
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{不同本征值对应的本征向量正交}
+  设$A$是厄米矩阵，$\lambda_1 \ne \lambda_2$是$A$的不同本征值（根据前面讨论，它们都是实数)。 分别取它们各自的一个本征矢量$\vecx_1$, $\vecx_2$
+
+    \begin{equation}
+      A\vecx_1 = \lambda_1 \vecx_1. \label{eq:4}
+    \end{equation}
+    \begin{equation}
+      A\vecx_2 = \lambda_2 \vecx_2. \label{eq:5}
+    \end{equation}
+    \eqref{eq:4}取共轭转置，得到
+    \begin{equation}
+      \vecx_1^\dagger A = \lambda_1 \vecx_1^\dagger. \label{eq:6}
+    \end{equation}
+    \eqref{eq:6}右乘$\vecx_2$，减去\eqref{eq:5}左乘$\vecx_1^\dagger$，得到
+    $$ 0 = (\lambda_1-\lambda_2)\vecx_1^\dagger \vecx_2 . $$
+    由于$\lambda_1\ne \lambda_2$，上式就说明  $\vecx_1^\dagger \vecx_2 = 0.$
+\end{frame}
+
+\begin{frame}
+  \frametitle{同一个本征值对应的本征向量构成线性子空间}
+  设$A$是厄米矩阵，$\vecx_1$, $\vecx_2$都是本征值$\lambda$的本征向量
+  $$A\vecx_1 =\lambda \vecx_1,\  A\vecx_2 = \lambda \vecx_2 .$$
+  显然$\vecx_1$,$\vecx_2$的任意非零线性组合都是$A$对应于$\lambda$的本征向量。
+  $$A(c_1\vecx_1 +c_2\vecx_2) = \lambda(c_1\vecx_1+c_2\vecx_2).$$
+  也就是说对应$\lambda$的所有本征向量构成一个线性子空间，这个子空间的维数称为本征值$\lambda$的简并度。简并度实际上就是方程
+  $$ \det\left( \lambda I - A\right) = 0 $$
+  的根的重数。  
+  在$\lambda$对应的本征向量空间可以取一组正交基，只要简并度大于$1$，正交基的取法就有无穷多种。
+\end{frame}
+
+\begin{frame}
+  \frametitle{从SVD定理的角度理解本征矢和本征值}
+  对$n\times n$的厄米矩阵A，设其本征值$\lambda_1,\lambda_2, \ldots, \lambda_n$对应的正交归一化本征矢分别为$\vecv_1,\vecv_2,\ldots,\vecv_n$。根据本征矢的定义，容易看出，对任意$x_1,x_2,\ldots, x_n$均有
+
+  $$A(x_1\vecv_1+x_2\vecv_2+\ldots+x_n\vecv_n) = (\lambda_1x_1)\vecv_1+(\lambda_2x_2)\vecv_2+\ldots+(\lambda_nx_n)\vecv_n.$$
+
+  
+  和SVD定理对比可以发现，这时原始空间和目标空间重合，原始空间里“合适的基”也和目标空间里“合适的基”重合：它们就是本征矢$\vecv_1,\vecv_2,\ldots,\vecv_n$。坐标分量的缩放比例就是本征值$\lambda_1,\lambda_2, \ldots, \lambda_n$。矩阵的厄米性导致了这些特殊的性质。
+ 
+\end{frame}
+
+
+\ech
+\end{document}

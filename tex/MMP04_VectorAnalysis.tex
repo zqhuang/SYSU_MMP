@@ -1,0 +1,396 @@
+\documentclass[CJK]{beamer}
+\input{macros.tex}
+\input{titlepage.tex}
+  \date{}
+  \begin{document}
+  \bch
+  
+\tpage{4}{Vector Analysis}
+
+\begin{frame}
+\frametitle{Outline}
+\tableofcontents
+\end{frame}
+
+
+\section{Vector Properties}
+\secpage{三维欧氏空间的矢量常见操作}{$\vecx\cdot(\vecy\times\vecz) = \vecz\cdot (\vecx\times\vecy) = \vecy \cdot(\vecz\times\vecx)$}
+
+
+\begin{frame}
+  \frametitle{矢量的内积}
+  在欧氏空间中，两个矢量的内积可以写成：
+  $$\vecx\cdot\vecy = \lvert\vecx\rvert\lvert\vecy\rvert\cos\varphi $$
+  其中$\varphi$是$\vecx$和$\vecy$之间的夹角，$|\vecx|$, $|\vecy|$分别是两个矢量的长度。
+
+  \skipline
+
+  注意内积是一个数，没有方向（即所谓的“标量”）。在矢量分析部分，只考虑实数矢量的情况下，内积显然满足交换律: $\vecx\cdot\vecy = \vecy\cdot\vecx$.
+
+  \skipline
+
+  两个互相垂直矢量的内积为零。
+
+  \skipline
+  (在高于三维的空间中，想像两个矢量的夹角有些困难。请不必为此烦恼：大多数情况下，我们只讨论三维的情形。)
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{直角坐标系下内积的显示表达式}
+  直角坐标系下两个矢量$(x_1, x_2, \ldots, x_n)$和$(y_1, y_2, \ldots, y_n)$的内积为
+  $$\sum_{i=1}^n x_iy_i$$.
+\end{frame}
+
+\thinka{对两组实数$(x_1, x_2, \ldots, x_n)$和$(y_1, y_2, \ldots, y_n)$证明柯西不等式:
+  $$\left(\sum_{i=1}^n x_iy_i\right)^2 \le \left(\sum_{i=1}^n x_i^2\right)\left(\sum_{i=1}^n y_i^2\right) $$}
+
+\thinkb{计算球坐标系下方向$(\theta_1,\phi_1)$和方向$(\theta_2,\phi_2)$之间的夹角。}
+
+
+\begin{frame}
+  \frametitle{三维空间矢量的外积}
+  在{\bf 三维欧氏空间}中，两个矢量的外积(叉乘)可以写成：
+  $$\vecx \times \vecy = \left( \lvert\vecx\rvert\lvert\vecy\rvert\sin\varphi\right) \vecn_{\perp}$$
+  其中$\varphi$是$\vecx$和$\vecy$之间的夹角，$\vecn_{\perp}$和$\vecx$, $\vecy$都垂直的方向——约定$\vecx, \vecy, \vecn_{\perp}$要满足右手定则（拇指指向$\vecx$, 食指指向$\vecy$，中指指向$\vecn_{\perp}$)。
+
+    \skipline
+
+    注意外积给出的是个矢量，且仅在三维欧氏空间有定义（高维的推广见附录——微分形式）。外积的大小是两个矢量为两边构成的平行四边形的面积。外积的方向和两个矢量所在平面垂直。
+
+    \skipline
+    
+    两个平行矢量的外积为零。
+
+    \skipline
+    
+    {\bf 交换律}：交换乘积次序，按右手定则，$\vecn_{\perp}$会反向。所以$\vecy \times \vecx  = - \vecx \times \vecy $。
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{直角坐标系下外积的显示表达式}
+  三维直角坐标系下两个矢量$(x_1, x_2, x_3)$和$(y_1, y_2, y_3)$的外积为
+
+  $$  \begin{array}{|ccc|}
+    \vec{e}_1 & \vec{e}_2 & \vec{e}_3 \\
+    x_1 & x_2 & x_3 \\
+    y_1 & y_2 & y_3
+  \end{array}  $$
+  其中$\vec{e}_{1,2,3}$为三个方向的基矢。
+\end{frame}
+
+\begin{frame}
+  \frametitle{三个矢量的有向体积}
+  设三维欧氏空间中任给三个矢量$\vecx = (x_1,x_2,x_3)$, $\vecy = (y_1,y_2,y_3)$, $\vecz = (z_1,z_2,z_3)$，我们定义这三个矢量的“有向体积”为行列式：  
+  $$  \begin{array}{|ccc|}
+    x_1 & x_2 & x_3 \\
+    y_1 & y_2 & y_3 \\
+    z_1 & z_2 & z_3 
+  \end{array}  $$
+  
+  它显然可以写成
+  $$ \vecx \cdot (\vecy \times \vecz) $$
+  这个表达式有明显的几何意义（底面平行四边形的面积乘以高）: 它是$\vecx$, $\vecy$, $\vecz$为三条邻边构成的平行六面体的体积——最多前面多个负号（如果$\vecx$, $\vecy$, $\vecz$不满足右手定则)。
+\end{frame}
+
+\begin{frame}
+  \frametitle{三个矢量的有向体积}
+  根据行列式的行之间交换次序时行列式的符号发生变化的情况，我们可以把$\vecx$, $\vecy$, $\vecz$的有向体积写成：
+  $$ \vecx \cdot (\vecy \times \vecz) = \vecz\cdot (\vecx\times\vecy) = \vecy \cdot(\vecz\times\vecx) $$
+  或者
+  $$ = - \vecx \cdot (\vecz \times \vecy) = -\vecz \cdot (\vecy\times\vecx) = -\vecy \cdot(\vecx\times\vecz) $$  
+  这六种写法相当于计算平行六面体的体积时选取底面和底面两条边的次序的不同选择方式。
+\end{frame}
+
+\begin{frame}
+  \frametitle{二重外积公式}
+  对两个矢量$\vecx, \vecy$，由于$\vecx\times\vecy$垂直于$\vecx,\vecy$张成的平面，所以任意第三个矢量去叉乘$\vecx\times \vecy$，又会让结果回到$\vecx,\vecy$张成的平面上。我们预期结果可以写成$\vecx,\vecy$的线性组合——线性组合的系数是多少呢？
+
+  \skipline
+  
+  如果$\vecz$恰好和$\vecx,\vecy$都垂直，也就是和$\vecx\times\vecy$平行，那么
+  $\vecz\times(\vecx\times \vecy)$结果必然为零。所以我们猜测线性组合的系数大致有
+  $\vecz\cdot\vecx$和$\vecz\cdot\vecy$的形式
+
+  \skipline
+  
+  进行一番不算太复杂的计算后，发现结果果然是这样的
+  \tbox{$$\vecz\times(\vecx\times \vecy) = (\vecy\cdot\vecz)\vecx - (\vecx\cdot \vecz)\vecy $$}
+
+\end{frame}
+
+\section{Vector Analysis}
+\secpage{矢量分析}{旋度的旋度等于散度的梯度与梯度的散度之差}
+
+\begin{frame}
+  \frametitle{标量的梯度}
+  当空间位置有小变动$\mathbf{dl}$时，标量函数$f$的变化量为：
+  $$df = \nabla f \cdot \mathbf{dl} $$
+  显然，{\bf 梯度$\nabla f$的方向是$f$变化最快的方向，梯度的大小是(沿变化最快的方向)$f$在单位长度内的变化}。 
+\end{frame}
+
+\begin{frame}
+  \frametitle{矢量的梯度}
+  虽然梯度是对没有方向的标量函数定义的，但是为了书写方便，我们约定对一个矢量函数$\vecu = (u_1, u_2, u_3)$定义它的梯度为: $(\nabla u_1, \nabla u_2, \nabla u_3)$。
+
+  \skipline
+  
+  这是什么意思呢，它代表了一个形式矢量，矢量的每个分量不是实数，不是复数，而是一个矢量! 它并没有明确的几何意义，只是为了书写简洁而做的约定。
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{矢量的散度}
+ {\bf 散度$\nabla \cdot \vecu$是一个标量：它是矢量函数$\vecu$在单位体积的净流出量。}
+
+ \skiplines
+ 
+在直角坐标系$(x_1,x_2,\ldots, x_n)$中, $\nabla \cdot \vecu =\sum_{i=1}^n\frac{\partial u_i}{\partial x_i}$ 
+\end{frame}
+
+\begin{frame}
+  \frametitle{矢量的旋度}
+  {\bf 旋度$\nabla \times \vecu$是一个矢量：它沿任何方向$\vecn$的分量等于矢量函数$\vecu$在垂直于$\vecn$方向的单位面积上的环路积分（环路的方向由右手定则确定：右手大拇指指向$n$，剩下四指弯曲指向环路的方向）。}             
+
+
+  在直角坐标系$(x_1,x_2,x_3)$中，
+
+  $$ \nabla \times \vecu =
+  \begin{array}{|ccc|}
+    \vec{e}_1 & \vec{e}_2 & \vec{e}_3 \\
+    \frac{\partial}{\partial x_1} & \frac{\partial}{\partial x_2} & \frac{\partial}{\partial x_3} \\
+    u_1 & u_2 & u_3    
+  \end{array}
+  $$
+
+\end{frame}
+
+\begin{frame}
+  \frametitle{总结下梯度，散度，旋度的操作}
+
+\begin{center}
+  \begin{tabular}{c|c|c}
+    \hline
+    \hline
+    被操作量 & 操作 & 操作结果 \\
+    \hline
+    标量  & 梯度 & 矢量 \\
+    矢量 & 梯度 & 形式矢量 \\
+    矢量 & 散度 & 标量 \\
+    矢量 & 旋度 & 矢量 \\
+    \hline
+  \end{tabular}
+\end{center}
+  
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{算符的联合操作}
+  三维欧氏空间中，梯度，散度，旋度可以进行各种联合操作，下表给出了各种可能性：
+
+  \begin{center}
+  \begin{tabular}{c|c|c|c}
+    \hline
+    \hline
+    被操作量 & 第一步操作 & 第二步操作& 操作结果 \\
+    \hline
+    标量  & 梯度 & 散度 & 标量 \\
+    标量 & 梯度  & 旋度 & 恒为零 \\
+    矢量 & 梯度 & 散度 & 矢量 \\    
+    矢量 & 散度 & 梯度 & 矢量 \\    
+    矢量 & 旋度 & 旋度 & 矢量 \\
+    矢量 & 旋度 & 散度 & 恒为零 \\    
+    \hline
+  \end{tabular}
+
+  这里的“恒为零”假设了所讨论的函数性质足够良好（二阶偏导可以交换次序）。
+\end{center}
+  
+\end{frame}
+
+\thinkb{前面的两个恒为零的情况：$\nabla\times\nabla f\equiv 0$, $\nabla\cdot(\nabla\times \vecu)\equiv 0$，从形式上非常好理解：把$\nabla$看成一个抽象的矢量算符，前者$\nabla\times \nabla $相当于“平行矢量的叉乘”，所以恒为零。后者是$\nabla$, $\nabla$和$\vecu$组成的平行六面体的有向体积当然也是零! 不过，这样的说法只是为了方便理解和记忆，并不能算证明。你能给出严谨的证明吗？}
+
+\begin{frame}
+  \frametitle{梯度的散度：拉普拉斯算符}
+
+  对标量函数的唯一非零联合操作是梯度的散度，它通常被简写为拉普拉斯算符：$\nabla^2$。
+
+  $$\nabla^2 f \equiv \nabla \cdot(\nabla f)$$
+
+  标量在拉普拉斯算符作用下仍然是标量。
+\end{frame}
+
+\begin{frame}
+  \frametitle{拉普拉斯算符作用于矢量函数}
+  拉普拉斯算符作用于矢量，同样可以看作矢量函数的梯度的散度。矢量$\vecu$的梯度是一个形式矢量$(\nabla u_1, \nabla u_2, \nabla u_3)$，再形式上求散度即得到：
+  $$\nabla^2\vecu \equiv (\nabla^2 u_1, \nabla^2 u_2, \nabla^2 u_3)$$
+\end{frame}
+
+\begin{frame}
+  \frametitle{矢量函数的三种非零联合操作之间的联系}
+  矢量函数的三种非零的联合操作分别是：旋量的旋量，梯度的散度(即刚刚讨论的拉普拉斯算符)，散度的梯度。它们之间有非常简洁的联系:
+
+  \tbox{$$\nabla\times (\nabla \times \vecu) =  \nabla(\nabla\cdot \vecu) - \nabla^2\vecu$$}
+  也就是：{\bf 旋度的旋度等于散度的梯度和梯度的散度之差}。如果你还记得二重外积公式，这个结果就非常好理解。
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{算符作用于乘积}
+  算符作用于乘积的情况往往直接运用乘积的导数规则即可，当涉及到叉乘时，注意交换次序会带来负号。
+
+  下面是一些常见的例子：设$f,g$为任意标量函数，$\vecu,\vecv$为任意矢量函数。
+
+  \bitem
+ \item{$\nabla (fg) = f\nabla g + g\nabla f$}
+ \item{$ \nabla^2(fg) = g\nabla^2f + f\nabla^2g + 2\nabla f\cdot\nabla g$}
+ \item{$\nabla\cdot(f\vecu) = (\nabla f) \cdot \vecu + f(\nabla \cdot \vecu) $}
+ \item{$ \nabla\times (f\vecu) = (\nabla f)\times\vecu + f(\nabla \times \vecu) $}
+ \item{$ \nabla\cdot(\vecu\times\vecv) = (\nabla\times\vecu)\cdot \vecv - (\nabla\times\vecv)\cdot \vecu $}
+ \item{$ \nabla\times(\vecu\times\vecv) = (\nabla\cdot\vecv + \vecv\cdot \nabla)\vecu - (\nabla\cdot\vecu+\vecu\cdot \nabla)\vecv. $}   
+   \eitem
+
+\end{frame}
+
+
+\section{Homework}
+
+\begin{frame}
+  \frametitle{Homework}
+  
+  \bitem
+\item{从麦克斯韦方程组推导真空中的电磁波方程。}
+  \eitem
+
+  
+\end{frame}
+
+\appendix
+
+\section{Appendix: Differential Forms}
+\secpage{附录：微分形式}{用右手定则规定方向的面积和体积}
+
+\begin{frame}
+  \frametitle{坐标的微小变化量}
+  在$n$维坐标系中，$dx_1$, $dx_2$, \ldots, $dx_n$可以理解为坐标的微小变化量。
+
+  它们都是沿坐标轴方向的微小矢量（因为在足够小的范围内空间总是平直的，我们甚至不需要假定空间是欧氏空间或者坐标系是直角坐标系）。
+  
+\end{frame}
+
+\begin{frame}
+  \frametitle{有向面积元}
+
+  我们可以考虑任何两个微小矢量$dx_i$和$dx_j$张成的平行四边形的有向面积，并把它写成：
+  $$ dx_i\wedge dx_j.$$
+  因为是有向面积
+  $$ dx_j\wedge dx_i = - dx_i\wedge dx_j. $$
+  当然，当平行四边形两条边重合时，面积必须为零：
+  $$ dx_i\wedge dx_i \equiv 0.$$
+
+  \skiplines
+  
+  (“有向”到底是怎么规定正向的，我们并不需要确定。)
+  
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{有向体积元}
+
+  再考虑任何三个微小矢量$dx_i$, $dx_j$, $dx_k$张成的平行六面体的有向体积。
+  $$ dx_i\wedge dx_j\wedge dx_k.$$
+  因为是有向体积，{\bf 交换其中任何两个微小矢量都会产生一个负号}
+  \begin{eqnarray}
+    && dx_i\wedge dx_j\wedge dx_k = dx_j\wedge dx_k\wedge dx_i = dx_k\wedge dx_i\wedge dx_j \nonumber \\
+   && = - dx_i\wedge dx_k\wedge dx_j = - dx_j\wedge dx_i\wedge dx_k = -dx_k\wedge dx_j\wedge dx_i \nonumber
+  \end{eqnarray}
+
+  你并不一定要用右手规则来规定有向体积的符号——如果你喜欢完全可以用左手！其实，你根本不用发愁该用哪只手——微分形式的运算都完全是抽象的，不依赖于具体的实现方法。
+\end{frame}
+
+
+
+\begin{frame}
+  \frametitle{$p$-形式}
+  再推而广之，你可以把任意$p$个微小矢量$dx_{i_1}, dx_{i_2},\ldots, dx_{x_p}$以上述方式张成一个$p$维空间平行多面体，并把它的有向体积记为：
+  $$dx_{i_1}\wedge dx_{i_2}\wedge \ldots\wedge dx_{x_p}.$$
+  操作符$\wedge$代表的``乘法''叫做楔积(wedge product)，$p$个微小矢量的楔积称为{\blue $p$-形式}。
+
+  \skipline
+  
+  ($p$形式可以乘以数，也可以进行任意的线性组合。这些表达式都称为微分形式。)
+
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{$p$-形式的运算法则}
+  “微小矢量”$dx_i$都可以看成$1$-形式，所以$p$-形式可以看成$p$个$1$-形式的楔积。有了“有向体积”的概念，下述性质是显而易见的：
+  \bitem
+\item{当有两个$1$-形式因子重复出现，该$p$-形式恒为零。}
+\item{交换任意两个$1$-形式因子，$p$-形式变号。}
+  \eitem
+
+  除此之外，显然地还有
+  \bitem
+  \item{一个$p$形式和一个$q$形式也可以做楔积。如果交换两者的次序，则产生$(-1)^{p+q}$的符号。}
+\item{微分形式满足分配律和结合律}
+  \eitem
+\end{frame}
+
+\thinka{化简微分形式：$$ (dx_1 + 2dx_2)\wedge(dx_1-2dx_2)$$ }
+
+\begin{frame}
+  \frametitle{$p$形式对偶}
+  当我们考虑固定$n$维空间时，单独一项微分形式总是存在{\bf 对偶微分形式}，具体的操作流程如下：先把微分形式的下标都排好次序，再把没出现的$dx_i$都补上，然后把补上的微小矢量都通过交换移到右边去，最后移完后把原先有的微小矢量全部去掉。
+
+  \skipline
+
+  显然，$p$-形式的对偶是$(n-p)$-形式。
+\end{frame}
+
+\begin{frame}
+  \frametitle{对偶$p$形式举例}
+  例如在5维空间中考虑微分形式$dx_3\wedge dx_1\wedge dx_4$。先把它下标排序，写成
+  $$ - dx_1\wedge dx_3\wedge dx_4.$$
+  （额外的负号来源于交换$dx_1$和$dx_3$）
+  然后补上``漏掉的''$dx_2$和$dx_5$
+  $$ - dx_1\wedge {\blue dx_2}\wedge dx_3\wedge dx_4\wedge {\blue  dx_5}.$$
+  然后移动两次$dx_2$(负负得正不产生额外负号)
+  $$ - dx_1\wedge dx_3\wedge dx_4  \wedge {\blue dx_2}\wedge {\blue dx_5}.$$
+  最后去掉原先有的微小矢量：
+  $$ - dx_2\wedge dx_5.$$
+\end{frame}
+
+\begin{frame}
+  \frametitle{矢量对应$1$-形式}
+  我们之前讨论的矢量对应于微分形式理论中的$1$-形式，例如：
+  
+  $$ (a_1, a_2, a_3)\leftrightarrow a_1dx_1 +a_2dx_2 +a_3dx_3 $$
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{叉乘的本质：楔积的对偶形式}
+  两个$1$形式的楔积通常会给出$2$-形式。如果是在3维空间考虑问题，可以取对偶形式再次回到一个$1$-形式。这整套操作就是叉乘的本质：
+
+\begin{eqnarray}  
+ && (a_1dx_1 +a_2dx_2 +a_3dx_3)\wedge(b_1dx_1+b_2dx_2+b_3dx_3) \newl
+  = && (a_2b_3-a_3b_2)dx_2\wedge dx_3 \newl
+  && + (a_3b_1-b_3x_1)dx_3\wedge dx_1 \newl
+  && + (a_1b_2-a_2b_1) dx_1\wedge dx_2   \nonumber
+\end{eqnarray}
+取对偶形式得到
+$$ (a_2b_3-a_3b_2)dx_1 + (a_3b_1-b_3x_1) dx_2 + (a_1b_2-a_2b_1) dx_3 $$
+\end{frame}
+
+\begin{frame}
+  \frametitle{微分形式的应用}
+  由于采用了有向体积的概念，Stokes定理等用微分形式描述就非常简洁，并很容易推广到任意维空间，有兴趣了解的请阅读参考书中相关内容。
+\end{frame}
+
+\ech
+\end{document}

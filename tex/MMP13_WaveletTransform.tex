@@ -1,0 +1,239 @@
+\documentclass[CJK]{beamer}
+\input{macros.tex}
+\input{titlepage.tex}
+  \date{}
+  \begin{document}
+  \bch
+\tpage{13}{Wavelet Transform}
+
+\begin{frame}
+  \tableofcontents
+\end{frame}
+
+\section{Motivation}
+
+\secpage{为什么需要小波分析}{不同时间段的信号特征不一样}
+
+\begin{frame}
+  \frametitle{实际世界的波}
+  
+  数学家喜欢研究正弦波，余弦波，各种各样画出来很漂亮的波。
+
+  \skipline
+  
+  但实际世界的波往往是长这样的：信号在某时出现，过了一会儿消失。信号的频率一般偏高。
+  
+  \addfig{2}{wavelet_example.png}
+
+  对了，往往还要加上一堆噪音——你很有可能用肉眼根本看不到这段信号在哪里。
+  
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{怎么分析局域的波}
+  
+  如果知道信号在哪个时间段出现，截出该时间段进行频谱（傅立叶）分析就解决问题了。
+
+  \addfig{2}{wavelet_example2.png}
+  
+  但实际信号处理往往伴随着大量的噪音，无法预判信号在哪个时间段出现，怎么寻找信号并分析其特征呢？
+
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{从傅立叶变换到小波分析}
+
+  傅立叶变换：
+  
+  频率 $\rightarrow$ 该频率成分的大小
+
+  \skiplines
+
+
+  小波分析：
+  
+  (频率，时间段) $\rightarrow $ 在该时间段内该频率成分的大小
+
+  \skiplines
+  
+
+{\bf  小波分析其实就是扫描各个时间段的频谱信息。当扫描低频信息时，时间段的间隔可以取得大些；当扫描高频信息时，时间段的间隔要取得小些。 } 
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{小波分析的本质}
+  傅立叶变换的本质是把一个函数分解为一堆正交归一化的函数$\frac{e^{i\omega t}}{\sqrt{2\pi}}$的线性组合。
+
+  \skiplines
+  
+  小波变换呢，当然也是把一个函数分解为一堆正交归一化的函数$\psi(t; \tau, \omega)$ 的线性组合。这里$\tau$代表时间段的位置，$\omega$代表圆频率。
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{离散小波分析}
+
+  先不谈$\psi(t;\tau,\omega)$如何构造，讲真，这堆函数太多了。毕竟有无数个可以连续变化的$\tau$和$\omega$组合起来让人有些头疼。（好吧，数学家不头疼，物理学家头疼。）
+
+  \skipline
+  
+  虽然数学家十分热衷于研究连续的小波变换；物理学家们实际用的小波变换往往是离散的：$\psi(t; \tau_n, \omega_m)$或者简单记成$\psi_{n,m}(t)$。
+
+  \skipline
+  
+  当然，如何合适地选取$\tau_n,\omega_m$以及$\psi$函数的形式，使得这组展开的基“足够完备”（可以对物理信号做足够好的近似），是{\bf\large 一个需要详细讨论的复杂问题。}
+  
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{但是——}
+
+  我们这么养生的课，怎么可能讨论复杂的问题！
+
+  \addfig{1.5}{kaisen.jpg}
+
+  直接给出大家讨论好的结果就可以了！
+\end{frame}
+
+\section{Haar Wavelet}
+\secpage{Haar小波}{简单，但有点毛糙}
+
+\begin{frame}
+  \frametitle{Haar小波的母函数}
+
+  第一个介绍的是应用很广泛的 Haar 小波。
+
+  不要着急，我们一个个来：先给出$\psi_{0,0}(t)$（它称为小波分析的母函数）
+
+
+  \bmini{0.5}
+  \be
+  \psi_{0,0}(t) = \left\{
+    \begin{array}{ll}
+      1 & \text{, if } 0\le t < \frac{1}{2} \\
+      -1 & \text{, if } \frac{1}{2} \le t < 1 \\
+      0 & \text{, otherwise } \\      
+    \end{array}
+    \right. \nonumber
+    \ee
+    \emini
+    \bmini{0.45}
+    \addfig{1.8}{Haar.pdf}
+    \emini
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{任意$m, n$}
+  $\psi_{n,m}$可以直接从母函数生成
+
+  $$\psi_{n,m} = 2^{n/2}\psi_{0,0}(2^n t - m).$$
+
+  这其实就是把母函数进行平移和缩放。
+
+  \skiplines
+  
+  因为Haar小波都是不连续的函数，可以期待近似出来的函数比较“毛糙”。如果你只在意函数数值大小，不大在意函数是否光滑，那么Haar小波是不错的选择。
+\end{frame}
+
+
+\thinka {证明Haar小波基是正交归一化的，即
+  $$\int_{-\infty}^\infty \psi_{n,m}(t)\psi_{n',m'}(t) dt= \delta_{nn'}\delta_{mm'}.$$}
+
+
+
+\begin{frame}
+  \frametitle{截断和展开系数}
+
+  我们可以把信号按Haar基进行展开。
+
+  $$f(t) = \sum_{n,m}c_{n,m}\psi_{n,m}(t).$$
+  你可以直接用求内积的方法进行投影，得到任意函数$f(t)$的$\psi_{n,m}$分量为：
+  $$c_{n,m} = \int_{-\infty}^\infty f(t) \psi_{n,m}(t) dt. $$
+  数值计算中存在更便捷的算法，这些就留到你的数值计算课上去学习吧。
+
+
+  \skiplines
+  
+  实际问题都有一定频率和时间范围，所以可以做个$n,m$的截断，只要计算有限项的系数就可以了。
+\end{frame}
+
+
+
+\section{Daubechies Wavelet}
+\secpage{Daubechies小波}{稍复杂，但更连续光滑}
+
+
+\begin{frame}
+  \frametitle{母函数的选取}
+  由Haar母函数生成的：
+  $$\psi_{n,m} = 2^{n/2}\psi_{0,0}(2^n t - m).$$
+  是正交归一化的函数组。这看起来有些神奇。
+
+  这样的“神奇函数”是唯一的吗？
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Daubechies系列}
+  寻找产生正交小波的母函数并不容易，相当长时间内大家都只知道Haar这么一个。有一天Daubechies突然搞出来一堆：
+
+  \bmini{0.75}
+  \lfig{3.}{Daubechies.pdf}
+  \emini
+  \bmini{0.2}
+  1阶的Daubechies就是Haar，高阶的Daubechies则是连续的，越高阶光滑性越好。
+  \emini
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{怎么计算Daubechies小波函数}
+  高阶的Daubechies小波函数并没有解析表达式，所以只能数值计算。
+
+  \skiplines
+  
+  在Mathematica里有内置函数
+  
+  WavePsi[DaubechiesWavelet[n],t]
+
+  其中$n$是阶数；$t$是时间变量。
+
+  \skiplines
+  
+  也可以用C或者Fortran自己写低阶的Daubechies小波函数，这些内容留到数值计算课上去学习吧。
+  
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{时间序列的Daubechies小波分析}
+  原则上讲，只要小波函数都是正交归一化的，各个小波成份的系数都可以通过用小波函数和待分解函数作内积（即投影）得到。
+
+  \skiplines
+  
+  对于离散的时间序列，Daubechies小波分析就只要做一些简单的求和（相当于求内积的离散版本）。这些快速的算法会在时间序列分析等一些工科学科中接触到。
+  
+\end{frame}
+
+
+
+\section{Homework}
+
+\begin{frame}
+  \frametitle{Homework}
+  
+  \bitem
+\item{把函数$\frac{\sin t}{t}$分解为Haar小波的线性组合。取合适的阶段使误差处处不大于$10^{-3}$.}
+  \eitem
+  
+\end{frame}
+
+
+
+\ech
+\end{document}
