@@ -2,20 +2,13 @@
 \input{macros.tex}
 \input{titlepage.tex}
   \date{}
-\begin{document}
-\tpage{17}{Bessel Functions of the First Kind II}
+  \begin{document}
+  \bch
+\tpage{21}{对第一类贝塞尔函数的深入研究}
 
 \begin{frame}
-\chtitle{本讲内容}
-\bch
-\bitem
-\item{回顾：圆形薄膜振动问题}
-\item{推广：圆盘上的热传导问题}  
-\item{ $J_m(x)$的积分表示}
-\item{$J_m(x)$在无穷远处的渐进展开}
-\item{无限大板上的热传导问题}      
-\eitem
-\ech
+\frametitle{本讲内容}
+\tableofcontents
 \end{frame}
 
 
@@ -24,16 +17,16 @@
 \secpage{圆形薄膜振动问题的回顾}{ 记$J_m(x)$第$i$个正实数根为$\mu_i$，则$$\int_0^1 \,x\,J_m(\mu_ix)J_m(\mu_j x) \,dx = \delta_{ij} \frac{\left[J_{m+1}(\mu_i)\right]^2}{2} .$$}
 
 \begin{frame}
-  \chtitle{例题1:圆形薄膜振动问题的一般初始条件}
-  \bch
+  \frametitle{例题1:圆形薄膜振动问题的一般初始条件}
+  
   \addfig{1.}{drum.jpg}
   考虑边界固定，半径为$R$的圆形薄膜的横向小振动问题。在$t=0$时刻的初始位移为$f(r,\theta)$ ，初始速度为$g(r,\theta)$。其中$(r,\theta)$是以圆盘中心为原点建立的极坐标。$f$和$g$都满足边界条件：$f(r,\theta+2\pi) = f(r,\theta)$，$g(r,\theta+2\pi)=g(r,\theta)$，$f(R,\theta) = g(R,\theta) = 0$。求解之后薄膜的振动。
-    \ech
+    
 \end{frame}
 
 \begin{frame}
-  \chtitle{写出方程和边界条件}
-  \bch
+  \frametitle{写出方程和边界条件}
+  
   设位移为$u(r,\theta,t)$。
 
   \bea
@@ -42,25 +35,25 @@
   \left.u\right\vert_{t = 0} = f(r,\theta) , \newl
   \left.\frac{\partial u}{\partial t}\right\vert_{t = 0} = g(r,\theta) .
   \eea
-  \ech
+  
 \end{frame}
 
 
 \begin{frame}
-  \chtitle{分离变量}
-  \bch
+  \frametitle{分离变量}
+  
   符合边界条件的分离变量形式解为：
   $$ J_m\left(\frac{\mu_{m,i}r}{R}\right)\cos{(m\theta)} \cos{\left(\frac{\mu_{m,i}at}{R}\right)},\ J_m\left(\frac{\mu_{m,i}r}{R}\right)\cos{(m\theta)} \sin{\left(\frac{\mu_{m,i}at}{R}\right)}, $$
   其中$m\in Z, \ \mu_{m,i}$是$J_m(x)$的第$i$个正实数根。 当$m>0$时还有
   $$ J_m\left(\frac{\mu_{m,i}r}{R}\right)\sin{(m\theta)} \cos{\left(\frac{\mu_{m,i}at}{R}\right)},\ J_m\left(\frac{\mu_{m,i}r}{R}\right)\sin{(m\theta)} \sin{\left(\frac{\mu_{m,i}at}{R}\right)}. $$
   
-  \ech
+  
 \end{frame}
 
 
 \begin{frame}
-  \chtitle{级数展开}
-  \bch
+  \frametitle{级数展开}
+  
   完整的级数形式解为
   \bea
   u &=& \sum_{i=1}^\infty \left\{\frac{A_{0,i}}{2} J_0\left(\frac{\mu_{0,i}r}{R}\right) \cos{\left(\frac{\mu_{0,i}at}{R}\right)} + \frac{B_{0,i}}{2} J_0\left(\frac{\mu_{0,i}r}{R}\right) \sin{\left(\frac{\mu_{0,i}at}{R}\right)}\right. \newl
@@ -70,14 +63,14 @@
       &&  +\left.\left. D_{m,i} J_m\left(\frac{\mu_{m,i}r}{R}\right)\sin{(m\theta)} \sin{\left(\frac{\mu_{m,i}at}{R}\right)} \right]\right\}
   \eea
   (在$A_{0,i}$和$B_{0,i}$里的$\frac{1}{2}$因子是为了和$m\ne 0$的结果看起来更一致。)
-  \ech
+  
 \end{frame}
 
 
 
 \begin{frame}
-  \chtitle{初始位移条件}
-  \bch
+  \frametitle{初始位移条件}
+  
   利用初始位移条件得到
   {\small
   \bea
@@ -89,13 +82,13 @@
   由谐函数的正交性得到
   $$ A_{m,i} = \frac{2}{\pi\left[J_{m+1}(\mu_{m,i})\right]^2} \int_0^1 xJ_m(\mu_{m,i} x) dx\int_0^{2\pi} \cos{(m\theta)}   f(Rx, \theta) d\theta $$
   $$C_{m,i} = \frac{2}{\pi\left[J_{m+1}(\mu_{m,i})\right]^2} \int_0^1 xJ_m(\mu_{m,i} x) dx\int_0^{2\pi} \sin{(m\theta)}   f(Rx, \theta) d\theta $$
-  \ech
+  
 \end{frame}
 
 
 \begin{frame}
-  \chtitle{初始速度条件}
-  \bch
+  \frametitle{初始速度条件}
+  
   利用初始速度条件得到
   {\small
   \bea
@@ -107,7 +100,7 @@
   由谐函数的正交性得到
   $$ B_{m,i} = \frac{2R}{\pi \mu_{m,i}a\left[J_{m+1}(\mu_{m,i})\right]^2} \int_0^1 xJ_m(\mu_{m,i} x) dx\int_0^{2\pi} \cos{(m\theta)}   g(Rx, \theta) d\theta $$
   $$D_{m,i} = \frac{2R}{\pi\mu_{m,i}a\left[J_{m+1}(\mu_{m,i})\right]^2} \int_0^1 xJ_m(\mu_{m,i} x) dx\int_0^{2\pi} \sin{(m\theta)}   g(Rx, \theta) d\theta $$
-  \ech
+  
 \end{frame}
 
 
@@ -117,32 +110,32 @@
     $$\int_0^1 x\, J_m(\lambda_i x)J_m(\lambda_j x) dx = \delta_{ij}\frac{\left(1-\frac{m^2}{\lambda_i^2}\right)\left[J_m(\lambda_i)\right]^2}{2} $$}
 
 \begin{frame}
-  \chtitle{例题2:圆盘上的热传导问题}
-  \bch
+  \frametitle{例题2:圆盘上的热传导问题}
+  
 
   有孤立的，半径为$R$的均匀圆形金属薄片。初态$t=0$时刻金属片上距离中心$r$处的温度为
 $$T(r) =T_0\left(1+\frac{r^2}{R^2}\right).$$
 已知金属片质量密度为$\rho$，导热系数为$\lambda$，单位质量比热为$c$。求$t\ge 0$时圆盘上各点的温度。
 
-  \ech
+  
 \end{frame}
 
 
 \begin{frame}
-  \chtitle{写出方程}
-  \bch
+  \frametitle{写出方程}
+  
 \bea
 \frac{\partial T}{\partial t}-a\nabla^2 T &=& 0, \newl
 \left.\frac{\partial T}{\partial r}\right\vert_{r=R} &=& 0, \newl
 \left.T\right\vert_{t=0} &=& T_0\left(1+\frac{r^2}{R^2}\right).
 \eea
 其中$a = \frac{\lambda}{\rho c}.$
-  \ech
+  
 \end{frame}
 
 \begin{frame}
-  \chtitle{按谐函数展开}
-  \bch
+  \frametitle{按谐函数展开}
+  
   一般的分离变量解为$J_m(kr)e^{\pm \ii m\theta}e^{-ak^2t}$。但因为初始条件旋转对称（不依赖于$\theta$)，所以解只包含$m=0$，也就是$J_0(kr)e^{-ak^2t}$的形式。
 
     \skipline
@@ -157,15 +150,15 @@ $$T(r) =T_0\left(1+\frac{r^2}{R^2}\right).$$
     
     于是，按谐函数展开
     $$ T = \sum_{i=0}^\infty c_iJ_0\left(\frac{\lambda_ir}{R}\right)e^{-\frac{a\lambda_i^2t}{R^2}} .$$
-  \ech
+  
 \end{frame}
 
 
 
 
 \begin{frame}
-  \chtitle{按谐函数展开}
-  \bch
+  \frametitle{按谐函数展开}
+  
   从初始条件可以得到，
   $$ \sum_{i=0}^\infty c_iJ_0\left(\lambda_i x\right) = T_0\left(1+x^2\right), $$
   其中$x = \frac{r}{R}.$
@@ -173,26 +166,26 @@ $$T(r) =T_0\left(1+\frac{r^2}{R^2}\right).$$
   \skiplines
   
   看起来要求出$c_i$就要研究下$J_0(\lambda_ix)$的正交性。我们来考虑更一般的$J_m(\lambda_ix)$（$\lambda_i$为$J'_m(x)$的正实数根)的正交性。
-  \ech
+  
 \end{frame}
 
 
 \begin{frame}
-  \chtitle{第一类贝塞尔函数的第二个正交定理}
-  \bch
+  \frametitle{第一类贝塞尔函数的第二个正交定理}
+  
   设$\lambda_i$为$J_m'(x)$的第$i$个正实数根，则
   \tbox{
     $$\int_0^1 x\, J_m(\lambda_i x)J_m(\lambda_j x) dx = \delta_{ij}\frac{\left(1-\frac{m^2}{\lambda_i^2}\right)\left[J_m(\lambda_i)\right]^2}{2} $$}
   当$m = 0$时，允许取$\lambda_0= 0$这个特殊情形，这时需要约定等式右边$\frac{m^2}{\lambda_0^2} = 0$。
-  \ech
+  
 \end{frame}
 
 
 
 
 \begin{frame}
-  \chtitle{证明}
-  \bch
+  \frametitle{证明}
+  
 贝塞尔函数满足贝塞尔方程
   $$ \frac{1}{x}\frac{d}{dx}\left[x\frac{d}{dx}J_m(x)\right] +\left(1-\frac{m^2}{x^2}\right)J_m(x) =0 .$$
   把$x$换成$\lambda_i x$，得到
@@ -207,12 +200,12 @@ $$T(r) =T_0\left(1+\frac{r^2}{R^2}\right).$$
     （如果你还没弄清楚，请看例子：由$f(x) = x^2$，可以得到$f'(x) = 2x$；把$x$换为$2x$可以得到$f(2x) = 4x^2$，$f'(2x) = 4x$；显然$\frac{d}{dx}f(2x) = 8x = 2 f'(2x)$。）
   }
   
-  \ech
+  
 \end{frame}
 
 \begin{frame}
-  \chtitle{证明}
-  \bch
+  \frametitle{证明}
+  
 
   两边同乘以$xJ_m(\lambda_j x)$，得到
    \begin{equation}
@@ -222,13 +215,13 @@ $$T(r) =T_0\left(1+\frac{r^2}{R^2}\right).$$
    \begin{equation}
      J_m(\lambda_ix)\frac{d}{dx}\left[x\frac{d}{dx} J_m(\lambda_j x)\right] + \left(\lambda_j^2-\frac{m^2}{x^2}\right)xJ_m(\lambda_ix)J_m(\lambda_jx) = 0. \label{eq2}
    \end{equation}
-  \ech
+  
 \end{frame}
 
 
 \begin{frame}
-  \chtitle{证明（续）}
-  \bch
+  \frametitle{证明（续）}
+  
   \eqref{eq1}减去\eqref{eq2}，得到
   \begin{eqnarray}
  && \frac{d}{dx}\left[ xJ_m(\lambda_jx)\frac{d}{dx} J_m(\lambda_i x) - xJ_m(\lambda_ix)\frac{d}{dx} J_m(\lambda_j x) \right] \newl
@@ -236,37 +229,37 @@ $$T(r) =T_0\left(1+\frac{r^2}{R^2}\right).$$
   \end{eqnarray}
   如果$i\ne j$，两边从$0$到$1$积分即得到
   $$\int_0^1 xJ_m(\lambda_ix)J_m(\lambda_jx) dx= 0. $$
-  \ech
+  
 \end{frame}
 
 
 \begin{frame}
-  \chtitle{证明（续）}
-  \bch
+  \frametitle{证明（续）}
+  
   事实上，在推导\eqref{eq3}时，$\lambda_i$，$\lambda_j$可以为任何正实数，所以我们还可以取$\lambda_i$为$J_m'$的零点，而$\lambda_j = \lambda_i +\epsilon$。
     同样从$0$到$1$积分，得到
     $$ -(\lambda_i+\epsilon)J_m(\lambda_i) J_m'(\lambda_i+\epsilon)  -(2\lambda_i+\epsilon)\epsilon\int_0^1xJ_m(\lambda_ix)J_m[(\lambda_i+\epsilon)x]dx = 0 $$
     两边除以$\epsilon$并令 $\epsilon\rightarrow 0^+$
     $$ \int_0^1x\left[J_m(\lambda_ix)\right]^2dx = -\frac{J_m(\lambda_i)J_m''(\lambda_i)}{2} $$
     
-  \ech
+  
 \end{frame}
 
 \begin{frame}
-  \chtitle{证明（续）}
-  \bch
+  \frametitle{证明（续）}
+  
   在贝塞尔方程
   $$J_m''(x) + \frac{1}{x}J_m'(x) + \left(1-\frac{m^2}{x^2}\right)J_m(x) = 0$$
   中令$x = \lambda_i$，即得到
   $$J_m''(\lambda_i) = - \left(1-\frac{m^2}{\lambda_i^2}\right)J_m(\lambda_i).$$
   代回前面得到的结论就完成了$\lambda_i,\lambda_j \ne 0$情况下的证明。
-  \ech
+  
 \end{frame}
 
 
 \begin{frame}
-  \chtitle{证明（续）}
-  \bch
+  \frametitle{证明（续）}
+  
   最后我们考虑$m=0$，$\lambda_i=0$的情况。这时如果$\lambda_j\ne \lambda_i$，则
   
 
@@ -279,25 +272,25 @@ $$  \int_0^1 xJ_m(\lambda_ix)J_m(\lambda_jx) dx = \int_0^1xJ_0(\lambda_j x) dx
   如果$\lambda_j=\lambda_i=0$，则可以直截了当地进行计算
   $$  \int_0^1 xJ_m(\lambda_ix)J_m(\lambda_jx) dx = \int_0^1 x dx  = \frac{1}{2} .$$
   这样我们对$m=0$, $\lambda_i=0$的特殊情况完成了证明。
-  \ech
+  
 \end{frame}
 
 
 \begin{frame}
-  \chtitle{思考题}
-  \bch
+  \frametitle{思考题}
+  
   \addfig{1}{think3.jpg}
   
   之前得到的结论
   $$ \int_0^1x\left[J_m(\lambda_ix)\right]^2dx = -\frac{J_m(\lambda_i)J_m''(\lambda_i)}{2} $$
   对$m=0$, $\lambda_0=0$的特殊情形成立吗？
   
-  \ech
+  
 \end{frame}
 
 \begin{frame}
-  \chtitle{回到原问题}
-  \bch
+  \frametitle{回到原问题}
+  
   在
   $$ \sum_i c_iJ_0\left(\lambda_i x\right) = T_0\left(1+x^2\right), $$
   两边同乘以$xJ_0(\lambda_j x)$并从$0$到$1$积分，得到
@@ -306,12 +299,12 @@ $$  \int_0^1 xJ_m(\lambda_ix)J_m(\lambda_jx) dx = \int_0^1xJ_0(\lambda_j x) dx
   $$\int_0^1(1+x^2)xJ_0(\lambda_j x) = \int_0^1x(1+x^2)dx  =\frac{3}{4}$$
   即
   $$c_0 = \frac{3}{2}T_0$$
-  \ech
+  
 \end{frame}
 
 \begin{frame}
-  \chtitle{回到原问题}
-  \bch
+  \frametitle{回到原问题}
+  
   若$j>0$，利用$ \lambda_jxJ_0(\lambda_jx) = \frac{d}{dx} \left[x J_1(\lambda_jx)\right]$进行分部积分：
   \bea
   \int_0^1(1+x^2)xJ_0(\lambda_jx)dx &=& \left.\frac{1+x^2}{\lambda_j}xJ_1(\lambda_jx)\right\vert_0^1 -\frac{2}{\lambda_j} \int_0^1x^2J_1(\lambda_jx) dx\newl
@@ -322,13 +315,13 @@ $$  \int_0^1 xJ_m(\lambda_ix)J_m(\lambda_jx) dx = \int_0^1xJ_0(\lambda_j x) dx
   \eea
   最后一步利用了$J_0(\lambda_j) + J_2(\lambda_j) = \frac{2}{\lambda_j} J_1(\lambda_j) = -\frac{2}{\lambda_j}J_0'(\lambda_j) = 0 $
   
-  \ech
+  
 \end{frame}
 
 
 \begin{frame}
-  \chtitle{最终的解}
-  \bch
+  \frametitle{最终的解}
+  
   得到
   $$c_j = \frac{4T_0}{\lambda_j^2 J_0(\lambda_j)}$$
   即
@@ -339,7 +332,7 @@ $$  \int_0^1 xJ_m(\lambda_ix)J_m(\lambda_jx) dx = \int_0^1xJ_0(\lambda_j x) dx
  有趣的是，令$r=R$，$t=0$，可以得到：
   $$\sum_{i=1}^\infty \frac{1}{\lambda_i^2} = \frac{1}{8}$$
   
-  \ech
+  
 \end{frame}
 
 
@@ -347,19 +340,20 @@ $$  \int_0^1 xJ_m(\lambda_ix)J_m(\lambda_jx) dx = \int_0^1xJ_0(\lambda_j x) dx
 \secpage{贝塞尔函数的积分表示}{$$J_m(x) = \frac{1}{2\pi}\int_{-\pi}^{\pi} e^{\ii (x\sin\theta - m \theta) } d\theta$$}
 
 \begin{frame}
-  \chtitle{贝塞尔函数的积分表示}
-  \bch
-  除了递推公式，整数阶贝塞尔函数最为常用的性质是它的积分表示：
+  \frametitle{贝塞尔函数的积分表示}
+  
+  除了递推公式，{\blue 整数阶}贝塞尔函数最为常用的性质是它的积分表示：
   \tbox{
     $$J_m(x) = \frac{1}{2\pi}\int_{-\pi}^{\pi} e^{\ii (x\sin\theta - m \theta) } d\theta$$}
   被积函数的周期为$2\pi$，上面的积分区间可以取任何一个完整周期。
-  \ech
+
+  {\scriptsize 注意：贝塞尔函数的级数定义里$m$其实可以取任意实数，但这里一定要是整数阶($m=0,\pm 1, \pm 2\ldots$)贝塞尔函数才行。}
 \end{frame}
 
 
 \begin{frame}
-  \chtitle{证明 (心累请跳过)}
-  \bch
+  \frametitle{证明 (心累请跳过)}
+  
   把$f(x)=\frac{1}{2\pi}\int_{-\pi}^{\pi} e^{\ii (x\sin\theta - m \theta) } d\theta$进行泰勒展开，其$n$次系数为
   $$c_n = \frac{1}{2\pi n!}\int_{-\pi}^{\pi} (\ii\sin\theta)^n e^{-\ii m \theta } d\theta$$
   转化为单位圆上的围道积分：
@@ -368,25 +362,62 @@ $$  \int_0^1 xJ_m(\lambda_ix)J_m(\lambda_jx) dx = \int_0^1xJ_0(\lambda_j x) dx
   &=&  \frac{1}{2\pi \ii}\oint\sum_{k=0}^n \frac{1}{2^nk!(n-k)!} (-1)^kz^{n-2k-m-1} dz
   \eea
   根据留数定理，仅有的非零项为$c_{2k+m} = \frac{(-1)^k}{k!(m+k)!2^{2k+m}}$，和$J_m$的级数定义相同。证毕。
+  
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{贝塞尔函数的积分表示}
+  
+  把积分式右边用欧拉公式展开，发现虚部为奇函数，积分为零；而实部为偶函数。所以
+  \tbox{
+  $$J_m(x) = \frac{1}{\pi}\int_{0}^{\pi} \cos{ (x\sin\theta - m \theta) } d\theta$$}
+  
+\end{frame}
+
+\begin{frame}
+  \chtitle{贝塞尔函数的母函数}
+  \bch
+  贝塞尔函数的也可以看成带参数的函数展开式中的系数
+  （这称为母函数公式）：
+  \tbox{
+  $$ e^{\frac{x}{2}(t-\frac{1}{t})} = \sum_{n=-\infty}^\infty J_n(x) t^n.   $$}
   \ech
 \end{frame}
 
 
 \begin{frame}
-  \chtitle{贝塞尔函数的积分表示}
+  \chtitle{贝塞尔函数的母函数}
   \bch
-  把积分式右边用欧拉公式展开，发现虚部为奇函数，积分为零；而实部为偶函数。所以
-  \tbox{
-  $$J_m(x) = \frac{1}{\pi}\int_{0}^{\pi} \cos{ (x\sin\theta - m \theta) } d\theta$$}
+  证明：
+  \bea
+  e^{\frac{x}{2}(t-\frac{1}{t})} &=& e^{\frac{xt}{2}} e^{-\frac{x}{2t}} \newl
+  &=&\sum_{m=0}^\infty \frac{1}{m!}\left(\frac{xt}{2}\right)^m\sum_{k=0}^\infty \frac{1}{k!}\left(-\frac{x}{2t}\right)^k \newl
+  &=& \sum_{n=-\infty}^\infty \left(\sum_{k=0}\frac{(-1)^k}{k!(n+k)!}\left(\frac{x}{2}\right)^{2k+n}\right) t^n \newl
+  &=& \sum_{n=-\infty}^\infty J_n(x) t^n
+  \eea
   \ech
 \end{frame}
+
+
+\begin{frame}
+  \chtitle{母函数和贝塞尔函数的积分表达的关系}
+  \bch
+  在母函数公式中令$t = e^{\ii \theta}$，即得到
+    $$ e^{\ii x\sin\theta} = \sum_{n=-\infty}^\infty J_n(x) e^{\ii n\theta}$$
+  两边乘以$e^{-\ii m\theta}$并从$-\pi$积分至$\pi$，得到我们曾经学习过的贝塞尔函数的积分表达
+  \tbox{
+  $$ J_m(x) =  \frac{1}{2\pi}\int_{-\pi}^\pi e^{\ii(x\sin\theta - m\theta)} d\theta .$$}
+  \ech
+\end{frame}
+
 
 \section{Asymptotic Behavior}
 \secpage{无穷远处的渐近行为}{当$x\gg m^2$时，$$J_m(x)\approx \sqrt{\frac{2}{\pi x}}\cos\left(x-\frac{m\pi}{2}-\frac{\pi}{4}\right) $$}
 
 \begin{frame}
-  \chtitle{无穷远处的渐近行为}
-  \bch
+  \frametitle{无穷远处的渐近行为}
+  
     $$J_m(x) = \frac{1}{\pi}\int_{0}^{\pi} \cos{ (x\sin\theta - m \theta) } d\theta$$
   当$x$很大时，$\cos(x\sin\theta - m\theta)$快速振荡，对积分无贡献。唯一的例外是$\theta=\frac{\pi}{2}$附近，$\sin\theta$变化停滞，积分贡献并不消失。令$\theta = \frac{\pi}{2}+\epsilon$，把$\sin\theta$作二阶近似展开：
   \bea
@@ -395,13 +426,13 @@ $$  \int_0^1 xJ_m(\lambda_ix)J_m(\lambda_jx) dx = \int_0^1xJ_0(\lambda_j x) dx
   &= & \frac{2}{\pi}\mathrm{Re}\left[e^{-\ii\phi}\int_0^{\infty}e^{\frac{ \ii x}{2}\epsilon^2} d\epsilon\right]  \newl  
   \eea
   其中$\phi = x-\frac{m}{2}\pi$
-  \ech
+  
 \end{frame}
 
 
 \begin{frame}
-  \chtitle{无穷远处的渐近行为（续）}
-  \bch
+  \frametitle{无穷远处的渐近行为（续）}
+  
   \bmini{0.41}
   \addfig{1.5}{contour04.png}
   \emini
@@ -417,7 +448,7 @@ $$  \int_0^1 xJ_m(\lambda_ix)J_m(\lambda_jx) dx = \int_0^1xJ_0(\lambda_j x) dx
     $$J_m(x)\approx \sqrt{\frac{2}{\pi x}}\cos\left(x-\frac{m\pi}{2}-\frac{\pi}{4}\right) $$}
 
   
-  \ech
+  
 \end{frame}
 
 
@@ -426,16 +457,16 @@ $$  \int_0^1 xJ_m(\lambda_ix)J_m(\lambda_jx) dx = \int_0^1xJ_0(\lambda_j x) dx
 \secpage{无限大板上的热传导问题}{    $$ \int_0^\infty J_m(k_1r)J_m(k_2r) r dr = \frac{\delta(k_1-k_2)}{k_1}. $$}
 
 \begin{frame}
-  \chtitle{例题3: 无限大板上的热传导问题}
-  \bch
+  \frametitle{例题3: 无限大板上的热传导问题}
+  
   一块很大（可以视为无限大）的均匀薄板的温度为$T_0$，在$t=0$时刻在中心点注入热量$Q$，求之后板上的温度变化。设板的单位质量比热为$c$，质量密度为$\rho$，厚度为$h$，导热系数为$\lambda$。
-  \ech
+  
 \end{frame}
 
 
 \begin{frame}
-  \chtitle{写出方程}
-  \bch
+  \frametitle{写出方程}
+  
   假设一开始的热量被注入到面积为$\epsilon$的小区域内，则该区域内的温度为$T_0+\frac{Q}{\rho c \epsilon h} $。令$u(r,\theta) = \frac{\rho c h }{Q}(T - T_0)$，写出方程和边界条件：
 
   \bea
@@ -447,12 +478,12 @@ $$  \int_0^1 xJ_m(\lambda_ix)J_m(\lambda_jx) dx = \int_0^1xJ_0(\lambda_j x) dx
 
   \skipline
   我们认出这是一个典型的求解格林函数问题。
-  \ech
+  
 \end{frame}
 
 \begin{frame}
-  \chtitle{直角坐标的解}
-  \bch
+  \frametitle{直角坐标的解}
+  
   先看直角坐标系下能否求解。把$u$按谐函数分解：
   $$u(\vecx, t) =\frac{1}{2\pi} \int d^2\veck\, c(\veck)e^{\ii \veck\cdot\vecx}e^{-ak^2t},  $$
   注意这里的$\veck = (k_x, k_y)$； $\vecx = (x, y)$； $\veck\cdot\vecx = k_xx+k_yy$； $k = |\veck|=\sqrt{k_x^2+k_y^2}$； $\int d^2\veck$是全平面积分$\int_{-\infty}^\infty dk_x \int_{-\infty}^\infty dk_y $的简写。
@@ -460,54 +491,54 @@ $$  \int_0^1 xJ_m(\lambda_ix)J_m(\lambda_jx) dx = \int_0^1xJ_0(\lambda_j x) dx
   令$t=0$，
   $$\delta(\vecx) = \frac{1}{2\pi} \int d^2\veck\, c(\veck)e^{\ii \veck\cdot\vecx},  $$
   这说明$c(\veck)$是$\delta(\vecx)$的二维傅立叶变换。
-  \ech
+  
 \end{frame}
 
 
 \begin{frame}
-  \chtitle{直角坐标的解（续）}
-  \bch
+  \frametitle{直角坐标的解（续）}
+  
   $$ c(\veck) = \frac{1}{2\pi}\int d^2\vecx\, \delta(\vecx)e^{-\ii \veck\cdot\vecx } = \frac{1}{2\pi} $$
   即解为
   $$u(\vecx, t) =\frac{1}{4\pi^2} \int d^2\veck\, e^{\ii \veck\cdot\vecx}e^{-ak^2t} = \frac{1}{4\pi at}e^{-\frac{x^2+y^2}{4at}},  $$
 
   （很容易认出来这其实是两个一维格林函数的乘积。）
-  \ech
+  
 \end{frame}
 
 
 \begin{frame}
-  \chtitle{极坐标的解}
-  \bch
+  \frametitle{极坐标的解}
+  
   在极坐标里，我们一开始就可以看出问题具有旋转对称性，写出
   $$  u(r, t) = \int_0^\infty f(k) J_0(kr)e^{-ak^2t} k dk $$
   取$t=0$，得到
   $$  \delta(\vecx) = \int_0^\infty f(k) J_0(kr) k dk $$  
   为了求出$f(k)$，我们来研究第一类贝塞尔函数在无穷区间上的正交关系。
-  \ech
+  
 \end{frame}
 
 
 \begin{frame}
-  \chtitle{第一类贝塞尔函数在无穷区间上的正交关系}
-  \bch
+  \frametitle{第一类贝塞尔函数在无穷区间上的正交关系}
+  
   \tbox{
     $$ \int_0^\infty J_m(k_1r)J_m(k_2r) r dr = \frac{\delta(k_1-k_2)}{k_1}. $$
   }
   证明留为作业。
-  \ech
+  
 \end{frame}
 
 
 \begin{frame}
-  \chtitle{极坐标系求解（续）}
-  \bch
+  \frametitle{极坐标系求解（续）}
+  
   $$  \delta(\vecx) = \int_0^\infty f(k) J_0(kr)k dk $$
   对任意给定的$k'$，两边乘以$rJ_0(k'r)$并对$r$从$0$到$\infty$积分，得到
   $$ \frac{1}{2\pi} = \int_0^\infty f(k)\frac{\delta(k-k')}{k} k dk =f(k')$$
   所以解为
   $$  u(r, t) = \frac{1}{2\pi} \int_0^\infty J_0(kr)e^{-ak^2t} k dk $$  
-  \ech
+  
 \end{frame}
 
 
@@ -515,21 +546,21 @@ $$  \int_0^1 xJ_m(\lambda_ix)J_m(\lambda_jx) dx = \int_0^1xJ_0(\lambda_j x) dx
 \section{Homework}
 
 \begin{frame}
-  \chtitle{课后作业(题号38-40)}
-  \bch
+  \frametitle{Homework}
+  
   \bitem
-\item[38]{  有孤立的，半径为$R$的均匀圆形金属薄片，以中心为原点建立极坐标$(r,\theta)$。初态$t=0$时刻，金属片上的温度为$f(r,\theta)$。已知金属片质量密度为$\rho$，导热系数为$\lambda$，单位质量比热为$c$。求$t\ge 0$时刻金属片上各点的温度。}
-\item[39]{利用$J_m$在有限区间上的正交定理和$J_m$的渐近表达式证明
+\item{  有孤立的，半径为$R$的均匀圆形金属薄片，以中心为原点建立极坐标$(r,\theta)$。初态$t=0$时刻，金属片上的温度为$f(r,\theta)$。已知金属片质量密度为$\rho$，导热系数为$\lambda$，单位质量比热为$c$。求$t\ge 0$时刻金属片上各点的温度。}
+\item{利用$J_m$在有限区间上的正交定理和$J_m$的渐近表达式证明
   $$ \int_0^\infty J_m(k_1r)J_m(k_2r) r dr = \frac{\delta(k_1-k_2)}{k_1}. $$ }
-\item[40]{  
+\item{  
   我们在两种不同的坐标系中求解例题3，分别得到
   $$\frac{1}{4\pi at}e^{-\frac{r^2}{4at}}$$
   和
   $$ \frac{1}{2\pi} \int_0^\infty J_0(kr)e^{-ak^2t} k dk.$$
   试直接证明这两个解恒等。}
   \eitem
-  \ech
+  
 \end{frame}
 
-
+\ech
 \end{document}

@@ -2,221 +2,234 @@
 \input{macros.tex}
 \input{titlepage.tex}
   \date{}
-  \begin{document}
-\bch  
-\tpage{20}{球坐标系下分离变量的谐函数}
+\begin{document}
+\tpage{20}{Harmonics in Spherical Coordinates}
 
 \begin{frame}
-\frametitle{本讲内容}
-
+\chtitle{本讲内容}
+\bch
 \bitem
-\item{球坐标系下分离变量的谐函数}
-\item{球和空心球的数理方程}
+\item{球谐函数的推导回顾}
+\item{球坐标系的谐函数}
 \eitem
-
+\ech
 \end{frame}
 
+
+\section{Derivation}
+\secpage{球谐函数的推导回顾}{上一讲好像有一个严重bug……}
+
+\begin{frame}
+  \chtitle{回顾}
+  \bch
+  回顾：我们上一讲把单位球面上的谐函数分解为$\Psi(\theta)\Lambda(\phi)$，并按照分离变量法的套路很快得出$\Lambda(\phi) = e^{\ii m\phi}, \ m\in Z$。剩下$\Psi(\theta)$的方程由微分方程
+  $$ \frac{1}{\sin\theta}\frac{d}{d\theta}\left(\Psi'\sin\theta \right) +\left(k^2-\frac{m^2}{\sin^2\theta}\right) \Psi = 0. $$
+  或者等价的
+  $$ \Psi''+\cot\theta \,\Psi' +\left(k^2-\frac{m^2}{\sin^2\theta}\right) \Psi = 0. $$
+  确定。
+
+  \skipline
+  
+  求解$\Psi(\theta)$是一个非常典型的数学方法（虽然从物理实用角度讲并不十分重要），很多特殊函数都能用类似的方法确定。
+  
+  \ech
+\end{frame}
+
+
+\begin{frame}
+  \chtitle{令人困惑的分解}
+  \bch
+  由$[0,\pi]$上$\cos{(n\theta)}, \sin{(n\theta)}$的完备性可以把$\Psi$分解为这些三角函数的线性组合。
+
+  \skipline
+  
+  但是在上一讲的操作：{\bf 仅仅凭边界条件$\Psi' = 0$就排除$\sin{(n\theta)}$类的项是有bug的}。
+
+  \skipline
+  
+  （在分离变量法确定谐函数的$k$时我们曾不止一次这样做，思考和现在的情况有什么区别。)
+
+  
+  \ech
+\end{frame}
+
+
+\begin{frame}
+  \chtitle{最安全的做法}
+  \bch
+  令
+  $$ \Psi = \sum_{n=0}^\infty c_n\cos^n\theta + \sin\theta \sum_{n=0}^\infty d_n\cos^n\theta. $$
+  (思考：这样为什么就安全了？）
+  在后面的推导中，我不再详细地追踪$n$的下界。(只需要默认$c_{-1}=c_{-2}=\ldots =0 $, $d_{-1}=d_{-2}=\ldots = 0$就不会有任何理解困难）。
+  \ech
+\end{frame}
+
+
+\begin{frame}
+  \chtitle{开始推土}
+  \bch
+      {\scriptsize
+        \bea
+        \Psi &=& \sum_{n=0}^\infty c_n\cos^n\theta + \sin\theta \sum_{n=0}^\infty d_n\cos^n\theta; \newl
+  \Psi' &=& \sum_n (-nc_n)\cos^{n-1}\theta\, \sin\theta + \sum_n d_n\cos^{n+1}\theta - \sum_n nd_n \cos^{n-1}\theta \sin^2\theta \newl
+  &=& -\sum_n (n+1)c_{n+1}\cos^n\theta\, \sin\theta + \sum_n d_{n-1}\cos^n\theta - \sum_n nd_n\left(\cos^{n-1}\theta -\cos^{n+1}\theta\right) \newl
+  &=& -\sum_n (n+1)c_{n+1}\cos^n\theta\, \sin\theta + \sum_n\left[ nd_{n-1} - (n+1)d_{n+1}\right]\cos^n\theta ; \newl
+  \Psi'' &=& \sum_n\left\{ n(n+1)c_{n+1}\cos^{n-1}\theta\sin^2\theta -(n+1)c_{n+1}\cos^{n+1}\theta \right. \newl
+  && \left. - n\sin\theta\left[ nd_{n-1} - (n+1)d_{n+1}\right]\cos^{n-1}\theta \right\}\newl
+  &=& \sum_n\left\{(n+1)(n+2)c_{n+2} - n^2c_n + \sin\theta\left[ (n+1)(n+2)d_{n+2}-(n+1)^2d_n\right]\right\}\cos^n\theta
+  \eea
+  }
+  \ech
+\end{frame}
+
+\begin{frame}
+  \chtitle{继续推土}
+  \bch
+      {\scriptsize
+$$ \Psi'\cos\theta = -\sum_n nc_n\sin\theta\cos^n\theta + \sum_n\left[ (n-1)d_{n-2} - nd_n\right]\cos^n\theta $$ 
+
+如果$m=0$，则由
+$$\Psi'\cos\theta+\sin\theta(\Psi''+k^2\Psi) = 0.$$
+可以得到上式左边$\sin\theta\cos^n\theta$项的系数：
+$$ (n+1)(n+2)c_{n+2}+\left[k^2-n(n+1)\right]c_n = 0$$
+这和我们之前得到的递推式是一样的，用同样的方式可以证明$k^2=\ell(\ell+1), \ell = 0,1,2\ldots$
+
+  }
+  \ech
+\end{frame}
+
+
+\begin{frame}
+  \chtitle{思考题}
+  \bch
+  \addfig{1}{think1.jpg}
+  
+  我们只验证了$\sin\theta \cos^n\theta$的系数为零，还需要考虑$\cos^n\theta$的系数，这会给出什么结果？
+  \ech
+\end{frame}
 
 
 \section{3D-Sphere Harmonic}
 
-\secpage{球坐标下分离变量形式的谐函数}{$k>0$时, $j_\ell(kr)Y_{\ell m}(\theta,\phi)$和$n_\ell(kr)Y_{\ell m}(\theta,\phi)$\\ $k=0$时， $r^\ell Y_{\ell m}(\theta,\phi)$和$r^{-\ell-1}Y_{\ell m}(\theta,\phi)$ }
+\secpage{球坐标下的谐函数}{解球坐标系数理方程的必备工具}
 
 \begin{frame}
-  \frametitle{球坐标系下分离变量的谐函数}
-  
-  把自由度$r$重新纳入之后，令谐函数为 $Q = f(r)Y_{\ell m}(\theta,\phi)$，则由 $\nabla^2Q = -k^2Q$ 得到：
+  \chtitle{球坐标系的谐函数}
+  \bch
+  把自由度$r$重新纳入之后，令谐函数为$Q = f(r)Y_{\ell m}(\theta,\phi)$，则由$\nabla^2Q = -k^2Q$得到：
   $$ f''+\frac{2}{r}f'+\left(k^2-\frac{\ell(\ell+1)}{r^2}\right) f = 0 $$
-  如果$k> 0$， 这个方程是之前（第18讲）讨论过的类贝塞尔方程。
-  两个线性无关解$(kr)^{-1/2}J_{\ell+\frac{1}{2}}(kr)$和$(kr)^{-1/2}Y_{\ell+\frac{1}{2}}(kr)$可以重新写为$ j_\ell(kr)$和$n_{\ell}(kr)$。
-  其中第一类球贝塞尔函数$j_\ell$和第二类球贝塞尔函数$n_\ell$分别定义为：{\blue
-  $$ j_\ell(x) :=\sqrt{ \frac{\pi}{2x}} J_{\ell+1/2}(x), $$
-  $$ n_\ell(x) :=\sqrt{ \frac{\pi}{2x}} N_{\ell+1/2}(x). $$  }
-  
+  这个方程看着“几乎”就是贝塞尔方程，只是$f'$前面的系数变成了$\frac{2}{r}$。怎么去求解呢？
+  \ech
 \end{frame}
 
 \begin{frame}
-  \frametitle{思考题}
-  
+  \chtitle{思考题1}
+  \bch
   \addfig{1}{think1.jpg}
   
-  当$k=0$时，你能在$r>0$范围内猜出方程
+  方程
   $$ f''+\frac{2}{r}f'+\left(k^2-\frac{\ell(\ell+1)}{r^2}\right) f = 0, $$
-  的两个线性独立的解吗？  
+  当$k=0$时，你能在$r>0$范围内猜出两个线性独立的解吗？
+
+  \ech
 \end{frame}
 
 
 \begin{frame}
-  \frametitle{前几个$j_\ell$}
+  \chtitle{思考题2}
+  \bch
+  \addfig{1}{think3.jpg}
   
+  证明：类贝塞尔方程
+  $$ y''+\frac{1-2\alpha}{x} y' + \left[\beta^2\gamma^2x^{2\gamma-2}+\frac{\alpha^2-\nu^2\gamma^2)}{x^2}\right]y=0 $$
+  在$x>0$范围内有两个线性无关解： $x^{\alpha}J_\nu(\beta x^\gamma)$和$x^{\alpha}Y_\nu(\beta x^\gamma)$.
+  \ech
+\end{frame}
+
+
+\begin{frame}
+  \chtitle{思考题3}
+  \bch
+  \addfig{1}{think3.jpg}
+
+  根据上题结论，在$k>0$时求解方程
+  $$ f''+\frac{2}{r}f'+\left(k^2-\frac{\ell(\ell+1)}{r^2}\right) f = 0. $$
+  \ech
+\end{frame}
+
+\begin{frame}
+  \chtitle{球贝塞尔函数}
+  \bch
+  $$ f''+\frac{2}{r}f'+\left(k^2-\frac{\ell(\ell+1)}{r^2}\right) f = 0. $$  
+  两个线性无关解$f =  (kr)^{-1/2}J_{\ell+\frac{1}{2}}(kr)$和$f=(kr)^{-1/2}Y_{\ell+\frac{1}{2}}(kr)$可以重新写为$ j_\ell(kr)$和$y_{\ell}(kr)$。
+  其中第一类球贝塞尔函数$j_\ell$和第二类球贝塞尔函数$y_\ell$分别定义为：{\blue
+  $$ j_\ell(x) :=\sqrt{ \frac{\pi}{2x}} J_{\ell+1/2}(x), $$
+  $$ y_\ell(x) :=\sqrt{ \frac{\pi}{2x}} Y_{\ell+1/2}(x). $$  }
+
+  
+  \ech
+\end{frame}
+
+
+\begin{frame}
+  \chtitle{前几个$j_\ell$}
+  \bch
   \addfig{4}{jell.png}
-  
+  \ech
 \end{frame}
 
 
 \begin{frame}
-  \frametitle{前几个$n_\ell$}
-  
+  \chtitle{前几个$y_\ell$}
+  \bch
   \addfig{4}{yell.png}
-  
+  \ech
 \end{frame}
 
 \begin{frame}
-  \frametitle{思考题}
-  
+  \chtitle{思考题}
+  \bch
   \addfig{1}{think1.jpg}
   
   证明：
-  $$n_\ell(x) = (-1)^{\ell+1}\sqrt{\frac{\pi}{2x}}J_{-\ell-1/2}(x).$$
-  
+  $$y_\ell(x) = (-1)^{\ell+1}\sqrt{\frac{\pi}{2x}}J_{-\ell-1/2}(x).$$
+  \ech
 \end{frame}
 
 
 \begin{frame}
-  \frametitle{球坐标系谐函数的总结}
-  
+  \chtitle{球坐标系谐函数的总结}
+  \bch
 
   综合前面的思考题结果，容易总结出：
   \bitem
-\item{\blue 对$k>0$，球坐标系的包含球心的谐函数为$j_\ell(kr)Y_{\ell m}(\theta, \phi)$; 不包含球心的谐函数则多了另一个线性独立解$n_\ell(kr)Y_{\ell m}(\theta, \phi)$.}
+\item{\blue 对$k>0$，球坐标系的包含球心的谐函数为$j_\ell(kr)Y_{\ell m}(\theta, \phi)$; 不包含球心的谐函数则多了另一个线性独立解$y_\ell(kr)Y_{\ell m}(\theta, \phi)$.}
 \item{\blue 对$k=0$，球坐标系包含球心的谐函数为$r^\ell Y_{\ell m}(\theta,\phi)$；不包含球心的谐函数则多了另一个线性独立解$r^{-\ell -1}Y_{\ell m}(\theta,\phi)$.}
   \eitem
 
-  { \scriptsize 提示：在$k>0$情况的解里令$k\rightarrow 0^+$，可以得到$k=0$情况。}
-  
+  (思考：在$k>0$情况的解里令$k\rightarrow 0^+$，是否得到和$k=0$情况一样的结果。
+  \ech
 \end{frame}
 
-\begin{frame}
-\frametitle{常用的几个低阶的函数有必要熟悉一下}
-\bea
-j_0(x) &=& \frac{\sin x}{x}, \newl
-j_1(x) &=& \frac{\sin x - x\cos x}{x^2}; \newl
-n_0(x) &=& -\frac{\cos x}{x}, \newl
-n_1(x) &=& -\frac{\cos x + x\sin x}{x^2}; \newl
-Y_{00}(\theta,\phi)&=& \frac{1}{\sqrt{4\pi}}, \newl
-Y_{10}(\theta,\phi) &=& \sqrt{\frac{3}{8\pi}}\cos\theta, \newl
-Y_{1,\pm 1}(\theta,\phi) &=& \mp \sqrt{\frac{3}{8\pi}}\sin\theta e^{\pm \ii\phi}.
-\eea
-\end{frame}
-
-\section{Equations in Spherical Coordinates}
-\secpage{球坐标中的数理方程}{先考虑对称性很重要}
-
-\begin{frame}
-\frametitle{例题1}
-
-\addfig{1.5}{sphereheat.png}
-
-把一个半径为$R$，温度为$T_0$的均匀实心金属球放到温度为$T_1>T_0$的热库中。已知金属球的导热系数为$\lambda$, 质量密度为$\rho$，单位质量比热为$c$。问金属球的球心多久之后温度可以达到$\frac{T_0+T_1}{2}$。
-
-\end{frame}
-
-
-\begin{frame}
-\frametitle{例题1解答}
-
-显然稳恒态温度为$T_1$。令$u(r)=T(r)-T_1,\ 0\le r\le R$，则
-\bea
-\frac{\partial u}{\partial t} - a\nabla^2 u &=& 0, \newl
-\left. u\right\vert_{r=R} &=& 0 , \newl
-\left. u\right\vert_{t=0} &=& T_0-T_1. \newl
-\eea
-其中$a=\frac{\lambda}{\rho c}$。 根据问题对称性只能取$\ell = m = 0$的谐函数：$j_0(kr) = \frac{\sin kr}{kr}$。又根据零边界条件，可以得到
-$$k = \frac{n\pi}{R}, n = 1,2,\ldots $$
-所以设
-$$ u(r,t) = \sum_{n=1}^\infty c_n\frac{\sin \frac{n\pi r}{R}}{\frac{n\pi r}{R}} e^{-\frac{n^2\pi^2 at}{R^2}}.$$ 
-
-\end{frame}
-
-
-\begin{frame}
-\frametitle{例题1解答}
-
-令$t=0$，得到
-
-$$ \sum_{n=1}^\infty c_n\frac{\sin \frac{n\pi r}{R}}{\frac{n\pi r}{R}} = T_0-T_1,\ \   0\le r\le R$$
-
-利用一般正交定理（或者直接观察）可以写出
-
-$$ c_n =  \frac{2n\pi(T_0-T_1)}{R^2}\int_0^R  \left(\sin \frac{n\pi r}{R}\right) r dr = 2(-1)^{n+1}(T_0-T_1) . $$
-当$r=0$时，
-$$ u(0,t) = 2(T_0-T_1)\sum_{n=1}^\infty (-1)^{n+1} e^{-\frac{n^2\pi^2 at}{R^2}} $$
-
-\end{frame}
-
-
-\begin{frame}
-\frametitle{例题1解答}
-
-当$T(0,t)$达到$\frac{T_0+T_1}{2}$，也就是当$u(0,t)$达到$\frac{T_0-T_1}{2}$时，
-$$\sum_{n=1}^\infty (-1)^{n+1} e^{-\frac{n^2\pi^2 at}{R^2}} = \frac{1}{4}.$$
-适当采用近似的方法容易算出：
-$$ t \approx \frac{R^2}{\pi^2a}\left(2\ln 2 - \frac{1}{4^3}\right) = 0.1389 \frac{R^2}{a} $$
-
-\end{frame}
-
-
-
-\begin{frame}
-\frametitle{例题2}
-
-
-\addfig{1}{think3.jpg}
-
-把一个不带电的半径为$R$的金属球放进场强为$E$的匀强电场中，求金属球表面的电荷密度分布。
-
-\end{frame}
-
-
-\begin{frame}
-\frametitle{解答}
-
-
-感应电荷在球外和球内产生的电势$u$必须满足拉普拉斯方程
-$$\nabla^2 u = 0,\ \ \ r\ne R$$
-因为总感应电荷为零，显然球心处$u=0$。由此容易看出感应电荷在球内产生的电势为
-$$ u(r, \theta) = E r \cos\theta,\ \ \ r<R $$
-这恰好是$\ell =1, m = 0, k=0$的球坐标系谐函数。
-
-由电势的连续性以及感应电荷产生的电势在无穷远处为零的条件，得出感应电荷在球外产生的电势为
-$$ u(r, \theta) = E \frac{R^3}{r^2}\cos\theta, \ \ \ r>R $$
-于是电荷面密度为
-$$\sigma =  \epsilon_0\left(\left.\frac{\partial u}{\partial r}\right\vert_{r=R-0}-\left.\frac{\partial u}{\partial r}\right\vert_{r=R+0}\right) = 3\epsilon_0E\cos\theta $$ 
-
-\end{frame}
-
-
-
-\begin{frame}
-\frametitle{思考题}
-
-
-\addfig{1}{think1.jpg}
-
-例题2中匀强电场造成的电势恰好是$\ell = 1, m = 0, k=0$的谐函数，这是一个巧合。一般情况下怎样求解这类问题？
-
-\end{frame}
-
-
-
-
-%\item[50]{已知某真空区域的电势在直角坐标系下可以写成$ u(x,y,z) = \lambda(x^2-y^2)$, $\lambda$为常量。把一个不带电的半径为$R$的金属球放入该区域，球心和原点重合。计算金属球表面的电荷密度分布。}
-  
 
 
 \section{Homework}
 
 \begin{frame}
-\frametitle{Homework for Quizphobias}
+\chtitle{课后作业(题号46-48)}
+\bch
 \bitem
-\item[58]{证明球贝塞尔函数$j_n$和$y_n$满足
+\item[46]{求微分方程
+  $$ \frac{d^2y}{dx^2} -\frac{1}{x}\frac{dy}{dx} + \left(4x^2-\frac{15}{x^2}\right)y = 0$$
+  在$x>0$范围内的两个线性无关解。}
+\item[47]{证明球贝塞尔函数$j_n$和$y_n$满足
   $$ j_n(x) = (-x)^n\left(\frac{1}{x}\frac{d}{dx}\right)^n\frac{\sin x}{x}; $$
   $$ y_n(x) = -(-x)^n\left(\frac{1}{x}\frac{d}{dx}\right)^n\frac{\cos x}{x}; $$}
-\item[59]{利用之前学过的贝塞尔函数的正交定理证明球贝塞尔函数的正交定理：设$k_1, k_2>0$，则
+\item[48]{利用之前学过的贝塞尔函数的正交定理证明球贝塞尔函数的正交定理：设$k_1, k_2>0$，则
   $$\int_0^\infty j_{\ell}(k_1r)j_{\ell}(k_2r) r^2 dr = \frac{\pi}{2k_1^2} \delta(k_1-k_2).$$}
-\item[60]{一个半径为$R$的孤立均匀金属球，导热系数为$\lambda$, 质量密度为$\rho$，单位质量比热为$c$。记$r$为到球心的距离，一开始$t=0$时刻球内各处的温度为$T(r) = T_0\left(1+\frac{r}{R}\right)$。计算球内各处温度随时间的变化。}  
-\eitem
+ 
+  \eitem
+\ech
 \end{frame}
 
-\ech
 \end{document}

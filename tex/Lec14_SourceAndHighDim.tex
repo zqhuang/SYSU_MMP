@@ -2,19 +2,18 @@
 \input{macros.tex}
 \input{titlepage.tex}
   \date{}
-  \begin{document}
-  \bch
+\begin{document}
 \tpage{14}{Source Terms and High Dimensions}
 
 \begin{frame}
-\frametitle{本讲内容}
-
+\chtitle{本讲内容}
+\bch
 \bitem
 \item{回顾}
 \item{有源的方程}    
 \item{高维情况的分离变量法}
 \eitem
-
+\ech
 \end{frame}
 
 
@@ -22,8 +21,8 @@
 \secpage{回顾}{实验报告是把杀猪刀，老身感觉什么都不记得了……}
 
 \begin{frame}
-\frametitle{目前学过的线性齐次偏微分方程解法}
-
+\chtitle{目前学过的线性齐次偏微分方程解法}
+\bch
 \bitem
 \item[1]{{\blue \bf 分离变量法} 是首选方案。一般的套路：
   \bitem
@@ -35,13 +34,13 @@
 \item[2]{{\blue \bf 积分变换方法} 是分离变量法在无穷长区间上的推广。区别是：积分变换的存在性本身默认了一些无穷远处的性质，无须对展开式中的函数进行选取。(分离变量法第3步可以省略）}
 \item[3]{{\blue \bf 格林函数方法} 也需要把空间边界条件化为齐次。区别是：不用分离变量的乘积形式函数对解进行分解；而用格林函数（初始条件为$\delta(x-x_0)$的解，或者说对$x_0$处的单位脉冲的响应）对解进行分解。}
 \eitem
-
+\ech
 \end{frame}
 
 
 \begin{frame}
-\frametitle{目前学过的两种方程}
-
+\chtitle{目前学过的两种方程}
+\bch
 热传导方程
 \tbox{$$\frac{\partial u}{\partial t} - a\nabla^2 u = 0 $$}
 具有衰减和趋于稳定的特性。一维情况格林函数为$\frac{1}{\sqrt{4\pi at}}e^{-\frac{(x-x_0)^2}{4at}}$。
@@ -51,15 +50,15 @@
 波动方程
 \tbox{$$\frac{\partial^2 u}{\partial t^2} - a^2\nabla^2 u = 0 $$}
 具有波动特性。一维无边界情况通解为$C(x-at)+D(x+at)$。
-
+\ech
 \end{frame}
 
 \section{Source Terms}
 \secpage{有源的方程}{原则上可以暴力解决，实际上……心好累}
 
 \begin{frame}
-\frametitle{有源的问题}
-
+\chtitle{有源的问题}
+\bch
 有源的例子：
 \bitem
 \item{不良导体棒上处处有热源 （烤串）；
@@ -70,12 +69,13 @@ $$\frac{\partial^2 u}{\partial t^2} - a^2\frac{\partial^2 u}{\partial x^2} = f(x
   \eitem
   其中$f$正比于单位时间单位长度输入的热量或外力。
   
-
+\ech
 \end{frame}
 
 
 \begin{frame}
-\frametitle{例题1}
+\chtitle{例题1}
+\bch
 求解$0\le x\le L$上的烤串问题：
 \bea
 \frac{\partial u}{\partial t} - a\frac{\partial^2u}{\partial x^2} &=& \phi(x,t), \newl
@@ -83,22 +83,25 @@ $$\frac{\partial^2 u}{\partial t^2} - a^2\frac{\partial^2 u}{\partial x^2} = f(x
 \left. u \right\vert_{x=L} = 0, \newl
 \left. u \right\vert_{t=0} = 0. \newl
 \eea
+\ech
 \end{frame}
 
 \begin{frame}
-\frametitle{自发演化的时间依赖模式被源破坏}
+\chtitle{自发演化的时间依赖模式被源破坏}
+\bch
 如果没有$\phi(x,t)$的存在，我们将进行分解：
 $$u = \sum_{n = 0}^\infty c_ne^{-\frac{an^2\pi^2t}{L^2} } \sin\frac{n\pi x}{L}. $$
 有$\phi(x,t)$的情况，解的自发衰减性被破坏，那么我们猜想 $e^{-\frac{an^2\pi^2t}{L^2} }$必须被替换掉了：
 $$u = \sum_{n = 0}^\infty T_n(t) \sin\frac{n\pi x}{L}. $$
 其中每个$T_n(t)$都是待定函数。利用初始条件显然有
 $$T_n(0) = 0. $$
+\ech
 \end{frame}
 
 
 \begin{frame}
-\frametitle{源也要进行分解}
-
+\chtitle{源也要进行分解}
+\bch
 为了求出$T_n$，我们把等式右边的$\phi(x,t)$也进行级数展开：
 $$\phi(x,t) = \sum_{n=0}^\infty G_n(t) \sin\frac{n\pi x}{L}. $$
 代入到原方程，得到
@@ -106,11 +109,13 @@ $$ \sum_{n = 0}^\infty\left[ T_n'(t) +\frac{n^2\pi^2a}{L^2}T(t)\right] \sin\frac
 两边比较系数得到
 $$ T_n'(t) + \frac{n^2\pi^2a}{L^2}T(t) = G_n(t). $$
 再利用初始条件$T_n(0)  = 0$，原则上(\wulian)可以求出$T_n(t)$。
+\ech
 \end{frame}
 
-\begin{frame}
-\frametitle{比较非齐次的边界条件和有源的方程}
 
+\begin{frame}
+\chtitle{比较非齐次的边界条件和有源的方程}
+\bch
 
 \bitem
 \item{有源的方程的解法有固定的流程，从概念上讲非常简单。但实际操作上求解$T_n(t)$经常会很困难（高难度推土）。}
@@ -119,13 +124,13 @@ $$ T_n'(t) + \frac{n^2\pi^2a}{L^2}T(t) = G_n(t). $$
 
   对于喜欢推土的同学来说，有一个好消息：非齐次边界问题可以转化为有源的问题。
   
-
+\ech
 \end{frame}
 
 
 \begin{frame}
-\frametitle{例题2}
-
+\chtitle{例题2}
+\bch
 来回顾一下上一讲中的非齐次边界问题：
 
 \bea
@@ -135,22 +140,22 @@ $$ T_n'(t) + \frac{n^2\pi^2a}{L^2}T(t) = G_n(t). $$
 \left.u\right\vert_{t=0} &=& 0 , \newl
 \left.\frac{\partial u}{\partial t}\right\vert_{t=0} &=&  0.
 \eea
-
+\ech
 \end{frame}
 
 \begin{frame}
-\frametitle{一个不幸的瞎解}
-
+\chtitle{一个不幸的瞎解}
+\bch
 \addfig{1}{drive.jpg}
 如果你不是老司机，你可能会闭着眼睛瞎猜一个“特解”
 $$\frac{Ax}{L} \sin(\omega t)$$
 然后仔细一看，坏了，它不满足方程！这不是特解，是瞎解！
-
+\ech
 \end{frame}
 
 \begin{frame}
-\frametitle{强用瞎解}
-
+\chtitle{强用瞎解}
+\bch
 因为你已经放弃了用经验肝一个特解这条路，就只能硬着头皮用你找的这个瞎解了：
 令
 $$ u(x,t)  = \frac{Ax}{L} \sin(\omega t) + \upsilon(x,t)$$
@@ -164,7 +169,7 @@ $$ u(x,t)  = \frac{Ax}{L} \sin(\omega t) + \upsilon(x,t)$$
 \left.\frac{\partial \upsilon}{\partial t}\right\vert_{t=0} &=&  -\frac{A\omega x}{L}
 \eea
 后面的推土工作略。
-
+\ech
 \end{frame}
 
 
@@ -172,18 +177,18 @@ $$ u(x,t)  = \frac{Ax}{L} \sin(\omega t) + \upsilon(x,t)$$
 \secpage{高维情况的分离变量法}{寻找谐函数是关键}
 
 \begin{frame}
-\frametitle{关于分离变量法的一个疑惑}
-
+\chtitle{关于分离变量法的一个疑惑}
+\bch
 \addfig{1}{think1.jpg}
 
 分离变量第1步设$\Phi(x)\Psi(t)$……那如果变量超过2个怎么办？
-
+\ech
 \end{frame}
 
 
 \begin{frame}
-\frametitle{例题2}
-
+\chtitle{例题2}
+\bch
 边长为$L$的正方形弹性膜，四边都固定，求解膜的小振动问题：
 \bea
 \frac{\partial^2 u}{\partial t^2} - a^2\nabla^2 u &=& 0 , \newl
@@ -195,14 +200,14 @@ $$ u(x,t)  = \frac{Ax}{L} \sin(\omega t) + \upsilon(x,t)$$
 \left. \frac{\partial u}{\partial t} \right\vert_{t=0} &=& \psi(x,y) ,
 \eea
 其中$ \nabla^2 = \frac{\partial^2 }{\partial x^2} + \frac{\partial^2 }{\partial y^2}. $
-
+\ech
 \end{frame}
 
 
 
 \begin{frame}
-\frametitle{解答}
-
+\chtitle{解答}
+\bch
 先寻找分离变量型解，令$u = \Phi(x,y)\Psi(t)$，代入波动方程，得到
 $$ \frac{1}{a^2} \frac{\Psi'' }{\Psi} = \frac{\nabla^2\Phi}{\Phi} $$
 等式左边是$t$的函数，右边是$x,y $的函数，要两边恒等，只能是常数：
@@ -214,14 +219,14 @@ $$ u_1 = Q(x, y) e^{\pm iakt}$$
 其中$Q(x,y)$是
 {\blue $$\nabla^2Q = -k^2 Q$$
 的解，称为 谐函数}。
-
+\ech
 \end{frame}
 
 
 
 \begin{frame}
-\frametitle{谐函数}
-
+\chtitle{谐函数}
+\bch
 在边界为正方形的情况下，取直角坐标系是很漂亮的操作，那么
 $$\nabla^2Q = -k^2 Q$$
 的解是平面波
@@ -230,43 +235,43 @@ $$ Q = e^{\ii \veck \cdot \vecx} $$
 
 
 和一维的情况类似，对应一组$|k_x|, |k_y|$有四种满足条件的解(因为$k_x, k_y$分别可以取正负)，可以重新写成正弦和余弦的实数表达形式。
-
+\ech
 \end{frame}
 
 
 \begin{frame}
-\frametitle{级数展开}
-
+\chtitle{级数展开}
+\bch
 空间边界条件已经是齐次的了，会对$k_x, k_y$产生限制。经过分析容易得到
 \bea u &=& \sum_{m,n=0}^\infty c_{mn} \sin\frac{m\pi x}{L} \sin\frac{n\pi y}{L} \cos{\left(\pi a\frac{\sqrt{m^2+n^2}}{L}t\right)}\newl
 && + \sum_{m,n=0}^\infty s_{mn} \sin\frac{m\pi x}{L} \sin\frac{n\pi y}{L} \sin{\left(\pi a\frac{\sqrt{m^2+n^2}}{L}t\right)}.
 \eea
 利用两个初始条件分别可以求出系数$c_{mn}$和$s_{mn}$。
-
+\ech
 \end{frame}
 
 \begin{frame}
-\frametitle{思考}
-
+\chtitle{思考}
+\bch
 \addfig{1}{think3.jpg}
 
 可以直接一次性进行分离变量设解为$U(x)V(y)\Psi(t)$吗？
-
+\ech
 \end{frame}
 
 \begin{frame}
-\frametitle{思考}
-
+\chtitle{思考}
+\bch
 \addfig{1}{think3.jpg}
 
 既然解是熟悉的平面波，为什么要引入“谐函数”的概念？
-
+\ech
 \end{frame}
 
 
 \begin{frame}
-\frametitle{例题}
-
+\chtitle{例题}
+\bch
 有孤立的，半径为$R$的均匀厚度圆形金属片。初态$t=0$时刻金属片中心温度为$T_0$，金属片上距离中心$r$处的温度为
 $$T(r) =T_0\left(1+\frac{r^2}{R^2}\right).$$
 已知金属片质量密度为$\rho$，导热系数为$\lambda$，单位质量比热为$c$。求之后圆盘上各点的温度变化。
@@ -274,28 +279,28 @@ $$T(r) =T_0\left(1+\frac{r^2}{R^2}\right).$$
 \skiplines
 
 {（\wulian 这题看着好眼熟）}
-
+\ech
 \end{frame}
 
 
 
 \begin{frame}
-\frametitle{写出方程}
-
+\chtitle{写出方程}
+\bch
 \bea
 \frac{\partial T}{\partial t}-a\nabla^2 T &=& 0, \newl
 \left.\frac{\partial T}{\partial r}\right\vert_{r=R} &=& 0, \newl
 \left.T\right\vert_{t=0} &=& T_0\left(1+\frac{r^2}{R^2}\right).
 \eea
 然后思考，$\nabla^2 T$具体是什么？好像还缺了一个空间边界条件，你知道怎么写吗？
-
+\ech
 \end{frame}
 
 \section{Homework}
 
 \begin{frame}
-\frametitle{课后作业 (题号 30-31)}
-
+\chtitle{课后作业 (题号 30-31)}
+\bch
 \bitem
 \item[30]{
  课上讲了“瞎解法”求解
@@ -309,20 +314,20 @@ $$T(r) =T_0\left(1+\frac{r^2}{R^2}\right).$$
 的办法。请把课上没有完成的计算部分补充完整，并把解和上次作业得到的解进行比较。
 }
 \eitem
-
+\ech
 \end{frame}
 
 
 \begin{frame}
-\frametitle{课后作业 (题号 30-31)}
-
+\chtitle{课后作业 (题号 30-31)}
+\bch
 \bitem
 \item[31]{一张四边固定的水平正方形均匀薄膜，张力系数为（单位长度线元受力）为$\sigma$，质量面密度为$\rho$。记薄膜上的点坐标为$(x,y)$ ($0\le x\le L$, $0\le y \le L$)。初始$t=0$时刻薄膜在横向（垂直薄膜平面方向）有微小的位移$A x y (L-x)(L-y)$，初始速度为零。求解之后薄膜的横向位移$u(x,y, t)$ ($0\le x\le L, 0\le y\le L, t\ge 0$)。}
 \eitem
-
+\ech
 \end{frame}
 
 
 
-\ech
+
 \end{document}

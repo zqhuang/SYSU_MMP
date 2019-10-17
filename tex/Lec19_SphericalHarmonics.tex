@@ -2,20 +2,56 @@
 \input{macros.tex}
 \input{titlepage.tex}
   \date{}
-  \begin{document}
-  \bch
-\tpage{19}{球面谐函数$Y_{\ell m}$}
+\begin{document}
+\tpage{19}{Spherical Harmonics}
 
 \begin{frame}
-\frametitle{本讲内容}
-
+\chtitle{本讲内容}
+\bch
 \bitem
-\item{球面上的分离变量形式的谐函数}
-\item{球面谐函数的微分表示}
+\item{一些简单问题的回顾}
+\item{单位球面上的谐函数}
 \eitem
-
+\ech
 \end{frame}
 
+
+\section{Review}
+\secpage{一些简单问题的回顾}{……}
+
+\begin{frame}
+  \chtitle{思考题}
+  \bch
+  \addfig{2}{ringarea.png}
+  
+  一个圆环($R_1\ge r\ge R_2$)上的满足边界上值为零的谐函数有哪些？它们满足的一般正交定理具体写出来是怎样的？
+  
+  \ech
+\end{frame}
+
+
+\begin{frame}
+  \chtitle{思考题}
+  \bch
+  \bmini{0.45}
+  单位圆周是一个一维空间，用坐标$\phi$ 来描述。
+
+  \skiplines
+  
+  对单位圆周，思考如下问题：
+  \emini
+  \bmini{0.5}
+  \addfig{1.8}{unitcircle.png}
+  \emini
+
+  \bitem
+\item{$\nabla^2Q = -k^2Q$里的$k^2$取什么值时才能使谐函数有解？}
+\item{不同的$k^2$对应的谐函数是正交的吗？}
+\item{对一个固定的$k^2$，谐函数有哪些？它们是正交的吗？}
+\item{回忆实对称矩阵的本征值理论并和上述讨论结果做比较。}
+  \eitem
+  \ech
+\end{frame}
 
 \section{Spherical Harmonics}
 \secpage{单位球面上的谐函数}{
@@ -24,8 +60,8 @@
 
 
 \begin{frame}
-\frametitle{单位球面上的谐函数}
-
+\chtitle{单位球面上的谐函数}
+\bch
 在球坐标$(r,\theta,\phi)$里固定$r=1$，就得到单位球面：这是一个二维空间。
 
 \skipline
@@ -36,41 +72,41 @@ $$ \nabla^2Q = -k^2Q $$
 $$ \nabla^2 = \frac{1}{\sin\theta}\frac{\partial}{\partial\theta}\left(\sin\theta\frac{\partial}{\partial\theta}\right) + \frac{1}{\sin^2\theta}\frac{\partial^2}{\partial\phi^2} $$
 
 {\scriptsize (如对此有疑问，请回顾第15讲正交曲面坐标系的知识）}
-
+\ech
 \end{frame}
 
 
 
 \begin{frame}
-\frametitle{单位球面上的谐函数}
-
-同样直接给出球面谐函数的求解结果：
+\chtitle{单位球面上的谐函数}
+\bch
+因为推导比较复杂，先给出结果，把证明留到你们瞌睡的时候再讲:
 \skiplines
 \tbox{\blue 单位球面上谐函数存在的条件是$k^2=\ell(\ell+1),\ \ell = 0,1,2,\ldots$。对每个$\ell$，存在$2\ell+1$个解： $Y_{\ell m}(\theta,\phi)$ ($-\ell\le m\le \ell$)。}
 
-在文献中常常把$Y_{\ell m}$叫做{\blue 球谐函数}。
+在文献中常常省略“单位”二字，简单地把$Y_{\ell m}$叫做{\blue 球面谐函数}或{\blue 球谐函数}。
 
-
+\ech
 \end{frame}
 
 
 
 
 \begin{frame}
-\frametitle{$\ell = 0$的情况}
-
+\chtitle{$\ell = 0$的情况}
+\bch
 $\ell = 0$的情况只有$2\ell+1=1$个球面谐函数，它是个常数：
 
 \tbox{$$Y_{00}(\theta,\phi) = \frac{1}{\sqrt{4\pi}} $$}
 
-
+\ech
 \end{frame}
 
 
 
 \begin{frame}
-\frametitle{$\ell = 1$的情况}
-
+\chtitle{$\ell = 1$的情况}
+\bch
 $\ell = 1$的情况有$2\ell+1=3$个球面谐函数：
 
 \tbox{
@@ -79,12 +115,12 @@ $\ell = 1$的情况有$2\ell+1=3$个球面谐函数：
   Y_{1,\pm 1}(\theta,\phi) &=& \mp \sqrt{\frac{3}{8\pi}}\sin\theta e^{\pm \ii\phi}.
   \eea
 }
-
+\ech
 \end{frame}
 
 \begin{frame}
-\frametitle{$\ell = 2$的情况}
-
+\chtitle{$\ell = 2$的情况}
+\bch
 $\ell = 2$的情况有$2\ell+1=5$个球面谐函数：
 
 \tbox{
@@ -94,30 +130,31 @@ $\ell = 2$的情况有$2\ell+1=5$个球面谐函数：
   Y_{2,\pm 2}(\theta,\phi) &=&   \sqrt{\frac{15}{32\pi}}\sin^2\theta e^{\pm 2\ii\phi} .
   \eea
 }
-
+\ech
 \end{frame}
 
 
 \begin{frame}
-\frametitle{$Y_{\ell m}$“大致长什么样”}
-
+\chtitle{$Y_{\ell m}$“大致长什么样”}
+\bch
 \bitem
 \item{$Y_{\ell m}$可以写成$\theta$的一个函数$\Psi_{\ell m}(\theta)$乘以$e^{\ii m\phi}$:
   {\blue $$Y_{\ell m}(\theta,\phi) = \Psi_{\ell m}(\theta)e^{\ii m\phi}$$}
-}
+  \bitem
+\item{\blue 当$m$为偶数时，$\Psi_{\ell m}(\theta)$可以写成$\cos\theta$的$\ell$次多项式；}
+\item{\blue 当$m$为奇数时，$\Psi_{\ell m}(\theta)$可以写成$\sin\theta$乘以$\cos\theta$的$\ell-1$次多项式。}
+  \eitem}
 \item{在单位球面上按复数内积规则正交归一化：
-  {\blue $$\int d\Omega\,  Y_{\ell m}^*(\theta,\phi)Y_{\ell',m'}(\theta,\phi) = \delta_{\ell\ell'}\delta_{m m'} .$$}
-  其中$\int d\Omega$是球面积分$\int_0^\pi \sin\theta d\theta\int_0^{2\pi}d\phi$的简写。
-}  
+  {\blue $$\int_0^\pi d\theta\int_0^{2\pi}\sin\theta d\phi \, Y_{\ell m}^*(\theta,\phi)Y_{\ell',m'}(\theta,\phi) = \delta_{\ell\ell'}\delta_{m m'} .$$}}  
   \eitem
 
-
+\ech
 \end{frame}
 
 
 \begin{frame}
-\frametitle{思考题}
-
+\chtitle{思考题}
+\bch
 
 
 显然谐函数乘以任何一个非零常数仍然是谐函数，所以谐函数的归一化是人为规定的。
@@ -126,222 +163,325 @@ $\ell = 2$的情况有$2\ell+1=5$个球面谐函数：
 
 谐函数的正交性也是人为规定的吗？
 
-
+\ech
 \end{frame}
 
+\secpage{谐函数是如何得到的}{不是重点}
 
-\section{Explicit Expression of $Y_{\ell m}$}
-\secpage{球面谐函数的微分表示}{  {\scriptsize
-    $$ Y_{\ell m}(\theta,\phi) =\frac{1}{2^\ell \ell !}\sqrt{\frac{(2\ell+1)}{4\pi} \frac{(\ell-m)!}{(\ell+m)!}}\left[\sin^m\theta \left(\frac{1}{\sin\theta}\frac{d}{d\theta}\right)^{\ell+m}\sin^{2\ell}\theta \right] e^{\ii m\phi}$$}}
+\section{Chebyshev Polynomials}
 
-\begin{frame}
-  \frametitle{准备工作：乘积多重导数公式}
-  
-  设$f$,$g$为$x$的函数，我们都知道
-  $$ (fg)' = f'g + fg'. $$
-  这个公式可以推广到任意阶导数：\tbox{
-  $$ (fg)^{(n)} = \sum_{k=0}^n \frac{n!}{k!(n-k)!} f^{(k)}g^{(n-k)}, $$}
-  其中 $f^{(k)}$表示$f$的$k$重导数。
-
-  \skipline
-  {\small \darkgreen (和二项式定理一样，这个公式最简明有效的证明方法是用数学归纳法，请自行完成。）}
-  
-\end{frame}
-
+\secpage{Chebyshev多项式}{$$ T_n(\cos\theta)=\cos{(n\theta)};\ U_n(\cos\theta) = \frac{\sin{[(n+1)\theta]}}{\sin\theta}$$ }
 
 \begin{frame}
-  \frametitle{准备工作：推广的乘积多重导数公式}
-  
-  设$\rho$, $f$, $g$为$x$的函数，则
-  \tbox{
-    $$ \left(\rho\frac{d}{dx}\right)^n (fg) = \sum_{k=0}^n \frac{n!}{k!(n-k)!} \left[ \left(\rho\frac{d}{dx}\right)^k f \right]\left[  \left(\rho\frac{d}{dx}\right)^{n-k} g\right], $$}
+\chtitle{温习小学知识}
+\bch
 
-  \skipline
-  
-  {\small \darkgreen 证明思路：令$y = \int \frac{dx}{\rho}$并对变量$y$应用乘积的多重导数公式。}
-  
-  
+\addfig{1}{think1.jpg}
+
+把$\cos(2\theta)$写成$\cos\theta$的多项式。
+\ech
 \end{frame}
 
 
 \begin{frame}
-\frametitle{思考题}
+\chtitle{温习小学知识}
+\bch
 
-记算符$\hatD = \frac{1}{\sin\theta}\frac{d}{d\theta}$，请验证：
+\addfig{1}{think1.jpg}
+
+把$\cos(3\theta)$写成$\cos\theta$的多项式。
+\ech
+\end{frame}
+
+
+\begin{frame}
+\chtitle{温习小学知识}
+\bch
+
+\addfig{1}{think1.jpg}
+
+把$\frac{\sin(2\theta)}{\sin\theta}$写成$\cos\theta$的多项式。
+\ech
+\end{frame}
+
+
+\begin{frame}
+\chtitle{温习小学知识}
+\bch
+
+\addfig{1}{think1.jpg}
+
+把$\frac{\sin(3\theta)}{\sin\theta}$写成$\cos\theta$的多项式。
+\ech
+\end{frame}
+
+
+\begin{frame}
+\chtitle{温习小学知识}
+\bch
+
+\addfig{1}{think1.jpg}
+
+把$\frac{\sin(4\theta)}{\sin\theta}$写成$\cos\theta$的多项式。
+\ech
+\end{frame}
+
+
+\begin{frame}
+\chtitle{思考题}
+\bch
+
+\addfig{2}{think3.jpg}
+
+证明：$\cos{(n\theta)}$和$\frac{\sin{[(n+1)\theta]}}{\sin \theta}$分别可以写成$\cos\theta$的$n$次多项式:
+
+$$ \cos{(n\theta)} = T_n(\cos \theta);\ \ \frac{\sin{[(n+1)\theta]}}{\sin\theta} = U_n(\cos\theta).$$
+
+其中的$n$次多项式$T_n$和$U_n$分别称为第一类Chebyshev多项式和第二类Chebyshev多项式。
+
+\ech
+\end{frame}
+
+
+\begin{frame}
+\chtitle{递推}
+\bch
+利用三角函数的加法公式，容易得到：
+\bea
+T_{n+2}(x) &=& xT_{n+1}(x)+(x^2-1)U_n(x), \newl
+U_{n+1}(x) &=& xU_n(x) +T_{n+1}(x).
+\eea
+由此可以从$T_0=1, U_0=1, T_1=x$出发递推出所有Chebyshev多项式：
+
+\ech
+\end{frame}
+
+
+\begin{frame}
+\chtitle{前几个Chebyshev多项式}
+\bch
+\bmini{0.47}
+\bea
+T_0(x) &=& 1;\newl
+T_1(x) &=& x;\newl
+T_2(x) &=& 2x^2-1; \newl
+T_3(x) &=& 4x^3-3x; \newl
+T_4(x) &=& 8x^4 - 8x^2+1;  \newl
+T_5(x) &=& 16x^5-20x^3+5x; \newl
+\ldots
+\eea
+\emini
+\bmini{0.47}
+\bea
+ U_0(x) &=& 1;  \newl
+ U_1(x) &=& 2x; \newl
+ U_2(x) &=& 4x^2-1; \newl
+ U_3(x) &=& 8x^3-4x; \newl
+ U_4(x) &=& 16x^4-12x^2+1;  \newl
+ U_5(x) &=& 32x^5-32x^3+6x; \newl
+ \ldots
+\eea
+\emini
+
+\ech
+\end{frame}
+
+
+
+\begin{frame}
+\chtitle{前几个$T_n(x)$的图}
+\bch
+\addfig{4}{ChebyshevTn.png}
+\ech
+\end{frame}
+
+
+\begin{frame}
+\chtitle{前几个$U_n(x)$的图}
+\bch
+\addfig{4}{ChebyshevUn.png}
+\ech
+\end{frame}
+
+
+\begin{frame}
+\chtitle{回到球面谐函数的计算}
+\bch
+$$\frac{1}{\sin\theta}\frac{\partial}{\partial \theta}\left(\sin\theta \frac{\partial Q}{\partial \theta}\right)+\frac{1}{\sin^2\theta}\frac{\partial^2Q}{\partial\phi^2} = -k^2Q  $$
+分离变量，令$Q=  \Psi(\theta)\Lambda(\phi)$
+$$\frac{(\sin\theta \Psi')'}{\Psi\sin\theta}+\frac{\Lambda''}{\Lambda\sin^2\theta } = -k^2. $$
+显然必须有
+$$ \frac{\Lambda''}{\Lambda}=\const$$
+又显然$\Lambda$满足周期性边界条件$\Lambda(\phi+2\pi)=\Lambda(\phi)$，所以得到
+$$\Lambda(\phi) = e^{\pm \ii m\phi},\ m=0,1,2,\ldots$$
+
+\ech
+\end{frame}
+
+
+\begin{frame}
+\chtitle{分离变量：$\theta$的函数}
+\bch
+对固定的$m$， $\Psi(\theta)$满足：
+$$ \frac{(\sin\theta \Psi')'}{\Psi\sin\theta}-\frac{m^2}{\sin^2\theta } = -k^2$$
+
+
+或者重新组织一下：
+$$ \Psi''+\cot\theta \,\Psi' +\left(k^2-\frac{m^2}{\sin^2\theta}\right) \Psi = 0. $$
+
+\ech
+\end{frame}
+
+\begin{frame}
+\chtitle{分离变量：$\theta$的函数——自带边界条件}
+\bch
+
+在北极$\theta=0$和南极$\theta=\pi$处，$\Psi$必须满足下列边界条件：
+
+对$m=0$，
+$$\Psi' =  (- \Psi''-k^2\Psi) \tan\theta = 0; $$
+对$m>0$，
+$$ \Psi = \frac{\Psi'' \sin^2\theta  + \Psi' \sin\theta\cos\theta }{m^2-k^2\sin^2\theta } =  0. $$
+如果解是振荡型的，上述边界条件就要求$[0,\pi]$里包含了半整数个振荡周期。这告诉我们$k^2$的允许取值很可能只能是一些离散的值。
+\ech
+\end{frame}
+
+
+\begin{frame}
+\chtitle{分离变量：$\theta$的函数——粗略估算}
+\bch
+在进行严格求解之前，我们先猜想一个解的大致样子。
+
+当$\theta\ll 1$时，方程可以近似写为：
+$$\Psi'' + \frac{1}{\theta}\Psi' + \left(k^2-\frac{m^2}{\theta^2}\right)\Psi = 0. $$
+这个方程很眼熟，实际上，如果做变量替换$x=k\theta$，就可以化为标准的贝塞尔方程。也就是说，当$\theta\ll 1$时解大约是$J_m(k\theta)$。
+
+\skipline
+
+如果$k^2 \gg m^2$，$J_m(k\theta)$的第一个峰的位置远小于$1$。那么，可以粗略地把$J_m(k\theta)$的半周期当成$\frac{\pi}{k}$。要求在$[0,\pi]$内有整数个半周期，即要求$k = \ell, \ell \in Z, \ell \gg m$。
+
+\skipline
+我们对这个猜测并不是很有信心：因为$\theta$比较大时解未必还和$J_m(k\theta)$相似，$\ell \gg m$的条件不满足时我们也无法证明解并不存在。
+\ech
+\end{frame}
+
+
+\begin{frame}
+\chtitle{分离变量：$\theta$的函数——严格求解的结果}
+\bch
+严格求解的结果却出乎意料地和猜测非常接近：{\blue $k = \sqrt{\ell(\ell+1)},\ \ \ \ell \ge m.$}
+
+\skipline
+
+严格地得到这个结论的方法大致有两种：
 \bitem
-\item{$\hatD\sin^2\theta = 2\cos\theta$;}
-\item{$\hatD^2\sin^2\theta = -2$;}
-\item{对整数$n>2$，$\hatD^n \sin^2\theta = 0$.}  
-\item{$\hatD\cos\theta = -1$;}
-\item{对整数$m$, $\hatD \sin^m\theta = m \sin^{m-2}\theta \cos\theta$;}
-\item{对整数$m$, $\hatD (\sin^m\theta\cos\theta) =m\sin^{m-2}\theta - (m+1)\sin^m\theta$;}  
-\eitem
-  
-
-\end{frame}
-
-
-
-
-\begin{frame}
-  \frametitle{球面谐函数的微分表达式}
-  
-
-  {\small \blue
-    $$ Y_{\ell m}(\theta,\phi) =\frac{1}{2^\ell \ell !}\sqrt{\frac{(2\ell+1)}{4\pi} \frac{(\ell-m)!}{(\ell+m)!}}\left[\sin^m\theta \left(\frac{1}{\sin\theta}\frac{d}{d\theta}\right)^{\ell+m}\sin^{2\ell}\theta \right] e^{\ii m\phi}$$}
-
-  
-\end{frame}
-
-
-\begin{frame}
-  \frametitle{证明概要}
-  
-  记
-  $$N_{\ell m}  := \frac{1}{2^\ell \ell !}\sqrt{\frac{(2\ell+1)}{4\pi} \frac{(\ell-m)!}{(\ell+m)!}};$$
-  $$\Psi_{\ell m}(\theta)  := \sin^m\theta \left(\frac{1}{\sin\theta}\frac{d}{d\theta}\right)^{\ell+m}\sin^{2\ell}\theta. $$
-  则只要证明微分方程和归一化：
-  \bitem
-\item{$$ \frac{1}{\sin \theta}\frac{d}{d\theta} \left[\sin\theta \frac{d}{d\theta}\Psi_{\ell m}\right] + \left[\ell(\ell+1)-\frac{m^2}{\sin^2\theta}\right]\Psi_{\ell m} = 0.$$}
-\item{$$ \int_0^\pi \left[\Psi_{\ell m}(\theta)\right]^2 \sin\theta d\theta =  \frac{1}{2\pi N_{\ell m}^2} = 4^\ell (\ell!)^2\frac{(\ell+m)!}{(\ell-m)!} \frac{2}{2\ell+1}.  $$
-}
+\item{代数方法}
+\item{算符方法}
   \eitem
-  
+
+算符推导方法简洁优美，以后在学习量子力学时会接触到。我们这里只介绍比较繁琐的代数方法。
+
+\ech
+\end{frame}
+
+
+\begin{frame}
+\chtitle{分离变量：$\theta$的函数——$m=0$的情况}
+\bch
+在$[0,\pi]$内的函数$\Psi(\theta)$可以用$\cos{(n\theta)}$, $\sin{(n\theta)}$ （$n=0,1,2\ldots$) 进行展开。
+
+  \skiplines
+
+我们先考虑$m=0$，也就是解具有绕$z$轴的旋转对称性的情况。这时的方程为
+$$ \frac{1}{\sin\theta}(\Psi'\sin\theta)' + k^2 \Psi = 0. $$
+
+
+$\Psi$在$[0,\pi]$两端的导数为零，只有$\cos{(n\theta)}$满足条件，所以{\bf 猜测}(这种猜测其实是有bug的，下一讲我们会详细分析)：
+$$\Psi(\theta) = \sum_{n=0}^\infty a_n\cos{(n\theta)} $$
+\ech
 \end{frame}
 
 
 
 \begin{frame}
-  \frametitle{第一部分：微分方程}
-  
-  令$\hatD = \frac{1}{\sin\theta}\frac{d}{d\theta}$，在恒等式
-  $$\sin^2\theta \hatD\sin^{2\ell}\theta = 2\ell \cos\theta \sin^{2\ell}\theta $$
-  两边作用$\hatD^{\ell+m}$，得到
-  \bea
-  && \sin^2\theta \hatD^{\ell+m+1}\sin^{2\ell}\theta + 2(\ell+m)\cos\theta \hatD^{\ell+m}\sin^{2\ell}\theta \newl
-  && - (\ell+m)(\ell+m-1)\hatD^{\ell+m-1}\sin^{2\ell}\theta \newl
-  &=& 2\ell\cos\theta\hatD^{\ell+m}\sin^{2\ell}\theta - 2\ell(\ell+m)\hatD^{\ell+m-1}\sin^{2\ell}\theta.
-  \eea
-  稍作整理：
-  \begin{eqnarray}
-  && \sin^2\theta \hatD^{\ell+m+1}\sin^{2\ell}\theta + 2m\cos\theta \hatD^{\ell+m}\sin^{2\ell}\theta \newl
-  && + (\ell+m)(\ell-m+1)\hatD^{\ell+m-1}\sin^{2\ell}\theta =0 . \label{eq1}
-  \end{eqnarray}
+\chtitle{分离变量：$\theta$的函数——$m=0$的情况}
+\bch
+因为我们已经知道$\cos{(n\theta)}$可以写成$\cos\theta$的多项式，所以还可以写成
+$$\Psi(\theta) = \sum_{n=0}^\infty c_n\cos^n\theta $$
+逐项求导得到
+$$\Psi' \sin\theta  = \sum_{n=1}^\infty (-c_nn) \cos^{n-1}\theta\sin^2\theta $$
+把$\sin^2\theta$换成$1-\cos^2\theta$，并按幂次重新整理，得到
+$$\Psi' \sin\theta  = - c_1+ \sum_{n=0}^\infty \left[nc_n-(n+2)c_{n+2}\right] \cos^{n+1}\theta $$
 
-  
+
+\ech
 \end{frame}
 
 
 \begin{frame}
-  \frametitle{第一部分：微分方程}
-  
-  两边同乘以$\sin^m\theta$，
-  \bea
-  && \sin^{m+2}\theta \hatD^{\ell+m+1}\sin^{2\ell}\theta + 2m\sin^m\theta\cos\theta \hatD^{\ell+m}\sin^{2\ell}\theta \newl
-  && + (\ell+m)(\ell-m+1)\sin^m\theta\hatD^{\ell+m-1}\sin^{2\ell}\theta =0  .
-  \eea
-  上式可以写成
-  \bea
-  && \sin^2\theta \hatD\left[\sin^m\theta \hatD^{\ell+m}\sin^{2\ell}\theta\right] + m\sin^m\theta\cos\theta \hatD^{\ell+m}\sin^{2\ell}\theta \newl 
-   && + (\ell+m)(\ell-m+1)\sin^m\theta\hatD^{\ell+m-1}\sin^{2\ell}\theta =0  .
-  \eea
-  
+\chtitle{分离变量：$\theta$的函数——$m=0$的情况}
+\bch
+再次求导，得到
+$$\frac{1}{\sin\theta}\left(\Psi' \sin\theta\right)'  = \sum_{n=0}^\infty (n+1)\left[(n+2)c_{n+2}-nc_n\right] \cos^n\theta $$
+微分方程
+$$\frac{1}{\sin\theta}\left(\Psi' \sin\theta\right)'+k^2\Psi = 0$$
+就转化为
+$$ \sum_{n=0}^\infty \left\{(n+1)(n+2)c_{n+2}+\left[k^2-n(n+1)\right]c_n\right\} \cos^n\theta  = 0 $$
+\ech
 \end{frame}
 
 
 \begin{frame}
-  \frametitle{第一部分：微分方程}
-  
-  两边作用$\hatD$，得到
-  \bea
-  && \hatD\left\{\sin^2\theta \hatD\left[\sin^m\theta \hatD^{\ell+m}\sin^{2\ell}\theta\right]\right\} + m^2\sin^{m-2}\theta \hatD^{\ell+m}\sin^{2\ell}\theta \newl
-  && -m(m+1)\sin^m\theta \hatD^{\ell+m}\sin^{2\ell}\theta  + {\blue m\sin^m\theta\cos\theta \hatD^{\ell+m+1}\sin^{2\ell}\theta} \newl
-  &&{\blue  + (\ell+m)(\ell-m+1)m\sin^{m-2}\cos\theta\hatD^{\ell+m-1}\sin^{2\ell}\theta} \newl
-  && + (\ell+m)(\ell-m+1)\sin^m\theta\hatD^{\ell+m}\sin^{2\ell}\theta =0  .
-  \eea
-  利用前面的方程\eqref{eq1}，把上式蓝色部分替换掉，得到：
+\chtitle{分离变量：$\theta$的函数——$m=0$的情况}
+\bch
+于是我们得到系数的递推关系：
 
-  \bea
-  && \hatD\left\{\sin^2\theta \hatD\left[\sin^m\theta \hatD^{\ell+m}\sin^{2\ell}\theta\right]\right\} + m^2\sin^{m-2}\theta \hatD^{\ell+m}\sin^{2\ell}\theta \newl
-  && -m(m+1)\sin^m\theta \hatD^{\ell+m}\sin^{2\ell}\theta  {\blue - 2m^2\sin^{m-2}\theta\hatD^{\ell+m}\sin^{2\ell}\theta} \newl
-  && {\blue +2m^2\sin^m\theta\hatD^{\ell+m}\sin^{2\ell}\theta} \newl
-  && + (\ell+m)(\ell-m+1)\sin^m\theta\hatD^{\ell+m}\sin^{2\ell}\theta =0  .
-  \eea  
+$$ c_{n+2} = \frac{n(n+1)-k^2}{(n+1)(n+2)} c_n. $$
 
-  
+这个递推式在$n$很大时（即递推式里$k^2$可以忽略时）给出的渐近行为是$nc_n \rightarrow \const$。
+
+\ech
+\end{frame}
+
+
+
+\begin{frame}
+\chtitle{分离变量：$\theta$的函数——$m=0$的情况}
+\bch
+由一开始的定义：
+$$\Psi(\theta) = \sum_{n=0}^\infty a_n\cos{(n\theta)} $$
+可以推出
+$$ \sum_{n=0}^\infty c_{2n} = \frac{\Psi(0)+\Psi(\pi)}{2},\ \ \sum_{n=0}^\infty c_{2n+1} = \frac{\Psi(0)-\Psi(\pi)}{2} $$
+这似乎和我们掌握的$nc_n\rightarrow \const$ 有矛盾？（级数$\sum_{n=1}^\infty\frac{1}{n}$显然发散.）
+
+\skiplines
+
+解决矛盾的办法就是让$k^2 = \ell(\ell+1)$，这样递推公式会在$n=\ell$中断（$c_{\ell+2}=c_{\ell+4}=\ldots = 0$)。奇偶性跟$\ell$不同的$n$对应的$c_n$则全部为零。
+
+
+\ech
 \end{frame}
 
 
 \begin{frame}
-  \frametitle{第一部分：微分方程}
-  
-  把同类项都写到一起就得到了最后的结果
-  \bea
-  && \hatD\left\{\sin^2\theta \hatD\left[\sin^m\theta \hatD^{\ell+m}\sin^{2\ell}\theta\right]\right\} \newl
-  && +\left[\ell(\ell+1)-\frac{m^2}{\sin^2\theta}\right]\sin^m\theta\hatD^{\ell+m}\sin^{2\ell}\theta = 0 .
-  \eea
-  即
-  $$ \frac{1}{\sin \theta}\frac{d}{d\theta} \left[\sin\theta \frac{d}{d\theta}\Psi_{\ell m}\right] + \left[\ell(\ell+1)-\frac{m^2}{\sin^2\theta}\right]\Psi_{\ell m} = 0.$$
-  第一部分证毕。
-  
+\chtitle{$m\ne 0$的情况}
+\bch
+$m\ne 0$的情况的推导是类似的，留为作业。
+\ech
 \end{frame}
-
-
-\begin{frame}
-  \frametitle{第二部分：归一化}
-  
-  \bea
-  && \int_{0}^\pi \left[\Psi_{\ell m}(\theta)\right]^2\sin\theta d\theta \newl
-  &=& \int_{0}^\pi \sin^{2m}\theta \left[\left(\frac{1}{\sin\theta}\frac{d}{d\theta}\right)^{\ell+m}\sin^{2\ell}\theta\right]\sin\theta d\theta \newl
-  &=& \int_{-1}^1 (1-x^2)^m \left[\frac{d^{\ell+m}}{dx^{\ell+m}}(1-x^2)^\ell\right]^2 dx 
-  \eea
-  在最后一步我们做了变量替换$x=\cos\theta$。
-  
-\end{frame}
-
-\begin{frame}
-  \frametitle{第二部分：归一化}
-  
-  分部积分$\ell+m$次，注意$1-x^2$在端点总是消失，就得到
-  \bea
-  && \int_{0}^\pi \left[\Psi_{\ell m}(\theta)\right]^2\sin\theta d\theta \newl
-  &=& (-1)^{\ell+m}\int_{-1}^1 (1-x^2)^\ell{\blue \frac{d^{\ell+m}}{dx^{\ell+m}}\left[(1-x^2)^m\frac{d^{\ell+m}}{dx^{\ell+m}}(1-x^2)^\ell\right]} dx \newl
-  &=&  {\blue \frac{(2\ell)!(\ell+m)!}{(\ell-m)!}  } \int_{-1}^1 (1-x^2)^\ell dx
-  \eea
-  注意蓝色部分之所以为常数，是因为$(1-x^2)^m\frac{d^{\ell+m}}{dx^{\ell+m}}(1-x^2)^\ell$是$\ell+m$次多项式，求导$\ell+m$次后只有最高次幂有非零贡献。
-  
-\end{frame}
-
-
-\begin{frame}
-  \frametitle{第二部分：归一化}
-  
-  最后，做变量替换$ t = \frac{1+x}{2}$，得到
-  \bea
-  && \int_{0}^\pi \left[\Psi_{\ell m}(\theta)\right]^2\sin\theta d\theta \newl
-  &=&  \frac{2^{2\ell+1}(2\ell)!(\ell+m)!}{(\ell-m)!}   \int_0^1  t^\ell (1-t)^\ell dt \newl
-  &=&  \frac{2^{2\ell+1}(2\ell)!(\ell+m)! }{(\ell-m)!}  \frac{\left[\Gamma(\ell+1)\right]^2}{\Gamma(2\ell+2)} \newl
-  &=&  \frac{2^{2\ell+1}(2\ell)!(\ell+m)! }{(\ell-m)!}  \frac{\left(\ell!\right)^2}{(2\ell+1)!}  \newl
-  &=&  4^\ell \left(\ell!\right)^2 \frac{ (\ell+m)! }{(\ell-m)!}  \frac{2}{2\ell+1}   
-  \eea
-  第二部分证毕。  
-  
-\end{frame}
-
 
 
 \section{Homework}
 
 \begin{frame}
-\frametitle{Homework for Quizphobias}
-
+\chtitle{课后作业(题号44-45)}
+\bch
 \bitem
-\item[55]{证明球面谐函数的正交性。}
-\item[56]{列出所有$\ell=3$的球面谐函数}
-\item[57]{利用球面谐函数的微分表示证明：对相反的两个方向$\vecn = (\theta,\phi)$和$-\vecn = (\pi-\theta,\pi+\phi)$，有
-  $$ Y_{\ell m}(\vecn) = (-1)^\ell Y_{\ell m}(-\vecn)$$}
+\item[44]{证明球面谐函数的正交性。}
+\item[45]{当$m>0$时证明单位球面谐函数有解的条件是
+  $$k^2=\ell(\ell+1),\ \ell = m, m+1, \ldots$$}
   \eitem
+\ech
 \end{frame}
 
-\ech
 \end{document}

@@ -1,0 +1,218 @@
+\documentclass[CJK]{beamer}
+\input{macros.tex}
+\input{titlepage.tex}
+  \date{}
+  \begin{document}
+\bch  
+\tpage{24}{球坐标系下分离变量的谐函数}
+
+\begin{frame}
+\frametitle{本讲内容}
+
+\tableofcontents
+\end{frame}
+
+
+
+\section{3D-Sphere Harmonic}
+
+\secpage{球坐标下分离变量形式的谐函数}{$k>0$时, $j_\ell(kr)Y_{\ell m}(\theta,\phi)$和$n_\ell(kr)Y_{\ell m}(\theta,\phi)$\\ $k=0$时， $r^\ell Y_{\ell m}(\theta,\phi)$和$r^{-\ell-1}Y_{\ell m}(\theta,\phi)$ }
+
+\begin{frame}
+  \frametitle{球坐标系下分离变量的谐函数}
+  
+  把自由度$r$重新纳入之后，令谐函数为 $Q = f(r)Y_{\ell m}(\theta,\phi)$，则由 $\nabla^2Q = -k^2Q$ 得到：
+  $$ f''+\frac{2}{r}f'+\left(k^2-\frac{\ell(\ell+1)}{r^2}\right) f = 0 $$
+  如果$k> 0$， 这个方程是之前（第18讲）讨论过的类贝塞尔方程。
+  两个线性无关解$(kr)^{-1/2}J_{\ell+\frac{1}{2}}(kr)$和$(kr)^{-1/2}Y_{\ell+\frac{1}{2}}(kr)$可以重新写为$ j_\ell(kr)$和$n_{\ell}(kr)$。
+  其中第一类球贝塞尔函数$j_\ell$和第二类球贝塞尔函数$n_\ell$分别定义为：{\blue
+  $$ j_\ell(x) :=\sqrt{ \frac{\pi}{2x}} J_{\ell+1/2}(x), $$
+  $$ n_\ell(x) :=\sqrt{ \frac{\pi}{2x}} N_{\ell+1/2}(x). $$  }
+  
+\end{frame}
+
+\begin{frame}
+  \frametitle{思考题}
+  
+  \addfig{1}{think1.jpg}
+  
+  当$k=0$时，你能在$r>0$范围内猜出方程
+  $$ f''+\frac{2}{r}f'+\left(k^2-\frac{\ell(\ell+1)}{r^2}\right) f = 0, $$
+  的两个线性独立的解吗？  
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{前几个$j_\ell$}
+  
+  \addfig{4}{jell.png}
+  
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{前几个$n_\ell$}
+  
+  \addfig{4}{yell.png}
+  
+\end{frame}
+
+\begin{frame}
+  \frametitle{思考题}
+  
+  \addfig{1}{think1.jpg}
+  
+  证明：
+  $$n_\ell(x) = (-1)^{\ell+1}\sqrt{\frac{\pi}{2x}}J_{-\ell-1/2}(x).$$
+  
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{球坐标系谐函数的总结}
+  
+
+  综合前面的思考题结果，容易总结出：
+  \bitem
+\item{\blue 对$k>0$，球坐标系的包含球心的谐函数为$j_\ell(kr)Y_{\ell m}(\theta, \phi)$; 不包含球心的谐函数则多了另一个线性独立解$n_\ell(kr)Y_{\ell m}(\theta, \phi)$.}
+\item{\blue 对$k=0$，球坐标系包含球心的谐函数为$r^\ell Y_{\ell m}(\theta,\phi)$；不包含球心的谐函数则多了另一个线性独立解$r^{-\ell -1}Y_{\ell m}(\theta,\phi)$.}
+  \eitem
+
+  { \scriptsize 提示：在$k>0$情况的解里令$k\rightarrow 0^+$，可以得到$k=0$情况。}
+  
+\end{frame}
+
+\begin{frame}
+\frametitle{常用的几个低阶的函数有必要熟悉一下}
+\bea
+j_0(x) &=& \frac{\sin x}{x}, \newl
+j_1(x) &=& \frac{\sin x - x\cos x}{x^2}; \newl
+n_0(x) &=& -\frac{\cos x}{x}, \newl
+n_1(x) &=& -\frac{\cos x + x\sin x}{x^2}; \newl
+Y_{00}(\theta,\phi)&=& \frac{1}{\sqrt{4\pi}}, \newl
+Y_{10}(\theta,\phi) &=& \sqrt{\frac{3}{4\pi}}\cos\theta, \newl
+Y_{1,\pm 1}(\theta,\phi) &=& \mp \sqrt{\frac{3}{8\pi}}\sin\theta e^{\pm \ii\phi}.
+\eea
+\end{frame}
+
+\section{Equations in Spherical Coordinates}
+\secpage{球坐标中的数理方程}{先考虑对称性很重要}
+
+\begin{frame}
+\frametitle{例题1}
+
+\addfig{1.5}{sphereheat.png}
+
+把一个半径为$R$，温度为$T_0$的均匀实心金属球放到温度为$T_1>T_0$的热库中。已知金属球的导热系数为$\lambda$, 质量密度为$\rho$，单位质量比热为$c$。问金属球的球心多久之后温度可以达到$\frac{T_0+T_1}{2}$。
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{例题1解答}
+
+显然稳恒态温度为$T_1$。令$u(r)=T(r)-T_1,\ 0\le r\le R$，则
+\bea
+\frac{\partial u}{\partial t} - a\nabla^2 u &=& 0, \newl
+\left. u\right\vert_{r=R} &=& 0 , \newl
+\left. u\right\vert_{t=0} &=& T_0-T_1. \newl
+\eea
+其中$a=\frac{\lambda}{\rho c}$。 根据问题对称性只能取$\ell = m = 0$的谐函数：$j_0(kr) = \frac{\sin kr}{kr}$。又根据零边界条件，可以得到
+$$k = \frac{n\pi}{R}, n = 1,2,\ldots $$
+所以设
+$$ u(r,t) = \sum_{n=1}^\infty c_n\frac{\sin \frac{n\pi r}{R}}{\frac{n\pi r}{R}} e^{-\frac{n^2\pi^2 at}{R^2}}.$$ 
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{例题1解答}
+
+令$t=0$，得到
+
+$$ \sum_{n=1}^\infty c_n\frac{\sin \frac{n\pi r}{R}}{\frac{n\pi r}{R}} = T_0-T_1,\ \   0\le r\le R$$
+
+利用一般正交定理（或者直接观察）可以写出
+
+$$ c_n =  \frac{2n\pi(T_0-T_1)}{R^2}\int_0^R  \left(\sin \frac{n\pi r}{R}\right) r dr = 2(-1)^{n+1}(T_0-T_1) . $$
+当$r=0$时，
+$$ u(0,t) = 2(T_0-T_1)\sum_{n=1}^\infty (-1)^{n+1} e^{-\frac{n^2\pi^2 at}{R^2}} $$
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{例题1解答}
+
+当$T(0,t)$达到$\frac{T_0+T_1}{2}$，也就是当$u(0,t)$达到$\frac{T_0-T_1}{2}$时，
+$$\sum_{n=1}^\infty (-1)^{n+1} e^{-\frac{n^2\pi^2 at}{R^2}} = \frac{1}{4}.$$
+适当采用近似的方法容易算出：
+$$ t \approx \frac{R^2}{\pi^2a}\left(2\ln 2 - \frac{1}{4^3}\right) = 0.1389 \frac{R^2}{a} $$
+
+\end{frame}
+
+
+
+\begin{frame}
+\frametitle{例题2}
+
+
+\addfig{1}{think3.jpg}
+
+把一个不带电的半径为$R$的金属球放进场强为$E$的匀强电场中，求金属球表面的电荷密度分布。
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{解答}
+
+
+感应电荷在球外和球内产生的电势$u$必须满足拉普拉斯方程
+$$\nabla^2 u = 0,\ \ \ r\ne R$$
+因为总感应电荷为零，显然球心处$u=0$。由此容易看出感应电荷在球内产生的电势为
+$$ u(r, \theta) = E r \cos\theta,\ \ \ r<R $$
+这恰好是$\ell =1, m = 0, k=0$的球坐标系谐函数。
+
+由电势的连续性以及感应电荷产生的电势在无穷远处为零的条件，得出感应电荷在球外产生的电势为
+$$ u(r, \theta) = E \frac{R^3}{r^2}\cos\theta, \ \ \ r>R $$
+于是电荷面密度为
+$$\sigma =  \epsilon_0\left(\left.\frac{\partial u}{\partial r}\right\vert_{r=R-0}-\left.\frac{\partial u}{\partial r}\right\vert_{r=R+0}\right) = 3\epsilon_0E\cos\theta $$ 
+
+\end{frame}
+
+
+
+\begin{frame}
+\frametitle{思考题}
+
+
+\addfig{1}{think1.jpg}
+
+例题2中匀强电场造成的电势恰好是$\ell = 1, m = 0, k=0$的谐函数，这是一个巧合。一般情况下怎样求解这类问题？
+
+\end{frame}
+
+
+
+
+%\item[50]{已知某真空区域的电势在直角坐标系下可以写成$ u(x,y,z) = \lambda(x^2-y^2)$, $\lambda$为常量。把一个不带电的半径为$R$的金属球放入该区域，球心和原点重合。计算金属球表面的电荷密度分布。}
+  
+
+
+\section{Homework}
+
+\begin{frame}
+\frametitle{Homework}
+\bitem
+\item{证明球贝塞尔函数$j_n$和$y_n$满足
+  $$ j_n(x) = (-x)^n\left(\frac{1}{x}\frac{d}{dx}\right)^n\frac{\sin x}{x}; $$
+  $$ y_n(x) = -(-x)^n\left(\frac{1}{x}\frac{d}{dx}\right)^n\frac{\cos x}{x}; $$}
+\item{利用之前学过的贝塞尔函数的正交定理证明球贝塞尔函数的正交定理：设$k_1, k_2>0$，则
+  $$\int_0^\infty j_{\ell}(k_1r)j_{\ell}(k_2r) r^2 dr = \frac{\pi}{2k_1^2} \delta(k_1-k_2).$$}
+\item{一个半径为$R$的孤立均匀金属球，导热系数为$\lambda$, 质量密度为$\rho$，单位质量比热为$c$。记$r$为到球心的距离，一开始$t=0$时刻球内各处的温度为$T(r) = T_0\left(1+\frac{r}{R}\right)$。计算球内各处温度随时间的变化。}  
+\eitem
+\end{frame}
+
+\ech
+\end{document}

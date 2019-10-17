@@ -17,6 +17,8 @@
 \def\lfig#1#2{\includegraphics[width=#1 in]{#2}}
 \def\tfig#1#2{\includegraphics[height=#1 in]{#2}}
 \def\addfig#1#2{\begin{center}\includegraphics[width=#1 in]{#2}\end{center}}
+\def\question{\includegraphics[width=0.3in]{why.jpg}\,}
+\def\answer{\includegraphics[width=0.3in]{baozou_haha.png}\,}
 \def\wulian{\includegraphics[width=0.18in]{emoji_wulian.jpg}}
 \def\bigwulian{\includegraphics[width=0.35in]{emoji_wulian.jpg}}
 \def\bye{\includegraphics[width=0.18in]{emoji_bye.jpg}}
@@ -88,6 +90,8 @@
 \def\intfull{\int_{-\infty}^\infty}
 \def\inthalf{\int_0^\infty}
 \def\bropt{\,(\ \ \ )}
+\def\sech{\mathrm{sech}\,}
+\def\csch{\mathrm{csch}\,}
 \def\sone{$\star$}
 \def\stwo{$\star\star$}
 \def\sthree{$\star\star\star$}
@@ -103,9 +107,14 @@
 \def\lagr{{\mathcal{L}}}
 \def\hamil{{\mathcal{H}}}
 \def\vecv{{\mathbf{v}}}
+\def\vecf{{\mathbf{f}}}
+\def\vecg{{\mathbf{g}}}
+\def\vecupsilon{{\mathbf{\upsilon}}}
+\def\vecu{{\mathbf{u}}}
 \def\vecj{{\mathbf{j}}}
 \def\vecx{{\mathbf{x}}}
 \def\vecy{{\mathbf{y}}}
+\def\vecz{{\mathbf{z}}}
 \def\veck{{\mathbf{k}}}
 \def\vecp{{\mathbf{p}}}
 \def\vecn{{\mathbf{n}}}
@@ -205,4 +214,10 @@
 \def\SImmHg{\,\mathrm{mmHg}}
 \def\SIPa{\,\mathrm{Pa}}
 %page
-\def\secpage#1#2{\begin{frame}\bch\bcenter{\bf \Huge #1} \skipline \tbox{#2}\ecenter\ech\end{frame}}
+\def\secpage#1#2{\begin{frame}\bcenter{\bf \Huge #1} \ecenter \skipline \tbox{\bcenter #2 \ecenter}\end{frame}}
+\def\append#1#2{\secpage{附录#1}{#2}}
+\def\thinka#1{\begin{frame}\frametitle{思考题}\bcenter\lfig{0.4}{think.jpg}  \skipline #1 \ecenter\end{frame}}
+\def\thinkb#1{\begin{frame}\frametitle{思考题}\bcenter\lfig{0.5}{think1.jpg}  \skipline #1 \ecenter\end{frame}}
+\def\thinkc#1{\begin{frame}\frametitle{思考题}\bcenter\lfig{0.5}{think2.jpg}  \skipline #1 \ecenter\end{frame}}
+\def\thinkd#1{\begin{frame}\frametitle{思考题}\bcenter\lfig{0.5}{think3.jpg}  \skipline #1 \ecenter\end{frame}}
+\def\thinke#1{\begin{frame}\frametitle{思考题}\bcenter\lfig{0.5}{think4.jpg}  \skipline #1 \ecenter\end{frame}}

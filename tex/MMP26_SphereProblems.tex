@@ -2,17 +2,15 @@
 \input{macros.tex}
 \input{titlepage.tex}
   \date{}
-\begin{document}
-\tpage{21}{Problems in Spherical Coordinates}
+  \begin{document}
+  \bch
+\tpage{26}{Problems in Spherical Coordinates}
 
 \begin{frame}
-\chtitle{本讲内容}
-\bch
-\bitem
-\item{回顾}
-\item{球坐标系的数理方程举例}
-\eitem
-\ech
+\frametitle{本讲内容}
+
+\tableofcontents
+
 \end{frame}
 
 \section{Review}
@@ -21,8 +19,8 @@
 }
 
 \begin{frame}
-\chtitle{回顾}
-\bch
+\frametitle{回顾}
+
 三类问题在无源和满足齐次边界条件时的分离变量形式解：
 \bitem
 \item[1]{热传导方程：$Q_k(\vecx)e^{-ak^2t}$.}
@@ -36,15 +34,15 @@
 \item{在有限区域内，波矢往往只能取一些离散的分布的矢量才能保证有满足边界条件的解（于是$k$也只能取一些离散的值）。}
 \item{在无限区域内，波矢一般可以连续取值。这时分离变量法转变为积分变换的方法。}
   \eitem
-  \ech
+  
 \end{frame}
 
 
 \secpage{直角坐标系}{直角坐标系的谐函数为平面波$ e^{\ii \veck \cdot \vecx} =e^{\ii (k_1x+k_2y+k_3z)}$。根据问题的具体形式，可以灵活地把指数函数$e^{\pm \ii k_1x}$替换为三角函数$\sin k_1x$和$\cos k_1x$的线性组合等。}
 
 \begin{frame}
-\chtitle{直角坐标系}
-\bch
+\frametitle{直角坐标系}
+
 
 
 例如，在一个$x,y,z$方向长度分别为$L_1,L_2, L_3$的箱子里的数理方程，如果取零边界条件，则谐函数的形式只能是：
@@ -52,14 +50,14 @@ $$ Q(x,y,z) = \sin{\frac{n_1\pi x}{L_1}}\sin{\frac{n_2\pi y}{L_2}}\sin{\frac{n_3
 $$ 0\le x\le L_1, 0\le y\le L_2, 0\le z\le L_3; n_1, n_2, n_3\in Z.$$
 可以看出三维的波矢为$\veck = \left(\frac{n_1\pi}{L_1}, \frac{n_2\pi}{L_2}, \frac{n_3\pi}{L_3}\right)$，允许的$k$只能取
 $$k=|\veck|=\pi\sqrt{\frac{n_1^2}{L_1^2}+\frac{n_2^2}{L_2^2}+\frac{n_3^2}{L_3^2}}.$$
-\ech
+
 \end{frame}
 
 
 
 \begin{frame}
-\chtitle{谐函数按空间坐标的分解}
-\bch
+\frametitle{谐函数按空间坐标的分解}
+
 三维的谐函数可以看成考虑三个一维坐标$x$,$y$,$z$的谐函数 $\sin{\frac{n_1\pi x}{L_1}}$, $\sin{\frac{n_2\pi y}{L_2}}$, $\sin{\frac{n_3\pi z}{L_3}}$的乘积。
 每个谐函数分别对应波矢$k_1 = \frac{n_1\pi}{L_1}$, $k_2=\frac{n_2\pi}{L_2}$, $k_3=\frac{n_3\pi}{L_3}$。
 
@@ -68,7 +66,7 @@ $$k_1^2+k_2^2+k_3^2 = k^2.$$
 
 另一种观点是把三维的谐函数看成二维的谐函数$\sin{\frac{n_1\pi x}{L_1}}\sin{\frac{n_2\pi y}{L_2}}$和一维$z$坐标的谐函数$\sin{\frac{n_3\pi z}{L_3}}$的乘积，前者对应一个二维的波矢$\veck_{2D} = (k_1,k_2) = \left(\frac{n_1\pi }{L_1}, \frac{n_2\pi }{L_2}\right)$，后者对应一个波矢$k_3 = \frac{n_3\pi }{L_3}$，显然有
 $$ |\veck_{2D}|^2 + k_3^2 = k^2 .$$
-\ech
+
 \end{frame}
 
 
@@ -78,8 +76,8 @@ $$ |\veck_{2D}|^2 + k_3^2 = k^2 .$$
 
 
 \begin{frame}
-\chtitle{柱坐标谐函数按空间坐标的分解}
-\bch
+\frametitle{柱坐标谐函数按空间坐标的分解}
+
 三维柱坐标的谐函数看成二维的谐函数$J_m(k_{2D}r)e^{\ii m\theta}e^{\ii k_3 z}$和一维$z$坐标的谐函数$e^{\pm \ii k_3 z}$的乘积，前者对应一个大小为$k_{2D}$的二维波矢，后者对应一个波矢$k_3$，显然有
 $$ k_{2D}^2 + k_3^2 = k^2 .$$
 
@@ -90,7 +88,7 @@ $$k_{2D}^2 = \frac{m^2}{r^2}+k_r^2,$$
 其中$k_r$是径向的波矢，$\frac{m}{r}$是切向（垂直半径方向）的波矢。
 
 {\small \darkgreen (正因为波矢的分解依赖于$r$，径向的谐函数$J_m(k_{2D}r)$同时依赖于$k_{2D}$和$m$，而不是简单地只依赖于径向的波矢$k_r$。)}
-\ech
+
 \end{frame}
 
 
@@ -100,8 +98,8 @@ $$k_{2D}^2 = \frac{m^2}{r^2}+k_r^2,$$
 
 
 \begin{frame}
-\chtitle{球坐标谐函数按空间坐标的分解}
-\bch
+\frametitle{球坐标谐函数按空间坐标的分解}
+
 球坐标系的波矢分解形式为
 $$ k^2 = k_r^2 + \frac{\ell(\ell+1)}{r^2}$$
 其中$k_r$是径向的波矢，$\frac{\ell(\ell+1)}{r^2}$是固定半径为$r$的球面上的波矢大小。
@@ -113,13 +111,13 @@ $$ \frac{\ell(\ell+1)}{r^2} = \frac{m^2}{r^2\sin^2\theta} + k_\theta^2. $$
 其中$k_\theta$是经线方向的波矢，$\frac{m}{r\sin\theta}$是纬线方向的波矢。
 
 {\small \darkgreen $\phi$的谐函数$e^{\ii m\phi}$只依赖于$m$，$\theta$谐函数同时依赖于$\ell, m$，径向的谐函数同时依赖于$k$和$\ell$：这些复杂性同样是由于波矢分解的坐标依赖性。}
-\ech
+
 \end{frame}
 
 
 \begin{frame}
-\chtitle{球坐标谐函数按空间坐标的分解}
-\bch
+\frametitle{球坐标谐函数按空间坐标的分解}
+
 常用的函数有必要熟悉一下：
 \bea
 j_0(x) &=& \frac{\sin x}{x}, \newl
@@ -130,25 +128,25 @@ Y_{00}(\theta,\phi)&=& \frac{1}{\sqrt{4\pi}}, \newl
 Y_{10}(\theta,\phi) &=& \sqrt{\frac{3}{8\pi}}\cos\theta, \newl
 Y_{1,\pm 1}(\theta,\phi) &=& \mp \sqrt{\frac{3}{8\pi}}\sin\theta e^{\pm \ii\phi}.
 \eea
-\ech
+
 \end{frame}
 
 \section{Equations in Spherical Coordinates}
 \secpage{球坐标中的数理方程}{先考虑对称性很重要}
 
 \begin{frame}
-\chtitle{例题1}
-\bch
+\frametitle{例题1}
+
 \addfig{1.5}{sphereheat.png}
 
 把一个半径为$R$，温度为$T_0$的均匀实心金属球放到温度为$T_1>T_0$的热库中。已知金属球的导热系数为$\lambda$, 质量密度为$\rho$，单位质量比热为$c$。问金属球的球心多久之后温度可以达到$\frac{T_0+T_1}{2}$。
-\ech
+
 \end{frame}
 
 
 \begin{frame}
-\chtitle{例题1解答}
-\bch
+\frametitle{例题1解答}
+
 显然稳恒态温度为$T_1$。令$u(r)=T(r)-T_1,\ 0\le r\le R$，则
 \bea
 \frac{\partial u}{\partial t} - a\nabla^2 u &=& 0, \newl
@@ -159,13 +157,13 @@ Y_{1,\pm 1}(\theta,\phi) &=& \mp \sqrt{\frac{3}{8\pi}}\sin\theta e^{\pm \ii\phi}
 $$k = \frac{n\pi}{R}, n = 1,2,\ldots $$
 所以设
 $$ u(r,t) = \sum_{n=1}^\infty c_n\frac{\sin \frac{n\pi r}{R}}{\frac{n\pi r}{R}} e^{-\frac{n^2\pi^2 at}{R^2}}.$$ 
-\ech
+
 \end{frame}
 
 
 \begin{frame}
-\chtitle{例题1解答}
-\bch
+\frametitle{例题1解答}
+
 令$t=0$，得到
 
 $$ \sum_{n=1}^\infty c_n\frac{\sin \frac{n\pi r}{R}}{\frac{n\pi r}{R}} = T_0-T_1,\ \   0\le r\le R$$
@@ -175,36 +173,36 @@ $$ \sum_{n=1}^\infty c_n\frac{\sin \frac{n\pi r}{R}}{\frac{n\pi r}{R}} = T_0-T_1
 $$ c_n =  \frac{2n\pi(T_0-T_1)}{R^2}\int_0^R  \left(\sin \frac{n\pi r}{R}\right) r dr = 2(-1)^{n+1}(T_0-T_1) . $$
 当$r=0$时，
 $$ u(0,t) = 2(T_0-T_1)\sum_{n=1}^\infty (-1)^{n+1} e^{-\frac{n^2\pi^2 at}{R^2}} $$
-\ech
+
 \end{frame}
 
 
 \begin{frame}
-\chtitle{例题1解答}
-\bch
+\frametitle{例题1解答}
+
 当$T(0,t)$达到$\frac{T_0+T_1}{2}$，也就是当$u(0,t)$达到$\frac{T_0-T_1}{2}$时，
 $$\sum_{n=1}^\infty (-1)^{n+1} e^{-\frac{n^2\pi^2 at}{R^2}} = \frac{1}{4}.$$
 适当采用近似的方法容易算出：
 $$ t \approx \frac{R^2}{\pi^2a}\left(2\ln 2 - \frac{1}{4^3}\right) = 0.1389 \frac{R^2}{a} $$
-\ech
+
 \end{frame}
 
 
 
 \begin{frame}
-\chtitle{例题2}
-\bch
+\frametitle{例题2}
+
 
 \addfig{1}{think3.jpg}
 
 把一个不带电的半径为$R$的金属球放进场强为$E$的匀强电场中，求金属球表面的电荷密度分布。
-\ech
+
 \end{frame}
 
 
 \begin{frame}
-\chtitle{解答}
-\bch
+\frametitle{解答}
+
 
 感应电荷在球外和球内产生的电势$u$必须满足拉普拉斯方程
 $$\nabla^2 u = 0,\ \ \ r\ne R$$
@@ -216,62 +214,36 @@ $$ u(r, \theta) = E r \cos\theta,\ \ \ r<R $$
 $$ u(r, \theta) = E \frac{R^3}{r^2}\cos\theta, \ \ \ r>R $$
 于是电荷面密度为
 $$\sigma =  \epsilon_0\left(\left.\frac{\partial u}{\partial r}\right\vert_{r=R-0}-\left.\frac{\partial u}{\partial r}\right\vert_{r=R+0}\right) = 3\epsilon_0E\cos\theta $$ 
-\ech
+
 \end{frame}
 
 
 
 \begin{frame}
-\chtitle{思考题}
-\bch
+\frametitle{思考题}
+
 
 \addfig{1}{think1.jpg}
 
 例题2中匀强电场造成的电势恰好是$\ell = 1, m = 0, k=0$的谐函数，这是一个巧合。一般情况下怎样求解这类问题？
-\ech
+
 \end{frame}
 
 
-
-\begin{frame}
-\chtitle{思考题}
-\bch
-\addfig{1}{think3.jpg}
-
-在一个半径为$R$的一开始不带电的金属球外距离球心为$a$ ($a>R$)处放置电量为$Q$的点电荷，计算空间各处的电势。
-\ech
-\end{frame}
-
-
-\begin{frame}
-\chtitle{$Y_{\ell 0}$的母函数公式}
-\bch
-如果作级数展开
-$$ \frac{1}{\sqrt{1-2xt+t^2}} = \sum_{\ell =0}^\infty P_\ell (x)t^\ell  $$
-其中的{\blue $P_\ell(x)$称为勒让德多项式(Legendre Polynomials)}。
-
-\skiplines
-
-勒让德多项式和$m=0$的球谐函数之间有如下关系：
-$$ Y_{\ell 0}(\theta, \phi) =\sqrt{\frac{2l+1}{4\pi}} P_{\ell}(\cos\theta). $$
-
-\skipline
-下次课我们要讲怎样用这个母函数公式求解点电荷在球面上的感应电荷的问题。
-\ech
-\end{frame}
 
 
 \section{Homework}
 
 \begin{frame}
-\chtitle{课后作业(题号49-50)}
-\bch
+\frametitle{Homework}
+
 \bitem
-\item[49]{一个半径为$R$的孤立均匀金属球，导热系数为$\lambda$, 质量密度为$\rho$，单位质量比热为$c$。记$r$为到球心的距离，一开始$t=0$时刻球内各处的温度为$T(r) = T_0\left(1+\frac{r}{R}\right)$。计算球内各处温度随时间的变化。}
-\item[50]{已知某真空区域的电势在直角坐标系下可以写成$ u(x,y,z) = \lambda(x^2-y^2)$, $\lambda$为常量。把一个不带电的半径为$R$的金属球放入该区域，球心和原点重合。计算金属球表面的电荷密度分布。}
+\item{一个半径为$R$的孤立均匀金属球，导热系数为$\lambda$, 质量密度为$\rho$，单位质量比热为$c$。记$r$为到球心的距离，一开始$t=0$时刻球内各处的温度为$T(r) = T_0\left(1+\frac{r}{R}\right)$。计算球内各处温度随时间的变化。}
+\item{已知某真空区域的电势在直角坐标系下可以写成$ u(x,y,z) = \lambda(x^2-y^2)$, $\lambda$为常量。把一个不带电的半径为$R$的金属球放入该区域，球心和原点重合。计算金属球表面的电荷密度分布。}
   
   \eitem
-\ech
+
 \end{frame}
 
+\ech
 \end{document}
