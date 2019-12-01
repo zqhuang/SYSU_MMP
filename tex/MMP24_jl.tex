@@ -24,7 +24,7 @@
   把自由度$r$重新纳入之后，令谐函数为 $Q = f(r)Y_{\ell m}(\theta,\phi)$，则由 $\nabla^2Q = -k^2Q$ 得到：
   $$ f''+\frac{2}{r}f'+\left(k^2-\frac{\ell(\ell+1)}{r^2}\right) f = 0 $$
   如果$k> 0$， 这个方程是之前（第18讲）讨论过的类贝塞尔方程。
-  两个线性无关解$(kr)^{-1/2}J_{\ell+\frac{1}{2}}(kr)$和$(kr)^{-1/2}Y_{\ell+\frac{1}{2}}(kr)$可以重新写为$ j_\ell(kr)$和$n_{\ell}(kr)$。
+  两个线性无关解$(kr)^{-1/2}J_{\ell+\frac{1}{2}}(kr)$和$(kr)^{-1/2}N_{\ell+\frac{1}{2}}(kr)$可以重新写为$ j_\ell(kr)$和$n_{\ell}(kr)$。
   其中第一类球贝塞尔函数$j_\ell$和第二类球贝塞尔函数$n_\ell$分别定义为：{\blue
   $$ j_\ell(x) :=\sqrt{ \frac{\pi}{2x}} J_{\ell+1/2}(x), $$
   $$ n_\ell(x) :=\sqrt{ \frac{\pi}{2x}} N_{\ell+1/2}(x). $$  }
@@ -205,9 +205,9 @@ $$\sigma =  \epsilon_0\left(\left.\frac{\partial u}{\partial r}\right\vert_{r=R-
 \begin{frame}
 \frametitle{Homework}
 \bitem
-\item{证明球贝塞尔函数$j_n$和$y_n$满足
-  $$ j_n(x) = (-x)^n\left(\frac{1}{x}\frac{d}{dx}\right)^n\frac{\sin x}{x}; $$
-  $$ y_n(x) = -(-x)^n\left(\frac{1}{x}\frac{d}{dx}\right)^n\frac{\cos x}{x}; $$}
+\item{证明球贝塞尔函数$j_l$和$n_l$满足
+  $$ j_l(x) = (-x)^l\left(\frac{1}{x}\frac{d}{dx}\right)^l\frac{\sin x}{x}; $$
+  $$ n_l(x) = -(-x)^l\left(\frac{1}{x}\frac{d}{dx}\right)^l\frac{\cos x}{x}; $$}
 \item{利用之前学过的贝塞尔函数的正交定理证明球贝塞尔函数的正交定理：设$k_1, k_2>0$，则
   $$\int_0^\infty j_{\ell}(k_1r)j_{\ell}(k_2r) r^2 dr = \frac{\pi}{2k_1^2} \delta(k_1-k_2).$$}
 \item{一个半径为$R$的孤立均匀金属球，导热系数为$\lambda$, 质量密度为$\rho$，单位质量比热为$c$。记$r$为到球心的距离，一开始$t=0$时刻球内各处的温度为$T(r) = T_0\left(1+\frac{r}{R}\right)$。计算球内各处温度随时间的变化。}  
