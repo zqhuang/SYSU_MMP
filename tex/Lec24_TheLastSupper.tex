@@ -1,0 +1,130 @@
+\documentclass[CJK]{beamer}
+\input{macros.tex}
+\input{titlepage.tex}
+  \date{}
+\begin{document}
+\tpage{24}{The Last Supper （民间秘籍）}
+
+\begin{frame}
+  \bch
+  \bcenter
+      {\Large 预警：本讲内容有毒}
+      \ecenter
+  \ech
+\end{frame}
+
+
+\section{Multiple Choice}
+\secpage{选择题通关秘籍}{合理运用统计规律……算了还是随缘吧}
+
+\begin{frame}
+\chtitle{选择题答题技巧}
+\bch
+\bitem
+\item[1]{把确定会的都做完，统计A，B，C，D出现的次数}
+\item[2]{把有点会但不大确定的做完}
+\item[3]{确定不会的，都选择第一步中出现次数最少的选项（但如果你确定这个选项不对，就选第一步中出现次数第二少的选项，以此类推）}  
+\eitem
+\ech
+\end{frame}
+
+
+\section{Fill in the Blank}
+\secpage{填空题通关秘籍}{合理运用数学常识……算了世界太复杂还是$0,1,-1$吧}
+
+
+\begin{frame}
+\chtitle{填空题答题技巧}
+\bch
+因为数学物理方法有大量的估算技巧，所以不会的填空题必须估(xia)算（meng)数量级。
+
+  \skiplines
+  
+先判断是否像零，然后判断符号，然后估算数量级。符号和数量级都正确是有分的哦\huaixiao
+\ech
+\end{frame}
+
+\section{Short Answer}
+\secpage{计算题通关秘籍}{三个方程三个坐标系}
+
+\begin{frame}
+\chtitle{计算题答题套路}
+\bch
+第一部分：方程和边界条件
+\bitem
+\item{判断题目是三个方程（热传导方程$\frac{\partial u}{\partial t} - a\nabla^2 u = 0$，波动方程 $\frac{\partial^2u}{\partial t^2}-a^2\nabla^2 u = 0$， 静电势或温度静态分布方程$\nabla^2u = 0$)的哪一种，写出方程。}
+\item{根据边界上函数值为零（如固定弦，薄膜，恒温热库接触问题）还是导数为零（如绝热）或者其他更复杂的情况，写出适当边界条件。注意：静电势或温度静态分布方程经常出现非零边界条件的情况（例如表面电势已知，表面温度已知等情况）。}
+\eitem
+\ech
+\end{frame}
+
+
+\begin{frame}
+\chtitle{计算题答题套路}
+\bch
+第二部分：谐函数，时间依赖因子
+\bitem
+\item{判断坐标系：一维弦，二维长方形薄膜（直角坐标系），圆盘/圆柱（极坐标系/柱坐标系），球（球坐标系）。}
+\item{写出该坐标系的谐函数：直角坐标$\cos kx$, $\sin kx$；极坐标$J_m(kr)\cos m\theta$, $J_m(kr)\sin m\theta$；球坐标 $j_\ell(kr)Y_{\ell m}(\theta,\phi)$。
+
+  注意：对于静电势或温度静态分布方程出现非零边界条件的情况，要考虑的$k=0$的谐函数形式上有所不同：极坐标系为$r^m\cos m\theta, r^m \sin m\theta; r^{-m}\cos m\theta, r^{-m}\sin m\theta$ (咦这个好像课上并没有讲例题)； 球坐标系： $r^\ell Y_{\ell m}(\theta,\phi)$, $r^{-\ell-1}Y_{\ell m}(\theta,\phi)$ （这个课上讲了例题，小测也烤了…）。}  
+\item{写出第一部分确定的方程种类对应的时间因子(热传导 $e^{-ak^2t}$；波动 $\cos kt$, $\sin kt$；静电势或温度静态分布方程：$1$ (即没有时间依赖性）。}
+  \eitem
+  \ech
+\end{frame}
+
+
+\begin{frame}
+\chtitle{计算题答题套路}
+\bch
+第三部分：求系数
+\bitem
+\item{利用边界条件确定谐函数里面$k$必须满足的条件（如果是有限大小区域，一般会导致$k$只能取一些离散的值）}
+\item{作分解： 解 = $\sum$ 系数 $\times$ 谐函数 $\times$ 时间因子}
+\item{使用初始条件；然后用谐函数的正交定理求出系数。}  
+  \eitem
+  \ech
+\end{frame}
+
+\section{Bye}
+
+\begin{frame}
+\chtitle{最后一口毒}
+\bch
+
+\bcenter
+
+\lfig{1}{blackq.jpg}
+
+
+\skiplines
+
+{\large  \bf 实在不会的地方，也把方法或思路用文字表述一下。}
+\ecenter
+
+\ech
+\end{frame}
+
+
+
+\begin{frame}
+
+\bch
+
+
+\bcenter
+
+\bigbye {\Large 再见}
+
+\skiplines
+
+\skiplines
+
+{\Large 不，希望不再见…
+}
+\ecenter
+\ech
+\end{frame}
+
+
+\end{document}

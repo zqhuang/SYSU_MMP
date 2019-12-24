@@ -1,0 +1,53 @@
+\documentclass[12pt,CJK]{article}
+\usepackage{geometry}
+\input{reduced_macros.tex}
+%\geometry{tmargin=0.3in, bmargin=0.5in, lmargin=0.5in, rmargin=0.9in, nohead, nofoot}
+%\def\mark#1{{\color{blue} (#1分)}}
+\renewcommand{\thepage}{}
+\begin{document}
+\bch
+
+{\large 阿里巴巴全球数学竞赛复赛推荐题}
+
+\skipline
+
+{命题人：黄志琦}
+
+\skiplines
+
+\bitem
+\item[P1.]{
+用$A^{(N)}$表示这样的$N\times N$实对称矩阵: 其对角元素为
+$$A^{(N)}_{k,k}= \ln (1+k), \ k=1,2,\ldots, N,$$
+次对角元素为
+$$A^{(N)}_{k+1,k}=A_{k,k+1}^{(N)}=-\frac{1}{2}\sqrt{A^{(N)}_{k,k}A^{(N)}_{k+1,k+1}},\ k=1,2,\ldots, N-1.$$
+其余元素均为零。
+
+例如
+$$ A^{(4)} = 
+\begin{pmatrix}
+\ln 2 & -\frac{\sqrt{\ln 2 \ln 3}}{2} & 0 & 0 \\
+-\frac{\sqrt{\ln 2 \ln 3}}{2} & \ln 3 & -\frac{\sqrt{\ln 3 \ln 4}}{2} & 0 \\
+0 & -\frac{\sqrt{\ln 3 \ln 4}}{2} & \ln 4 & -\frac{\sqrt{\ln 4 \ln 5}}{2} \\
+0 & 0 &  -\frac{\sqrt{\ln 4 \ln 5}}{2} & \ln 5
+\end{pmatrix}
+$$
+\bitem
+\item[(1)]{ 证明: 对任意正整数$N$，$A^{(N)}$的所有本征值均为非负实数。}
+\item[(2)]{ 把$A^{(N)}$的所有本征值的平方根之和记作$s_N$，计算：
+    $$\lim_{N\rightarrow \infty} \frac{s_N}{N\sqrt{\ln N}}.$$}
+\eitem
+}
+
+\item[P2]{
+    
+
+  }
+
+\eitem
+
+
+
+
+\ech
+\end{document}

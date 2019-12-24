@@ -1,0 +1,217 @@
+\documentclass[CJK]{beamer}
+\input{macros.tex}
+\input{titlepage.tex}
+  \date{}
+  \begin{document}
+  \bch
+\tpage{26}{级数方法解微分方程}
+
+
+
+
+\begin{frame}
+\frametitle{本讲内容}
+\tableofcontents
+\end{frame}
+
+\section{How did we get Bessel functions.}
+
+\begin{frame}
+  \frametitle{回顾贝塞尔方程}
+  贝塞尔方程
+  $$\frac{d^2f}{dz^2} + \frac{1}{z} \frac{df}{dz} + \left(1-\frac{\nu^2}{z^2}\right) f = 0 $$
+  的解是怎么算出来的？
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{一般套路}
+  如果  $p(z)$和 $q(z)$ 在圆 $|z|<R$ 解析，则二阶微分方程
+  $$\frac{d^2f}{dz^2} + \frac{p(z)}{z} \frac{df}{dz} + \frac{q(z)}{z^2} f = 0 $$
+  在去心邻域$0<|z|<R$有两个线性独立的解具有如下形式：
+  $$ f_1(z) = z^{\rho_1}\sum_{n=0}^\infty c_nz^n,$$ 
+  $$ f_2(z) = \lambda f_1(z) \ln z + z^{\rho_2}\sum_{n=0}^\infty d_n z^n.$$
+  其中 $\rho_1,\rho_2$ 是“指标方程”
+    $$\rho^2 + \left[p(0)-1\right]\rho + q(0) = 0. $$
+  的两个解；$c_0,d_0$均非零；仅当$\rho_1-\rho_2$为整数时，$\lambda$才有可能需要取非零值。
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{实战举例：贝塞尔方程}
+  对贝塞尔方程，$p(z) = 1$ , $q(z) = z^2-\nu^2$，指标方程为
+  $$ \rho^2 - \nu^2 = 0 .$$
+  其解为
+  $$\rho_{1,2} = \pm \nu. $$
+  设第一个解为
+  $$ f_1(z) = z^\nu \sum_{n=0}^\infty c_n z^n. $$
+  代入贝塞尔方程，比较 $z^{n+\nu}$的系数，得到
+  $$  c_n  = -\frac{1}{n(n+2\nu)} c_{n-2}. $$
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{实战举例：贝塞尔方程}
+  由此可以递推得出
+  $$c_{2n+1}=0;\ c_{2n} = (-1)^n\frac{\nu !}{2^{2n}(\nu+n)!}c_0.\ (n=0,1,2,\ldots).$$
+  如果取 $c_0=\frac{1}{2^\nu \nu!}$： 恭喜你，得到了第一类贝塞尔函数 $J_\nu(z)$ 的级数表达式！
+
+
+  \skipline
+  
+  如果取其他的非零 $c_0$ 值，结果无非是 $J_\nu(z)$ 的常数倍数而已。
+
+  \skipline
+
+  如果 $2\nu$ 不是整数，那么你对 $\rho_2=-\nu$ 如法炮制，可以得到线性独立的解 $J_{-\nu}(z)$ （或它的任意非零倍数）。
+
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{实战举例：贝塞尔方程}
+
+  最后，还需要讨论 $2\nu$ 是整数的情形。为了更清晰地介绍方法而不是让你们迷失于纷繁复杂的计算中，我们仅以 $\nu=0$ 的情况为例讨论：
+
+  这时$\rho_1=\rho_2=0$，第二个解为：
+
+  $$ f_2(z) = \lambda J_0(z)\ln z + g(z)$$
+  其中 $g(z)= \sum_{n=0}^\infty d_n z^n$。把$f_2$代入贝塞尔方程，得到：
+
+  $$g''(z) + \frac{1}{z}g'(z) + g(z) +\frac{2\lambda J_0'(z)}{z} = 0.$$
+  通过对比 $z^{2n-2}$的系数，得到：  
+\end{frame}
+
+
+
+
+\begin{frame}
+  \frametitle{实战举例：贝塞尔方程}
+  $$ d_{2n}= -\frac{1}{4n^2} d_{2n-2}-\frac{(-1)^n\lambda}{ 2^{2n}(n!)^2n }.$$
+  从任意非零的$\lambda$, $d_0$ 出发，都可以得到$d_2,d_4,\ldots$
+
+  \skipline
+  
+  我们熟知的 $N_0(z)$，则是取 $\lambda = \frac{2}{\pi}$, $d_0 = \frac{2}{\pi}\left(\gamma-\ln 2\right)$（这里的 $\gamma=0.5772\ldots$ 是欧拉常数)的结果。
+
+    \skipline
+    
+   $N_0$ 为何对应如此古怪的 $\lambda$ 和 $d_0$？这为了凑 $N_0$的无穷远处渐近公式而所做的人为约定。只要你喜欢，完全可以取不同的$\lambda$和 $d_0$。
+\end{frame}
+
+
+\section{1-D harmonic oscillator in quantum mechanics}
+
+\begin{frame}
+  \frametitle{量子力学的谐振子问题}
+  我们熟知的一维谐振子的定态束缚解问题对应的薛定谔方程：
+  $$\psi'' - x^2\psi = -2E\psi $$
+  其中 $E$为待定的常数（谐振子的能量）。束缚解要求波函数 $\psi(x)$ 在无穷远处趋向于零 $\lim_{|x|\rightarrow\infty}\psi(x) = 0.$
+  
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{先把目光放长远……}
+  解决这种问题的套路是：先分析无穷远处的渐近行为。
+
+  当 $|x|$ 很大时，可以近似认为
+  $$\psi''- x^2\psi \approx 0$$
+  其粗略的解为
+  $$ \psi \sim e^{\pm x^2/2}.$$
+  (它满足的方程是$\psi''- (x^2-1)\psi = 0$，差别不大）。
+
+  考虑到无穷远处的束缚条件，我们不太喜欢 $e^{x^2/2}$ 这个哥们，所以……
+\end{frame}
+
+\begin{frame}
+  \frametitle{只留下喜欢的}
+  令 $\psi = f(x) e^{-x^2/2}$ （我们希望 $f$是个比较有节制的家伙）。
+
+  代入原方程，得到：
+  $$f''-2xf'+(2E-1)f = 0. $$
+
+  我们准备用级数解法。但在动手之前——
+  
+  我们应该意识到：这个方程和原方程等价。而且级数解法根本不能保证 $f$有节制。在一般情况下，我们会求得一个解$f\sim e^{x^2}$，令人讨厌的 $e^{x^2/2}$ 又会回来。
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{动手}
+  $p(x)= -2x^2, q(x) = (2E-1)x^2$，其指标方程为
+  $$\lambda^2-\lambda = 0.$$
+  对数形式的解在 $x=0$ 处发散，所以无须考虑，只要考虑如下形式的解
+  $$ f(x) = \sum_{n=0}^\infty c_n x^n.$$
+  其中 $c_0$或者 $c_1$至少有一个非零。代入方程得到
+  $$ c_{n+2} =  \frac{2\left(n+\frac{1}{2}-E\right)}{(n+2)(n+1)}c_n.$$
+  一般情况下，这个递推关系就是会给出一个解 $\sim e^{x^2}$，除非——
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{量子力学的谐振子问题}
+  $$ c_{n+2} =  \frac{2\left(n+\frac{1}{2}-E\right)}{(n+2)(n+1)}c_n.$$
+   对某个 $n$，有
+  $$ n+\frac{1}{2}-E=0.$$
+  (好好一个无穷级数在$c_n$处断了香火）
+
+    \skipline
+
+  这就是为什么谐振子的能量只能是 $n+\frac{1}{2}$ （放回合适的物理单位后这个结果应该是 $(n+1/2)\hbar\omega$，$\omega$为固有圆频率）。
+\end{frame}
+
+\section{Hydrogen Atom}
+
+
+\begin{frame}
+  \frametitle{量子力学的氢原子问题}
+  在研究氢原子的束缚能量本征态时，会遇到球坐标系的薛定谔方程：
+  $$ \nabla^2\psi + \frac{2}{r}\psi = -2E\psi.$$
+
+  考虑角动量和哈密顿量的共同本征态——好吧你不知道我在说什么……没关系，其实就是由于一些对称性的考虑我们只需考虑形如 $ \psi = f(r)Y_{\ell m}(\theta,\phi) $ 的解。
+
+  代入上述方程得到：
+
+  $$ f''+ \frac{2}{r}f' + \left(2E+\frac{2}{r}- \frac{\ell(\ell+1)}{r^2}\right)f = 0.$$
+\end{frame}
+
+\begin{frame}
+  \frametitle{套路又来了}
+  在$r$巨大时，方程近似成为
+
+  $$ f'' + 2Ef = 0.$$
+  如果 $E>=0$，$f$在无穷远处很不像会足够快地趋向于零的样子，所以只能$E<0$。记 $E=-k^2/2$，则 $f\sim e^{\pm kr}$。
+
+  \skipline
+
+  很明显，$f\sim e^{kr}$ 很不受待见——
+\end{frame}
+
+\begin{frame}
+  \frametitle{只留下喜欢的}
+  令 $f(r)  = e^{-kr} u(r) $（并祈祷$u(r)$能有所节制），代入原方程得到：
+  $$ u'' +2\left(\frac{1}{r}-k\right)u' +\left(\frac{2(1-k)}{r} - \frac{\ell(\ell+1)}{r^2}\right)u = 0.$$
+  同样道理，这个方程和原方程完全等价。当我们用级数解法求 $u(r)$ 时，在一般情况下，会得到 $u\sim e^{2kr}$的解，复活刚刚被我们鄙视掉的 $f\sim e^{kr}$。
+\end{frame}
+
+\begin{frame}
+  \frametitle{氢原子的能级}
+  由指标方程得出 $\rho_1=\ell$，我们来看 $u = r^\ell\sum_{n=0}^\infty c_nr^n$ 是否可行，代入方程得到：
+
+  $$ c_{n+1}=2\frac{k(n+\ell+1)-1}{(\ell+n+1)(\ell+n+2)-\ell(\ell+1)}c_n $$
+
+  一般情况下，这个递推公式会给出一个无穷级数 $\sim e^{2kr}$。除非——
+
+  $k=\frac{1}{n+\ell+1}$.
+
+  即 $$ E = -\frac{1}{2m^2}.$$
+  ($m=n+\ell+1$为正整数) 
+  
+\end{frame}
+
+
+\thinka{对应 $\rho_2=-\ell-1$的解需要考虑吗？}
+
+\ech
+\end{document}

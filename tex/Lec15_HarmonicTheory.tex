@@ -1,0 +1,362 @@
+\documentclass[CJK]{beamer}
+\input{macros.tex}
+\input{titlepage.tex}
+  \date{}
+  \begin{document}
+  \bch
+\tpage{15}{$\nabla^2$的本征函数——谐函数}
+
+\begin{frame}
+\frametitle{本讲内容}
+\bitem
+\item{厄米矩阵的本征值和本征矢}
+\item{拉普拉斯算符$\nabla^2$的本征函数}  
+\item{谐函数的一般正交定理}
+\item{直角坐标系和极坐标系下分离变量形式的谐函数：贝塞尔函数初步介绍}
+\eitem
+\end{frame}
+
+
+\section{Linear Algebra Review}
+\secpage{厄米矩阵的本征值和本征矢}{不同本征值对应的本征矢自动正交，同一本征值对应的本征矢手动正交}
+
+\begin{frame}
+  \frametitle{共轭转置(conjugate transpose)}
+  把一个复数矩阵$A$每个元素都取共轭复数，然后再取转置，就得到$A$的共轭转置矩阵，简单记作$A^\dagger$。当然，你也可以先转置，再取共轭。
+
+  \tbox{$$A^\dagger\equiv (A^*)^T= (A^T)^*$$}
+
+  显然，对实数矩阵而言，共轭转置就是转置。
+
+\end{frame}
+
+\begin{frame}
+    \frametitle{思考题}
+  请写出下面这个矩阵的共轭转置矩阵
+  \be
+    A = \left(
+    \begin{array}{ll}
+      1+\ii &  2+\ii \\
+      3-\ii &  -4-2\ii
+    \end{array}
+    \right)
+  \ee
+
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{乘积的共轭转置等于共轭转置的倒序乘积}
+
+    $$  (AB)^\dagger = B^\dagger A^\dagger, $$
+
+    $$ (ABC)^\dagger  = C^\dagger B^\dagger A^\dagger, $$
+
+    \ldots
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{厄米(Hermitian)矩阵}
+  如果一个矩阵的共轭转置等于自身($A^\dagger = A$)，就称它为厄米矩阵。
+
+  例如
+  \be
+    A = \left(
+    \begin{array}{ll}
+      1 &  2+\ii \\
+      2-\ii &  -4
+    \end{array}
+    \right)
+  \ee
+  就是厄米矩阵。
+
+  \skipline
+  
+  当然，实对称矩阵都是厄米矩阵。
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{厄米矩阵的本征值都是实数}
+  设$A$是厄米矩阵，$\lambda$是$A$的本征值，则存在非零向量$x$(本征矢)使得
+
+  \begin{equation}
+    A x = \lambda x. \label{eq:1}
+  \end{equation}
+  左边乘以$x^\dagger$，得到：
+  \begin{equation}
+      x^\dagger A x  = \lambda x^\dagger x. \label{eq:2}
+  \end{equation}
+  然后两边取共轭转置，并利用$A^\dagger = A$，得到：
+  \begin{equation}
+      x^\dagger A x  = \lambda^* x^\dagger x. \label{eq:3}
+  \end{equation}
+  比较\eqref{eq:2}和\eqref{eq:3}立刻得到$\lambda = \lambda^*$。  
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{不同本征值对应的本征向量正交}
+  设$A$是厄米矩阵，$\lambda_1 \ne \lambda_2$是$A$的不同本征值（根据前面讨论，它们都是实数)。 分别取它们各自的一个本征矢量$x_1$, $x_2$
+
+    \begin{equation}
+      Ax_1 = \lambda_1 x_1. \label{eq:4}
+    \end{equation}
+    \begin{equation}
+      Ax_2 = \lambda_2 x_2. \label{eq:5}
+    \end{equation}
+    \eqref{eq:4}取共轭转置，得到
+    \begin{equation}
+      x_1^\dagger A = \lambda_1 x_1^\dagger. \label{eq:6}
+    \end{equation}
+    \eqref{eq:6}右乘$x_2$，减去\eqref{eq:5}左乘$x_1^\dagger$，得到
+    $$ 0 = (\lambda_1-\lambda_2)x_1^\dagger x_2 . $$
+    由于$\lambda_1\ne \lambda_2$，上式就说明  $x_1^\dagger x_2 = 0.$
+\end{frame}
+
+\begin{frame}
+  \frametitle{同一个本征值对应的本征向量构成线性子空间}
+  设$A$是厄米矩阵，$x_1$, $x_2$都是本征值$\lambda$的本征向量
+  $$Ax_1 =\lambda x_1,\  Ax_2 = \lambda x_2 .$$
+  显然$x_1$,$x_2$的任意非零线性组合都是$A$对应于$\lambda$的本征向量。
+  $$A(c_1x_1 +c_2x_2) = \lambda(c_1x_1+c_2x_2).$$
+  也就是说对应$\lambda$的所有本征向量构成一个线性子空间，这个子空间的维数称为本征值$\lambda$的简并度。简并度实际上就是方程
+  $$ \det\left( \lambda E - A\right) = 0 $$
+  的根的重数。  
+  在$\lambda$对应的本征向量空间可以取一组正交基，只要简并度大于$1$，正交基的取法就有无穷多种。
+\end{frame}
+
+\begin{frame}
+  \frametitle{总结}
+  \bitem
+      \item{设$A$是$n\times n$厄米矩阵，通过求解方程
+  $$ \det\left( \lambda E - A\right) = 0 $$
+  可以得到$n$个本征值（$m$重根视为$m$个）。}
+
+  \item{只出现$m=1$次的本征值对应的本征矢方向确定（但允许乘$-1$)，且和其他本征值的本征矢都正交。}
+
+  \item{重复$m>1$次的本征值的所有本征矢构成（和其他本征值的本征矢都正交的）$m$维空间，可以取一组正交基，人为地使这些本征矢也两两正交。这样的取法当然有无穷多种。}
+    \eitem
+    
+\end{frame}
+
+
+\section{Harmonic Functions}
+
+\secpage{谐函数}{$$\nabla^2 Q = -k^2Q$$}
+
+\begin{frame}
+  \frametitle{函数是矢量，算符是矩阵}
+  把一维空间离散化后，一个函数$f(x)$可以看成无穷维矢量：
+  $$\sqrt{dx} \left( \ldots, f(x_{-2}), f(x_{-1}), f(x_0), f(x_1), f(x_2) , f(x_3)\ldots \right), $$
+  其中$dx$是固定的离散化间距，$x_i = i dx$. 都乘上一个$\sqrt{dx}$的因子是为了让两个函数的内积按通常的定义等于它们的乘积的积分。
+
+  \addfig{1}{think3.jpg}
+  
+  在这种观点下，算符就可以用离散化的矩阵来近似描述。请写出拉普拉斯算符对应的矩阵。它是厄米矩阵吗？
+  
+\end{frame}
+
+\begin{frame}
+\frametitle{谐函数的定义}
+无论是热传导方程$\frac{\partial u}{\partial t} -a \nabla^2u = 0$还是波动方程
+$\frac{\partial^2u }{\partial t^2} - a^2 \nabla^2 u = 0$，分离变量后一般都归结为求解
+
+\tbox{$$ \nabla^2 Q = - k ^2 Q\ \ \  (k\ge 0).$$}
+我们把{\blue 满足这个方程，并满足边界条件的的解$Q$叫做对应于$k$（或者说对应于本征值$-k^2$)的谐函数。}
+
+\bitem
+\item{谐函数可以看成算符$\nabla^2$的对应本征值$-k^2$的本征矢；}
+\item{给定有限边界上的边界条件，要使谐函数存在，$k$可能会被限制为一系列的离散值(但并非一定如此)；}
+\item{如果是无边界问题，$k$一般可连续取值。}
+\eitem
+
+
+\end{frame}
+
+\section{Orthogonal Theorem}
+\secpage{谐函数的正交定理}{在零边界条件下，对应于不同$k$的谐函数两两正交}
+
+\begin{frame}
+  \frametitle{零边界条件的例子}
+  \bitem
+\item{两端固定的弦的横向小振动}
+\item{边界全部固定的薄膜的横向小振动}
+\item{接地金属球（考虑电势）}    
+\item{泡在温度为零的恒温池里的金属块}
+\item{绝热金属块}
+\item{一端和温度为零的热库接触，另一端绝热的一维导热棒}
+\item{上面球面绝热，下半球面浸在温度为零的恒温热库内的金属球}
+\item{垂直于表面进入的热流$j_{\perp}$和表面温度$u$成正比的金属块。}      
+\item{上面球面绝热，下半球垂直于表面进入的热流$j_{\perp}$和表面温度$u$成正比的金属块。}      
+  \eitem
+\end{frame}
+
+\begin{frame}
+  \frametitle{零边界条件的定义}
+  \tbox{零边界条件：在表面上的值和垂直于表面的梯度分量的固定线性组合为零。}
+  注意：{\blue 所谓固定，是指在表面每个点的线性组合系数固定，但在不同点线性组合系数允许不同。}
+\end{frame}
+
+\begin{frame}
+  \frametitle{谐函数的正交定理}
+  \tbox{在零边界条件下，不同$k$对应的谐函数正交。}
+  
+  注意：{\blue 所谓两个函数正交，是指它们的乘积在区域（即边界包围的内部）内的积分为零。}
+\end{frame}
+
+\begin{frame}
+  \frametitle{谐函数的正交定理 证明概要}
+{\small
+  设$k_1> k_2>0$，
+  $$ \nabla^2 u_1 = -k_1^2 u_1,\ \ \ \nabla^2 u_2 = -k_2^2 u_2.       $$
+  于是就有
+  $$(k_1^2-k_2^2)u_1u_2 = u_1\nabla^2 u_2 - u_2\nabla^2 u_1 = \nabla\cdot(u_1\nabla u_2 - u_2\nabla u_1)$$
+  两边在所考虑问题的区域内积分，并利用Stokes定理（或散度的物理意义）把右边的散度的积分转化为边界上的面积分：
+  $$(k_1^2-k_2^2)\int_\Omega u_1u_2 dV = \int_{\partial \Omega} \left[u_1(\nabla u_2)_{\perp} - u_2(\nabla u_1)_{\perp}\right]\, dS$$
+  设边界条件为$ u + \lambda \nabla u_{\perp} = 0$（注意在边界上各点$\lambda$可以不同），注意到
+  $$ u_1(\nabla u_2)_{\perp} - u_2(\nabla u_1)_{\perp} = \left[u_1+\lambda (\nabla u_1)_{\perp}\right](\nabla u_2)_{\perp} - \left[u_2+\lambda(\nabla u_2)_{\perp}\right](\nabla u_1)_{\perp} =0$$
+  就搞定了。
+  
+  }
+\end{frame}
+
+
+\section{Bessel Functions}
+\secpage{极坐标下分离变量形式的谐函数}{贝塞尔函数初步介绍}
+
+\begin{frame}
+\frametitle{直角坐标系}
+
+对固定$k$，如果暂不考虑边界条件的限制，直角坐标系下的分离变量形式的谐函数是：
+
+$$Q(\vecx) \propto e^{\ii \veck\cdot \vecx}, $$
+其中$\veck$是长度为$k$的任意矢量（平面波的波矢）。
+
+
+
+\end{frame}
+
+
+
+\begin{frame}
+\frametitle{二维情况}
+
+在高维情况下，对应于同一个$k$有无穷多个可能的谐函数（当然，大多数可能会被边界条件无情灭杀）。我们来特别地关注一下二维的情况：
+$$Q(x, y) \propto e^{\ii (k_xx+k_yy)}, $$
+其中$(k_x, k_y)$是满足$k_x^2+k_y^2 = k^2$的任意实数对。
+
+\skiplines
+
+根据同一本征值对应的本征矢可以重新任意线性组合的想法，把这堆$e^{\ii (k_xx+k_yy)}$进行任意的线性组合，得到的也是对应于$k$的谐函数，但一般就不是直角坐标分离变量的形式了。
+
+那么，有没有一种组合方式，使得结果可以写成极坐标下分离变量的形式呢？答案是肯定的——
+
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{极坐标的拉普拉斯算符}
+  
+  极坐标的拉普拉斯算符（请回忆正交曲面坐标系知识）
+$$ \nabla^2 f =  \frac{1}{r} \frac{\partial}{\partial r} \left(r\frac{\partial f}{\partial r}\right) + \frac{1}{r^2}\frac{\partial^2 f}{\partial \theta^2}.  $$
+  
+\end{frame}
+
+
+
+\begin{frame}
+  \frametitle{极坐标的谐函数}
+  
+  极坐标系里的谐函数$Q(r,\theta)$满足
+  $$\frac{1}{r} \frac{\partial}{\partial r} \left(r\frac{\partial Q}{\partial r}\right) + \frac{1}{r^2}\frac{\partial^2 Q}{\partial \theta^2} = -k^2 Q $$
+  我们先讨论$k>0$的情形（$k=0$的情形之后另行讨论）。通过变量替换$ \rho = kr$（物理上理解：取了个方便的长度单位$1/k$来研究问题，$\rho$就是无量纲的极径)，就可以写成
+  $$\rho \frac{\partial}{\partial \rho} \left(\rho\frac{\partial Q}{\partial \rho}\right)+\rho^2Q = - \frac{\partial^2 Q}{\partial \theta^2}  $$    
+    
+\end{frame}
+
+\begin{frame}
+  \frametitle{极坐标的谐函数}
+  
+  我们来求分离变量形式的解$Q = Z(\rho)f(\theta)$，代入方程得到
+  $$ \rho\frac{(\rho Z')' }{Z}+ \rho^2 = -  \frac{f''}{f} $$
+  上式左边为$\rho$的函数，右边为$\theta$的函数，因此只能是常数。再考虑到$f$满足周期性边界条件$f(\theta)=f(\theta+2\pi)$，就容易得到$f=e^{\pm \ii m\theta}$ ($m=0,1,2\ldots$)，那么，$Z$满足
+  $$ \rho\frac{(\rho Z')' }{Z}+ \rho^2 = m^2. $$  
+  稍加整理得到著名的{\bf \blue 贝塞尔方程}：
+  $$  Z'' + \frac{1}{\rho} Z' + (1-\frac{m^2}{\rho^2}) Z = 0$$
+  
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{贝塞尔方程的解}
+  
+  当$m$为整数时，贝塞尔方程
+  $$  Z'' + \frac{1}{\rho} Z' + (1-\frac{m^2}{\rho^2}) Z = 0$$
+  有两个线性独立的解：
+  {\blue 第一类贝塞尔函数$J_m(\rho)$和第二类贝塞尔函数$N_m(\rho)$}。
+
+  \skiplines
+  
+  它们的最重要区别是：
+  \bitem
+\item{ 第一类贝塞尔函数$J_m(\rho)$在$\rho=0$取有限值，所以可以描述圆盘内部解。}
+\item{ 第二类贝塞尔函数$N_m(\rho)$在$\rho=0$发散，所以只能描述圆盘外部解。}  
+  \eitem
+  
+\end{frame}
+
+\begin{frame}
+  \frametitle{极坐标下的谐函数}
+  
+  代回$\rho=kr$，极坐标下分离变量形式的谐函数就是
+  $$ Q = J_m(kr)e^{\pm \ii m\theta} $$
+  和
+  $$ Q = N_m(kr)e^{\pm \ii m\theta} $$
+
+  ($m=0,1,2\ldots$)
+  
+\end{frame}
+
+\begin{frame}
+  \frametitle{第一类贝塞尔函数}
+  
+  定义第一类贝塞尔函数最简单的办法是用级数：
+
+  $$J_m(\rho) \equiv\sum_{k=0}^\infty\frac{(-1)^k}{k!(k+m)!} \left(\frac{\rho}{2}\right)^{2k+m}$$
+
+
+  \skiplines
+
+  (由于$\frac{1}{\Gamma(z)}$在$z=0,-1,-2,\dots$时为零，所以上式也可以理解为$k$从$-\infty$到$\infty$求和。)
+  
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{思考题}
+  
+
+  \addfig{1}{think3.jpg}
+  
+  验证按上述级数定义的第一类贝塞尔函数满足贝塞尔方程。
+  
+\end{frame}
+
+
+\section{Homework}
+
+\begin{frame}
+  \frametitle{Homework for Quizphobia}
+  
+  \bitem
+\item[43]{二维直角坐标下分离变量形式的谐函数$e^{ik_xx+ik_yy}$(这里$k_x^2+k_y^2=k^2$)是否可以写成极坐标下分离变量形式的谐函数$J_m(kr)e^{\pm im\theta}$ ($m=0,1,2\ldots$)的线性组合？为什么？}  
+\item[44]{利用第一类贝塞尔函数的级数定义，计算下列函数值至少精确到两位有效数字：  $$J_0(0),\ J_0(0.2),\ J_1(0),\ J_1(0.2).$$}
+\item[45]{$J_0(x)$的所有正实数零点的平方倒数和是多少?}  
+  \eitem
+  
+\end{frame}
+
+\ech
+\end{document}

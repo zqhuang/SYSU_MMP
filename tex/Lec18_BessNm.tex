@@ -1,0 +1,340 @@
+\documentclass[CJK]{beamer}
+\input{macros.tex}
+\input{titlepage.tex}
+  \date{}
+  \begin{document}
+  \bch
+\tpage{18}{第二类贝塞尔函数}
+
+
+\begin{frame}
+  \frametitle{极坐标下分离变量形式的谐函数}
+对固定$k>0$，在原点不发散的极坐标下分离变量形式的谐函数为
+$$ J_m(kr)\cos(m\theta), \ J_m(kr)\sin(m\theta), \ \ (m=0,1,2,\ldots) $$
+它们实际上是直角坐标系下分离变量形式的谐函数，也就是一堆平面波$e^{\ii \veck \cdot \vecx}$ ($|\veck|=k$)的重新线性组合。
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{$k=0$的情形}
+  我们再回头考虑之前被忽略掉的一种比较特殊的情形：$k=0$。这时候可以取$k\rightarrow 0^+$的极限：$ J_m(kr)\sim  r^m$。
+
+  所以对$k=0$，在原点不发散的极坐标下分离变量形式的谐函数为:
+  $$ r^m \cos(m\theta), \ r^m \sin(m\theta), \ \ (m=0,1,2,\ldots)$$
+
+  {\scriptsize 注意：$m=0$的解恰好对应了直角坐标系下$k=0$的解，而$m>0$的解在无穷远处发散，是直角坐标下平面波所不能描述的。}
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{允许原点处发散的谐函数}
+  如果考虑的是挖去原点的二维平面，则会有一族新的成员加入谐函数的大家庭：
+  \bitem
+\item{对$k>0$，
+  $$N_m(kr)\cos(m\theta), \ N_m(kr)\sin(m\theta), \ \ (m=0,1,2,\ldots) $$}
+\item{对$k=0$，
+  $$r^{-m} \cos(m\theta), \ r^{-m} \sin(m\theta), \ \ (m=0,1,2,\ldots)$$}
+  \eitem
+
+  本讲的重点就是要介绍这里的第二类贝塞尔函数$N_m$。
+\end{frame}
+
+
+\begin{frame}
+\frametitle{本讲内容}
+
+\bitem
+\item{任意阶第一类贝塞尔函数}
+\item{第二类贝塞尔函数}
+\item{环形区域数理方程}
+\eitem
+
+\end{frame}
+
+\section{Bessel Functions of Fractional Order}
+\secpage{任意阶第一类贝塞尔函数}{非整数阶$J_{-\nu}$和$J_\nu$线性独立，整数阶满足$J_{-m}(x) = (-1)^m J_m(x)$}
+
+\begin{frame}
+\frametitle{任意阶贝塞尔函数}
+
+直接把$m$推广到任意实数$\nu$，
+\tbox
+    {$$J_\nu(x) = \sum_{k=0}^\infty \frac{(-1)^k}{k!(k+\nu)!} \left(\frac{x}{2}\right)^{2k+\nu}.$$}
+    定义对所有$x>0$有效。当$\nu \ge 0$，还可以取$x \rightarrow 0$的极限。
+
+
+    
+    \skiplines
+    \bitem
+  \item{当$\nu$不是整数时，$(k+\nu)!$要理解为$\Gamma(k+\nu+1)$。}
+  \item{$\frac{1}{\Gamma(z)}$的零点为$0,-1,-2,\ldots$，或者说负整数的阶乘是无穷大。所以上面的级数也可以写成$k$从$-\infty$到$\infty$求和}
+  \item{如果你乐意，还可以把定义解析延拓到$-\pi<\arg x<\pi$。}
+    \eitem
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{贝塞尔函数的性质}
+
+递推公式对所有$\nu$成立：{\blue
+  $$ \frac{d}{dx}\left[x^\nu J_\nu(x)\right] = x^\nu J_{\nu -1}(x);\ \frac{d}{dx}\left[x^{-\nu} J_\nu(x)\right] = -x^{-\nu} J_{\nu +1}(x);  $$
+
+$$ J_{\nu-1}(x)-J_{\nu+1}(x) =2J_\nu'(x) ;\  J_{\nu-1}(x)+J_{\nu+1}(x) = \frac{2\nu}{x}J_\nu(x).$$}
+
+
+
+渐近公式对所有$\nu$都成立：{\blue $x\gg \nu^2$时
+$$ J_\nu(x)\approx \sqrt{\frac{2}{\pi x}}\cos{\left(x - \frac{\nu \pi}{2} - \frac{\pi}{4}\right)} $$}
+
+另外，{\blue 三个正交定理对$\nu \ge 0 $都成立}。
+
+
+\end{frame}
+
+
+
+\begin{frame}
+\frametitle{整数阶$J_{-m}(x)$和$J_m(x)$的线性关系}
+
+设$m\ge 0$为整数，利用负整数的阶乘为$\infty$，有
+\bea
+J_{-m}(x) &=& \sum_{k=0}^\infty \frac{(-1)^k}{k!(k-m)!} \left(\frac{x}{2}\right)^{2k-m} \newl
+&=&  \sum_{k=m}^\infty  \frac{(-1)^k}{k!(k-m)!} \left(\frac{x}{2}\right)^{2k-m} \newl
+&=&  \sum_{n=0}^\infty  \frac{(-1)^{n+m}}{(n+m)!n!} \left(\frac{x}{2}\right)^{2(n+m)-m} \newl
+&=&  (-1)^mJ_m(x)
+\eea
+
+\end{frame}
+
+\begin{frame}
+\frametitle{非整数阶$J_\nu$和$J_{-\nu}$线性独立}
+
+当$x\rightarrow \infty$时
+$$J_\nu(x) \approx \sqrt{\frac{2}{\pi x}}\cos{\left(x-\frac{\nu \pi}{2}-\frac{\pi}{4}\right)}.$$
+$$J_{-\nu}(x) \approx \sqrt{\frac{2}{\pi x}}\cos{\left(x+\frac{\nu \pi}{2}-\frac{\pi}{4}\right)}.$$
+两者的相位差$\nu\pi$，$\nu$不是整数时，无法通过线性叠加完全消失。
+
+\skiplines
+
+这个结论也能从$x\rightarrow 0^+$时的渐近行为得到，请自行研究。
+
+\end{frame}
+
+
+\section{Bessel Functions of the 2$^{\rm nd}$ Kind}
+\secpage{第二类贝塞尔函数}{和第一类贝塞尔函数渐近正交，大多数性质相同，除了在$x\rightarrow 0^+$时发散}
+
+\begin{frame}
+\frametitle{贝塞尔方程的线性独立解}
+
+设$\nu >0$为非整数，贝塞尔方程
+$$f''+\frac{1}{x}f' + \left(1-\frac{\nu^2}{x^2}\right)f = 0$$
+有两个线性独立的解：$J_\nu(x)$和$J_{-\nu}(x)$。
+
+\skiplines
+
+这无法推广到$\nu$为整数的情形。我们来思考其背后的原因。
+
+\end{frame}
+
+\begin{frame}
+\frametitle{$J_\nu$和$J_{-\nu}$之间的“独立性”随着$\nu$逼近整数而趋向于消失}
+
+如果考虑一下$J_\nu$和$J_{-\nu}$的渐近展开：
+$$J_\nu(x) \approx \sqrt{\frac{2}{\pi x}}\cos{\left(x-\frac{\nu \pi}{2}-\frac{\pi}{4}\right)}.$$
+$$J_{-\nu}(x) \approx \sqrt{\frac{2}{\pi x}}\cos{\left(x+\frac{\nu \pi}{2}-\frac{\pi}{4}\right)}.$$
+当$\nu$趋向于一个整数，两者的“独立性”趋向于消失。
+
+\skipline
+
+因为$J_\nu$和$J_{-\nu}$之间的独立性依赖于$\nu$，取它们作为两个独立解并不合适。最合理的方法是取$J_\nu$和另一个渐近行为为
+$$ \sim \sqrt{\frac{2}{\pi x}}\sin{\left(x-\frac{\nu \pi}{2}-\frac{\pi}{4}\right)}$$
+的解。这样两个解就类似于余弦和正弦一样“正交”了。
+
+\end{frame}
+
+\begin{frame}
+\frametitle{第二类贝塞尔函数}
+
+利用
+{\small
+$$ \cos{\left(x+\frac{\nu \pi}{2}-\frac{\pi}{4}\right)} = \cos{\left(x-\frac{\nu \pi}{2}-\frac{\pi}{4}\right)}\cos{(\nu\pi)} -  \sin{\left(x-\frac{\nu \pi}{2}-\frac{\pi}{4}\right)}\sin{(\nu\pi)} $$}
+只要定义
+$$N_\nu(x) = \frac{J_\nu(x)\cos{(\nu\pi)} - J_{-\nu}(x)}{\sin{(\nu\pi)}},$$
+则$N_\nu(x)$满足我们期待的渐近公式：
+\tbox{
+$$ N_\nu(x) \approx \sqrt{\frac{2}{\pi x}}\sin{\left(x-\frac{\nu \pi}{2}-\frac{\pi}{4}\right)},\ \ \ x\gg \nu^2$$}
+
+{\blue 注意：在很多文献上把第二类贝塞尔函数写成$Y_\nu$，仅是符号的差别。}
+\end{frame}
+
+\begin{frame}
+\frametitle{整数阶$N_m(x)$}
+
+为了对整数阶也适用，我们把定义修改为极限\tbox{
+  $$N_\nu(x) := \lim_{\alpha \rightarrow \nu } \frac{J_\alpha(x)\cos{(\alpha\pi)} - J_{-\alpha}(x)}{\sin{(\alpha\pi)}}$$}
+
+\skiplines
+
+因为$N_\nu$和$J_\nu$渐近正交，不可能线性相关。所以
+{\blue
+对任意$\nu $，$J_\nu$和$N_\nu$都是贝塞尔方程的两个线性独立解。}
+
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{贝塞尔方程的推广：类贝塞尔方程}
+  \tbox{定理：类贝塞尔方程
+  $$ y''+\frac{1-2\alpha}{x} y' + \left(\beta^2\gamma^2x^{2\gamma-2}+\frac{\alpha^2-\nu^2\gamma^2}{x^2}\right)y=0 $$
+  在 $x>0$ 范围内有两个线性无关解： $x^{\alpha}J_\nu(\beta x^\gamma)$和$x^{\alpha}N_\nu(\beta x^\gamma)$.}
+
+  显然，上述定理$\alpha=0$, $\beta = 1$, $\gamma=1$时就退化为贝塞尔方程的问题。
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{思考题}
+  \addfig{0.5}{think.jpg}
+  
+  你能想办法证明前述关于类贝塞尔方程的解的定理吗？
+\end{frame}
+
+
+\begin{frame}
+\frametitle{$N_0, N_1, N_2$}
+
+\addfig{3}{Y012.png}
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{$N_\nu$的定性图像}
+
+对$\nu\ge 0$， $N_\nu$和$J_\nu$都是振幅以$\sim \frac{1}{\sqrt{x}}$方式衰减，周期近似为$2\pi$的振荡函数。区别是$x\rightarrow 0^+$时的行为。
+
+如果$\nu>0$，当$x\rightarrow 0^+$时
+$$J_\nu(x)\approx \frac{1}{\nu !}\left(\frac{x}{2}\right)^\nu,\ \ N_\nu(x) \approx -\frac{\Gamma(\nu)}{\pi}\left(\frac{x}{2}\right)^{-\nu}. $$
+
+\skiplines
+
+如果$\nu = 0$，当$x\rightarrow 0^+$时
+$$J_0(x)\approx 1 , \ \ N_0(x) \approx \frac{2}{\pi}\ln x $$
+
+证明非常简单，留为练习
+
+{\blue 因为$N_\nu(kr)$在$r\rightarrow 0$时发散，当且仅当考虑的区域为去心的环形区域时才需要考虑谐函数: $N_m(kr)e^{\pm \ii m\theta}$.}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{$N_\nu$的递推关系}
+
+$N_\nu$和$J_\nu$一样满足递推关系：
+{\blue
+  $$ \frac{d}{dx}\left[x^\nu N_\nu(x)\right] = x^\nu N_{\nu -1}(x);\ \frac{d}{dx}\left[x^{-\nu} N_\nu(x)\right] = -x^{-\nu} N_{\nu +1}(x);  $$
+
+  $$ N_{\nu-1}(x)-N_{\nu+1}(x) =2N_\nu'(x) ;\  N_{\nu-1}(x)+N_{\nu+1}(x) = \frac{2\nu}{x}N_\nu(x).$$}
+
+证明非常简单，留为练习
+
+\end{frame}
+
+\section{sample problem}
+\secpage{环形区域上的数理方程}{当圆心被挖掉时，$N_m(kr)e^{\pm \ii m\theta}$ 也是合法解}
+
+\begin{frame}
+\frametitle{例题}
+
+\bmini{0.45}
+\lfig{1.8}{ring_problem.png}
+\emini
+\bmini{0.5}
+如图，一根外半径为$R_1$，内半径为$R_2$的无限长的均匀材质空心圆柱。外表面和温度为$T_0$的热库接触，保持温度为$T_0$。在$t=0$时刻空心圆柱处于热平衡，温度为$T_0$。在$t>0$时，从内表面处处都注入热流$j$。已知材质的导热系数为$\lambda$，质量密度为$\rho$，单位质量比热为$c$。计算该空心圆柱各处的温度。
+\emini
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{解答思路}
+
+当达到温度梯度不再变化的稳恒状态时，因为外表面温度已经固定，所有位置的温度将保持恒定。那么流入的热流将不再积累，直接穿过空心圆柱流出外表面。这时，距离中心轴为$r$处的热流为
+$$  \frac{j(2\pi R_2)}{2\pi r} ,$$
+即
+$$ \frac{\partial T}{\partial r} = -\frac{jR_2}{\lambda r}. $$
+解出稳恒解：
+$$ \left. T \right\vert_{t\rightarrow \infty}= T_0  -\frac{jR_2}{\lambda }\ln\frac{r}{R_1}. $$
+
+\end{frame}
+
+\begin{frame}
+\frametitle{解答思路（续）}
+
+设严格解为
+$$  T = T_0  -\frac{jR_2}{\lambda }\ln\frac{r}{R_1} + u(r,t). $$
+则$u$满足
+\bea
+\frac{\partial u}{\partial t} - a \nabla^2 u &=& 0 ,\newl
+\left. u\right\vert_{r=R_1} &=& 0, \newl
+\left.\frac{\partial u}{\partial r} \right\vert_{r=R_2} &=& 0, \newl
+\left. u\right\vert_{t=0} &=& \frac{jR_2}{\lambda}\ln\frac{r}{R_1} .
+\eea
+其中$a =\frac{\lambda}{\rho c}$.
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{解答思路（续）}
+
+把解按满足边界条件的谐函数展开：
+$$ u(r, t) = \sum_{i=1}^\infty c_i\left[N_0(k_iR_1) J_0(k_ir) - J_0(k_iR_1) N_0(k_ir)\right]e^{-ak_i^2t} .$$
+其中$k_i$是满足
+$$ N_0(k_iR_1) J_0'(k_iR_2) - J_0(k_iR_1) N_0’(k_iR_2) = 0 $$
+的第$i$个解。
+
+\skiplines
+
+剩下的用正交关系求系数的工作略去。
+
+\end{frame}
+
+
+
+
+
+\section{Homework}
+
+\begin{frame}
+\frametitle{Homework for Quizphobia}
+
+\bitem
+\item[52]{对$0<\nu<1$，当$x\rightarrow 0^+$时，取$J_\nu$和$J_{-\nu}$的级数展开的最低次近似，证明：
+  $$N_\nu(x) \approx -\frac{\Gamma(-\nu)\cos{\nu\pi}}{\pi}\left(\frac{x}{2}\right)^\nu - \frac{\Gamma(\nu)}{\pi}\left(\frac{x}{2}\right)^{-\nu}. $$
+  在上式中对$x$求导，然后令$\nu\rightarrow 0$求极限，再对$x$积分，导出
+  $$ N_0(x)\approx \frac{2}{\pi}\ln x + c,$$
+  其中$c$为常数，当$x\rightarrow 0^+$时可以忽略它的贡献。
+
+  \skiplines
+      {\small \darkgreen 提示：要用到$\Gamma$函数的递推关系和互余宗量关系
+        $\sfgamma{z}\sfgamma{1-z}=\frac{\pi}{\sin{(\pi z)}}$（推导见第5讲）。}}
+  \eitem
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Homework for Quizphobia (cont.)}
+\bitem
+\item[53]{在上一题中，我们无耻地交换了求极限和求导/积分的次序。请保持这种无耻，用$N_\nu$的极限定义证明它的两个递推关系：
+  $$ \frac{d}{dx}\left[x^\nu N_\nu(x)\right] = x^\nu N_{\nu -1}(x);$$
+  $$ \frac{d}{dx}\left[x^{-\nu} N_\nu(x)\right] = -x^{-\nu} N_{\nu +1}(x).  $$
+}
+\item[54]{把例题的解答补充完整，写出系数$c_i$的积分表达式，并使出洪荒之力进行化简。}  \eitem
+\end{frame}
+
+\ech
+\end{document}

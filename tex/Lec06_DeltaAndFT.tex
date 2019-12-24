@@ -1,0 +1,432 @@
+\documentclass[CJK]{beamer}
+\input{macros.tex}
+\input{titlepage.tex}
+  \date{}
+\begin{document}
+\tpage{6}{Delta Function and Fourier Transform}
+
+
+\begin{frame}
+\chtitle{本讲内容}
+\bch
+\bitem
+\item{狄拉克$\delta$函数}
+\item{傅立叶变换}
+\eitem
+\ech
+\end{frame}
+
+\section{Dirac $\delta$ function}
+\secpage{又高又瘦的$\delta$函数}{$$\int_{-\infty}^{\infty} \delta(x-x_0)f(x) \,dx = f(x_0)$$}
+
+\begin{frame}
+  \chtitle{物理里的理想化模型}
+  \bch
+  物理里有很多“无穷大$\times$无穷小 = 有限“的模型：
+  \bitem
+\item{瞬时冲量： 力无限大，作用时间无穷短，但两者的乘积（冲量）是有限的。}
+\item{质点：质量密度无穷大，体积无穷小，但两者的乘积（总质量）是有限的。}
+\item{点电荷：电荷密度无穷大，体积无穷小，但两者的乘积（总电荷）是有限的。}
+  \eitem
+
+  \skiplines
+  
+  在数学上这些表述都是不合法的，需要搞很多事情才能把这些模型说清楚。 不喜欢搞事情的物理学家们于是发明了{\blue $\delta$函数}。
+  \ech
+\end{frame}
+
+\begin{frame}
+  \chtitle{重量级dalao —— Paul Dirac （狄拉克）}
+  \bch
+  \bcenter
+  \lfig{1.2}{Dirac.jpg}
+
+  你们不要搞事情
+  \ecenter
+  \ech
+\end{frame}
+  
+\begin{frame}
+  \chtitle{Dirac $\delta$ function}
+  \bch
+  \bmini{0.4}
+  \lfig{1.5}{DiracDelta.png}
+  \emini
+  \bmini{0.55}
+  Dirac $\delta$ function 不是传统意义上的函数。它可以通过下面的{\blue 单位脉冲函数取脉冲时间为零的极限}得到：
+  $$\delta_D(x) = \left\{\begin{array}{ll} \frac{1}{\epsilon}, & \text{ if } -\frac{\epsilon}{2}<x<\frac{\epsilon}{2} \\  0, & \text{ else}\end{array}\right. $$
+  其中$\epsilon\rightarrow 0^+$。  
+  \emini
+
+  在本课程中，我们{\blue 简称Dirac $\delta$ function为$\delta$函数，并简写为$\delta(x)$}。
+  \ech
+\end{frame}
+
+
+\begin{frame}
+  \chtitle{$\delta$函数的另一种逼近方式}
+  \bch
+  有时候需要计算$\delta$函数的导数甚至高阶导数，这时可以考虑用高斯函数逼近方式：
+
+  $$\delta(x) = \frac{1}{\sqrt{2\pi}\epsilon}e^{-\frac{x^2}{2\epsilon^2}},$$
+  其中$\epsilon\rightarrow 0^+$。
+
+  \skiplines
+  
+
+  {\scriptsize 注：这一般只是为了帮助理解$\delta$函数的导数的图像，并非为了计算。如果要用具体的逼近方式来进行计算，$\delta$函数的便捷性就大打折扣了。}
+  \ech
+\end{frame}
+
+
+\begin{frame}
+  \chtitle{$\delta$函数的抽象定义}
+  \bch
+  借助上述两种逼近方式的辅助，我们归纳出$\delta$函数的下述抽象定义：
+  {\blue
+    \be
+    \delta(x) = \left\{
+    \begin{array}{ll}
+      0, & \text{ if } x\ne 0; \\
+      +\infty, & \text{ if } x = 0;
+    \end{array}\right.
+    \ee
+    $$ \int_{-\infty}^\infty \delta(x)\,dx = 1.$$ 
+  }
+  从上述抽象定义中可以看出$\delta$函数是偶函数：
+  $$\delta(-x) = \delta(x)$$
+  此外，积分的范围可以限定在$0$的任意小领域。
+    $$ \int_{0^-}^{0^+} \delta(x)\,dx = 1.$$   
+  \ech
+\end{frame}
+
+\begin{frame}
+  \chtitle{$\delta$函数最重要的性质}
+  \bch
+  从被使用频率上来讲，下式至关重要：
+  \tbox{
+    $$\int_{-\infty}^\infty \delta(x-x_0) f(x)\, dx = f(x_0).$$}
+
+  （请自行用物理图像理解上式）
+  \ech
+\end{frame}
+
+\begin{frame}
+  \chtitle{侮辱智商的思考题（变相点名）}
+  \bch
+  \addfig{1.7}{wuruzhishang.jpg}
+  
+  计算积分
+  $$\int_{-\infty}^{\infty}   \delta(x-\frac{\pi}{2})\cos x\,dx $$
+  \ech
+\end{frame}
+
+
+\begin{frame}
+  \chtitle{$\delta$函数的导函数}
+  \bch
+  利用$\delta$函数在两边都是零的特点，可以用分部积分的方法得到$\delta$函数的导数的性质：
+  {\blue
+  $$\int_{-\infty}^\infty \left[\frac{d^n}{dx^n}\delta(x-x_0)\right] f(x)\, dx = (-1)^n f^{(n)}(x_0)$$}
+  \ech
+\end{frame}
+
+\begin{frame}
+  \chtitle{侮辱智商的思考题（变相点名）}
+  \bch
+  \addfig{1.7}{wuruzhishang.jpg}
+  
+  计算积分
+  $$\int_{-\infty}^{\infty}   \delta'(x-\frac{\pi}{2})\cos x\,dx $$
+  \ech
+\end{frame}
+
+
+
+\begin{frame}
+  \chtitle{$\delta$函数的终极大招}
+  \bch
+  用变量替换的方法可以得到：\tbox{
+    $$ \delta\left(\alpha(x)\right)  = \sum_{\rm roots}  \frac{\delta(x-x_i)}{|\alpha'(x_i)|}$$}
+  求和对所有$\alpha(x)$的根$x_1$, $x_2$, \ldots 进行。
+
+   {\scriptsize （请思考当$\alpha(x)$没有根或者有重根的情形上面的等式会如何。)}
+
+  \skiplines
+  
+ {\small 另一种等价的写法是：
+  $$\int_{-\infty}^\infty \delta\left(\alpha(x)\right) f(x) \,dx = \sum_{\rm roots} \frac{f(x_i)}{|\alpha'(x_i)|}.$$}
+  
+  \ech
+\end{frame}
+
+
+\begin{frame}
+  \chtitle{侮辱智商的思考题（变相点名）}
+  \bch
+  \addfig{1.3}{wuruzhishang2.jpg}
+  
+  计算积分
+  $$\int_{-\infty}^\infty \delta(x^2-1) e^x\, dx$$
+  \ech
+\end{frame}
+
+
+
+\section{Fourier Transform}
+\secpage{傅立叶变换}{无穷维空间的旋转}
+
+
+\begin{frame}
+  \chtitle{据说你们学过线性代数}
+  \bch
+  \bcenter
+  \lfig{1}{blackq.jpg}
+
+  线。性。代。数。
+  \ecenter
+  \ech
+\end{frame}
+  
+
+\begin{frame}
+  \chtitle{从实数矢量的内积说起}
+  \bch
+  考虑$n$维平直的内积实空间的矢量
+  $$\vecx = \left(\begin{array}{l}x_1 \\ x_2 \\ \ldots \\ x_n \end{array}\right),$$
+  其中$x_i$ ($i=1,2,\ldots, n$)都是实数。
+
+  \skipline
+  
+  两个矢量的内积定义为：
+  $$ \vecx \cdot \vecy \equiv  \vecx^T \vecy = \sum_{i=1}^n x_iy_i.$$
+
+  \skipline
+  
+  一个矢量的长度定义为
+  $$\left\Vert\vecx\right\Vert \equiv \sqrt{\vecx\cdot\vecx}= \sqrt{\sum_{i=1}^n x_i^2}. $$
+
+  
+  \ech
+\end{frame}
+
+\begin{frame}
+  \chtitle{换基：正交变换}
+  \bch
+  在内积空间里一个“没有拉伸和变形”的旋转，新基矢可以由老基矢正交变换得到：
+  \be
+  \bral \vece_1' \\ \vece_2' \\ \ldots \\ \vece_n' \brar = R  \bral \vece_1 \\ \vece_2 \\ \ldots \\ \vece_n \brar
+  \ee
+  其中$R$是一个$n \times n$的正交矩阵 ($R^TR = I$)。
+
+
+  \skipline
+
+  在换基的操作下，矢量的分量也会发生变化：
+
+  $$\vecx' = R \vecx$$
+
+  显然，两个矢量的内积不变
+
+  $$\vecx'^T\vecy'= \vecx^T R^T R\vecy = \vecx^T \vecy$$
+  
+  \ech
+\end{frame}
+
+
+\begin{frame}
+  \chtitle{复矢量的内积和长度}
+  \bch
+  对复矢量(即矩阵元允许为复数的$n\times 1$矩阵)，我们通常只要把转置变成“共轭转置”（即转置并对每个分量取共轭）：
+  $$ \vecx \cdot \vecy \equiv  \vecx^\dagger \vecy = \sum_{i=1}^n x_i^*y_i.$$
+
+  矢量长度为
+  $$\left\Vert\vecx\right\Vert \equiv \sqrt{\vecx\cdot\vecx}= \sqrt{\sum_{i=1}^n |x_i|^2}. $$
+
+  \skipline
+
+  {\small
+    注：共轭转置和转置一样，可以进行“倒序乘展开”
+{\blue  $$ (A_1A_2\ldots A_{N-1} A_N)^\dagger = A_N^\dagger A_{N-1}^\dagger \ldots A_2^\dagger A_1^\dagger .$$}}
+  \ech
+\end{frame}
+
+
+
+\begin{frame}
+  \chtitle{换基：酉变换}
+  \bch
+  在复内积空间里一个“没有拉伸和变形”的旋转，新基矢可以由老基矢酉变换得到：
+  \be
+  \bral \vece_1' \\ \vece_2' \\ \ldots \\ \vece_n' \brar = U  \bral \vece_1 \\ \vece_2 \\ \ldots \\ \vece_n \brar
+  \ee
+  其中$U$是一个$n \times n$的酉矩阵 ($U^\dagger U = I$)。
+
+
+  \skipline
+
+  在换基的操作下，复矢量的分量也会发生变化：
+
+  $$\vecx' = U^* \vecx$$
+
+  显然，两个矢量的内积不变
+
+  $$\vecx'^\dagger\vecy'= \vecx^\dagger U^T U^*\vecy = \vecx^\dagger \vecy$$
+  \ech
+\end{frame}
+
+
+\begin{frame}
+  \chtitle{思考题}
+  \bch
+
+  \addfig{1}{think2.jpg}
+  
+  对任意正整数$N$以及整数$k$，证明
+
+  \be
+  \sum_{n=0}^{N-1} e^{\frac{2\pi n k \ii}{N}} = \branchll N, & \text{ if } \mathrm{mod}(k, N) = 0 \\ 0, & \text{ else} \branchrr
+  \ee
+  其中$\mathrm{mod}(k, N) = 0$指$k$能被$N$整除。
+  \ech
+\end{frame}
+
+
+\begin{frame}
+  \chtitle{思考题}
+  \bch
+
+  \addfig{1}{think3.jpg}
+  
+  设$N\times N$矩阵E的第$m$行第$n$列元素定义为
+  $$ E_{mn} = \frac{1}{\sqrt{N}}e^{\frac{2\pi  mn \ii}{N}}$$
+  这里我们采用$C$语言的从零计数的习惯，$m = 0,1,2,\ldots, N-1$, $n = 0,1,2,\ldots, N-1$。
+
+  \bitem
+\item[1]{试证明$E$是酉矩阵。}
+\item[2]{对变换$\vecx' = E^* \vecx$，证明其逆变换为$\vecx =E^T \vecx'$。}
+\item[3]{证明变换$\vecx' = E^* \vecx$保持复矢量长度不变。}
+  \eitem
+  \ech
+\end{frame}
+
+
+\begin{frame}
+  \chtitle{函数的内积}
+  \bch
+  实变量(但函数值允许为复数)的函数$f$和$g$的内积定义为
+  $$ f\cdot g \equiv \int_{-\infty}^{\infty} f^*(x) g(x)\, dx .$$
+  \ech
+\end{frame}
+
+\begin{frame}
+  \chtitle{把函数离散化理解}
+  \bch
+  
+  设想把实轴进行了间隔为$dx$的划分$x_{0}, x_{1}, x_2, \ldots$，把
+  $ f_i\sqrt{dx} $ 
+  当成复矢量的分量，其中$f_i = f(x_i).$
+
+  \ech
+\end{frame}
+
+
+\begin{frame}
+  \chtitle{傅立叶变换}
+  \bch
+  {\small
+  考虑$N\rightarrow \infty$的情况，利用$ E_{mn} = \frac{1}{\sqrt{N}}e^{\frac{2\pi  mn \ii}{N}}$  为酉矩阵， 把复矢量$f$进行酉变换到另一个“傅立叶空间”。在傅立叶空间里，通常我们使用变量$k$。
+
+  $$\tilde{f}_m \sqrt{dk} = \sum_{n} E^*_{mn} f_n\sqrt{dx}  = \frac{1}{\sqrt{N}} \sum_{n} e^{-\frac{2\pi  mn \ii}{N}}f_n\sqrt{dx} .$$
+  令傅立叶空间里的划分宽度$dk = \frac{2\pi}{Ndx}$，则$k_mx_n = \frac{2\pi mn}{N}$，上式可以写成
+  $$\tilde{f}_m =\frac{1}{\sqrt{2\pi}} \sum_{n} e^{-\ii k_m x_n}f_n  dx .$$
+  写成积分形式{\blue
+  $$ \tilde{f}(k) = \frac{1}{\sqrt{2\pi}} \int_{-\infty}^\infty e^{-ikx} f(x) dx $$
+ } }
+  \ech
+\end{frame}
+
+
+\begin{frame}
+  \chtitle{逆变换}
+  \bch
+  利用酉变换的逆变换立刻可以写出傅立叶变换的逆变换：
+{\blue
+  $$ f(x) = \frac{1}{\sqrt{2\pi}} \int_{-\infty}^\infty e^{ikx} \tilde{f}(k) dk $$
+ }
+  
+  \ech
+\end{frame}
+
+
+\begin{frame}
+  \chtitle{傅立叶变换保持矢量长度不变}
+  \bch
+  利用酉变换保持矢量长度不变的性质，有
+{\blue
+ $$\int_{-\infty}^\infty \tilde{f}^*(k) \tilde{g}(k) dk = \int_{-\infty}^\infty f^*(x)g(x) dx. $$
+ }
+  
+  \ech
+\end{frame}
+
+\begin{frame}
+  \chtitle{$\delta$函数的傅立叶变换}
+  \bch
+  考虑$f(x) = \delta(x)$ 的傅立叶变换
+  $$\tilde{f} = \frac{1}{\sqrt{2\pi}} \int_{-\infty}^{\infty} \delta(x) e^{-\ii kx}dx = \frac{1}{\sqrt{2\pi}}.$$
+  再进行逆变换，我们就得到一个非常有用的恒等式：
+  \tbox{$$\frac{1}{2\pi}\int_{-\infty}^\infty e^{ikx}dk = \delta(x).$$}
+  \ech
+\end{frame}
+
+
+\begin{frame}
+  \chtitle{思考题}
+  \bch
+  \addfig{1.}{think3.jpg}
+  
+  利用
+    \tbox{$$\frac{1}{2\pi}\int_{-\infty}^\infty e^{ikx}dk = \delta(x),$$}
+    你能直接证明
+    $$\int_{-\infty}^\infty \tilde{f}^*(k) \tilde{g}(k) dk = \int_{-\infty}^\infty f^*(x)g(x) dx $$
+    吗？
+  \ech
+\end{frame}
+
+\begin{frame}
+  \chtitle{思考题}
+  \bch
+  \bmini{0.48}
+  \addfig{2}{stepfunction.png}
+  \emini
+  \bmini{0.48}
+  \be
+  u(x) = \branchll 1, & \text{ if } -1<x<1 \\ 0, & \text{ else} \branchrr
+  \ee
+  \emini
+
+  \skipline
+  
+  计算如图函数的傅立叶变换，然后利用傅立叶变换保持内积不变的性质，求积分
+  $$\int_0^\infty \frac{\sin x}{x} \,dx. $$
+  
+  \ech
+\end{frame}
+
+\section{Homework}
+
+\begin{frame}
+  \chtitle{课后作业}
+  \bch
+  \bitem
+\item[16]{计算积分$$\int_{-\infty}^\infty \delta\left(\sin x\right) e^{-|x|} dx.$$ }
+\item[17]{计算高斯函数$$f(x) = \frac{1}{\sqrt{2\pi}\sigma} e^{-\frac{x^2}{2\sigma^2}}$$
+的傅立叶变换。}
+\item[18]{用你喜欢的方法求积分
+  $$\int_0^\infty \left(\frac{\sin x}{x}\right)^2dx . $$}
+  \eitem
+  \ech
+\end{frame}
+
+\end{document}

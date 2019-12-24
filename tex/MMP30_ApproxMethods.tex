@@ -1,0 +1,48 @@
+\documentclass[CJK]{beamer}
+\input{macros.tex}
+\input{titlepage.tex}
+  \date{}
+  \begin{document}
+  \bch
+\tpage{30}{近似与等效}
+
+\begin{frame}
+  \frametitle{变分问题}
+  一个高为$1$的封闭盒子，上下底面均为半径为$1$的圆。盒子的表面积的最小值是多少？
+\end{frame}
+
+\begin{frame}
+  \frametitle{无限长圆柱}
+有一个半径为 $R$ 的无穷长带电圆柱面，以圆柱中轴线为$z$轴建立柱坐标系$(r,\theta,z)$。取无穷远处电势为零电势，圆柱面上的电势可以写为
+$$U(r,\theta,z)\vert_{r=R} = V_0e^{-\left(\frac{z}{50R}\right)^2}\cos(2\theta) , $$
+其中$V_0$为常量。
+
+已知圆柱面外为真空，那么 $U(2R,0,0)$ 大约是 $V_0$ 的多少倍。
+\end{frame}
+
+\begin{frame}
+  \frametitle{圆环的热传导问题}
+  
+ 一个内半径为 $R_1=0.098\mathrm{m}$，外半径为 $R_2=0.102\mathrm{m}$ 的均匀薄圆环。其材质的热传导方程参数为 $10^{-4}\mathrm{m^2/s}$。以圆环中心建立极坐标系，在 $t=0$ 时刻圆环上的初始温度分布为 
+$$\left. T(r,\theta)\right\vert_{t=0}=T_0\cos^4\left[\frac{(r-R_1)\pi}{R_2-R_1}\right]\cos^2\theta.$$
+ 其中 $T_0$为常量。
+ 
+试估算：在 $t=50\mathrm{s}$ 时刻，圆环上最热的点和最冷的点的温差大约是 $T_0$ 的多少倍?
+\end{frame}
+
+\begin{frame}
+  \frametitle{球壳的热传导问题}
+  一个内半径为 $R_1=0.098\mathrm{m}$，外半径为 $R_2=0.102\mathrm{m}$ 的孤立均匀空心球壳，其材质的热传导方程参数 $a=10^{-4}\mathrm{m^2/s}$。以其球心为原点建立球坐标系 $(r,\theta,\phi)$。一开始各点的温度为
+$$ \left.T(r,\theta,\phi)\right\vert_{t=0} = T_0\left[2+\cos^2\frac{(r-R_1)\pi}{R_2-R_1}\cos\theta\right].$$
+在 $t=25\mathrm{s}$ 时，空心球壳上的最热点和最冷点的温差大约是 $T_0$ 的多少倍？
+\end{frame}
+
+\begin{frame}
+\frametitle{活跃一下气氛 ($7\star$)}
+估算球面谐函数
+$$Y_{10000,2}\left(\frac{\pi}{100}, 0\right)$$
+的值。
+\end{frame}
+
+\ech
+\end{document}

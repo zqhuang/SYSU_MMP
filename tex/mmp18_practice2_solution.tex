@@ -1,0 +1,69 @@
+\documentclass[12pt,CJK]{article}
+\usepackage{geometry}
+\input{reduced_macros.tex}
+\geometry{tmargin=0.3in, bmargin=0.5in, lmargin=0.5in, rmargin=0.9in, nohead, nofoot}
+\def\mark#1{{\color{blue} (#1分)}}
+\renewcommand{\thepage}{}
+\begin{document}
+\bch
+{\large 数理方法 课堂小测II 请挑选一种难度回答}
+
+{\vskip 0.1in}
+
+{\bf 初入江湖版}
+\bitem
+\item[A1.]{举出需要用波动方程描述的的两个具体物理问题的例子。\mark{10}}
+\item[A2.]{估算$J_2(0.2).$ (保留两位以上有效数) \mark{10}}
+\item[A3.]{计算关于勒让德多项式的积分$\int_0^1 x^4 P_6(x) dx.$  \mark{20}}
+\item[A4.]{连续函数 $f_1(x,y)$, $f_2(x,y)$ 在椭圆 $2x^2+ y^2 = 1$ 上的取值都处处为零，在该椭圆内分别满足$f_1+ \nabla^2 f_1 = 0$ 以及 $f_2+2\nabla^2 f_2=0.$  计算在该椭圆内的面积分
+  $\iint f_1(x,y)f_2(x,y) dx dy.$ \mark{20} }
+\item[A5.]{求一维无边界的空间内满足方程
+  $\frac{\partial^2u}{\partial t^2}-\frac{\partial^2u}{\partial x^2} = 0$ 和初始条件  $\left.u\right\vert_{t=0} = \frac{1}{1+x^4},\ \ \left.\frac{\partial u}{\partial t}\right\vert_{t=0} = 0$ 的解。\mark{20}}
+\item[A6.]{有半径为 $R$，导热系数为 $\lambda$，单位质量比热为 $c$，质量密度为 $\rho$ 的孤立均匀薄圆盘。以圆盘中心为原点建立极坐标 $(r,\theta)$。初始时刻各点的温度为
+  $\left.T\right\vert_{t=0}= T_0\left(2 + \frac{r^3}{R^3}\cos\theta\right).$
+  计算之后圆盘上各点的温度变化。 \mark{20}}
+  
+  \eitem
+  
+{\vskip 0.1in}
+
+
+{\bf 华山论剑版}
+\bitem
+\item[B1.]{计算关于勒让德多项式的积分$\int_0^1 x^2 P_6(x) P_4(x) dx.$ \mark{15}}  
+\item[B2.]{估算积分 $\int_{100}^\infty \left[N_{5}(x)\right]^4 dx$，其中$N_5$是第二类贝塞尔函数.\mark{15}}
+
+\item[B3.]{$P_{13}(x)$ 在开区间 $(0,1)$ 内有多少个实数零点？\mark{15}}
+\item[B4.]{求一维无边界的空间内满足方程$\frac{\partial u}{\partial t} - \frac{1}{2}\frac{\partial^2u}{\partial x^2} = 0$ 和初始条件$\left.u\right\vert_{t=0} = e^{-x^2/2}$ 的解。\mark{15}}  
+\item[B5.]{设$\mu_1,\mu_2,\mu_3\ldots$是$J_2(x)$的所有正实数极值点（即$J_2$在这些位置取到极大值或极小值）。计算$\sum_{i=1}^\infty \frac{1}{\mu_i^4}.$ \mark{20}}
+\item[B6.]{我们在课上学习了两端固定的，长度为$L$的弦的横向小振动的解法。现在考虑空气阻力对弦的横向小振动的影响：假设单位长度的弦所受的空气阻力和弦的横向位移速度成正比，弦的振动方程就修正为
+  $$ \frac{\partial^2 u}{\partial t^2} + \frac{2}{\tau} \frac{\partial u}{\partial t}-  a^2\frac{\partial^2u }{\partial x^2} =  0 , $$
+  其中的阻尼时间$\tau \gg \frac{L}{a}$为常量。
+  设初始条件为
+  \bea
+  \left. u\right\vert_{t=0} &=& A\sin{\frac{\pi x}{L}}, \newl
+  \left.\frac{\partial u}{\partial t}\right\vert_{t=0} &=& 0
+  \eea
+  求解$u(x,t)$。 \mark{20}}
+\eitem  
+
+{\vskip 0.1in}
+
+{\bf 诸神黄昏版}
+
+\bitem
+\item[C1.]{$\sin\theta \,\frac{\partial Y_{7,3}(\theta,\phi)}{\partial \theta} $ 可写成哪两个球面谐函数的线性组合? \mark{15}}
+\item[C2.]{设$\theta = \phi =  \frac{\pi}{2}$, 计算$|Y_{5, 1}(\theta,\phi)|^2+  |Y_{5, 2}(\theta,\phi)|^2+ |Y_{5, 3}(\theta,\phi)|^2+|Y_{5, 4}(\theta,\phi)|^2$的值。\mark{15}}
+\item[C3.]{计算不定积分 $\int \frac{dx}{x\left[\left(J_5(x)\right)^2+\left(N_5(x)\right)^2\right]},$其中$J_5$和$N_5$分别为第一类和第二类贝塞尔函数。  \mark{15}}
+\item[C4.]{请大致估算球面谐函数$Y_{10000,2}\left(\frac{\pi}{100}, 0\right)$的值。\mark{15}}
+\item[C5.]{设和$\pi^n$最接近的整数为$\ell_n$（例如$\ell_1=3, \ell_2=10\ldots$)，和$e^n$最接近的整数为$m_n$(例如$m_1=3, m_2 =7\ldots$)，定义
+    $$\theta_n \equiv \arccos\left[2\left(\pi^n-\ell_n\right)\right]; \phi_n\equiv \arcsin\left[2\left(e^n-m_n\right)\right].$$ 请粗略地估算下列表达式的值：
+    $$\sum_{n=1}^{10^6}\lvert Y_{\ell_n,m_n} \left(\theta_n, \phi_n\right)\rvert^2.$$
+    \mark{20}}  
+\item[C6.]{内半径为$R$，外半径为$2R$的均匀不良导体空心球，导热系数为 $\lambda$，单位质量比热为 $c$，质量密度为 $\rho$，一开始温度为 $T_0$。在 $t=0$ 时刻把空心球投入温度为 $2T_0$ 的热库，计算此后空心球内各点的温度变化。\mark{20}}  
+\eitem
+
+
+
+\ech
+\end{document}

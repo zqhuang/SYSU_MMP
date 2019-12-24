@@ -1,0 +1,94 @@
+\section{Spacetime}
+\secpage{附录A：时空}{时空是客观存在，和坐标系无关}
+
+\begin{frame}
+  \frametitle{平面}
+  \addfig{1.5}{euclideands.png}
+  
+  欧氏(Euclidean)平面上，勾股定理处处成立。可以取直角坐标系$(x,y)$，使得
+  $$ ds^2 = dx^2+dy^2.$$
+  上面的表达式中的$ds$表示：点$(x,y)$和点$(x+dx, y+dy)$的距离。
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{三维欧氏空间}
+  三维欧氏空间，可以取直角坐标系$(x,y,z)$，使得
+  $$ ds^2 = dx^2+dy^2+dz^2.$$
+  上面的表达式中的$ds$表示：点$(x,y,z)$和点$(x+dx, y+dy,z+dz)$的距离。
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{任意维欧氏空间}
+  任意$n$维欧氏空间，可以取直角坐标系$(x^1, x^2,\ldots, x^n)$，使得
+  $$ ds^2 = \sum_{i=1}^n (dx^i)^2.$$
+
+  \skipline
+  
+  这里发生了一件让你很不舒服的事情：我把代表空间维度的指标$i$放到了右上角。这和$x$的$i$次方怎么区分？
+
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{$x^i$是$x$的$i$次方吗？}
+  如果我事先告诉你$x^1, x^2,\ldots,x^n$代表$n$维空间的坐标，并垄断了符号$x$（你不允许再定义一个变量叫$x$)，那么``$x$的$i$次方''这个说法是没有意义的。
+
+    \addfig{1}{meimaobing.jpg}
+
+    (但是你为啥要这样zuo呢？)
+
+    (先别管，继续往下看)
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{矩阵$g_{ij}$}
+  我们再考虑一个单位矩阵$g$，它的第$i$行第$j$列元素当然是
+  $$g_{ij} = \delta_{ij} $$
+  这里用到了克罗内克(Kroneck)$\delta$符号：$\delta_{ij}$当$i=j$时为$1$，当$i\ne j$时为零。
+
+  \skiplines
+
+  (弱弱问下：为什么现在你又把$i$, $j$写成下标了？)
+
+  (先别管，继续往下看)
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{重新写一下$ds^2$}
+  有了单位矩阵$g$以及
+  $$ds^2 = \sum_{i=1}^n\sum_{j=1}^n g_{ij} x^i x^j .$$
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{爱因斯坦求和规则}
+  {\bf 爱因斯坦求和规则：当一个指标在上面和下面同时各出现一次时，默认对它求和。}
+             
+  于是$ds^2$又变样了：
+
+  $$ds^2=g_{ij}dx^idx^j.$$
+
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{非欧空间}
+  如果空间是非欧几里得的（比如，一个球面），勾股定理就并不处处成立，那么，$(x^1,x^2,\ldots,x^n)$和$(x^1+dx^1, x^2+dx^2,\ldots, x^n+dx^n)$之间的``距离''就会是$(x^1,x^2,\ldots,x^n)$和$dx^1,dx^2,\ldots, dx^n$的非常复杂的函数。
+
+\end{frame}
+
+\begin{frame}
+  \frametitle{无穷近邻点的距离平方是坐标微分的二次型}
+  如果$dx^1, dx^2,\ldots,dx^n$都是小量的话，把$ds^2$做($dx^1, dx^2, \ldots, dx^n$视为变量，$x^1,x^2,\ldots,x^n$视为参数的)小量展开：首先，如果$dx^1,dx^2,\ldots,dx^n$均为零，则距离$ds$显然严格为零；所以最低阶近似不包含零次项。又因为距离平方$ds^2$不具有方向性，所以主导项不能是一次项。所以{\bf 主导项至少是二次项。}
+
+  \skipline
+
+  距离平方$ds^2$的主导项为坐标微分的二次型时，
+  $$ ds^2 = g_{ij}dx^idx^j,$$
+  这种空间的各种几何性质和空间中的物质的联系，是广义相对论的主题。
+\end{frame}
+

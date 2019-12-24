@@ -1,0 +1,44 @@
+\documentclass[12pt,CJK]{article}
+\usepackage{geometry}
+\input{reduced_macros.tex}
+\geometry{tmargin=0.3in, bmargin=0.5in, lmargin=0.5in, rmargin=0.9in, nohead, nofoot}
+\def\mark#1{{\color{blue} (#1分)}}
+\renewcommand{\thepage}{}
+\begin{document}
+\bch
+
+{\bf \blue 命题}：若对任意$x\in \left[e^{-2}, \infty\right)$均有$a \ln x + \sqrt{1+x}\le \frac{\sqrt{x}}{2a}$，求实参量$a$的取值范围.
+
+  \skipline
+  
+  {\bf \blue 菜鸡解答(黄志琦提供）}：
+
+  令$x=1$得到必要条件$0<a\le \frac{\sqrt{2}}{4}$. 下面证明它也是充分条件：
+
+  首先，  记方程$\mu e^\mu = 2$的解为$\mu$， 利用$\mu e^\mu$的单调性容易估算出$0.8<\mu<1$.
+  
+  做变量替换$x=e^{-2t}$，问题转化为证明对$t\le 1, 0<a\le \frac{\sqrt{2}}{4}$，恒有
+  $$g(t, a) =   \frac{e^{-t}}{2a} + 2at  - \sqrt{1+e^{-2t}}\ge 0.$$
+  对$t$的取值分两种情况进行讨论：
+
+  (1) $\mu \le t \le 1$, 这时有$te^t\ge 2$.
+
+  简单地运用均值不等式(以及$\frac{1}{2}te^{-t}\ge e^{-2t}$)，有：
+   $$g(t,a)\ge 2\sqrt{te^{-t}} - \sqrt{1+e^{-2t}}\ge \sqrt{\frac{7}{2}te^{-t}+e^{-2t}} - \sqrt{1+e^{-2t}}  $$
+  注意到$te^{-t}$在$ 0\le t\le 1$内是单调上升函数，就有$\frac{7}{2}te^{-t}\ge \frac{7}{2}\mu e^{-\mu} = \frac{7}{4}\mu^2 > 1$. 搞定。
+
+  
+  (2) $t<\mu$，这时有 $te^t<2$.
+
+  $$\frac{\partial g}{\partial a} = -\frac{e^{-t}}{2a^2}+2t < 4e^{-t}-\frac{e^{-t}}{2a^2}  \le 0. $$
+  所以$g$随着$a$增大而减小，也就是只要证明
+  $$h(t)\equiv g(t, \frac{\sqrt{2}}{4}) = \sqrt{2}e^{-t} + \frac{t}{\sqrt{2}} - \sqrt{1+e^{-2t}}\ge 0$$
+  就可以了。
+
+  在所考虑范围$(-\infty, \mu)$的两个端点处有 $h(-\infty)>0$ 和 $h(\mu) = \sqrt{2}\mu -\sqrt{1+\frac{\mu^2}{4}}> \sqrt{2}\times 0.8 - \sqrt{1+\frac{1}{4}} > 0.$ 所以只要检查$h$在$(-\infty, \mu)$内的极小值点就可以了。 为此，令$h'(t) =0$并化简得到：
+  $$ u (u^3 - u- 2) = 0, \ -1<u<1,$$
+  其中$u\equiv e^t - 1$. 解$u=0$(即$t=0$)给出的是一个$h(t)$的极小值点，且满足$h(0)=0$. 容易检验$u^3-u-2$只有一个实数根（因为显然它的实数根必须是正数，且所有根之和为零）。也就是说$h(t)$除了$t=0$之外至多只有一个极值点。因为$t=0$是$h(t)$的极小值点，即使存在另一个极值点也只能是极大值点，并不需要检验，故证毕。
+
+  
+\ech
+\end{document}

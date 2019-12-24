@@ -1,0 +1,93 @@
+\documentclass[CJK]{beamer}
+\input{macros.tex}
+\input{titlepage.tex}
+  \date{}
+  \begin{document}
+  \bch
+\tpage{31}{一维无界空间中的波动问题}
+
+\begin{frame}
+  \frametitle{本讲内容}
+  
+\tableofcontents
+
+\end{frame}
+
+\section{Review and Practices}
+
+\thinkb{估算
+  $$ \prod_{k=0}^{10^{16}} \left(1+\frac{3}{4k+1}\right).$$
+  保留2位有效数。
+}
+
+\begin{frame}
+  \frametitle{$\delta$ 函数的二重积分}
+  计算
+  $$\int_{-\infty}^\infty\int_{-\infty}^\infty \frac{\delta(x^2-y)}{y^3+1} dxdy.$$
+\end{frame}
+
+\section{Green's Function: Wave Equation}
+
+\begin{frame}
+  \frametitle{一维瞬时波源（位移）}
+  考虑一维波动方程的瞬时点源问题
+  $$\frac{\partial^2u}{\partial t^2}-a^2\frac{\partial^2u }{\partial x^2} = 0, $$
+  $$\left. u\right\vert_{t=0} = \delta(x-x_0),$$
+  $$\left. \frac{\partial u}{\partial t}\right\vert_{t=0} = 0.$$  
+  利用一维无边界波动方程的通解，得到
+  $$ u = G_s(x,t;x_0) = \frac{1}{2}\left[\delta(x-at-x_0) + \delta(x+at-x_0)\right].$$
+  也就是说脉冲会分成相等的两份以速度$a$向左右两边传播。
+\end{frame}
+
+\begin{frame}
+  \frametitle{一维瞬时波源（速度）}
+  如果脉冲是初始速度
+  $$\frac{\partial^2u}{\partial t^2}-a^2\frac{\partial^2u }{\partial x^2} = 0, $$
+  $$\left. u\right\vert_{t=0} = 0,$$
+  $$\left. \frac{\partial u}{\partial t}\right\vert_{t=0} = \delta(x-x_0).$$  
+  仍然利用一维无边界波动方程的通解，得到
+  $$ u = G_v(x,t;x_0) = \frac{1}{2a}\left[h(x+at-x_0) - h(x-at-x_0)\right].$$
+  这里的 $h$ 是单位跃阶函数。
+
+
+\end{frame}
+
+\begin{frame}
+  \frametitle{一维瞬时波源（速度）}
+  
+  $$G_v(x,t;x_0) = \frac{1}{2a}\left[h(x+at-x_0) - h(x-at-x_0)\right].$$
+  如下图所示：
+  
+  \addfig{3}{wave_green.png}
+
+  这揭示一个很有意思的现象：一维的瞬时速度源可以导致整个因果关联区域（即波能传播到的地方）都有信号。
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{一维无界波动的初值问题一般解}
+  知道了初始位移和初始速度分别对应的格林函数 $G_s, G_v$，那么一般的初值问题就可以用格林函数来搞定，不失一般性，考虑：
+  $$\frac{\partial^2u}{\partial t^2}-a^2\nabla^2 u = 0, $$
+  $$\left. u\right\vert_{t=0} = \phi(x),$$
+  $$\left. \frac{\partial u}{\partial t}\right\vert_{t=0} = \delta(\mathbf{x}-\mathbf{x}_0) = \psi(x).$$  
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{一维无界波动的一般初值问题的解}
+  直接写出答案
+  $$ u = \int G_s(x,t;x_0) \phi(x_0)dx_0 + \int G_v(x,t;x_0) \psi(x_0)dx_0.$$
+  并直接计算得到
+  $$ u = \frac{1}{2}\left[\phi(x-at)+\phi(x+at)\right] + \frac{1}{2a}\int_{x-at}^{x+at}\psi(x_0)dx_0.$$
+\end{frame}
+
+
+\thinka{请用一维无界波动方程的通解直接求解上述一般初值问题的解。}
+
+\begin{frame}
+  \frametitle{高维的情况}
+  一维的解其实可以直接用通解获得。但在高维的情况，通解并不存在，格林函数方法就非常重要了。我们留到以后再详细讨论。
+\end{frame}
+
+\ech
+\end{document}

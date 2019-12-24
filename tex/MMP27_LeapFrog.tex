@@ -1,0 +1,313 @@
+\documentclass[CJK]{beamer}
+\input{macros.tex}
+\input{titlepage.tex}
+  \date{}
+  \begin{document}
+  \bch
+\tpage{27}{哈密顿量和蛙跳法}
+
+\begin{frame}
+\frametitle{本讲内容}
+\tableofcontents
+\end{frame}
+
+\section{Review and Practices}
+
+\begin{frame}
+  \frametitle{看看多少人已经下车了}
+
+  \addfig{0.7}{think1.jpg}
+  
+  一个半径为 $R$ 的实心均匀球，现在调控球面上的温度为：
+$$T(r,\theta,\phi)|_{r=R} = T_0+T_1\,\mathrm{Re}\left[Y_{7,4}(\theta,\phi)\right].$$
+其中 $\mathrm{Re}$表示取实部，$r,\theta,\phi$ 是以球心为原点建立的球坐标系, $T_0,T_1$ 为常量。
+
+则球内部的温度 $T(r, \theta,\phi)$ ($r < R$) 是怎样的？
+\end{frame}
+
+
+
+\begin{frame}
+  \frametitle{看看多少人已经下车了}
+  \addfig{0.7}{think2.jpg}
+
+  大致估算
+  $$\int_{10!}^{1000!}\left[N_{100}(x)\right]^2 dx $$
+  的值。
+  
+\end{frame}
+
+\begin{frame}
+  \frametitle{看看多少人已经下车了}
+  \addfig{0.4}{think0.jpg}
+  
+  如果 $\hat{A}$ 是算符，定义
+  $$ e^{\hat{A}} = \sum_{n=0}^\infty \frac{1}{n!}\hat{A}^n.$$
+
+  那么，如果有两个算符 $\hat{A},\hat{B}$，
+  $$ e^{\hat{A}+\hat{B}} =  e^{\hat{A}}  e^{\hat{B}}$$
+  一般还成立吗？如果已知这两个算符对易呢？
+  
+  
+\end{frame}
+
+
+\section{Leapfrog Method}
+
+\begin{frame}
+  \frametitle{哈密顿方程}
+  设 $q$ 为广义坐标， $p$为广义动量。
+  
+  如果已知哈密顿量 $H(p, q)$， 则$(x,p)$ 的时间导数由哈密顿方程给出：
+
+  $$\dot p = -\frac{\partial H}{\partial q}$$    
+  $$\dot q = \frac{\partial H}{\partial p}$$
+
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{练练手，熟悉一下}
+
+  \addfig{0.7}{think2.jpg}
+  
+  设 $H = \frac{1}{2}p^2$，写出哈密顿方程。
+
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{练练手，熟悉一下}
+
+  \addfig{0.7}{think3.jpg}
+  
+  设 $H = \frac{1}{2}q^2$，写出哈密顿方程。
+
+\end{frame}
+
+\begin{frame}
+  \frametitle{ 烧脑的观点来了}
+  我们可以把任意二元函数 $H(\cdot, \cdot)$等价地看成一个 $(p, q)$ 到 $(\dot p, \dot q)$ 的映射规则:
+  
+  $$\dot p = -\frac{\partial H(p,q)}{\partial q}$$
+  $$\dot q = \frac{\partial H(p,q)}{\partial p}$$
+
+  抽象地写就是
+
+  $$\begin{pmatrix}
+    \dot p \\
+    \dot q
+  \end{pmatrix}
+  = \hat{H} \begin{pmatrix}
+     p \\
+     q
+  \end{pmatrix}
+  $$
+  这里的 $\hat{H}$ 就是一个“操作规则”， 或者说，一个算符。这个算符把函数 $(p, q)$映射为了函数 $(\dot p, \dot q)$。注意一般来说这个算符是非线性的。
+  
+\end{frame}
+
+\begin{frame}
+  \frametitle{抽象解}
+  虽然 $\hat{H}$ 这个算符一般是非线性的，已经复杂到无法用矩阵来描述了，但这不妨碍我们抽象地把
+
+  $$\begin{pmatrix}
+    \dot p \\
+    \dot q
+  \end{pmatrix}
+  = \hat{H} \begin{pmatrix}
+     p \\
+     q
+  \end{pmatrix}  $$
+  
+  进行“积分”，得到
+  
+  $$\begin{pmatrix}
+    p(t) \\
+    q(t)
+  \end{pmatrix}
+  = e^{\hat{H}t} \begin{pmatrix}
+     p(0) \\
+     q(0)
+  \end{pmatrix}  $$
+
+  这里的
+  $$e^{\hat{H}t}:=\sum_{n=0}^\infty \frac{1}{n!}\hat{H}^nt^n.$$  
+\end{frame}
+
+\begin{frame}
+  \frametitle{例子：谐振子}
+  一维谐振子的哈密顿量可以写成：
+  $$ H(p, q) =   \frac{1}{2} p^2 + \frac{1}{2} q^2$$
+  其中 $q$ 是位移，$p$ 是动量。
+  
+  (请自行根据量纲补充合适的单位，这些不是我们讨论的重点)
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{例子：谐振子}
+  哈密顿方程为：
+  $$\dot p = -q $$
+  $$\dot q = p $$
+
+  简单起见，假设初始条件为  $p(0)= 0$, $q(0)=1$。我们想求出以后的 $p(t), q(t)$是如何演化的。
+
+  \skipline
+  
+  假装我们的高数已经下车，但是C语言刚刚上车。准备用数值方法求解这个问题。
+
+  \skipline
+  
+
+  (我其实主要是针对对没有解析解的情况，只是为了说明问题方便而用你们熟悉的谐振子作为例子)  
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{C语言来了}
+
+  int N = 10000;
+  
+  double dt = 0.01,  p = 0, q = 1;
+
+  for(int i = 0; i $<$ N; i++)\{
+    
+  \  p = p - q * dt;
+
+  \  q = q + p * dt;
+  
+  \}
+
+  printf("\%f \%f  \%f$\backslash$n", N*dt, p, q);
+
+  \skiplines
+  
+  实测输出结果：
+
+  100.000000 0.506013  0.865060
+  
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{稍稍换一下次序}
+
+  int N = 10000;
+  
+  double dt = 0.01,  p = 0, q = 1;
+
+  for(int i = 0; i $<$ N; i++)\{    
+
+  \  q = q + p * dt;
+
+  \  p = p - q * dt;  
+  
+  \}
+
+  printf("\%f \%f  \%f$\backslash$n", N*dt, p, q);
+
+  \skiplines
+
+  实测输出结果：
+
+  100.000000 0.506013  0.860000
+  
+\end{frame}
+
+
+\begin{frame}
+
+  \addfig{0.7}{think.jpg}
+
+  前面两段代码为何会给出不同的结果？
+  
+\end{frame}
+
+
+\begin{frame}
+
+  \frametitle{蛙跳法}
+
+  跟严格解 $p(100) = -\sin 100 = 0.5063656$, $q(100) = \cos(100)= 0.86231887$ 做比较，我们发现结果还算是相当不错的。
+
+  \skiplines
+  
+  这种用哈密顿方程交替更新 $p,q$ 的方法叫做“蛙跳法” (leapfrog method)。它通常能够用很低的内存消耗和算法复杂度给出较好近似结果。
+
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{思考题}
+
+  \addfig{0.7}{think1.jpg}
+  
+  用级数展开大法证明：
+  $$ e^{(\hat{H}_1+\hat{H}_2) \Delta t} \approx e^{\frac{\hat{H}_1\Delta t}{2}} e^{\hat{H}_2\Delta t}  e^{\frac{\hat{H}_1\Delta t}{2}} $$
+  误差至多是 $O(\Delta t^3)$ 的量级。
+
+  （推导时要注意 $\hat{H}_1, \hat{H}_2$ 一般是不对易的，即 $\hat{H}_1\hat{H}_2\ne \hat{H}_2\hat{H}_1$）
+\end{frame}
+
+\begin{frame}
+  \frametitle{蛙跳法的原理}
+
+  \addfig{0.7}{think2.jpg}
+  
+  把谐振子的哈密顿量拆成两部分的和 $H=H_1+H_2$，其中 $H_1=\frac{1}{2}p^2$, $H_2=\frac{1}{2}q^2$。然后利用前面的近似
+  $$ e^{(\hat{H}_1+\hat{H}_2) \Delta t} \approx e^{\frac{\hat{H}_1\Delta t}{2}} e^{\hat{H}_2\Delta t}  e^{\frac{\hat{H}_1\Delta t}{2}} $$
+  求解谐振子的 $(p,q)$ 的演化。
+
+  \skiplines
+  
+  如果取 $H_2=\frac{1}{2}p^2$, $H_1=\frac{1}{2}q^2$，结果会怎样？
+
+  \skiplines
+  
+  （注意：用$H_1$和 $H_2$单独作为哈密顿量时，程序其实在进行严格求解。也就是误差完全来自于上述算符等式的 $O(\Delta t^3)$误差。）
+\end{frame}
+
+\begin{frame}
+  \frametitle{蛙跳法的原理}
+  当你把很多步连起来的时候，
+  $$ e^{(\hat{H}_1+\hat{H}_2) \Delta t} e^{(\hat{H}_1+\hat{H}_2) \Delta t}e^{(\hat{H}_1+\hat{H}_2) \Delta t}\ldots \approx e^{\frac{\hat{H}_1\Delta t}{2}} e^{\hat{H}_2\Delta t}  e^{\hat{H}_1\Delta t} e^{\hat{H}_2\Delta t} e^{\hat{H}_1\Delta t} \ldots $$
+
+  这就是数值计算中的蛙跳法。
+  
+\end{frame}
+
+\begin{frame}
+  \frametitle{思考题}
+
+  \addfig{0.7}{think1.jpg}
+
+  你能把前面的程序加以简单改进，使得在几乎完全相同的计算量下，结果的精度得以大大改善吗？
+  
+\end{frame}
+
+\begin{frame}
+  \frametitle{最后：请欣赏下6阶3重蛙跳}
+{\small    
+\begin{eqnarray}
+e^{(\hat{A}+\hat{B}+\hat{C})dt} &=& e^{c_3\hat{A}dt/2}e^{c_3\hat{B}dt/2}e^{c_3\hat{C}dt}e^{c_3\hat{B}dt/2}e^{(c_3+c_2)\hat{A}dt/2}\nonumber \\
+&& \times \, e^{c_2\hat{B}dt/2}e^{c_2\hat{C}dt}e^{c_2\hat{B}dt/2}e^{(c_2+c_1)\hat{A}dt/2} \nonumber \\
+&& \times \, e^{c_1\hat{B}dt/2}e^{c_1\hat{C}dt}e^{c_1\hat{B}dt/2}e^{(c_1+c_0)\hat{A}dt/2} \nonumber \\
+&& \times \, e^{c_0\hat{B}dt/2}e^{c_0\hat{C}dt}e^{c_0\hat{B}dt/2}e^{(c_0+c_1)\hat{A}dt/2} \nonumber \\
+&& \times \, e^{c_1\hat{B}dt/2}e^{c_1\hat{C}dt}e^{c_1\hat{B}dt/2}e^{(c_1+c_2)\hat{A}dt/2} \nonumber \\
+&& \times \, e^{c_2\hat{B}dt/2}e^{c_2\hat{C}dt}e^{c_2\hat{B}dt/2}e^{(c_2+c_3)\hat{A}dt/2} \nonumber \\
+&& \times \, e^{c_3\hat{B}dt/2}e^{c_3\hat{C}dt}e^{c_3\hat{B}dt/2}e^{c_3\hat{A}dt/2} \nonumber \\
+&& + O(dt^7)\ , \nonumber
+\end{eqnarray}
+\begin{eqnarray}
+c_1 &=& -1.17767998417887\ldots \ ,\nonumber \\
+c_2 &=& 0.235573213359357\ldots \ ,\nonumber \\
+c_3 &=& 0.784513610477560\ldots \ ,\nonumber \\
+c_0 &=& 1-2(c_1+c_2+c_3) \ . \nonumber
+\end{eqnarray}
+}
+\end{frame}
+
+
+\ech
+\end{document}

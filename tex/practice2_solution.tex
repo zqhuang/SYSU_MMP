@@ -1,0 +1,187 @@
+\documentclass[12pt,CJK]{article}
+\usepackage{geometry}
+\input{reduced_macros.tex}
+\geometry{tmargin=0.3in, bmargin=0.5in, lmargin=0.5in, rmargin=0.9in, nohead, nofoot}
+\def\mark#1{{\color{blue} (#1分)}}
+\renewcommand{\thepage}{}
+\begin{document}
+\bch
+{\large 数理方法 课堂小测II}
+
+{\vskip 0.25in}
+
+姓名 ....................... {\hskip 0.5in}    学号 .......................{\hskip 0.5in}  分数 ...................
+
+{\vskip 0.1in}
+
+\bitem
+\item[(一)]{选择题，每题3分，共45分。
+
+  \bitem
+
+\item[(1)]{ $\ii^\ii$ 的所有可能取值为 \brans{D}
+
+  \optlist{$-1$}{$\pm 1$}{$e^{-\frac{\pi}{2}}$}{$e^{-\left(2n+\frac{1}{2}\right)\pi},\ n\in Z$}
+}
+
+\item[(2)]{在幅角连续变化的意义下，$\sqrt{z}$ 的原函数为 (忽略不写积分常数) \brans{A}
+
+  \optlist{$\frac{2}{3}z^{\frac{3}{2}}$}{$\frac{1}{2\sqrt{z}}$}{$\frac{4}{3}z^{\frac{3}{4}}$}{$\frac{1}{2}\ln z$}}
+  
+
+\item[(3)]{方程 $z^5 + z^4  + z^3+ 2=0$ 的所有复数根的倒数之和为 \brans{A}
+
+  \optlist{$0$}{$1$}{$-1$}{$-2$}
+
+  {\small \red 直接利用零次项和一次项的根和系数关系；或者令 $u=\frac{1}{z}$，分析$u$的方程的所有根的和.}
+}
+
+
+\item[(4)]{下列哪一个复数在单位圆 $|z|=1$ 的内部 \brans{A}
+
+  \optlist{$\frac{5}{6} + \ii\cos 1 $}{$\frac{1}{2} + \ii \cos\frac{1}{2}$}{$\cos 2+ \ii \sin 2$}{$\frac{1}{2}-\ii$}
+
+  {\small \red 利用 $\frac{1}{2}>\sin\frac{1}{2}$排除B；或利用 $\frac{5}{6} = 1-\frac{1}{6} < 1-\frac{1}{6}+\frac{1}{5!}-\frac{1}{7!}+\ldots = \sin 1$ 确定A正确}
+  }
+  
+  
+\item[(5)]{$z_1,z_2,z_3,z_4$ 是四个互不相同的复数，且 $\frac{(z_1-z_2)(z_3-z_4)}{(z_2-z_3)(z_4-z_1)}$ 为实数。那么 $z_1,z_2,z_3,z_4$ 在复平面上对应的四个点 \brans{D}
+
+  \optlist{构成平行四边形}{共圆}{构成平行四边形或共线}{共圆或共线}
+
+  {\small \red 画图，利用商的幅角的几何意义以及圆的几何性质。}
+}
+
+\item[(6)]{ $\frac{1}{(z+1)(z+2)}$ 在环形区域 $1<|z|<2$ 内Laurent展开的 $\frac{1}{z^2}$ 的系数为 \brans{C}
+
+    \optlist{$0$}{$1$}{$-1$}{$-3$}}
+  
+\item[(7)]{$\frac{\sin^2 z}{\left(z-\pi\right)^5}$ 在 $z=\pi$ 处的留数等于 \brans{D}
+
+  \optlist{$0$}{$\frac{2}{3}$}{$-\frac{2}{3}$}{$-\frac{1}{3}$}
+
+
+  {\small \red 作变量替换 $t=z-\pi$并对分子进行展开；或者把$z=\pi$当成5阶极点用去极点的留数公式(虽然它实质上3阶极点，但课上讲过这样操作没有bug)。}
+}
+
+
+\item[(8)]{下列哪个多值函数在区域 $1<|z|<2$ 内可以取单值分枝成为解析函数 \brans{D}
+
+    \optlist{$\ln\frac{z}{z-2}$}{$\sqrt{z(z-2)}$}{$\ln{\frac{z-1}{z-2}}$}{$\sqrt{z(z-1)(z-2)}$}}
+
+\item[(9)]{ 考虑以原点为中心的一段小圆弧上的积分。当圆弧半径趋向于零时，下列哪个函数的积分一定趋向于零？  \brans{C}
+
+  \optlist{$\frac{e^z}{z}$}{$\frac{1}{z^2}$}{$\frac{1}{\sqrt{z}}$的任意单值分枝}{$\frac{\ln z}{z}$的任意单值分枝}
+
+{\small \red $\frac{1}{\sqrt{z}}$的原函数为 $2\sqrt{z}$，其变化量趋向于零。一般地，只有$z^\alpha$ ($\alpha>-1$)或者一个有界函数的小圆弧积分才能直接不加计算地忽略。}
+}
+
+\item[(10)]{$z=0$是下列哪一个函数的本性奇点（即邻域Laurent展开有无穷多个负次幂项)? \brans{D}
+
+    \optlist{$\frac{z}{1-\cos z}$}{$\frac{1}{z^{1000}}$}{$\frac{1}{e^z-1}$}{$e^{\frac{1}{z}}$}
+
+    {\red\small 选项D可以直接展开验证。A，C均满足$\lim_{z\rightarrow 0} z f(z)$有限，都是一阶极点。}
+  }
+  
+\item[(11)]{ 记 $f(x)=e^{-\frac{x^4}{2}}$ 的傅立叶变换为 $F(k)$ ，则积分$\int_{-\infty}^{\infty} |F(k)|^2 dk$等于 \brans{A}
+
+  \optlist{$\frac{1}{2}\sfgamma{\frac{1}{4}}$ }{$\frac{1}{2}\sfgamma{\frac{1}{3}}$}{$\frac{1}{2}\sqrt{\pi}$}{$\frac{1}{2}$}
+
+{\small \red 利用傅立叶变换保持内积不变的性质$\int_{-\infty}^{\infty} |F(k)|^2 dk = \int_{-\infty}^\infty |f(x)|^2dx$.}
+}
+  
+\item[(12)]{ 下列哪个数最大？ \brans{A}
+
+  \optlist{$\sfgamma{\frac{1}{5}}$}{$\sfgamma{\frac{6}{5}}$}{$\sfgamma{\frac{11}{5}}$}{$\sfgamma{\frac{16}{5}}$}
+
+  {\small \red 利用递推公式算出选项之间的比值。}
+}
+
+\item[(13)]{随机抛6000次骰子，恰好 1，2，3，4，5，6 每个面向上都是1000次的概率和下列哪个数量级最接近？ \brans{C}
+
+  \optlist{$10^{-3}$}{$10^{-6}$}{$10^{-9}$}{$10^{-12}$}
+
+{\small \red 对$P = \frac{\frac{6000!}{(1000!)^6}}{6^{6000}}$用Stirling公式.}
+}
+
+\item[(14)]{三维直角坐标系中，曲面$x^4+y^4+z^4=1$包围的体积为  \brans{D}
+
+  \optlist{$\frac{\sfgamma{\frac{1}{4}}}{6\sqrt{2}\pi}$}{$\frac{\sfgamma{\frac{1}{4}}^2}{6\sqrt{2}\pi}$}{$\frac{\sfgamma{\frac{1}{4}}^3}{6\sqrt{2}\pi}$}{$\frac{\sfgamma{\frac{1}{4}}^4}{6\sqrt{2}\pi}$}
+
+{\small \red 利用 $n$ 维限和积分公式以及互余宗量关系 $\sfgamma{\frac{1}{4}}\sfgamma{\frac{3}{4}} = \frac{\pi}{\sin\frac{\pi}{4}}$. }
+}
+
+\item[(15)]{已知全平面上解析的函数满足 $f(0) = 1$， $ |f(z)| > 2|z|-1 $。那么，下列哪个区域内一定有$f(z)$的零点？ \brans{A}
+
+  \optlist{$|z|<1$}{$|z|>1$}{$|2z-1|<1$}{$|2z-1|>1$}
+
+{\red\small 假设在单位圆内无零点，取解析函数 $g(z)=\frac{1}{f(z)}$，对$g(z)$运用最大模原理得到矛盾。}
+}
+  
+  \eitem
+  }
+\item[(二)]{ 填空题，每题5分，共40分。
+
+
+  \bitem
+\item[(1)]{复变函数 $f(z)= ze^z$ 的原函数为 \ans{$(z-1)e^z+c$}.}      
+\item[(2)]{近似到小数点后两位 $ \cos \frac{\ii}{10} \approx$ \ans{$1.01$} .}
+\item[(3)]{逆时针方向沿着单位圆的围道积分$\oint_{|z|=1}\frac{1}{(10z^{6}-1)(z-2)}\,dz$等于 \ans{$-\frac{2\pi\ii}{639}$}.}
+\item[(4)]{规定在 $z=1$ 处 $z$ 的幅角为零，且幅角连续变化。逆时针方向沿着上半个单位圆（从$1$到$-1$）的积分$\int_{|z|=1, \mathrm{Im}(z)\ge 0}\, \ln z \,dz = $ \ans{$2-\ii \pi$}.}
+\item[(5)]{ 函数 $f(t) = \delta(t^2-1)$ 的拉普拉斯变换为 \ans{$\frac{e^{-p}}{2}$}.
+
+{\small \red 注意拉普拉斯变换积分范围是$(0,\infty)$.}
+}
+\item[(6)]{记 $ F(k) = \int_{-\infty}^\infty \frac{\cos{\left[k(x^2-1)\right]}}{1+x^4} dx $，则 $ \int_{-\infty}^\infty F(k)\, dk = $ \ans{$\pi$} .
+
+{\small \red 交换积分次序，并利用 $\int_{-\infty}^\infty e^{\ii k(x^2-1)}dk  = 2\pi \delta(x^2-1)$.}
+}
+\item[(7)]{$f(z) = \frac{z^8}{z^9+z^8+1}$的所有孤立奇点处的留数之和等于 \ans{$1$}.
+
+{\red\small 在大圆上积分趋向于 $\oint \frac{dz}{z} = 2\pi \ii$，所以内部留数之和为1。}
+}
+\item[(8)]{实积分 $\int_0^{\frac{\pi}{2}} \ln (\sin x) \, dx  = $ \ans{$-\frac{\pi}{2}\ln 2$} .
+
+  {\red\small 令$I=\int_0^{\frac{\pi}{2}} \ln(\sin x)dx$，根据对称性$I=\int_0^{\frac{\pi}{2}} \ln(\cos x)dx$。两式相加并利用倍角公式。}
+}
+  \eitem
+}
+
+\item[(三)]{函数$f(t)$满足微分方程
+  $$f'' + 2f' + f =  2\cos t $$
+  和初始条件
+  $$f(0) = 1, f'(0) = -1. $$
+  \bitem
+\item[(1)]{设$f(t)$的拉普拉斯变换为$F(p)$，写出$F(p)$满足的代数方程，并解出$F(p)$； (10分)}
+\item[(2)]{把$F(p)$逆变换求出$f(t)$。 (5分)
+
+
+  \skipline
+
+  {\blue
+    \bitem
+    \item[(1)]{
+    $$(p^2F-p+1) + 2(pF-1) + F = \frac{2p}{p^2+1} ,$$
+    解出
+    $$F(p)=\frac{1}{p+1}+ \frac{2p}{(p^2+1)(p+1)^2}.$$}
+    \item[(2)]{把$F(p)$拆写为
+      $$F(p)=\frac{1}{p+1}+ \frac{1}{p^2+1}-\frac{1}{(p+1)^2}.$$
+      逐项求逆变换，得到
+      $$f(t) = e^{-t} + \sin t - te^{-t} $$
+
+    }
+      \eitem
+
+    
+
+    }
+
+}  
+  \eitem
+}  
+  
+\eitem
+
+
+\ech
+\end{document}

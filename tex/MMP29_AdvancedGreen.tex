@@ -1,0 +1,191 @@
+\documentclass[CJK]{beamer}
+\input{macros.tex}
+\input{titlepage.tex}
+  \date{}
+  \begin{document}
+  \bch
+\tpage{29}{格林函数进阶知识}
+
+\begin{frame}
+\frametitle{本讲内容}
+
+\tableofcontents
+
+\end{frame}
+
+\section{Review and Practices}
+
+\thinka{
+  已知正交曲面坐标系$(X,Y,Z)$中的长度元的表达式：
+  $$ dL =\sqrt{\frac{dX^2+dY^2+ X^2Y^2 dZ^2}{1+X^2+Y^2}}.$$
+  那么体积元的表达式是什么？}
+
+\thinka{计算积分 $$\int_{-\infty}^\infty \delta(x^4-1)x^2dx.$$}
+
+\thinkb{长度为$0.1\mathrm{m}$的均匀铝棒一端和温度为$300\mathrm{K}$的热库接触（棒的其余各处都孤立绝热），并在 $t < 0$ 时和热库处于热平衡。从 $t=0$ 时刻开始，在棒的另一端持续地沿着棒地方向注入大小为 $j = 2.3\times 10^4\mathrm{W/m^2}$ 的热流。经过10分钟后，棒的中点的温度为多少K？已知铝的导热系数为 $230\mathrm{W\,m^{-1}K^{-1}}$，比热为 $900 \mathrm{J\,kg^{-1}K^{-1}}$, 密度为 $2700\mathrm{kg\,m^{-3}}$。}
+
+\thinkc{证明 Wallis 公式 $$\pi= \lim_{n\rightarrow\infty}\frac{1}{n}\left(\frac{(2n)!!}{(2n-1)!!}\right)^2 $$
+  其中 $m!! \equiv m(m-2)(m-4)\ldots$ 即从 $m$ 开始，递减量为 $2$ 的连乘积，直到乘到 $2$ 或 $1$ 为止。例如 $5!!=5\times 3\times 1 = 15$， $6!! = 6\times 4\times 2 = 48$.}
+
+
+\thinkb{计算不定积分$$ \int x^4 J_1(x) dx$$}
+
+\begin{frame}
+  \frametitle{活跃一下气氛（$7\star$)}
+  对正整数$n$定义
+$$f(n) = \sum_{k=1}^n\tan^2\frac{k\pi}{2n+1}$$
+计算无穷级数和
+$$\sum_{n=1}^\infty \frac{1}{f(n)}. $$
+
+\end{frame}
+
+\section{Green's Function: Heat Equation}
+
+\secpage{格林函数进阶}{持续热源}
+
+\begin{frame}
+  \frametitle{瞬时点热源}
+  
+  我们讨论过一维无界区域的瞬时点热源的扩散问题：
+  
+  $$\frac{\partial u}{\partial t} - a\frac{\partial^2 u}{\partial x^2}=0.$$
+  $$\left. u \right\vert_{t=0}= \delta(x-x_0).$$
+
+  这是个格林函数问题，容易看出其解为：
+  $$  G_{\rm 1D}(t, x; x_0) = \frac{1}{2\pi}\int_{-\infty}^\infty e^{ik(x-x_0)-ak^2t}dk = \frac{1}{\sqrt{4\pi at}} e^{-\frac{(x-x_0)^2}{4at}} . $$
+
+  (它很容易推广到高维空间： $$G_{\rm 2D}(t, x,y;x_0,y_0) = G_{\rm 1D}(t, x; x_0)G_{\rm 1D}(t, y; y_0)$$
+  $$G_{\rm 3D}(t, x,y,z;x_0,y_0,z_0) = G_{\rm 1D}(t, x; x_0)G_{\rm 1D}(t, y; y_0)G_{\rm 1D}(t, z; z_0)$$
+  等)
+  
+\end{frame}
+
+\begin{frame}
+  \frametitle{时间平移}
+  如果瞬时点热源是$t=\tau$时刻放的，
+  $$\frac{\partial u}{\partial t} - a\frac{\partial^2 u}{\partial x^2}=0.$$
+  $$\left. u \right\vert_{t=\tau}= \delta(x-x_0).$$
+  则只需要做一下时间平移：
+  $$ u  = \frac{1}{\sqrt{4\pi a(t-\tau)}} e^{-\frac{(x-x_0)^2}{4a(t-\tau)}},\ \  (t>\tau).$$
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{持续点热源}
+  如果有持续的点热源，
+  $$\frac{\partial u}{\partial t} - a\frac{\partial^2 u}{\partial x^2}=\delta(x-x_0).$$
+  $$\left. u \right\vert_{t=0}=0.$$
+  这可以看成 $\tau=0$ 时刻开始每隔 $d\tau$ 时间就放一个点热源 $\delta(x-x_0)d\tau$。在$t$时刻，只有$0\le \tau\le t$时刻的热源才有贡献。因此问题的解为：
+  $$ u(x,t) = \int_0^t d\tau  \frac{1}{\sqrt{4\pi a(t-\tau)}} e^{-\frac{(x-x_0)^2}{4a(t-\tau)}}.$$
+  把$t-\tau$换为$\tau$，
+  $$ u(x,t) = \int_0^t d\tau  \frac{1}{\sqrt{4\pi a\tau}} e^{-\frac{(x-x_0)^2}{4a\tau}}.$$
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{检验解}
+  我们来检验一下这个解——
+  
+  积分号下求导
+  $$\frac{\partial u}{\partial t}= \frac{1}{\sqrt{4\pi at}} e^{-\frac{(x-x_0)^2}{4at}}.$$
+  $$a\frac{\partial^2 u}{\partial x^2} = \int_0^t d\tau  \left[\frac{(x-x_0)^2}{4a\tau^2}-\frac{1}{2\tau} \right]\frac{1}{\sqrt{4\pi a\tau}} e^{-\frac{(x-x_0)^2}{4a\tau}} = \left.\frac{1}{\sqrt{4\pi a\tau}} e^{-\frac{(x-x_0)^2}{4a\tau}} \right\vert_0^t.$$
+  于是有
+  $$\frac{\partial u}{\partial t} - a\frac{\partial^2 u}{\partial x^2}= \lim_{\tau\rightarrow 0^+}\frac{1}{\sqrt{4\pi a\tau}} e^{-\frac{(x-x_0)^2}{4a\tau}} = \delta(x-x_0).$$
+\end{frame}
+
+
+
+\begin{frame}
+  \frametitle{持续点热源的高维情况}
+  很容易看出，二维和三维空间的解为
+  $$ u(x,t) = \int_0^t d\tau  \frac{1}{\sqrt{4\pi a(t-\tau)}} e^{-\frac{(x-x_0)^2-(y-y_0)^2}{4a(t-\tau)}}.$$
+  $$ u(x,t) = \int_0^t d\tau  \frac{1}{\sqrt{4\pi a(t-\tau)}} e^{-\frac{(x-x_0)^2-(y-y_0)^2-(z-z_0)^2}{4a(t-\tau)}}.$$
+  
+\end{frame}
+
+
+\section{Green's Function: Helmholtz Equation}
+\secpage{格林函数进阶}{三维无界空间的Helmholtz方程}
+
+
+\begin{frame}
+ \frametitle{自由Helmholtz方程}
+  谐函数满足的方程
+  $$ \nabla^2f + k^2 f = 0. $$
+  也叫自由Helmholtz方程。当 $k=0$，就是无源的泊松方程。
+\end{frame}
+
+\begin{frame}
+ \frametitle{有点源的Helmholtz方程}
+  $$ \nabla^2f + k^2 f = \delta(\mathbf{x}-\mathbf{x_0}) $$
+ 是有点源的Helmholtz方程。当 $k=0$，就是有点源的泊松方程。
+
+ \skiplines
+ 
+ 我们重点讨论物理中常见的三维情况。
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{三维空间$k=0$的情况}
+  当 $k=0$ 时，
+  $$ \nabla^2f  = \delta(\mathbf{x}-\mathbf{x_0}) $$
+  （在静电学的点电荷问题里，右边还要多乘个 $-\frac{q}{\epsilon_0}$.)
+
+    默认无穷远处的$f$趋向于零，就可以通过和静电学的结果比较，得到 $f$ 等于
+    $$ G(\mathbf{x};\mathbf{x}_0) = -\frac{1}{4\pi |\mathbf{x}-\mathbf{x}_0|} .$$
+    这就是三维无界空间的泊松方程的格林函数。
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{$k=0$的情况}
+  对有任意静态源的情况
+    $$ \nabla^2f  = s(\mathbf{x})$$
+  显然只需要把静态源分解为一系列的 $\delta$ 函数(相当于把连续电荷分布看成很多点电荷的集合)，
+  $$ s(\mathbf{x}) = \sum_{x_0} [d^3x_0 f(x_0)] \delta(x-x_0). $$
+  好吧还是写成你喜欢的积分形式
+  $$ s(\mathbf{x}) = \int d^3x_0 f(x_0) \delta(x-x_0). $$  
+\end{frame}
+
+\begin{frame}
+  \frametitle{$k=0$的情况}
+  问题的解就是把这些$\delta$源的解做完全相同的线性组合：
+  $$ f(\mathbf{x}) = \int d^3x_0f(x_0) G(\mathbf{x};\mathbf{x}_0) = -\int d^3x_0\frac{s(x_0)}{4\pi |\mathbf{x}-\mathbf{x}_0|}. $$
+  好吧，你已经认出来了，把 $s(\mathbf{x})$换成 $-\frac{\rho(\mathbf{x})}{\epsilon_0}$，这就是电磁学的静电势积分公式。
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{$k>0$的情况}
+  下面我们来讨论更有意思的 $k>0$ 的情况，在波动问题中，分离变量后常常出现这样的情况
+  $$ \nabla^2f + k^2 f = \delta(\mathbf{x}-\mathbf{x_0}) $$
+  我们以 $\mathbf{x_0}$ 为球心建立球坐标系，那么问题的解必然可以写成（挖掉球心的空间内的）谐函数的线性组合。又问题是各向同性的，我们可以直接写出
+  $$ f = a j_0(kr) + b n_0(kr) $$
+  的形式。
+\end{frame}
+
+\begin{frame}
+  \frametitle{$k>0$的情况}
+  利用球贝塞尔函数的具体形式
+  $$ j_0(kr) = \frac{\sin(kr)}{(kr)},\ n_0(kr) = \frac{\cos(kr)}{(kr)}$$
+  我们也可以把解写成
+
+  $$ f = C_1\frac{e^{ikr}}{kr} + C_2\frac{e^{-ikr}}{kr}. $$
+  的形式。在原点附近很小体积内对原方程进行积分，物理上通常可以假设$f$的体积分趋向于零，于是和泊松方程的情况一样，可以确定出
+   $$ C_1+C_2=-\frac{1}{4\pi}$$
+\end{frame}
+
+\begin{frame}
+  \frametitle{$k>0$的情况}
+  那么具体 $C_1$ 和 $C_2$ 的比例该取多少呢？这要由具体问题的无限远处边界条件决定。如果是个发散球面波问题，要求越远相位就越大，则通常只能取 $C_1=1, C_2=0$。即格林函数为
+  $$ G(\mathbf{x};\mathbf{x}_0) = -\frac{e^{ik|\mathbf{x}-\mathbf{x}_0|}}{4\pi k|\mathbf{x}-\mathbf{x}_0|}.$$
+  如果是会聚球面波问题，则
+  $$ G(\mathbf{x};\mathbf{x}_0) = -\frac{e^{-ik|\mathbf{x}-\mathbf{x}_0|}}{4\pi k|\mathbf{x}-\mathbf{x}_0|}.$$  
+  上述任意一个情况令$k=0$，都能得到泊松方程的格林函数。
+    
+\end{frame}
+
+
+\ech
+\end{document}

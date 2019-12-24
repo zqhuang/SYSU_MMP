@@ -1,0 +1,184 @@
+\def\version{00000000}
+\def\opts#1#2#3#4{({\bf A})\,{#1}\ \ ({\bf B})\,{#2}\ \ ({\bf C})\,{#3}\ \ ({\bf D})\,{#4}}
+\documentclass[CJK]{article}
+\usepackage{geometry}
+\input{reduced_macros.tex}
+\geometry{tmargin=0.5in, bmargin=0.5in, lmargin=0.7in, rmargin=0.8in, nohead, nofoot}
+\begin{document}
+\bch
+\bcenter
+中山大学物理与天文学院 《数学物理方法》 2018学年 期中小测参考答案
+
+{\vskip 0.04in}
+
+{\bf **每人拿到的选择题选项经过随机排列，和参考答案中次序未必相同** }
+
+\ecenter
+
+{\vskip 0.02in}
+    
+{\bf \noindent（一）选择题，每小题4分，共60分。请集中把答案写在下面的答案区:}
+
+\bitem
+\item[(1)]{$e^{\frac{3\pi i}{2}}$等于 
+
+  \opts{\blue $-i$}{$i$}{$-1$}{$1$}
+}
+\item[(2)]{满足下列哪一项条件的所有复数$z$构成的点集是复平面上的开区域？
+
+  \opts{$z=0$}{$1\le |z|\le 2$}{$z$是实数且$|z|<1$}{\blue $0<|z|<1$}
+}
+\item[(3)]{方程$z^3=1+i$的所有复数解为 
+
+  \opts{$2^{\frac{1}{6}}e^{\frac{(4n+1)\pi i}{12}}$, $n=0,1,2$}{\blue $2^{\frac{1}{6}}e^{\frac{(8n+1)\pi i}{12}}$, $n=0,1,2$}{$2^{\frac{1}{6}}e^{\frac{(8n-1)\pi i}{12}}$, $n=0,1,2$}{$e^{\frac{(4n-1)\pi i}{12}}$, $n=0,1,2$}
+}
+\item[(4)]{复变函数$z\cos z$的导函数是：
+  
+  \opts{$z\sin z$}{$\cos z$}{\blue $\cos z - z\sin z$}{$\cos z + z\sin z$}
+  }
+\item[(5)]{复变函数 $z\sin z$ 的不定积分（忽略不写积分常数）是 
+  
+  \opts{$z\cos z$}{$ \sin z$}{\blue $\sin z - z\cos z$}{$ \sin z+z\cos z$}
+  }
+\item[(6)]{$\frac{1}{(1+e^z)\sin z}$ 在区域$|z|< 5 $内有多少个孤立奇点? 
+  
+  \opts{$3$}{$4$}{\blue $5$}{$6$}
+  }
+\item[(7)]{$\frac{1}{z^2-3z+2}$ 在 $z=2$ 处的留数等于 
+
+    \opts{$2$}{\blue $1$}{$0$}{$-1$}}  
+\item[(8)]{积分$\int_{-1}^1 \delta(x-2) \cos x\, dx =$
+
+    \opts{\blue $0$}{$\tan 2$}{$\cos 2$}{$\sin 2$}}  
+\item[(9)]{下列哪个多值函数在区域 $1<|z|<2$ 内可以规定适当的幅角范围成为解析函数？ 
+
+  \opts{$\ln(z-1)$}{$\ln (z+1)$}{$\ln [(z-1)(z+1)]$}{\blue $\ln \frac{z-1}{z+1}$}}
+\item[(10)]{$\Gamma(- \frac{1}{2}) = $ 
+
+  \opts{$\frac{\sqrt{\pi}}{2}$}{\blue $-2\sqrt{\pi}$}{$\sqrt{\pi}$}{$-\frac{\sqrt{\pi}}{2}$}}
+\item[(11)]{函数 $\frac{2z^4}{z^{5}+z+1}$ 的所有孤立奇点处的留数之和为 
+
+    \opts{$-1$}{$0$}{$1$}{\blue $2$}
+    }  
+\item[(12)]{函数 $f(t) = \delta(t^2-1)$ 的拉普拉斯变换$F(p)=$ 
+
+  \opts{\blue $\frac{1}{2} e^{-p}$}{$\frac{1}{2}\left(e^p+e^{-p}\right)$}{$e^{-p}$}{$e^p+e^{-p}$}
+}
+\item[(13)]{设$f(x) = e^{-\frac{x^2}{2}}$的傅立叶变换为$F(k)$，则积分$\int_{-\infty}^\infty \left\vert F(k)\right\vert^2\,dk$等于
+
+  \opts{\blue $\sqrt{\pi}$}{$\frac{\pi}{2}$}{$\pi$}{$\sqrt{\frac{2}{\pi}}$}
+}
+\item[(14)]{积分 $\int_0^\infty e^{-x^2}\cos{(2x)}\,dx$ 等于
+
+  \opts{\blue $\frac{\sqrt{\pi}}{2e}$}{$\frac{\sqrt{\pi}}{e}$}{$e\sqrt{\pi}$}{$\frac{e\sqrt{\pi}}{2}$}
+}
+\item[(15)]{某个正交曲面坐标系$(x,y,z)$的相近两点之间的距离平方可以写为：$ ds^2 = dx^2 + e^{2x}\left(dy^2 + dz^2\right).$
+  该坐标系的拉普拉斯算符$\nabla^2$的显式微分表达式为：
+
+  \opts{$e^{2x}\left[\frac{\partial(e^{-2x}\frac{\partial }{\partial x})}{\partial x}+\frac{\partial^2}{\partial y^2}+\frac{\partial^2}{\partial z^2}\right]$}{\blue $e^{-2x}\left[\frac{\partial(e^{2x}\frac{\partial }{\partial x})}{\partial x}+\frac{\partial^2}{\partial y^2}+\frac{\partial^2}{\partial z^2}\right]$}{$\frac{\partial(e^{2x}\frac{\partial }{\partial x})}{\partial x}+\frac{\partial^2}{\partial y^2}+\frac{\partial^2}{\partial z^2}$}{$\frac{\partial^2}{\partial x^2}+\frac{\partial^2}{\partial y^2}+\frac{\partial^2}{\partial z^2}$}
+}
+  
+  
+\eitem
+
+\newpage
+{\bf \noindent （二）问答题，每小题10分，共30分。}
+
+\bitem
+\item[(1)]{解析函数的定义是什么？请用不超过30字的一句话简洁地叙述（关于解析函数积分的）柯西定理。
+
+{\blue
+
+在复平面上的开区域内处处可导的函数称为该区域内的解析函数。（另一种正确答案：在某点邻域内处处可导称为在该点解析，在定义域内每个点解析的函数称为解析函数。）
+
+
+柯西定理：在区域内解析且在区域边界上连续的函数沿边界正向的积分之和为零。
+}
+  }
+\item[(2)]{把函数$f(z) = \frac{1}{(z-2)(z-3)}$在环形区域$2<|z|<3$内展开成洛浪级数。
+
+{\blue
+
+要在环形区域内得到一个处处收敛洛浪展开式，以环形中心($z=0$)展开最佳（由洛浪展开定理保证）。
+
+\bea
+\frac{1}{(z-2)(z-3)} &=& \frac{1}{z-3}-\frac{1}{z-2} \newl
+&=& -\frac{1}{3}\frac{1}{1-\frac{z}{3}} - \frac{1}{z}\frac{1}{1-\frac{2}{z}} \newl
+&=& -\frac{1}{3}\left(1+\frac{z}{3}+\frac{z^2}{3^2}+\frac{z^3}{3^3}+\ldots\right) - \frac{1}{z}\left(1+\frac{2}{z}+\frac{2^2}{z^2}+\frac{2^3}{z^3}+\ldots\right)\eea
+
+在环形区域内上面牛顿二项式展开的条件$\left\vert \frac{z}{3}\right\vert<1$以及$\left\vert\frac{2}{z}\right\vert<1$都满足，所以一个展开式就全部搞定。很多同学随意地取了一个展开中心进行展开，未对展开条件进行讨论，导致扣分比较多。如果取了多个展开中心并对展开条件进行了讨论，但满足展开条件的区域未完全覆盖题目所要求区域，仍要适度扣分。另外，需要注意平时求留数练习的展开技巧都是去心邻域展开，不能在任意区域内应用。}
+}
+\item[(3)]{
+
+  计算沿逆时针方向的围道积分
+  $$\frac{1}{2\pi \ii}\oint_{|z|=1} \,\frac{\cos z}{z^{273}}\,dz,$$
+  并估算结果的数量级(大概是10的多少次方）。
+
+{\blue
+
+围道内有一个孤立奇点$z=0$，由于
+$$\frac{\cos z}{z^{273}} = \frac{1-\frac{z^2}{2!}+\frac{z^4}{4!}-\ldots +\frac{z^{272}}{272!} - \ldots}{z^{273}} $$
+显然留数(负一次项系数)为$\frac{1}{272!}$。根据留数定理，积分结果为
+  $$\frac{1}{2\pi \ii}\oint_{|z|=1} \,\frac{\cos z}{z^{273}}\,dz=\frac{1}{2\pi \ii} 2\pi \ii \frac{1}{272!} = \frac{1}{272!}$$
+利用Stirling公式：
+$$272! \approx \sqrt{544\pi}\left(\frac{272}{e}\right)^{272}\approx 40\times 100^{272} = 4\times 10^{545}$$
+所以积分结果$\approx 2.5\times 10^{-546}$，数量级在$10^{-546}$和$10^{-545}$之间（答$10^{-544}$, $10^{-545}$, $10^{-546}$, $10^{-547}$都算正确）。
+}
+
+}  
+\eitem
+
+{\bf \noindent（三）选答题，10分。请在下列若干个问题中勾选并回答一个问题（请不要多选，否则不计分）。}
+
+\bitem
+\item[{\bf $\Box$}]{请举出一个在整个复平面上有定义，在无穷多个点可导，却处处不解析的复变函数的例子。
+
+{\blue 例如 $\sin |z|$.
+
+其他任何满足要求的例子，不管是蒙的，死记硬背的，还是真的理解了，只要是对的都不扣分。
+}
+}
+\item[{\bf $\Box$}]{计算函数$f(z) = \ln \Gamma(z)$在$z=1$处的二阶导数$f''(1)$。
+
+{\blue $\frac{\pi^2}{6}$
+
+用任何方法得出结果都可以。课上也讲过一种方法。
+}
+
+
+}
+\item[{\bf $\Box$}]{三维直角坐标系中曲面$x^4+y^4+z^4=1$包围的体积是多少？
+
+{\blue
+用$n$维限和积分公式可以算出：
+$$V=\frac{\left[\Gamma\left(\frac{1}{4}\right)\right]^4}{6\sqrt{2}\pi}$$
+（答$\frac{\left[\Gamma\left(\frac{1}{4}\right)\right]^3}{6\Gamma\left(\frac{3}{4}\right)}$也对）
+)
+}
+}
+\item[{\bf $\Box$}]{求解$f(t)$的初值问题： $f'' + f + 2\sin t = 0$, $f(0)= 0$,  $f'(0) = 1$.
+
+{\blue $f(t)=t\cos t$.
+
+如果一眼看出来答案然后代入方程和初始条件检验，也算对。
+
+如果用拉普拉斯变换的方法，知道计算的流程，求出了$F(p)$，但是反演失败，扣3分。
+
+如果用高数的求通解法，算对了没问题，算错了就拿不到什么分（因为 1. 吃老本都吃不对！ 2.检验解是否正确不是很容易吗！）。
+}
+}
+  \eitem
+
+
+
+{\noindent \bf 公式表}
+\bitem
+  \item[(1)]{$e^{\beta t} t^\alpha$的拉普拉斯变换为$\frac{\Gamma(\alpha+1)}{(p-\beta)^{\alpha+1}}$；$\cos(\omega t)$的拉普拉斯变换为$\frac{p}{p^2+\omega^2}$；$\sin(\omega t)$的拉普拉斯变换为$\frac{\omega}{p^2+\omega^2}$.}
+  \item[(2)]{$\Gamma$函数互余宗量关系$\Gamma(z)\Gamma(1-z) = \frac{\pi}{\sin{(\pi z)}}.$}
+  \item[(3)]{$n$维限和积分公式：
+ $$\int_{\Omega_n} x_1^{\alpha_1-1}x_2^{\alpha_2-1}\ldots x_n^{\alpha_n-1} f(x_1+x_2+\ldots+x_n)dx_1dx_2\ldots dx_n= \frac{\Gamma(\alpha_1)\Gamma(\alpha_2)\ldots \Gamma(\alpha_n)}{\Gamma(\alpha_1+\alpha_2+\ldots + \alpha_n)}\int_0^1f(u)u^{\alpha_1+\alpha_2+\ldots + \alpha_n-1} du ,$$
+  其中等式左边的积分区域$\Omega_n = \{(x_1,x_2,\ldots,x_n): x_1,x_2,\ldots, x_n\ge 0; x_1+x_2+\ldots+x_n\le 1 \}$.
+  }
+    \eitem
+\ech
+\end{document}
