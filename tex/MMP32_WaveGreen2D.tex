@@ -15,68 +15,34 @@
 
 \section{Review and Practices}
 
+\thinka{估算积分
+  $$\int_{100\pi}^\infty \frac{\sin x}{x} dx.$$}
+
 \thinkb{长度为$L$的均匀导热棒一端和温度为 $200\mathrm{K}$ 的热库接触，并在 $t=0$ 时刻和热库处于热平衡。从 $t=0$ 时刻开始，在导热棒的另一端注入恒定大小的热流。设已知导热棒的材料的热传导方程参数为 $a$，在 $t=\frac{L^2}{a}$ 时刻，棒的中点的温度为 $300\mathrm{K}$。
 问：在 $t=\frac{2L^2}{a}$ 时刻，棒的中点的温度为多少 $\mathrm{K}$？
 }
 
-\thinka{一根长为 $L$ 的孤立均匀导热棒，其材质的导热系数为 $\lambda$，热传导方程参数为 $a$。一开始导热棒处于热平衡。从 $t=0$ 时刻开始，在导热棒的一端（$x=0$）处注入热流密度为 $j_1$ 的恒定热流，并在另一端注入热流密度为 $j_2$的恒定热流( $j_2 < j_1$)。经过时间 $t \gg \frac{L^2}{a}$ 之后，导热棒上两端的温度差是多少？}
+\thinkc{一根长为 $L$ 的孤立均匀导热棒，其材质的导热系数为 $\lambda$，热传导方程参数为 $a$。一开始导热棒处于热平衡。从 $t=0$ 时刻开始，在导热棒的一端（$x=0$）处注入热流密度为 $j_1$ 的恒定热流，并在另一端注入热流密度为 $j_2$的恒定热流( $j_2 < j_1$)。经过时间 $t \gg \frac{L^2}{a}$ 之后，导热棒上两端的温度差是多少？}
+
+
+\thinkd{设 $k_1>k_2>0$ 证明：
+  $$\int_0^\infty xJ_m(k_1x)J_m(k_2x)dx = \frac{\delta(k_1-k_2)}{k_1}.$$}
 
 
 \section{Green's Function: Wave Equation in 2D}
 
 \begin{frame}
   \frametitle{有限大小薄膜振动}
-求解一个周边固定的半径为 $R$ 的圆形弹性轻薄膜的横向（即垂直于薄膜表面的）小振动。设其初始位移为已知函数 $\phi(r,\theta)$，初始速度为零。波动方程的参数 $a$ 已知。
+求解一个周边固定的半径为 $R$ 的圆形弹性轻薄膜的横向（即垂直于薄膜表面的）小振动$u(r,\theta, t)$ (这里 $r,\theta$是以薄膜中心为原点的极坐标)。设其初始位移为已知函数 $\phi(r,\theta)$，初始速度为零。波动方程的参数 $a$ 已知。
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{第一步}
+  写出方程：
   
 \end{frame}
 
-\begin{frame}
-  \frametitle{一维瞬时波源（速度）}
-  $$\frac{\partial^2u}{\partial t^2}-a^2\frac{\partial^2u }{\partial x^2} = 0, $$
-  $$\left. u\right\vert_{t=0} = \delta(x-x_0),$$
-  $$\left. \frac{\partial u}{\partial t}\right\vert_{t=0} = 0.$$  
-  利用一维无边界波动方程的通解，得到
-  $$ u = G_s(x,t;x_0) = \frac{1}{2}\left[\delta(x-at-x_0) + \delta(x+at-x_0)\right].$$
-  也就是说脉冲会分成相等的两份以速度$a$向左右两边传播。
-
-\end{frame}
-
-\begin{frame}
-  \frametitle{一维瞬时波源（速度）}
-  
-  $$G_v(x,t;x_0) = \frac{1}{2a}\left[h(x+at-x_0) - h(x-at-x_0)\right].$$
-  如下图所示：
-  
-  \addfig{3}{wave_green.png}
-
-  这揭示一个很有意思的现象：一维的瞬时速度源可以导致整个因果关联区域（即波能传播到的地方）都有信号。
-\end{frame}
-
-
-\begin{frame}
-  \frametitle{一维无界波动的初值问题一般解}
-  知道了初始位移和初始速度分别对应的格林函数 $G_s, G_v$，那么一般的初值问题就可以用格林函数来搞定，不失一般性，考虑：
-  $$\frac{\partial^2u}{\partial t^2}-a^2\nabla^2 u = 0, $$
-  $$\left. u\right\vert_{t=0} = \phi(x),$$
-  $$\left. \frac{\partial u}{\partial t}\right\vert_{t=0} = \delta(\mathbf{x}-\mathbf{x}_0) = \psi(x).$$  
-\end{frame}
-
-
-\begin{frame}
-  \frametitle{一维无界波动的一般初值问题的解}
-  直接写出答案
-  $$ u = \int G_s(x,t;x_0) \phi(x_0)dx_0 + \int G_v(x,t;x_0) \psi(x_0)dx_0.$$
-  并直接计算得到
-  $$ u = \frac{1}{2}\left[\phi(x-at)+\phi(x+at)\right] + \frac{1}{2a}\int_{x-at}^{x+at}\psi(x_0)dx_0.$$
-\end{frame}
-
-
-\thinka{请用一维无界波动方程的通解直接求解上述一般初值问题的解。}
-
-\begin{frame}
-  \frametitle{高维的情况}
-  一维的解其实可以直接用通解获得。但在高维的情况，通解并不存在，格林函数方法就非常重要了。我们留到以后再详细讨论。
-\end{frame}
 
 \ech
 \end{document}
