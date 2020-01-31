@@ -46,8 +46,8 @@
   $$\left. u\right\vert_{t=0} = 0,$$
   $$\left. \frac{\partial u}{\partial t}\right\vert_{t=0} = \delta(x-x_0).$$  
   仍然利用一维无边界波动方程的通解，得到
-  $$ u = G_v(x,t;x_0) = \frac{1}{2a}\left[h(x+at-x_0) - h(x-at-x_0)\right].$$
-  这里的 $h$ 是单位跃阶函数。
+  $$ u = G_v(x,t;x_0) = \frac{1}{2a}\left[\heaviside(x+at-x_0) - \heaviside(x-at-x_0)\right].$$
+  这里的 $ \heaviside$ 是单位跃阶函数。
 
 
 \end{frame}
@@ -55,7 +55,7 @@
 \begin{frame}
   \frametitle{一维瞬时波源（速度）}
   
-  $$G_v(x,t;x_0) = \frac{1}{2a}\left[h(x+at-x_0) - h(x-at-x_0)\right].$$
+  $$G_v(x,t;x_0) = \frac{1}{2a}\left[ \heaviside(x+at-x_0) -  \heaviside(x-at-x_0)\right].$$
   如下图所示：
   
   \addfig{3}{wave_green.png}

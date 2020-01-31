@@ -1,0 +1,86 @@
+\documentclass[10pt,CJK]{article}
+\usepackage{geometry}
+\input{reduced_macros.tex}
+\geometry{tmargin=0.3in, bmargin=0.5in, lmargin=0.5in, rmargin=0.9in, nohead, nofoot}
+\begin{document}
+\bch
+\title{分离变量法总结}
+
+\section{三种方程}
+\bitem
+\item[1]{泊松方程（静电势，稳定温度分布）:
+$$\nabla^2 u = 0.$$
+}
+\item[2]{热传导方程:
+$$\frac{\partial u}{\partial t}- a\nabla^2 u = 0.$$
+（参数$a$的物理意义：单位时间扩散区域的尺度平方。)
+}
+\item[3]{波动方程:
+$$\frac{\partial^2 u}{\partial t^2}- a^2\nabla^2 u = 0.$$
+(参数 $a$为波速）
+}
+\eitem
+\section{零边界条件}
+零边界条件的定义：在边界的每一个点，函数值和梯度的法向分量的给定线性组合为零。（不同边界点的线性组合系数允许不同）
+
+\section{按照谐函数展开}
+
+上述三种方程的解可以展开为
+$$ u = \sum_i c_i Q_i(\mathbf{x}; k_i) f(t;k_i). $$
+时间依赖因子$f(t; k)$由下表给出：
+
+\begin{tabular}{p{0.33\textwidth}|p{0.66\textwidth}}
+  \hline
+  \hline
+  方程 & 时间依赖函数 \\
+  \hline
+  泊松方程$\nabla^2 u = 0$ & $1$ \\
+  热传导方程 $\frac{\partial u}{\partial t}- a\nabla^2 u = 0$ & $e^{-ak^2t}$ \\
+  波动方程$\frac{\partial^2 u}{\partial t^2}- a^2\nabla^2 u = 0$ & $\ldots\cos(akt)+\ldots\sin(akt)$ \\  
+  \hline
+\end{tabular}
+
+
+
+对热传导方程和波动方程，依赖于空间坐标的谐函数 $Q(\mathbf{x}; k)$ ($k>0$)由下表给出
+
+
+\begin{tabular}{p{0.08\textwidth}|p{0.08\textwidth}|p{0.84\textwidth}}
+  \hline
+  \hline
+  坐标系  & 应用区域 & 谐函数   \\
+  \hline
+  一维直角 &   线段 & $\ldots\cos(kx)+\ldots\sin(kx)$ \\
+  高维直角 & 方形区域 & 多个一维直角坐标的谐函数的乘积(每个维度上取$k$的一个分量构造谐函数，而不是用总的$k$) \\
+  \hline
+  极坐标 & 圆盘  & $J_m(kr)\left[\ldots\cos(m\theta)+\ldots\sin(m\theta)\right]$, $(m=0,1,2\ldots)$ \\
+  & 圆环 & $\left[\ldots J_m(kr)+\ldots N_m(kr)\right]\left[\ldots\cos(m\theta)+\ldots\sin(m\theta)\right]$, $(m=0,1,2\ldots)$ \\
+  \hline
+  柱坐标 & 实心圆柱  & $J_m(k_{2D}r)\left[\ldots\cos(m\theta)+\ldots\sin(m\theta)\right]\left[\ldots\cos(k_zz)+\ldots\sin(k_zz)\right]$, $k_z^2+k_{2D}^2=k^2$ \\
+   & 实心圆柱  & $\left[\ldots J_m(k_{2D}r)+\ldots N_m(k_{2D}r)\right]\left[\ldots\cos(m\theta)+\ldots\sin(m\theta)\right]\left[\ldots\cos(k_zz)+\ldots\sin(k_zz)\right]$, $k_z^2+k_{2D}^2=k^2$ \\  
+  \hline  
+  球坐标 & 实心球 & $j_l(kr)Y_{lm}(\theta,\phi)$, $(l=0,1,2\ldots; -l\le m\le l)$ \\
+  & 空心球 & $\left[\ldots j_l(kr)+\ldots n_l(kr)\right]Y_{lm}(\theta,\phi)$, $(l=0,1,2\ldots; -l\le m\le l)$ \\
+  \hline
+\end{tabular}
+
+对泊松方程（稳定问题），没有初始条件，于是通常或者不是零边界条件，或者方程右边是有源的（严格来讲就不是泊松方程了）——否则啥都是零你还解什么……
+
+这时需要用到 $k=0$的谐函数，好吧其实严格来讲因为不是零边界条件，这些函数也未必能叫谐函数了。下面给出了一些简单问题中常用的解：
+
+\begin{tabular}{p{0.12\textwidth}|p{0.12\textwidth}|p{0.66\textwidth}}
+  \hline
+  \hline
+  坐标系  & 应用区域 & 谐函数   \\
+  \hline
+  极坐标&  圆内部 & $ r^m\left[\ldots\cos(m\theta)+\ldots\sin(m\theta)\right]$ ($m=0,1,2\ldots)$\\
+  &  圆外部 & $\ln r$ ($m=0$情形)或者  $ r^{-m}\left[\ldots\cos(m\theta)+\ldots\sin(m\theta)\right]$ ($m=1,2\ldots)$ \\
+  \hline
+  球坐标 &  球内部 & $r^lY_{lm}(\theta,\phi)$, $(l=0,1,2\ldots; -l\le m\le l)$ \\
+  & 球外部 & $ r^{-l-1}Y_{lm}(\theta,\phi)$, $(l=0,1,2\ldots; -l\le m\le l)$ \\      
+  \hline
+\end{tabular}
+
+在更复杂的稳定解问题中，常常还要用到虚宗量的三角函数（也就是双曲正弦，双曲余弦）、虚宗量的贝塞尔函数等，就不一一讨论了。
+\ech
+\end{document}

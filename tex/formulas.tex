@@ -1,0 +1,36 @@
+\documentclass[10pt,CJK]{article}
+\usepackage{geometry}
+\input{reduced_macros.tex}
+\geometry{tmargin=0.3in, bmargin=0.5in, lmargin=0.5in, rmargin=0.9in, nohead, nofoot}
+\renewcommand{\thepage}{}
+\begin{document}
+\bch
+\title{确定会给的公式表}
+\date{}
+\author{}
+\maketitle
+
+\begin{eqnarray}
+\Gamma(z)\Gamma(1-z) &=&\frac{\pi}{\sin (\pi z)}, \\
+J_\nu(x) &=& \sum_{k=0}^\infty \frac{(-1)^k}{k!\Gamma(k+\nu+1)}\left(\frac{x}{2}\right)^{2k+\nu}, \\
+N_\nu(x) &=& \lim_{\alpha \rightarrow \nu } \frac{J_\alpha(x)\cos{(\alpha\pi)} - J_{-\alpha}(x)}{\sin{(\alpha\pi)}},  \\
+J_m(x) &=& \frac{1}{2\pi}\int_{-\pi}^{\pi} e^{i (x\sin\theta - m \theta) } d\theta,\ (m\in Z), \\
+e^{\frac{x}{2}(t-\frac{1}{t})} &=& \sum_{n=-\infty}^\infty J_n(x) t^n, \\
+\int_0^1 \,x\,J_m(\mu_ix)J_m(\mu_j x) \,dx &=& \delta_{ij} \frac{\left[J_{m+1}(\mu_i)\right]^2}{2}, (\text{这里} \mu_1,\mu_2,\ldots \text{是} J_m \text{的正实数零点}),\\
+\int_0^1 x\, J_m(\lambda_i x)J_m(\lambda_j x) dx &=& \delta_{ij}\frac{\left(1-\frac{m^2}{\lambda_i^2}\right)\left[J_m(\lambda_i)\right]^2}{2}, (\text{这里} \lambda_1,\lambda_2,\ldots \text{是} J'_m \text{的正实数零点}), \\
+\int_0^\infty J_m(k_1r)J_m(k_2r) r dr &=& \frac{\delta(k_1-k_2)}{k_1}, \ (k_1,k_2>0), \\
+ Y_{\ell m}(\theta,\phi) &=& \frac{1}{2^\ell \ell !}\sqrt{\frac{(2\ell+1)}{4\pi} \frac{(\ell-m)!}{(\ell+m)!}}\left[\sin^m\theta \left(\frac{1}{\sin\theta}\frac{d}{d\theta}\right)^{\ell+m}\sin^{2\ell}\theta \right] e^{i m\phi}, \\
+ j_\ell(x) &=& \sqrt{ \frac{\pi}{2x}} J_{\ell+1/2}(x), \\
+ n_\ell(x) &=& \sqrt{ \frac{\pi}{2x}} N_{\ell+1/2}(x), \\
+ j_l(x) &=& (-x)^l\left(\frac{1}{x}\frac{d}{dx}\right)^l\frac{\sin x}{x}, \\
+ n_l(x) &=& -(-x)^l\left(\frac{1}{x}\frac{d}{dx}\right)^l\frac{\cos x}{x}, \\
+ P_{\ell}(x) &=& \sum_{k=0}^\ell \frac{(\ell + k)!}{(k!)^2(\ell-k)!}\left(\frac{x-1}{2}\right)^k, \\ 
+P_\ell(\cos\theta) &=& \sqrt{\frac{4\pi}{2\ell + 1}}Y_{\ell 0}(\theta,\phi), \\
+P_\ell(x) &=& \frac{1}{2^\ell \ell!}\frac{d^\ell}{dx^\ell}(x^2-1)^\ell,  \\
+(2\ell+1)xP_\ell(x) &=& (\ell+1)P_{\ell+1}(x)+\ell P_{\ell-1}(x), \\
+\frac{1}{\sqrt{1+t^2-2xt}} &=& \sum_{\ell =0}^\infty P_\ell (x) t^\ell,\ (t<|x\pm \sqrt{x^2-1}|), \\
+P_\ell (\vecn_1\cdot\vecn_2) &=& \frac{4\pi}{2\ell+1}\sum_{m=-\ell}^\ell Y_{\ell m}^*(\vecn_1)Y_{\ell m}(\vecn_2), 
+\end{eqnarray}
+
+\ech
+\end{document}

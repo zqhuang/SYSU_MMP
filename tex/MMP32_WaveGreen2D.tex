@@ -4,6 +4,8 @@
   \date{}
   \begin{document}
   \bch
+
+
 \tpage{32}{二维无界空间中的波动问题}
 
 \begin{frame}
@@ -22,27 +24,167 @@
 问：在 $t=\frac{2L^2}{a}$ 时刻，棒的中点的温度为多少 $\mathrm{K}$？
 }
 
-\thinkc{一根长为 $L$ 的孤立均匀导热棒，其材质的导热系数为 $\lambda$，热传导方程参数为 $a$。一开始导热棒处于热平衡。从 $t=0$ 时刻开始，在导热棒的一端（$x=0$）处注入热流密度为 $j_1$ 的恒定热流，并在另一端注入热流密度为 $j_2$的恒定热流( $j_2 < j_1$)。经过时间 $t \gg \frac{L^2}{a}$ 之后，导热棒上两端的温度差是多少？}
-
-
 \thinkd{设 $k_1>k_2>0$ 证明：
   $$\int_0^\infty xJ_m(k_1x)J_m(k_2x)dx = \frac{\delta(k_1-k_2)}{k_1}.$$}
-
 
 \section{Green's Function: Wave Equation in 2D}
 
 \begin{frame}
   \frametitle{有限大小薄膜振动}
-求解一个周边固定的半径为 $R$ 的圆形弹性轻薄膜的横向（即垂直于薄膜表面的）小振动$u(r,\theta, t)$ (这里 $r,\theta$是以薄膜中心为原点的极坐标)。设其初始位移为已知函数 $\phi(r,\theta)$，初始速度为零。波动方程的参数 $a$ 已知。
+求解一个周边固定的半径为 $R$ 的圆形弹性轻薄膜的横向（即垂直于薄膜表面的）小振动$u(r,\theta, t)$ (这里 $r,\theta$是以薄膜中心为原点的极坐标, $0\le r\le R$)。设其初始位移为已知函数 $\phi(r,\theta)$，初始速度为零。波动方程的参数 $a$ 已知。
 \end{frame}
 
 
 \begin{frame}
-  \frametitle{第一步}
-  写出方程：
+  \frametitle{第一步：写出三要素}
+  写出方程
+  $$\frac{\partial^2u}{\partial t^2}-a^2\nabla^2u = 0.$$
+  边界条件
+  $$ \left.u\right\vert_{r=R} = 0.$$
+  和初始条件
+  $$ \left.u\right\vert_{t=0} = \phi(r,\theta),\ \ \left.\frac{\partial u}{\partial t}\right\vert_{t=0} = 0.$$  
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{第二步：写出分离变量形式解}
+  考虑所给区域为圆盘，直接写出解的分离变量形式：
+  $$u(r,\theta, t)= \sum_{m=0}^\infty \sum_{i=1}^\infty J_m(k_{m,i}r)\left[A_{m,i}\cos(m\theta)+B_{m,i}\sin(m\theta)\right]\cos(ak_{m,i}t)$$
+  {\scriptsize 这里我们只写了 $\cos(akt)$ 而没有写 $\sin(akt)$的成分是利用了初始速度为零的条件；如果是初始位移为零，初始速度不为零，则要写 $\sin(akt)$；如果初始速度和位移均不为零，则 $\cos(akt)$和 $\sin(akt)$的成分均要保留，待定系数就多了一倍（当然非平凡的初始条件也多了一倍，因此还是ok）。  }
+
+\end{frame}
+
+\begin{frame}
+  \frametitle{第三步：解释解里面的$k$如何取值。}
+    利用边界条件，我们对 $k_{m,i}$ 的限制为
+    $$J_m(k_{m,i}R) = 0.$$
+    即$k_{m,i}$是 $J_m$的第 $i$个正式数零点和 $R$之比。
+\end{frame}
+
+\begin{frame}
+  \frametitle{第四步：把初始条件按展开基投影，写出展开系数}
+  由初始条件有：
+  $$ \phi(r,\theta)=\sum_{m=0}^\infty \sum_{i=1}^\infty J_m(k_{m,i}r)\left[A_{m,i}\cos(m\theta)+B_{m,i}\sin(m\theta)\right].$$
+  于是把方程左边按右边的正交展开基进行投影得到
+  $$ A_{m,i} = \frac{\int_0^Rrdr\int_0^{2\pi}d\theta \left[\phi(r,\theta)J_m(k_{m,i}r)\cos(m\theta)\right]}{\int_0^Rrdr\int_0^{2\pi}d\theta \left[J_m(k_{m,i}r)\cos(m\theta)\right]^2}.$$
+
+  $$ B_{m,i} = \frac{\int_0^Rrdr\int_0^{2\pi}d\theta \left[\phi(r,\theta)J_m(k_{m,i}r)\sin(m\theta)\right]}{\int_0^Rrdr\int_0^{2\pi}d\theta \left[J_m(k_{m,i}r)\sin(m\theta)\right]^2}.$$  
   
 \end{frame}
 
+\begin{frame}
+  \frametitle{第五步：把你会的积分都积出来}
+
+  \addfig{2}{laijiewo.jpg}
+  
+\end{frame}
+
+\begin{frame}
+  \frametitle{来点格林函数问题}
+  如果初始位移 $\phi = \delta(\mathbf{x}-\mathbf{x}_0)$，那么就是典型的格林函数问题。我们考虑一个简单的也通常是格林函数非常有用的$R\rightarrow \infty$，也就是无边界的情形。
+
+  \skiplines
+  
+  这时可以取 $\mathbf{x}_0$ 所在位置为原点建立极坐标系，直接写出格林函数为：
+  $$u =  \int_0^\infty J_0(kr)\cos(akt) c(k) dk.$$
+  {\scriptsize 注意利用初始条件的旋转对称性，我们直接丢掉了 $m>0$的项。并且由于无边界，$k$可以连续取到一切非负实数值。这里的 $c(k)dk$ (函数$c$待定) 是连续情况下的 “展开系数”。}
+\end{frame}
+
+\begin{frame}
+  \frametitle{初始条件}
+  这样初始条件就是
+  $$\frac{\delta(r-\epsilon)}{2\pi r} = \int_0^\infty J_0(kr) c(k) dk.$$
+  这里$\epsilon\rightarrow 0^+$。（请自行思考为何 $\frac{\delta(r-\epsilon)}{2\pi r}$ 是在原点的二维 $\delta$ 函数。）
+
+  两边同乘以 $ rJ_0(k'r)dr$ (这里 $k'$是任取的正数)，并对 $r$ 积分，得到
+  \bea
+  \frac{J_0(k'\epsilon)}{2\pi} &=& \int_0^\infty c(k)dk \int_0^\infty r J_0(kr)J_0(k'r)dr\newl
+  &=&  \int_0^\infty c(k)dk \frac{\delta(k-k')}{k'}  \newl
+  &=& \frac{c(k')}{k'}\nonumber
+  \eea
+
+\end{frame}
+
+\begin{frame}
+  \frametitle{最终解}
+  令$\epsilon\rightarrow 0^+$，即得到
+  $$c(k) = \frac{k}{2\pi}.$$
+  即最终得到
+  $$ u = \frac{1}{2\pi} \int_0^\infty  k J_0(kr)\cos(akt)  dk.$$
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{位移脉冲和速度脉冲对应的格林函数}
+  这样，在 $\mathbf{x}_0$ 处对应的初始位移脉冲产生的响应（也就是格林函数）是
+  $$ G_s(\mathbf{x},t;\mathbf{x}_0) = \frac{1}{2\pi} \int_0^\infty  k J_0(k|\mathbf{x}-\mathbf{x}_0|)\cos(akt)  dk.$$  
+  类似地，可以求出初始速度脉冲的响应为
+  $$ G_v(\mathbf{x},t;\mathbf{x}_0) = \frac{1}{2\pi a} \int_0^\infty   J_0(k|\mathbf{x}-\mathbf{x}_0|)\sin(akt)  dk.$$  
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{通过一系列操作……}
+  附录进一步给出了积分的结果
+  $$ G_s(\mathbf{x},t;\mathbf{x}_0) =\frac{1}{2\pi}\left[ \frac{\delta(at-|\mathbf{x}-\mathbf{x}_0|)}{\sqrt{a^2t^2-|\mathbf{x}-\mathbf{x}_0|^2}} - \frac{at\, \heaviside(at-|\mathbf{x}-\mathbf{x}_0|)}{\left(a^2t^2-|\mathbf{x}-\mathbf{x}_0|^2\right)^{3/2}}\right].$$
+  $$ G_v(\mathbf{x},t;\mathbf{x}_0) = \frac{1}{2\pi a}\frac{\heaviside(at-|\mathbf{x}-\mathbf{x}_0|)}{\sqrt{a^2t^2-|\mathbf{x}-\mathbf{x}_0|^2}}.$$
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{一般解}
+  对于一般的初始位移 $\phi(\mathbf{x})$ 和初始速度 $\psi(\mathbf{x})$，解就可以用格林函数搞定：
+ $$u(\mathbf{x},t) = \iint d^2\mathbf{x}_0   \left[G_s(\mathbf{x},t;\mathbf{x}_0) \phi(\mathbf{x}_0) + G_v(\mathbf{x},t;\mathbf{x}_0) \psi(\mathbf{x}_0)\right].$$
+\end{frame}
+
+
+
+\section{Appendix}
+
+\secpage{计算积分}{耍赖参数很有用}
+
+\begin{frame}
+  我们来计算积分
+  $$I= \int_0^\infty   J_0(kr)\sin(akt)  dk.$$  
+  利用 $J_0$的积分表示，可以得到
+  $$ I = \frac{1}{4\pi i} \int_0^\infty  \int_{-\pi}^{\pi} \left(e^{ik[r(\sin\theta+i\epsilon)+at]}- e^{ik[r(\sin\theta+i\epsilon)-at]}\right)d\theta dk.  $$
+  这里为了让积分收敛，加入了耍赖参数 $\epsilon\rightarrow 0^+$；先对$k$积分得到
+  $$ I = \frac{1}{2\pi}\int_{-\pi}^{\pi} \frac{t}{a^2t^2-r^2(\sin\theta + i\epsilon)^2 } d\theta.$$
+\end{frame}
+
+\begin{frame}
+  把积分转化为单位圆上的围道积分，
+  $$ I = \frac{1}{2\pi r}\oint_{|z|=1}\ \left[\frac{1}{z^2 +2(i\lambda-\epsilon)z - 1}-\frac{1}{z^2 -2(i\lambda+\epsilon)z - 1 } \right]dz.$$
+  这里的 $\lambda = at/r$。
+\end{frame}
+
+
+\begin{frame}
+  如果$\lambda< 1$，则记 $$\alpha_{\pm} = \epsilon-i\lambda \pm \sqrt{1-\lambda^2-2i\lambda \epsilon},\ \beta_{\pm} = \epsilon+i\lambda \pm \sqrt{1-\lambda^2 + 2i\lambda\epsilon}$$
+  $$ I = \frac{1}{2\pi r}\oint_{|z|=1}\ \left[\frac{1}{(z-\alpha_+)(z-\alpha_-)}-\frac{1}{(z-\beta_+)(z-\beta_-)}\right]dz.$$
+  孤立奇点$\alpha_-$, $\beta_-$在单位圆 $|z|=1$ 内部(现在你知道为什么我一直保留$\epsilon$了)，留数之和为
+  $$\frac{1}{\alpha_--\alpha_+}-\frac{1}{\beta_--\beta_+} = 0. $$
+  也就是说，在区域 $r> at$ 内， $u = 0$ —— 物理上来看这是显然的。
+\end{frame}
+
+\begin{frame}
+  如果 $\lambda>1$，则记 $$\alpha_{\pm} = \left(-\lambda \pm \sqrt{\lambda^2-1}\right)i,\ \beta_{\pm} = \left(\lambda \pm \sqrt{\lambda^2-1}\right)i$$
+  $$ I = \frac{1}{2\pi r}\oint_{|z|=1}\ \left[\frac{1}{(z-\alpha_+)(z-\alpha_-)}-\frac{1}{(z-\beta_+)(z-\beta_-)}\right]dz.$$
+  孤立奇点$\alpha_+$, $\beta_-$在单位圆 $|z|=1$ 内部，由留数定理得
+  $$ I = \frac{i}{r}\left(\frac{1}{\alpha_+-\alpha_-}-\frac{1}{\beta_--\beta_+}\right) = \frac{1}{\sqrt{a^2t^2-r^2}}. $$
+  最后得到
+  $$ I = \frac{\heaviside(at-r)}{\sqrt{a^2t^2-r^2}}.$$
+  这里的 $\heaviside$ 是单位跃阶函数。
+\end{frame}
+
+
+\begin{frame}
+  把结果
+  
+  $$ \int_0^\infty   J_0(kr)\sin(akt)  dk = \frac{\heaviside(at-r)}{\sqrt{a^2t^2-r^2}}.$$  
+  两边对 $t$求偏导，就得到：
+  $$ \int_0^\infty  k J_0(kr)\cos(akt)  dk = \frac{\delta(at-r)}{\sqrt{a^2t^2-r^2}} - \frac{at\, \heaviside(at-r)}{\left(a^2t^2-r^2\right)^{3/2}}.$$  
+\end{frame}  
 
 \ech
 \end{document}

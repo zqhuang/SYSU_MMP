@@ -1,0 +1,84 @@
+\documentclass[CJK]{beamer}
+\input{macros.tex}
+\input{titlepage.tex}
+  \date{}
+  \begin{document}
+  \bch
+
+
+\tpage{33}{三维无界空间中的波动问题}
+
+\begin{frame}
+  \frametitle{本讲内容}
+  
+\tableofcontents
+
+\end{frame}
+
+\section{Review and Practices}
+
+\thinka{把 $\ln\cosh x$ 在 $x=0$ 附近展开到$x^4$.}
+
+\thinkb{一根长为 $L$ 的孤立均匀导热棒，其材质的导热系数为 $\lambda$，热传导方程参数为 $a$。一开始导热棒处于热平衡。从 $t=0$ 时刻开始，在导热棒的一端（$x=0$）处注入热流密度为 $j_1$ 的恒定热流，并在另一端注入热流密度为 $j_2$的恒定热流( $j_2 < j_1$)。经过时间 $t \gg \frac{L^2}{a}$ 之后，导热棒上两端的温度差是多少？}
+
+\thinkc{已知某种保温材料的比热很小可以忽略不计。测试员用该保温材料做成一个内半径为 $0.1\mathrm{m}$，外半径为 $0.11\mathrm{m}$ 的球形保温容器。把该容器装满 $100^\circ\mathrm{C}$ 的开水后，置于温度为 $20^\circ\mathrm{C}$ 的房间里，一天后发现容器内水温下降了 $40^\circ\mathrm{C}$，保温效果很不理想。测试员于是加大保温容器的厚度，使外半径达到 $0.2\mathrm{m}$，然后装满 $100^\circ\mathrm{C}$ 的开水，置于温度为 $20^\circ\mathrm{C}$ 的房间里，问：一天后保温容器内的水温下降多少度?}
+
+\thinkd{从前有一个神秘的星球叫浮士德星，这个星球的每年有一万天。星球上的人出生时都会和魔鬼签署了一份协议：每个人每天起床都要投掷 $600$ 次骰子。如果 $1,2,3,4,5,6$ 每个数字均恰好出现 $100$ 次，魔鬼就要带走这个人的灵魂，否则魔鬼会保护这个人一天平安无事。  有一天赌王来到了浮士德星，传授给了浮士德星人一个秘术——666大法。使用秘术之后，每次掷骰子出现 $6$ 的概率会稍稍增加，但增加的幅度非常小以致于魔鬼无法察觉。从此浮士德村人的平均寿命延长了5年。请由此推断： 666秘术能使单次掷骰子出现 $6$ 的概率增加多少？}
+
+\section{Green's Function: Wave Equation in 2D}
+
+\secpage{三维空间波动问题的格林函数}{$$ \frac{\delta(at-|\mathbf{x}-\mathbf{x}_0|)}{4\pi a|\mathbf{x}-\mathbf{x}_0|}. $$}
+
+\begin{frame}
+  \frametitle{三维空间的波动问题}
+  在三维无边界空间中，设有波动方程
+  $$\frac{\partial^2u}{\partial t^2}-a^2\nabla^2u = 0.$$
+  和初始条件
+  $$ \left.u\right\vert_{t=0} = 0,\ \ \left.\frac{\partial u}{\partial t}\right\vert_{t=0} = \delta(\mathbf{x}-\mathbf{x}_0).$$
+
+  这是个典型的格林函数问题。根据我们在一维和二维求解的经验，只要求出了初始速度脉冲的格林函数，对时间求一下偏导就能得到初始位移脉冲的格林函数。（请自行证明这个结论。）
+\end{frame}
+
+
+\begin{frame}  
+  可以取 $\mathbf{x}_0$ 所在位置为原点建立球坐标系，直接写出格林函数为：
+  $$G_v=  \int_0^\infty j_0(kr) c(k)\sin(akt) dk.$$
+  {\scriptsize 注意利用初始条件的球对称性，我们仅保留了$l=m=0$的项。并且由于无边界，$k$可以连续取到一切非负实数值。这里的 $c(k)dk$ (函数$c$待定) 是连续情况下的 “展开系数”。}
+\end{frame}
+
+\begin{frame}
+  \frametitle{初始条件}
+  这样初始条件就是
+  $$\frac{\delta(r-\epsilon)}{4\pi a r^2} = \int_0^\infty j_0(kr) c(k) kdk .$$
+  这里$\epsilon\rightarrow 0^+$。（请自行思考为何 $\frac{\delta(r-\epsilon)}{4\pi r^2}$ 是在原点的三维 $\delta$ 函数。）
+
+  利用贝塞尔函数的正交关系，
+  $$\frac{\pi\delta(r-\epsilon)}{2r^2} = \int_0^\infty k^2j_0(kr)j_0(k\epsilon)dk.$$
+  直接看出 $c(k) = \frac{kj_0(k\epsilon)}{2\pi^2 a} $。令 $\epsilon\rightarrow 0^+$ 即得 $c(k) = \frac{k}{2\pi^2a}$.
+\end{frame}
+
+\begin{frame}
+  于是
+  $$G_v=  \frac{1}{2\pi^2a} \int_0^\infty \frac{\sin(kr)}{kr} \sin(akt) k dk.$$
+  利用 $j_0$ 的正交关系，有
+  $$G_v=  \frac{1}{4\pi ar} \delta(at-r) = \frac{\delta(at-|\mathbf{x}-\mathbf{x}_0|)}{4\pi a|\mathbf{x}-\mathbf{x}_0|}.$$
+\end{frame}
+
+
+\begin{frame}
+  考虑初值问题
+  $$\frac{\partial^2u}{\partial t^2}-a^2\nabla^2u = 0.$$
+  $$ \left.u\right\vert_{t=0} = \phi(\mathbf{x}),\ \ \left.\frac{\partial u}{\partial t}\right\vert_{t=0} = \psi(\mathbf{x}).$$
+\end{frame}
+
+\begin{frame}
+  其解为
+  \bea
+  u(\mathbf{x},t) &=& \frac{1}{4\pi a} \left[\iiint \phi(\mathbf{x}_0) \frac{\delta(at-|\mathbf{x}-\mathbf{x}_0|)}{|\mathbf{x}-\mathbf{x}_0|} d^3\mathbf{x}_0\right. \newl
+    &+& \left.\frac{\partial}{\partial t}\iiint \psi(\mathbf{x}_0) \frac{\delta(at-|\mathbf{x}-\mathbf{x}_0|)}{|\mathbf{x}-\mathbf{x}_0|} d^3\mathbf{x}_0\right].\nonumber
+  \eea
+\end{frame}
+
+
+\ech
+\end{document}
