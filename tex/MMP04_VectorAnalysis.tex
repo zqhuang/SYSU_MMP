@@ -230,7 +230,7 @@
 
 \begin{frame}
   \frametitle{矢量函数的三种非零联合操作之间的联系}
-  矢量函数的三种非零的联合操作分别是：旋量的旋量，梯度的散度(即刚刚讨论的拉普拉斯算符)，散度的梯度。它们之间有非常简洁的联系:
+  矢量函数的三种非零的联合操作分别是：旋度的旋度，梯度的散度(即刚刚讨论的拉普拉斯算符)，散度的梯度。它们之间有非常简洁的联系:
 
   \tbox{$$\nabla\times (\nabla \times \vecu) =  \nabla(\nabla\cdot \vecu) - \nabla^2\vecu$$}
   也就是：{\bf 旋度的旋度等于散度的梯度和梯度的散度之差}。如果你还记得二重外积公式，这个结果就非常好理解。
@@ -262,6 +262,16 @@
   
   \bitem
 \item{从麦克斯韦方程组推导真空中的电磁波方程。}
+  \item{设矢量$\mathbf{a}, \mathbf{b}, \mathbf{c}$的长度都是1，且 $\mathbf{a}\cdot\mathbf{b} = 0$，则 
+$$|\mathbf{a}+2\mathbf{c}| + |3\mathbf{a}+2\mathbf{b}-\mathbf{c}|$$
+    的最小值等于多少？}
+  \item{设三维欧氏空间的直角坐标系为$(x,y,z)$，有标量函数
+$$ f = x^4+y^4+z^4$$
+和
+$$ g = \frac{1}{1+x^4+y^4+z^4}. $$
+那么表达式
+$$ g\nabla^2 f + (1+f)\nabla^2 g + 2\nabla f\cdot\nabla g$$
+在坐标$(1,2,3)$处的值为多少?}
   \eitem
 
   
