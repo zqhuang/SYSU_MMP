@@ -22,7 +22,7 @@
 
 \thinka{计算积分 $$\int_{-\infty}^\infty \delta(x^4-1)x^2dx.$$}
 
-\thinkb{长度为$0.1\mathrm{m}$的均匀铝棒一端和温度为$300\mathrm{K}$的热库接触（棒的其余各处都孤立绝热），并在 $t < 0$ 时和热库处于热平衡。从 $t=0$ 时刻开始，在棒的另一端持续地沿着棒地方向注入大小为 $j = 2.3\times 10^4\mathrm{W/m^2}$ 的热流。经过10分钟后，棒的中点的温度为多少K？已知铝的导热系数为 $230\mathrm{W\,m^{-1}K^{-1}}$，比热为 $900 \mathrm{J\,kg^{-1}K^{-1}}$, 密度为 $2700\mathrm{kg\,m^{-3}}$。}
+\thinkb{长度为$0.1\mathrm{m}$的均匀铝棒一端和温度为$300\mathrm{K}$的热库接触（棒的其余各处都孤立绝热），并在 $t < 0$ 时和热库处于热平衡。从 $t=0$ 时刻开始，在棒的另一端持续地沿着棒的方向注入大小为 $j = 2.3\times 10^4\mathrm{W/m^2}$ 的热流。经过10分钟后，棒的中点的温度为多少K？已知铝的导热系数为 $230\mathrm{W\,m^{-1}K^{-1}}$，比热为 $900 \mathrm{J\,kg^{-1}K^{-1}}$, 密度为 $2700\mathrm{kg\,m^{-3}}$。}
 
 \thinkc{证明 Wallis 公式 $$\pi= \lim_{n\rightarrow\infty}\frac{1}{n}\left(\frac{(2n)!!}{(2n-1)!!}\right)^2 $$
   其中 $m!! \equiv m(m-2)(m-4)\ldots$ 即从 $m$ 开始，递减量为 $2$ 的连乘积，直到乘到 $2$ 或 $1$ 为止。例如 $5!!=5\times 3\times 1 = 15$， $6!! = 6\times 4\times 2 = 48$.}
@@ -168,20 +168,20 @@ $$\sum_{n=1}^\infty \frac{1}{f(n)}. $$
 \begin{frame}
   \frametitle{$k>0$的情况}
   利用球贝塞尔函数的具体形式
-  $$ j_0(kr) = \frac{\sin(kr)}{(kr)},\ n_0(kr) = \frac{\cos(kr)}{(kr)}$$
+  $$ j_0(kr) = \frac{\sin(kr)}{(kr)},\ n_0(kr) = -\frac{\cos(kr)}{(kr)}$$
   我们也可以把解写成
 
-  $$ f = C_1\frac{e^{ikr}}{kr} + C_2\frac{e^{-ikr}}{kr}. $$
+  $$ f = C_1\frac{e^{ikr}}{r} + C_2\frac{e^{-ikr}}{r}. $$
   的形式。在原点附近很小体积内对原方程进行积分，物理上通常可以假设$f$的体积分趋向于零，于是和泊松方程的情况一样，可以确定出
    $$ C_1+C_2=-\frac{1}{4\pi}$$
 \end{frame}
 
 \begin{frame}
   \frametitle{$k>0$的情况}
-  那么具体 $C_1$ 和 $C_2$ 的比例该取多少呢？这要由具体问题的无限远处边界条件决定。如果是个发散球面波问题，要求越远相位就越大，则通常只能取 $C_1=1, C_2=0$。即格林函数为
-  $$ G(\mathbf{x};\mathbf{x}_0) = -\frac{e^{ik|\mathbf{x}-\mathbf{x}_0|}}{4\pi k|\mathbf{x}-\mathbf{x}_0|}.$$
+  那么具体 $C_1$ 和 $C_2$ 的比例该取多少呢？这要由具体问题的无限远处边界条件决定。如果是个发散球面波问题，要求越远相位就越大，则通常只能取 $C_1=-\frac{1}{4\pi}, C_2=0$。即格林函数为
+  $$ G(\mathbf{x};\mathbf{x}_0) = -\frac{e^{ik|\mathbf{x}-\mathbf{x}_0|}}{4\pi |\mathbf{x}-\mathbf{x}_0|}.$$
   如果是会聚球面波问题，则
-  $$ G(\mathbf{x};\mathbf{x}_0) = -\frac{e^{-ik|\mathbf{x}-\mathbf{x}_0|}}{4\pi k|\mathbf{x}-\mathbf{x}_0|}.$$  
+  $$ G(\mathbf{x};\mathbf{x}_0) = -\frac{e^{-ik|\mathbf{x}-\mathbf{x}_0|}}{4\pi |\mathbf{x}-\mathbf{x}_0|}.$$  
   上述任意一个情况令$k=0$，都能得到泊松方程的格林函数。
     
 \end{frame}

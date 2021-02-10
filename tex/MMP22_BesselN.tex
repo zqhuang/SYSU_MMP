@@ -20,10 +20,10 @@ $$ J_m(kr)\cos(m\theta), \ J_m(kr)\sin(m\theta), \ \ (m=0,1,2,\ldots) $$
   我们再回头考虑之前被忽略掉的一种比较特殊的情形：$k=0$。这时候可以取$k\rightarrow 0^+$的极限：$ J_m(kr)\sim  r^m$。
 
   所以对$k=0$，在原点不发散的极坐标下分离变量形式的谐函数为:
-  $$ c_1 r^m \cos(m\theta)+c_2 r^m \sin(m\theta), \ \ (m=1,2,\ldots)$$
-  或 $m=0$ 时为
-  $$ c_1+c_2\ln r$$
-  {\scriptsize 注意：$m=0$的常数解恰好对应了直角坐标系下$k=0$的解;其余的谐函数($m=0$时的 $\ln r$或$m>0$的两个解)在$r=0$或无穷远处发散，是直角坐标下平面波所不能描述的。}
+  $$ c_1 r^m \cos(m\theta)+c_2 r^m \sin(m\theta), \ \ (m= 1,2,\ldots)$$
+  当 $m=0$，对应的解是常数。 
+  
+  {\scriptsize 注意：这些解其实已经无法满足零边界条件，因而属于对应特殊边界条件的特解范畴，在直角坐标系没有对应的平面波分解。}
 \end{frame}
 
 
@@ -33,8 +33,11 @@ $$ J_m(kr)\cos(m\theta), \ J_m(kr)\sin(m\theta), \ \ (m=0,1,2,\ldots) $$
   \bitem
 \item{对$k>0$，
   $$N_m(kr)\cos(m\theta), \ N_m(kr)\sin(m\theta), \ \ (m=0,1,2,\ldots) $$}
-\item{对$k=0$，
-  $$r^{-m} \cos(m\theta), \ r^{-m} \sin(m\theta), \ \ (m=0,1,2,\ldots)$$}
+\item{对$k=0$，如果 $m>0$，有
+  $$r^{-m} \cos(m\theta), \ r^{-m} \sin(m\theta), \ \ (m=1,2,\ldots)$$
+  如果 $m=0$，有
+  $$\ln r$$
+  {\scriptsize 这些解也可以看作 $N_m(kr)$ 当 $k\rightarrow 0^+$ 时的极限行为，但同样地，他们无法满足零边界条件，因而也属于对应特殊边界条件的特解范畴。}}
   \eitem
 
   本讲的重点就是要介绍这里的第二类贝塞尔函数$N_m$。
